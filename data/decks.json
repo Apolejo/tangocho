@@ -23,5 +23,10 @@
     "id": "occupations",
     "name": { "en": "Occupations", "es": "Ocupaciones", "ja": "職業" },
     "match": { "tags": ["occupations"] }
+  },
+  {
+    "id": "katakana",
+    "name": { "en": "Katakana words", "es": "Palabras en katakana", "ja": "カタカナ" },
+    "match": { "tags": ["katakana"] }
   }
 ]

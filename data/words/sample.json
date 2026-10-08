@@ -301,7 +301,7 @@
     "kana": "エンジニア",
     "pos": "noun",
     "meaning": { "en": ["engineer"], "es": ["ingeniero"] },
-    "tags": ["occupations"],
+    "tags": ["occupations", "katakana"],
     "added": "2026-10-08",
     "source": "sample"
   },
@@ -310,7 +310,7 @@
     "kana": "デザイナー",
     "pos": "noun",
     "meaning": { "en": ["designer"], "es": ["diseñador"] },
-    "tags": ["occupations"],
+    "tags": ["occupations", "katakana"],
     "added": "2026-10-08",
     "source": "sample"
   },
@@ -341,6 +341,119 @@
     "pos": "adverb",
     "meaning": { "en": ["sometimes"], "es": ["a veces"] },
     "tags": ["misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "sarariiman",
+    "kana": "サラリーマン",
+    "pos": "noun",
+    "meaning": { "en": ["salaried office worker"], "es": ["oficinista asalariado"] },
+    "note": {
+      "en": "wasei-eigo, from salary + man",
+      "es": "wasei-eigo, de salary + man"
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "arubaito",
+    "kana": "アルバイト",
+    "pos": "noun",
+    "meaning": { "en": ["part-time job"], "es": ["trabajo de medio tiempo"] },
+    "note": { "en": "from German Arbeit", "es": "del alemán Arbeit" },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "konpyuutaa",
+    "kana": "コンピューター",
+    "pos": "noun",
+    "meaning": { "en": ["computer"], "es": ["computadora", "ordenador"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "sumaho",
+    "kana": "スマホ",
+    "pos": "noun",
+    "meaning": { "en": ["smartphone"], "es": ["teléfono móvil", "celular"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "koohii",
+    "kana": "コーヒー",
+    "pos": "noun",
+    "meaning": { "en": ["coffee"], "es": ["café"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "pan",
+    "kana": "パン",
+    "pos": "noun",
+    "meaning": { "en": ["bread"], "es": ["pan"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "resutoran",
+    "kana": "レストラン",
+    "pos": "noun",
+    "meaning": { "en": ["restaurant"], "es": ["restaurante"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "hoteru",
+    "kana": "ホテル",
+    "pos": "noun",
+    "meaning": { "en": ["hotel"], "es": ["hotel"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "takushii",
+    "kana": "タクシー",
+    "pos": "noun",
+    "meaning": { "en": ["taxi"], "es": ["taxi"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "nooto",
+    "kana": "ノート",
+    "pos": "noun",
+    "meaning": { "en": ["notebook"], "es": ["cuaderno"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kamera",
+    "kana": "カメラ",
+    "pos": "noun",
+    "meaning": { "en": ["camera"], "es": ["cámara"] },
+    "tags": ["katakana", "misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "piano",
+    "kana": "ピアノ",
+    "pos": "noun",
+    "meaning": { "en": ["piano"], "es": ["piano"] },
+    "tags": ["katakana", "misc"],
     "added": "2026-10-08",
     "source": "sample"
   }

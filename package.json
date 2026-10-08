@@ -23,8 +23,12 @@
     "shots": "node scripts/shots.ts"
   },
   "dependencies": {
+    "@fontsource/biz-udpgothic": "^5.3.0",
     "@fontsource/klee-one": "^5.3.0",
+    "@fontsource/yomogi": "^5.3.0",
     "@fontsource/zen-kaku-gothic-new": "^5.3.0",
+    "@fontsource/zen-kurenaido": "^5.3.0",
+    "@fontsource/zen-maru-gothic": "^5.3.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "zod": "^4.6.5"

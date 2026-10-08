@@ -16,6 +16,7 @@ const OUT = fileURLToPath(new URL('../shots/', import.meta.url));
 const SCREENS = [
   { name: 'notebook', hash: '#/notebook' },
   { name: 'notebook-verbs-g2', hash: '#/notebook/verbs-g2' },
+  { name: 'fonts', hash: '#/dev/fonts', dev: true },
 ];
 
 const VIEWPORTS = [
@@ -33,7 +34,8 @@ function arg(flag: string): string | undefined {
 async function main(): Promise<void> {
   const only = arg('--only');
   const fullPage = process.argv.includes('--full');
-  const screens = SCREENS.filter((s) => only === undefined || s.name === only);
+  // dev-only screens (the font tryout) are shot only when asked for by name
+  const screens = SCREENS.filter((s) => (only === undefined ? s.dev !== true : s.name === only));
   if (screens.length === 0) throw new Error(`no screen named "${only}"`);
 
   const server = await createServer({ root: ROOT, logLevel: 'silent' });

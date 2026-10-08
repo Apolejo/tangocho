@@ -118,7 +118,7 @@ Errors:
 - A deck `match` that uses an unknown field.
 
 Warnings (printed, never block):
-- A group 1 verb ending in an い/え-row kana + る that isn't on the known group 1 exceptions list (帰る, 入る, 切る, 走る, 知る, 要る, 減る, 限る, 喋る, 滑る, 握る, 蹴る, 参る, 焦る, 練る, 照る, 散る, 混じる): "looks like group 2, confirm in a dictionary". The list matches kanji + kana together, so 練る (group 1) and 寝る (group 2) don't collide.
+- A group 1 verb ending in an い/え-row kana + る that isn't on the known group 1 exceptions list (帰る, 入る, 切る, 走る, 知る, 要る, 減る, 限る, 喋る, 滑る, 握る, 蹴る, 参る, 焦る, 練る, 照る, 散る, 混じる): "looks like group 2, confirm in a dictionary". The list matches kanji + kana together, as a suffix (持ち帰る counts as 帰る), so 練る (group 1) and 寝る (group 2) don't collide.
 - A missing English or Spanish meaning.
 - A likely duplicate: two entries with the same kanji (or both without), kana, `pos` and `verbGroup` whose meanings overlap. Same reading with a different meaning is a homophone, which is fine (いる "to exist" and いる "to need").
 - A deck that matches no words.
@@ -302,7 +302,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 - **Paper**: warm off-white with a subtle grain, ruled lines on cards, washi-tape headers, decks as notebook tabs.
 - **Ink**: near-black sumi for text, indigo for accents, vermilion (朱) for the ◯ stamp; on Japanese tests a red ◯ marks a correct answer. Color is never the only signal: the ◯ and ✕ shapes carry the meaning.
 - **Feedback**: a hanko-style stamp (slight rotation, ink spread); 花丸 for a perfect round. All motion is off under `prefers-reduced-motion`.
-- **Type**: Japanese prompts in a pen-written face close to textbook glyphs, so learners see real stroke shapes (candidate: Klee One). UI in a clean sans with Japanese coverage (candidate: Zen Kaku Gothic New). Final choice in M1, from screenshots.
+- **Type**: Japanese prompts in a pen-written face close to textbook glyphs, so learners see real stroke shapes (Klee One). UI in a clean sans with Japanese coverage (Zen Kaku Gothic New). Chosen in M1 from screenshots, against Zen Kurenaido and Yomogi for prompts and BIZ UDPGothic and Zen Maru Gothic for the UI.
 - **Dark mode**: "night notebook", deep indigo paper and light ink. Follows the system, with an override in Settings.
 - Text contrast meets WCAG AA; focus rings are always visible.
 - Components never hard-code colors or sizes; everything comes from `src/styles/tokens.css`.

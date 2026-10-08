@@ -10,6 +10,7 @@ Personal web app of minigames for drilling the Japanese words in my own notebook
 - `npm run e2e`: Playwright, desktop Chromium + mobile WebKit
 - `npm run validate`: data only; run after any change in data/
 - `npm run shots`: phone and desktop screenshots of every screen, into shots/
+- Preview for Claude: `.claude/launch.json` starts `npm run dev`; the app is at http://localhost:5173/tangocho/ (note the base path).
 
 ## Architecture
 - Words live only in data/words/*.json and must pass src/data/schema.ts and src/data/rules.ts. Never hardcode words in components.
@@ -33,4 +34,6 @@ Personal web app of minigames for drilling the Japanese words in my own notebook
 - I develop on Windows and CI runs Linux: keep npm scripts cross-platform (Node scripts, no `rm -rf`, no inline env vars), and match file-name case exactly in imports.
 - GitHub Pages serves the site from /<repo-name>/: Vite `base` must match, and routing is hash-based.
 - WanaKana: on submit, convert the input once more in the expected answer's script (toKatakana for katakana answers), or a trailing "n" becomes ん inside a katakana word.
+- TypeScript stays on 6.0.x until typescript-eslint supports 7 (its peer range is <6.1).
+- Relative imports carry their `.ts`/`.tsx` extension: Node runs `scripts/*.ts` natively, so `src/data/` and `src/lib/` must stay free of DOM and Vite APIs for the validator to import them.
 - WanaKana counts ヶ as kana; for furigana placement it belongs to the kanji run, like 々.

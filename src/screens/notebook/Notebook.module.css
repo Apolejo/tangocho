@@ -1,0 +1,53 @@
+.notebook {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-bottom: var(--space-6);
+}
+
+.title {
+  margin: var(--space-3) var(--space-4) 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.page {
+  position: relative;
+  margin: 0 var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* the red margin line of ruled paper */
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--space-4);
+  width: 1px;
+  background: var(--margin-line);
+  pointer-events: none;
+}
+
+.count {
+  margin: 0;
+  padding: var(--space-3) var(--space-4) var(--space-1) var(--space-5);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  margin: 0;
+  padding: var(--space-6) var(--space-5);
+  color: var(--ink-soft);
+  text-align: center;
+}

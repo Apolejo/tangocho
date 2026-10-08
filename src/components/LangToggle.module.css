@@ -1,0 +1,26 @@
+.toggle {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+}
+
+.button {
+  min-width: var(--tap-min);
+  min-height: calc(var(--tap-min) - 4px);
+  padding: 0 var(--space-3);
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.button[aria-pressed='true'] {
+  background: var(--ai);
+  color: var(--paper);
+}

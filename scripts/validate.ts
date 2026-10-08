@@ -3,7 +3,7 @@
  * separate set (SPEC §5.5). `npm run validate -- <file>` checks one staged file against the
  * live words instead. One line per problem; exit code 1 if there are errors.
  */
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ZodType } from 'zod';
@@ -83,7 +83,9 @@ function loadItems<T>(file: string, absolute: string, schema: ZodType<T>, what: 
   return { items, problems };
 }
 
+/** A missing directory counts as no files: git does not keep empty folders. */
 function wordFiles(dir: string): string[] {
+  if (!existsSync(join(ROOT, dir))) return [];
   return readdirSync(join(ROOT, dir))
     .filter((name) => name.endsWith('.json'))
     .sort()

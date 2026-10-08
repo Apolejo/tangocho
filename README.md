@@ -7,7 +7,7 @@ Minigames for drilling the Japanese vocabulary from my own notebook (a quick qui
 - Roadmap and status: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Instructions for Claude Code: [CLAUDE.md](CLAUDE.md)
 
-Status: M1, the walking skeleton. The notebook screen shows the sample decks; the games arrive from M3.
+Status: M2, the import pipeline. The notebook shows my own words, imported page by page with `/add-vocab`; the games arrive from M3.
 
 ## Run it
 
@@ -40,6 +40,10 @@ Open http://localhost:5173/tangocho/ (the `/tangocho/` path matches the GitHub P
 - `src/i18n/`: every UI string, in English and Spanish.
 - `src/styles/tokens.css`: every color and size.
 - `scripts/`: the validator and the screenshot script.
+
+## Add vocabulary
+
+Pages of the notebook (photos or PDFs) go in `inbox/`, which git ignores. In Claude Code, `/add-vocab <source label> [file.json]` transcribes them, validates the result against the live data and shows a review table; nothing reaches `data/` until I approve every flagged item (SPEC §12). A hook in `.claude/settings.json` runs the validator after every edit in `data/`, so a broken entry is reported back immediately.
 
 ## Deploy
 

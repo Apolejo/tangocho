@@ -8,7 +8,7 @@ Personal web app of minigames for drilling the Japanese words in my own notebook
 - `npm run dev`: dev server
 - `npm run check`: typecheck, lint, unit tests, data validation. Must pass before you call anything done.
 - `npm run e2e`: Playwright, desktop Chromium + mobile WebKit
-- `npm run validate`: data only; run after any change in data/
+- `npm run validate`: data only. A PostToolUse hook (`.claude/settings.json`) runs it after every Edit or Write in data/ and sends the report back: errors as feedback, warnings as extra context. Edits made from Bash don't trigger it; run it yourself then.
 - `npm run shots`: phone and desktop screenshots of every screen, into shots/
 - Preview for Claude: `.claude/launch.json` starts `npm run dev`; the app is at http://localhost:5173/tangocho/ (note the base path).
 

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "iku",
+    "kanji": "行く",
+    "kana": "いく",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to go"], "es": ["ir"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "kaeru",
+    "kanji": "帰る",
+    "kana": "かえる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to go home", "to return"], "es": ["irse", "regresar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "nomu",
+    "kanji": "飲む",
+    "kana": "のむ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to drink"], "es": ["beber"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "kaku-write",
+    "kanji": "書く",
+    "kana": "かく",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to write"], "es": ["escribir"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "kaku-draw",
+    "kanji": "描く",
+    "kana": "かく",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to draw"], "es": ["dibujar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "hanasu",
+    "kanji": "話す",
+    "kana": "はなす",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to speak", "to talk"], "es": ["hablar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "iu",
+    "kanji": "言う",
+    "kana": "いう",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to say"], "es": ["decir"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "yomu",
+    "kanji": "読む",
+    "kana": "よむ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to read"], "es": ["leer"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "motsu",
+    "kanji": "持つ",
+    "kana": "もつ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to hold", "to have"], "es": ["tener", "sostener"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "toru-photo",
+    "kanji": "撮る",
+    "kana": "とる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to take (a photo or video)"], "es": ["tomar (fotos, videos)"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "toru-take",
+    "kanji": "取る",
+    "kana": "とる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to take", "to grab"], "es": ["tomar", "agarrar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "wakaru",
+    "kanji": "分かる",
+    "kana": "わかる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to understand"], "es": ["entender"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "aruku",
+    "kanji": "歩く",
+    "kana": "あるく",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to walk"], "es": ["caminar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "hashiru",
+    "kanji": "走る",
+    "kana": "はしる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to run"], "es": ["correr"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "oyogu",
+    "kanji": "泳ぐ",
+    "kana": "およぐ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to swim"], "es": ["nadar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  },
+  {
+    "id": "kiku",
+    "kanji": "聞く",
+    "kana": "きく",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to hear", "to listen", "to ask"], "es": ["oír", "preguntar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ１リスト p.1"
+  }
+]

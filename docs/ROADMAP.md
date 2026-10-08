@@ -41,22 +41,22 @@ Done when: the repo is on GitHub with the starter files, and Claude answers that
 
 Goal: the whole pipeline (data → validation → a screen on your phone) working before any game exists.
 
-- [ ] Scaffold Vite + React + TypeScript (strict) in a temporary folder and move it in. Never let the scaffolder delete existing files.
-- [ ] Zod schema, the §5.5 rules and `npm run validate`, with a unit test for every rule.
-- [ ] Copy `data/words/sample.json` to `data/fixtures/words.json`. Unit tests use the fixtures or words defined in the test; e2e runs against a fixtures build (SPEC §5.6).
-- [ ] Furigana placement (`src/lib/furigana.ts`), unit-tested on every sample word.
-- [ ] English/Spanish UI with the language toggle.
-- [ ] Design tokens and the base stationery look; `npm run shots`; choose the fonts with me from screenshots.
-- [ ] Notebook screen: deck tabs → word list with furigana and meanings.
-- [ ] Hash routing; Vite `base` set to the repo name.
-- [ ] npm scripts named exactly as in CLAUDE.md. ESLint and Prettier. Playwright with desktop and mobile projects and one smoke test.
-- [ ] Set up the app preview so Claude can check its own UI changes.
-- [ ] GitHub Actions: CI on pull requests; deploy to GitHub Pages on `main`.
-- [ ] README: what it is and how to run it.
+- [x] Scaffold Vite + React + TypeScript (strict) in a temporary folder and move it in. Never let the scaffolder delete existing files.
+- [x] Zod schema, the §5.5 rules and `npm run validate`, with a unit test for every rule.
+- [x] Copy `data/words/sample.json` to `data/fixtures/words.json`. Unit tests use the fixtures or words defined in the test; e2e runs against a fixtures build (SPEC §5.6).
+- [x] Furigana placement (`src/lib/furigana.ts`), unit-tested on every sample word.
+- [x] English/Spanish UI with the language toggle.
+- [x] Design tokens and the base stationery look; `npm run shots`; choose the fonts with me from screenshots.
+- [x] Notebook screen: deck tabs → word list with furigana and meanings.
+- [x] Hash routing; Vite `base` set to the repo name.
+- [x] npm scripts named exactly as in CLAUDE.md. ESLint and Prettier. Playwright with desktop and mobile projects and one smoke test.
+- [x] Set up the app preview so Claude can check its own UI changes.
+- [x] GitHub Actions: CI on pull requests; deploy to GitHub Pages on `main`.
+- [x] README: what it is and how to run it.
 
 Done when: `npm run check` and `npm run e2e` pass locally and in CI; the Pages URL shows the notebook with the sample decks on your phone; a word with a broken field makes `npm run validate` fail with a clear message.
 
-## M2 — Import pipeline · SPEC §12, §5.5
+ — Import pipeline · SPEC §12, §5.5
 
 Goal: your notebook in the app, safely.
 
@@ -102,7 +102,9 @@ Done when: the whole table passes and you've checked every row yourself.
 
 ## M7 — Conjugation drill · SPEC §9.4
 
-Done when: §9.4 passes.
+- [ ] Verb inspection in the notebook: tap a verb → its eight forms (§7.2).
+
+Done when: §9.4 passes and a tapped verb shows its forms.
 
 ## M8 — Progress · SPEC §10, §7.1, §7.6, §7.7
 
@@ -133,3 +135,4 @@ Done when: installed on your phone, it works in airplane mode; you've reviewed l
 - Adjective conjugation.
 - Mixed daily review across games.
 - Run `/add-vocab` from your phone with Claude Code in the cloud → pull request → automatic deploy.
+- Deploy to the Oracle server too (a second static target), or use it for the sync backend.

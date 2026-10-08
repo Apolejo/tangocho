@@ -53,7 +53,7 @@ Each file is an array of words. Files only organize things for humans (for examp
 | Field | Type | Required | Rules |
 |---|---|---|---|
 | `id` | string | yes | Lowercase ASCII kebab-case, unique across all files. **Never changes once committed**: progress is keyed by it. Romaji of the reading as WanaKana's `toRomaji` writes it (`kyou`, `dezainaa`); noun + する verbs as `<noun>-suru` (`benkyou-suru`); a gloss for homophones (`kiru-cut`, `kiru-wear`). |
-| `kanji` | string | no | Written form with kanji, as in the notebook. Omit for words written only in kana. |
+| `kanji` | string | no | Written form with kanji, as in the notebook. Omit for words written only in kana. Verbs in dictionary form (買う, not 買います): the validator and the games need it, and the app shows the ます form (§7.2). |
 | `kana` | string | yes | Full reading in hiragana and/or katakana (ー allowed). Katakana parts stay katakana (エンジニア). |
 | `furigana` | `[text, reading][]` | no | Manual ruby, only when automatic placement fails (§5.4): `[["引","ひ"],["き",""],["出","だ"],["し",""]]` |
 | `pos` | enum | yes | `verb`, `noun`, `i-adj`, `na-adj`, `adverb`, `phrase`, `other` |
@@ -74,7 +74,7 @@ Each file is an array of words. Files only organize things for humans (for examp
 }
 ```
 
-Never stored, always derived: conjugations, romaji, deck membership, and furigana placement (the manual `furigana` override in §5.4 is the one exception).
+Never stored, always derived: conjugations (including the ます form the app displays), romaji, deck membership, and furigana placement (the manual `furigana` override in §5.4 is the one exception).
 
 ### 5.2 Decks — `data/decks.json`
 
@@ -118,7 +118,7 @@ Errors:
 - A deck `match` that uses an unknown field.
 
 Warnings (printed, never block):
-- A group 1 verb ending in an い/え-row kana + る that isn't on the known group 1 exceptions list (帰る, 入る, 切る, 走る, 知る, 要る, 減る, 限る, 喋る, 滑る, 握る, 蹴る, 参る, 焦る, 練る, 照る, 散る, 混じる): "looks like group 2, confirm in a dictionary". The list matches kanji + kana together, so 練る (group 1) and 寝る (group 2) don't collide.
+- A group 1 verb ending in an い/え-row kana + る that isn't on the known group 1 exceptions list (帰る, 入る, 切る, 走る, 知る, 要る, 減る, 限る, 喋る, 滑る, 握る, 蹴る, 参る, 焦る, 練る, 照る, 散る, 混じる): "looks like group 2, confirm in a dictionary". The list matches kanji + kana together, as a suffix (持ち帰る counts as 帰る), so 練る (group 1) and 寝る (group 2) don't collide.
 - A missing English or Spanish meaning.
 - A likely duplicate: two entries with the same kanji (or both without), kana, `pos` and `verbGroup` whose meanings overlap. Same reading with a different meaning is a homophone, which is fine (いる "to exist" and いる "to need").
 - A deck that matches no words.
@@ -140,7 +140,7 @@ Warnings (printed, never block):
 | § | Screen | Contents |
 |---|---|---|
 | 7.1 | Today (home) | Streak and stamp card, daily-goal progress, due count per game, a *Continue* button. |
-| 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Built first; it doubles as a data check. |
+| 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Verbs are shown in ます form, derived from the stored dictionary form (§5.1, §11); tapping a verb shows all its forms once the engine exists (M7). Built first; it doubles as a data check. |
 | 7.3 | Game setup | Decks (remembers the last choice), round size (10 or 20), options (furigana, direction, input mode, forms). |
 | 7.4 | Play | Progress, score and combo, the question, the answer area, ◯/✕ feedback. |
 | 7.5 | Results | Score, accuracy, a 新記録 stamp for a personal best, 花丸 for a perfect round, missed words with *Practice these*. |
@@ -195,6 +195,7 @@ Answer checking and distractor generation are pure functions next to each game, 
 - Correct: ◯ stamp, then auto-advance after about 0.8 s. Wrong: ✕, and the correct answer and explanation stay until I continue.
 - Tap targets at least 44×44 px; answer controls within thumb reach on a phone.
 - Feedback is announced to screen readers (`aria-live`).
+- Verbs are shown in ます form, like the notebook (§7.2); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
 
 ## 9. Games in v1
 
@@ -288,6 +289,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
   - て and た: う・つ・る → って/った; む・ぶ・ぬ → んで/んだ; く → いて/いた; ぐ → いで/いだ; す → して/した.
 - Group 3: する → します, して, しない, した…; noun + する keeps the noun (勉強します). 来る keeps its kanji but changes its reading: 来ます (きます), 来て (きて), 来ない (こない), 来た (きた). Verbs ending in てくる/でくる conjugate like 来る (持ってくる → 持ってきます, 持ってこない).
 - Exceptions: 行く → 行って, 行った, and so do verbs ending in ていく/でいく (持っていく → 持っていって). ある → ない.
+- The ます form helper from M1 (`src/lib/verbs.ts`, what the notebook shows) is folded into the engine; its rows join the table below.
 - **Test-first.** `src/lib/conjugate.test.ts` is a table of (verb, form, expected kanji, expected kana) covering every group 1 ending, both exceptions, 来る, する, a noun + する verb, 持っていく and 持ってくる, and the homophones 切る (group 1) and 着る (group 2). I check every row against a reliable conjugation chart before the engine exists; after that, the agent never edits the table.
 
 ## 12. Importing from the paper notebook — `/add-vocab`
@@ -302,7 +304,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 - **Paper**: warm off-white with a subtle grain, ruled lines on cards, washi-tape headers, decks as notebook tabs.
 - **Ink**: near-black sumi for text, indigo for accents, vermilion (朱) for the ◯ stamp; on Japanese tests a red ◯ marks a correct answer. Color is never the only signal: the ◯ and ✕ shapes carry the meaning.
 - **Feedback**: a hanko-style stamp (slight rotation, ink spread); 花丸 for a perfect round. All motion is off under `prefers-reduced-motion`.
-- **Type**: Japanese prompts in a pen-written face close to textbook glyphs, so learners see real stroke shapes (candidate: Klee One). UI in a clean sans with Japanese coverage (candidate: Zen Kaku Gothic New). Final choice in M1, from screenshots.
+- **Type**: Japanese prompts in a pen-written face close to textbook glyphs, so learners see real stroke shapes (Klee One). UI in a clean sans with Japanese coverage (Zen Kaku Gothic New). Chosen in M1 from screenshots, against Zen Kurenaido and Yomogi for prompts and BIZ UDPGothic and Zen Maru Gothic for the UI.
 - **Dark mode**: "night notebook", deep indigo paper and light ink. Follows the system, with an override in Settings.
 - Text contrast meets WCAG AA; focus rings are always visible.
 - Components never hard-code colors or sizes; everything comes from `src/styles/tokens.css`.

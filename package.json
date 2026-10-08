@@ -1,0 +1,51 @@
+{
+  "name": "tangocho",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate": "node scripts/validate.ts",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run validate",
+    "build:e2e": "vite build --mode e2e --outDir dist-e2e",
+    "preview:e2e": "vite preview --outDir dist-e2e --port 4173 --strictPort",
+    "e2e": "playwright test",
+    "shots": "node scripts/shots.ts"
+  },
+  "dependencies": {
+    "@fontsource/klee-one": "^5.3.0",
+    "@fontsource/zen-kaku-gothic-new": "^5.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "playwright": "^1.64.0",
+    "prettier": "^3.9.9",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.3"
+  }
+}

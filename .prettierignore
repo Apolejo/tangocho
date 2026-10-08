@@ -1,0 +1,8 @@
+node_modules/
+dist/
+dist-e2e/
+shots/
+playwright-report/
+test-results/
+package-lock.json
+*.md

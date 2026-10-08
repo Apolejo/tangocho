@@ -102,7 +102,9 @@ Done when: the whole table passes and you've checked every row yourself.
 
 ## M7 — Conjugation drill · SPEC §9.4
 
-Done when: §9.4 passes.
+- [ ] Verb inspection in the notebook: tap a verb → its eight forms (§7.2).
+
+Done when: §9.4 passes and a tapped verb shows its forms.
 
 ## M8 — Progress · SPEC §10, §7.1, §7.6, §7.7
 

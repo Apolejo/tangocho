@@ -13,6 +13,7 @@ test('notebook: deck tabs, furigana, and the language toggle', async ({ page }) 
   await expect(page).toHaveURL(/#\/notebook\/verbs-g2$/);
   const taberu = page.locator('[data-word-id="taberu"]');
   await expect(taberu).toContainText('to eat');
+  await expect(taberu).toContainText('べます');
   await expect(taberu.locator('rt').first()).toHaveText('た');
   await expect(taberu.getByText('G2')).toBeVisible();
   await expect(page.locator('[data-word-id="sensei"]')).toHaveCount(0);

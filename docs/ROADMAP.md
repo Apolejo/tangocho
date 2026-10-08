@@ -56,7 +56,7 @@ Goal: the whole pipeline (data → validation → a screen on your phone) workin
 
 Done when: `npm run check` and `npm run e2e` pass locally and in CI; the Pages URL shows the notebook with the sample decks on your phone; a word with a broken field makes `npm run validate` fail with a clear message.
 
- — Import pipeline · SPEC §12, §5.5
+## M2 — Import pipeline · SPEC §12, §5.5
 
 Goal: your notebook in the app, safely.
 

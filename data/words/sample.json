@@ -1,0 +1,347 @@
+[
+  {
+    "id": "kau",
+    "kanji": "買う",
+    "kana": "かう",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to buy"], "es": ["comprar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kaku",
+    "kanji": "書く",
+    "kana": "かく",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to write"], "es": ["escribir"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "oyogu",
+    "kanji": "泳ぐ",
+    "kana": "およぐ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to swim"], "es": ["nadar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "hanasu",
+    "kanji": "話す",
+    "kana": "はなす",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to speak", "to talk"], "es": ["hablar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "matsu",
+    "kanji": "待つ",
+    "kana": "まつ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to wait"], "es": ["esperar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "shinu",
+    "kanji": "死ぬ",
+    "kana": "しぬ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to die"], "es": ["morir"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "asobu",
+    "kanji": "遊ぶ",
+    "kana": "あそぶ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to play", "to have fun"], "es": ["jugar", "divertirse"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "yomu",
+    "kanji": "読む",
+    "kana": "よむ",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to read"], "es": ["leer"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kaeru",
+    "kanji": "帰る",
+    "kana": "かえる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to go home", "to return"], "es": ["volver a casa", "regresar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kiru-cut",
+    "kanji": "切る",
+    "kana": "きる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to cut"], "es": ["cortar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "hairu",
+    "kanji": "入る",
+    "kana": "はいる",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to enter", "to go in"], "es": ["entrar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "iku",
+    "kanji": "行く",
+    "kana": "いく",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to go"], "es": ["ir"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "aru",
+    "kana": "ある",
+    "pos": "verb",
+    "verbGroup": 1,
+    "meaning": { "en": ["to be, to exist (things)"], "es": ["haber, estar (cosas)"] },
+    "note": {
+      "en": "for things and plants; people and animals use いる",
+      "es": "para cosas y plantas; personas y animales usan いる"
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "taberu",
+    "kanji": "食べる",
+    "kana": "たべる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": { "en": ["to eat"], "es": ["comer"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "miru",
+    "kanji": "見る",
+    "kana": "みる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": { "en": ["to see", "to watch"], "es": ["ver", "mirar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "okiru",
+    "kanji": "起きる",
+    "kana": "おきる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": { "en": ["to get up", "to wake up"], "es": ["levantarse", "despertarse"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "neru",
+    "kanji": "寝る",
+    "kana": "ねる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": { "en": ["to sleep", "to go to bed"], "es": ["dormir", "acostarse"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kiru-wear",
+    "kanji": "着る",
+    "kana": "きる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": { "en": ["to wear", "to put on"], "es": ["ponerse", "llevar puesto"] },
+    "note": {
+      "en": "for clothes on the upper body or whole body (shirts, jackets, dresses); trousers, skirts and shoes use はく",
+      "es": "para ropa del torso o de cuerpo entero (camisas, chaquetas, vestidos); pantalones, faldas y zapatos usan はく"
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "suru",
+    "kana": "する",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": { "en": ["to do"], "es": ["hacer"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kuru",
+    "kanji": "来る",
+    "kana": "くる",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": { "en": ["to come"], "es": ["venir"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "benkyou-suru",
+    "kanji": "勉強する",
+    "kana": "べんきょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": { "en": ["to study"], "es": ["estudiar"] },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "sensei",
+    "kanji": "先生",
+    "kana": "せんせい",
+    "pos": "noun",
+    "meaning": { "en": ["teacher"], "es": ["profesor", "maestro"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "isha",
+    "kanji": "医者",
+    "kana": "いしゃ",
+    "pos": "noun",
+    "meaning": { "en": ["doctor"], "es": ["médico"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kaishain",
+    "kanji": "会社員",
+    "kana": "かいしゃいん",
+    "pos": "noun",
+    "meaning": { "en": ["office worker", "company employee"], "es": ["empleado de oficina"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "gakusei",
+    "kanji": "学生",
+    "kana": "がくせい",
+    "pos": "noun",
+    "meaning": { "en": ["student"], "es": ["estudiante"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kangoshi",
+    "kanji": "看護師",
+    "kana": "かんごし",
+    "pos": "noun",
+    "meaning": { "en": ["nurse"], "es": ["enfermero", "enfermera"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "keisatsukan",
+    "kanji": "警察官",
+    "kana": "けいさつかん",
+    "pos": "noun",
+    "meaning": { "en": ["police officer"], "es": ["policía"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "enjinia",
+    "kana": "エンジニア",
+    "pos": "noun",
+    "meaning": { "en": ["engineer"], "es": ["ingeniero"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "dezainaa",
+    "kana": "デザイナー",
+    "pos": "noun",
+    "meaning": { "en": ["designer"], "es": ["diseñador"] },
+    "tags": ["occupations"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "norimono",
+    "kanji": "乗り物",
+    "kana": "のりもの",
+    "pos": "noun",
+    "meaning": { "en": ["vehicle"], "es": ["vehículo"] },
+    "tags": ["misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "kyou",
+    "kanji": "今日",
+    "kana": "きょう",
+    "pos": "noun",
+    "meaning": { "en": ["today"], "es": ["hoy"] },
+    "tags": ["misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  },
+  {
+    "id": "tokidoki",
+    "kanji": "時々",
+    "kana": "ときどき",
+    "pos": "adverb",
+    "meaning": { "en": ["sometimes"], "es": ["a veces"] },
+    "tags": ["misc"],
+    "added": "2026-10-08",
+    "source": "sample"
+  }
+]

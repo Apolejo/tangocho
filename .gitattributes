@@ -1,0 +1,2 @@
+# Same line endings (LF) on Windows and on the Linux CI, so files don't show up as changed for no reason
+* text=auto eol=lf

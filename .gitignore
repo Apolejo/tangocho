@@ -1,0 +1,27 @@
+# Dependencies and builds
+node_modules/
+dist/
+dev-dist/
+coverage/
+
+# Test output and screenshots
+test-results/
+playwright-report/
+blob-report/
+shots/
+
+# Notebook photos and staged imports: never committed
+inbox/
+
+# Local settings and secrets
+.claude/settings.local.json
+*.local
+.env
+.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json

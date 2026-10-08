@@ -1,0 +1,27 @@
+[
+  {
+    "id": "verbs",
+    "name": { "en": "All verbs", "es": "Todos los verbos", "ja": "動詞" },
+    "match": { "pos": "verb" }
+  },
+  {
+    "id": "verbs-g1",
+    "name": { "en": "Verbs · Group 1", "es": "Verbos · Grupo 1", "ja": "動詞・1グループ" },
+    "match": { "pos": "verb", "verbGroup": 1 }
+  },
+  {
+    "id": "verbs-g2",
+    "name": { "en": "Verbs · Group 2", "es": "Verbos · Grupo 2", "ja": "動詞・2グループ" },
+    "match": { "pos": "verb", "verbGroup": 2 }
+  },
+  {
+    "id": "verbs-g3",
+    "name": { "en": "Verbs · Group 3", "es": "Verbos · Grupo 3", "ja": "動詞・3グループ" },
+    "match": { "pos": "verb", "verbGroup": 3 }
+  },
+  {
+    "id": "occupations",
+    "name": { "en": "Occupations", "es": "Ocupaciones", "ja": "職業" },
+    "match": { "tags": ["occupations"] }
+  }
+]

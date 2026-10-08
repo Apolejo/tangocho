@@ -60,10 +60,10 @@ Done when: `npm run check` and `npm run e2e` pass locally and in CI; the Pages U
 
 Goal: your notebook in the app, safely.
 
-- [ ] Delete `data/words/sample.json` first (the fixtures keep a copy), so your own words never collide with sample words.
-- [ ] Review `.claude/skills/add-vocab/SKILL.md` against the real validator and adjust it.
-- [ ] Ask Claude for a hook that runs `npm run validate` after any edit in `data/` and exits with code 2 when validation fails. With code 2 the report goes back to Claude; with code 1 you'd only see a notice.
-- [ ] Import one real notebook page with `/add-vocab notebook-1 p.1`; decide every flag yourself; commit.
+- [x] Delete `data/words/sample.json` first (the fixtures keep a copy), so your own words never collide with sample words.
+- [x] Review `.claude/skills/add-vocab/SKILL.md` against the real validator and adjust it.
+- [x] Ask Claude for a hook that runs `npm run validate` after any edit in `data/` and exits with code 2 when validation fails. With code 2 the report goes back to Claude; with code 1 you'd only see a notice.
+- [x] Import one real notebook page with `/add-vocab notebook-1 p.1`; decide every flag yourself; commit.
 - [ ] Import the rest of the notebook, a few pages per session.
 
 Done when: your own words are live on the phone; you decided every flagged item; the hook catches a deliberately broken data edit.

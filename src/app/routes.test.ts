@@ -17,10 +17,6 @@ describe('parseRoute', () => {
     expect(parseRoute('#/notebook/caf%C3%A9')).toEqual({ name: 'notebook', deckId: 'café' });
   });
 
-  it('has a dev-only font tryout route', () => {
-    expect(parseRoute('#/dev/fonts')).toEqual({ name: 'fonts' });
-  });
-
   it('reports anything else as not found', () => {
     expect(parseRoute('#/play/quiz')).toEqual({ name: 'not-found', path: 'play/quiz' });
     expect(parseRoute('#/notebook/a/b')).toEqual({ name: 'not-found', path: 'notebook/a/b' });

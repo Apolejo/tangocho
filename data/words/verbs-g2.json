@@ -1,0 +1,1958 @@
+[
+  {
+    "id": "taberu",
+    "kanji": "食べる",
+    "kana": "たべる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to eat"],
+      "es": ["comer (siempre dejar objeto directo)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "okiru",
+    "kanji": "起きる",
+    "kana": "おきる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get up, to wake up"],
+      "es": ["levantarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "neru",
+    "kanji": "寝る",
+    "kana": "ねる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to go to bed, to sleep"],
+      "es": ["acostarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "miru",
+    "kanji": "見る",
+    "kana": "みる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to see, to watch, to look at"],
+      "es": ["ver"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "iru-exist",
+    "kanji": "居る",
+    "kana": "いる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be, to exist (people, animals)"],
+      "es": ["estar", "haber (seres animados)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "dekakeru",
+    "kanji": "出かける",
+    "kana": "でかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to go out (of the house)"],
+      "es": ["salir de casa o madriguera"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "akeru-open",
+    "kanji": "開ける",
+    "kana": "あける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to open (something)"],
+      "es": ["abrir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "tsukeru-light",
+    "kanji": "点ける",
+    "kana": "つける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to turn on, to light"],
+      "es": ["encender"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "tsukeru-attach",
+    "kanji": "付ける",
+    "kana": "つける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to attach, to put on (a button, perfume)"],
+      "es": ["poner (como fijar. Ej, un botón de camisa, perfume, etc)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "oboeru",
+    "kanji": "覚える",
+    "kana": "おぼえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to memorize, to learn by heart", "to remember"],
+      "es": ["memorizar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "wasureru",
+    "kanji": "忘れる",
+    "kana": "わすれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to forget"],
+      "es": ["olvidar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "kiru-wear",
+    "kanji": "着る",
+    "kana": "きる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to wear, to put on (upper body)", "to get dressed"],
+      "es": ["ponerse una prenda del torso", "vestirse general"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "tsutomeru",
+    "kanji": "勤める",
+    "kana": "つとめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to work for (a company), to be employed"],
+      "es": ["trabajar para empresa o institución"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "yaseru",
+    "kanji": "痩せる",
+    "kana": "やせる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to lose weight, to get thin"],
+      "es": ["adelgazar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.1"
+  },
+  {
+    "id": "shimeru-close",
+    "kanji": "閉める",
+    "kana": "しめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to close (something)"],
+      "es": ["cerrar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "oriru",
+    "kanji": "降りる",
+    "kana": "おりる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get off (a vehicle), to go down"],
+      "es": ["bajarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "kariru",
+    "kanji": "借りる",
+    "kana": "かりる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to borrow", "to rent"],
+      "es": ["pedir prestado", "tomar en renta o alquiler"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "oshieru",
+    "kanji": "教える",
+    "kana": "おしえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to teach", "to tell, to let (someone) know"],
+      "es": ["enseñar", "decir o transmitir información nueva"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "tomeru-stop",
+    "kanji": "止める",
+    "kana": "とめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to stop (something)"],
+      "es": ["parar o detener algo"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "tomeru-lodge",
+    "kanji": "泊める",
+    "kana": "とめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to put (someone) up, to lodge"],
+      "es": ["hospedar", "alojar a alguien"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "yameru",
+    "kanji": "辞める",
+    "kana": "やめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to quit, to resign"],
+      "es": ["desistir", "renunciar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "wakareru",
+    "kanji": "別れる",
+    "kana": "わかれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to part, to break up"],
+      "es": ["separarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "akirameru",
+    "kanji": "諦める",
+    "kana": "あきらめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to give up"],
+      "es": ["darse por vencido (decisión mental)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "hajimeru",
+    "kanji": "始める",
+    "kana": "はじめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to begin, to start (something)"],
+      "es": ["iniciar", "empezar (transitivo)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "deru",
+    "kanji": "出る",
+    "kana": "でる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to go out, to leave", "to come out"],
+      "es": ["salir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "kimeru",
+    "kanji": "決める",
+    "kana": "きめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to decide"],
+      "es": ["decidir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "tsukareru",
+    "kanji": "疲れる",
+    "kana": "つかれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get tired"],
+      "es": ["cansarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "ireru",
+    "kanji": "入れる",
+    "kana": "いれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to put in, to insert"],
+      "es": ["meter", "introducir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "kieru",
+    "kanji": "消える",
+    "kana": "きえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to disappear", "to go out (a light), to be erased"],
+      "es": ["desaparecer", "borrarse", "apagarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "okureru",
+    "kanji": "遅れる",
+    "kana": "おくれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be late, to be delayed"],
+      "es": ["retrasarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "miseru",
+    "kanji": "見せる",
+    "kana": "みせる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to show"],
+      "es": ["mostrar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "kotaeru",
+    "kanji": "答える",
+    "kana": "こたえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to answer"],
+      "es": ["responder"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.2"
+  },
+  {
+    "id": "ageru-give",
+    "kana": "あげる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to give (as a gift)"],
+      "es": ["dar (regalar)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "ageru-raise",
+    "kanji": "上げる",
+    "kana": "あげる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to raise, to lift"],
+      "es": ["levantar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "ageru-fry",
+    "kanji": "揚げる",
+    "kana": "あげる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to deep-fry"],
+      "es": ["fritar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "kureru",
+    "kana": "くれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to give (to me or us)"],
+      "es": ["me dan", "darme", "nos dan"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "dekiru",
+    "kana": "できる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be able to do, can", "to be completed"],
+      "es": ["poder hacer (versión potencial del verbo します）"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "shiraberu",
+    "kanji": "調べる",
+    "kana": "しらべる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to look up, to investigate, to check"],
+      "es": ["averiguar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "suteru",
+    "kanji": "捨てる",
+    "kana": "すてる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to throw away"],
+      "es": ["botar", "tirar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "mieru",
+    "kanji": "見える",
+    "kana": "みえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be visible, can be seen"],
+      "es": ["verse", "se ve"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "abiru",
+    "kanji": "浴びる",
+    "kana": "あびる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to bathe in, to shower", "to be exposed to (sunlight)"],
+      "es": ["bañarse", "recibir sobre el cuerpo (agua, luz del sol, etc)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "umareru",
+    "kanji": "生まれる",
+    "kana": "うまれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be born"],
+      "es": ["nacer"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "naraberu",
+    "kanji": "並べる",
+    "kana": "ならべる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to line up, to arrange (things)"],
+      "es": ["poner de manera lineal o simétricamente algo"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "nareru",
+    "kanji": "慣れる",
+    "kana": "なれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get used to"],
+      "es": ["acostumbrarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "tariru",
+    "kanji": "足りる",
+    "kana": "たりる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be enough, to suffice"],
+      "es": ["ser suficiente", "alcanzar en recursos"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "tsutaeru",
+    "kanji": "伝える",
+    "kana": "つたえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to convey, to pass on (a message)"],
+      "es": ["transmitir un mensaje"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "mataseru",
+    "kanji": "待たせる",
+    "kana": "またせる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to keep (someone) waiting"],
+      "es": ["hacer esperar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "hareru-clear-up",
+    "kanji": "晴れる",
+    "kana": "はれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to clear up (weather)"],
+      "es": ["despejarse (clima)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.3"
+  },
+  {
+    "id": "atsumeru",
+    "kanji": "集める",
+    "kana": "あつめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to collect, to gather (things)"],
+      "es": ["recolectar", "coleccionar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "kigaeru",
+    "kanji": "着替える",
+    "kana": "きがえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to change clothes"],
+      "es": ["cambiarse", "mudarse de ropa"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "tameru",
+    "kanji": "溜める",
+    "kana": "ためる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to accumulate, to save up"],
+      "es": ["acumular"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "mitsukeru",
+    "kanji": "見つける",
+    "kana": "みつける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to find"],
+      "es": ["encontrar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "sodateru",
+    "kanji": "育てる",
+    "kana": "そだてる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to raise, to bring up"],
+      "es": ["criar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "tasukeru",
+    "kanji": "助ける",
+    "kana": "たすける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to save, to rescue", "to help"],
+      "es": ["salvar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "makeru",
+    "kanji": "負ける",
+    "kana": "まける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to lose (a match, a fight)"],
+      "es": ["perder (batalla, duelo)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "machigaeru",
+    "kanji": "間違える",
+    "kana": "まちがえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to make a mistake, to get wrong"],
+      "es": ["equivocarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "ueru",
+    "kanji": "植える",
+    "kana": "うえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to plant"],
+      "es": ["plantar", "sembrar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "ijimeru",
+    "kanji": "虐める",
+    "kana": "いじめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to bully"],
+      "es": ["hacer matoneo", "hacer bullying"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "ukeru",
+    "kanji": "受ける",
+    "kana": "うける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to receive", "to take (an exam)"],
+      "es": ["recibir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "kuraberu",
+    "kanji": "比べる",
+    "kana": "くらべる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to compare"],
+      "es": ["comparar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "tateru-stand",
+    "kanji": "立てる",
+    "kana": "たてる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to stand (something) up"],
+      "es": ["poner en pie"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "tateru-build",
+    "kanji": "建てる",
+    "kana": "たてる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to build"],
+      "es": ["edificar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "nigeru",
+    "kanji": "逃げる",
+    "kana": "にげる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to run away, to escape"],
+      "es": ["huir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "nureru",
+    "kanji": "濡れる",
+    "kana": "ぬれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get wet"],
+      "es": ["mojarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "kaidanwokakeru",
+    "kanji": "階段をかける",
+    "kana": "かいだんをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to run up the stairs"],
+      "es": ["subir corriendo las escaleras"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "moufuwokakeru",
+    "kanji": "毛布をかける",
+    "kana": "もうふをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to cover with a blanket"],
+      "es": ["cubrir con una cobija"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.4"
+  },
+  {
+    "id": "nageru",
+    "kanji": "投げる",
+    "kana": "なげる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to throw"],
+      "es": ["lanzar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "shiraseru",
+    "kanji": "知らせる",
+    "kana": "しらせる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to notify, to inform"],
+      "es": ["notificar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "fueru",
+    "kanji": "増える",
+    "kana": "ふえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to increase (intransitive)"],
+      "es": ["aumentarse", "incrementarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "niru-resemble",
+    "kanji": "似る",
+    "kana": "にる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to resemble, to look like"],
+      "es": ["parecerse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "niru-boil",
+    "kanji": "煮る",
+    "kana": "にる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to boil, to simmer, to stew"],
+      "es": ["cocer", "cocinar (como sudado)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "todokeru",
+    "kanji": "届ける",
+    "kana": "とどける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to deliver"],
+      "es": ["hacer llegar (mensajería física)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "tsukamaeru",
+    "kanji": "捕まえる",
+    "kana": "つかまえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to catch, to capture"],
+      "es": ["atrapar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "homeru",
+    "kanji": "褒める",
+    "kana": "ほめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to praise"],
+      "es": ["elogiar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "tsuzukeru",
+    "kanji": "続ける",
+    "kana": "つづける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to continue (something)"],
+      "es": ["continuar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "mizuwokakeru",
+    "kanji": "水をかける",
+    "kana": "みずをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to splash water on"],
+      "es": ["salpicar agua"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "suujiwokakeru",
+    "kanji": "数字をかける",
+    "kana": "すうじをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to multiply numbers"],
+      "es": ["multiplicar números"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "inochiwokakeru",
+    "kanji": "命をかける",
+    "kana": "いのちをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to risk one's life"],
+      "es": ["jugarse la vida"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "meganewokakeru",
+    "kanji": "眼鏡をかける",
+    "kana": "めがねをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to put on glasses"],
+      "es": ["ponerse gafas"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "fukuwokakeru",
+    "kanji": "服をかける",
+    "kana": "ふくをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to hang up clothes"],
+      "es": ["colgar la ropa"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "ongakuwokakeru",
+    "kanji": "音楽をかける",
+    "kana": "おんがくをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to put on music"],
+      "es": ["poner música"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "enjinwokakeru",
+    "kana": "エンジンをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to start an engine"],
+      "es": ["arrancar un motor"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "denwawokakeru",
+    "kanji": "電話をかける",
+    "kana": "でんわをかける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to make a phone call"],
+      "es": ["marcar por teléfono"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "kangaeru",
+    "kanji": "考える",
+    "kana": "かんがえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to think, to consider"],
+      "es": ["pensar (analizar)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.5"
+  },
+  {
+    "id": "hieru",
+    "kanji": "冷える",
+    "kana": "ひえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get cold, to get chilly"],
+      "es": ["enfriarse (baja la temperatura más de lo apropiado)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "moeru",
+    "kanji": "燃える",
+    "kana": "もえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to burn (intransitive), to catch fire"],
+      "es": ["encenderse en llamas"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "akiru",
+    "kanji": "飽きる",
+    "kana": "あきる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get tired of, to get bored with"],
+      "es": ["aburrirse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "shinjiru",
+    "kanji": "信じる",
+    "kana": "しんじる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to believe", "to trust"],
+      "es": ["creer", "tener fe"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "sasaeru",
+    "kanji": "支える",
+    "kana": "ささえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to support, to hold up"],
+      "es": ["sostener (apoyando)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "kireru",
+    "kanji": "切れる",
+    "kana": "きれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to break, to snap", "to run out"],
+      "es": ["cortarse", "agotarse (recursos)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "mitomeru",
+    "kanji": "認める",
+    "kana": "みとめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to recognize, to admit"],
+      "es": ["reconocer", "admitir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "uttaeru",
+    "kanji": "訴える",
+    "kana": "うったえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to sue, to accuse", "to appeal to"],
+      "es": ["denunciar", "apelar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "sameru",
+    "kanji": "冷める",
+    "kana": "さめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to cool down (something hot)"],
+      "es": ["enfriarse (baja la temperatura de algo caliente)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "yakeru",
+    "kanji": "焼ける",
+    "kana": "やける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to burn (intransitive)", "to be baked, to be grilled"],
+      "es": ["quemarse", "hornearse", "asarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "kanjiru",
+    "kanji": "感じる",
+    "kana": "かんじる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to feel"],
+      "es": ["sentir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "sugiru",
+    "kanji": "過ぎる",
+    "kana": "すぎる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to pass (time, a place)", "to exceed, to be too much"],
+      "es": ["excederse", "pasarse (tiempo, desplazamiento)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "ochiru",
+    "kanji": "落ちる",
+    "kana": "おちる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to fall, to drop (intransitive)"],
+      "es": ["caer (al vacío)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "kowareru",
+    "kanji": "壊れる",
+    "kana": "こわれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to break (intransitive), to get broken"],
+      "es": ["romperse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "susumeru-advance",
+    "kanji": "進める",
+    "kana": "すすめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to advance (something), to move forward"],
+      "es": ["avanzar algo", "promoverlo"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "susumeru-recommend",
+    "kanji": "勧める",
+    "kana": "すすめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to recommend", "to encourage"],
+      "es": ["recomendar", "persuadir"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.6"
+  },
+  {
+    "id": "sakeru-avoid",
+    "kanji": "避ける",
+    "kana": "さける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to avoid"],
+      "es": ["evitar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "sakeru-tear",
+    "kanji": "裂ける",
+    "kana": "さける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to tear, to split (along the grain)"],
+      "es": ["desmechar (rasgar siguiendo las fibras)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "ateru",
+    "kanji": "当てる",
+    "kana": "あてる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to hit (a target)", "to guess right"],
+      "es": ["atinar", "darle al blanco"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "kuzureru",
+    "kanji": "崩れる",
+    "kana": "くずれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to collapse, to crumble"],
+      "es": ["colapsar", "derrumbarse", "desmoronarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "yogoreru",
+    "kanji": "汚れる",
+    "kana": "よごれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get dirty"],
+      "es": ["ensuciarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "oreru",
+    "kanji": "折れる",
+    "kana": "おれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to fold (intransitive)", "to snap, to break (a bone, a stick)"],
+      "es": ["doblarse", "partirse (pliegue cerrado)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "yabureru",
+    "kanji": "破れる",
+    "kana": "やぶれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to tear, to rip (intransitive)", "to be defeated"],
+      "es": ["rasgarse (tela,membrana)", "ser derrotado"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "sageru",
+    "kanji": "下げる",
+    "kana": "さげる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to lower (a level), to turn down"],
+      "es": ["bajar (nivel,grado)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "taeru",
+    "kanji": "耐える",
+    "kana": "たえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to endure, to bear"],
+      "es": ["aguantar", "soportar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "matomeru",
+    "kanji": "纏める",
+    "kana": "まとめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to put together, to summarize, to organize"],
+      "es": ["recopilar y ordenar (pasar a limpio)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "hazureru",
+    "kanji": "外れる",
+    "kana": "はずれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to miss (a target)", "to come off, to come loose"],
+      "es": ["fallar (tratando de atinar)", "desprenderse (físico)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "hanareru",
+    "kanji": "離れる",
+    "kana": "はなれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to move away, to separate from"],
+      "es": ["alejarse", "distanciarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "shimeru-tighten",
+    "kanji": "締める",
+    "kana": "しめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to tighten, to fasten"],
+      "es": ["apretar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "mageru",
+    "kanji": "曲げる",
+    "kana": "まげる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to bend (something)"],
+      "es": ["doblar (doblez curvo)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "wareru",
+    "kanji": "割れる",
+    "kana": "われる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to break, to crack (glass, china)"],
+      "es": ["quebrarse (cristal,porcelana)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "kabuseru",
+    "kanji": "被せる",
+    "kana": "かぶせる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to cover (something) with, to put over"],
+      "es": ["poner algo para cubrir por encima otra cosa (Ej, poner un condón)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.7"
+  },
+  {
+    "id": "nobiru",
+    "kanji": "伸びる",
+    "kana": "のびる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to stretch (intransitive), to grow longer"],
+      "es": ["estirarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "akeru-empty",
+    "kanji": "空ける",
+    "kana": "あける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to empty, to vacate, to make room"],
+      "es": ["desocupar espacio (Ej, asiento, baño)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "midareru",
+    "kanji": "乱れる",
+    "kana": "みだれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to get disordered, to be disturbed"],
+      "es": ["alterarse", "desordenarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "taoreru",
+    "kanji": "倒れる",
+    "kana": "たおれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to fall over, to collapse"],
+      "es": ["caerse", "derrumbarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "kareru",
+    "kanji": "枯れる",
+    "kana": "かれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to wither, to die (plants)"],
+      "es": ["marchitarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "akireru",
+    "kanji": "呆れる",
+    "kana": "あきれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be amazed (at something bad), to be fed up"],
+      "es": ["quedarse pasmado", "hartarse (de alguien)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "makaseru",
+    "kanji": "任せる",
+    "kana": "まかせる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to entrust, to leave (something) to someone"],
+      "es": ["dejar a cargo", "encargar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "kikoeru",
+    "kanji": "聞こえる",
+    "kana": "きこえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be audible, can be heard"],
+      "es": ["oírse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "komeru",
+    "kanji": "込める",
+    "kana": "こめる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to put (feeling, meaning) into, to load with"],
+      "es": ["poner", "cargar", "infundir (sentimiento, significado) (Ej,fuerza, amor)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "kiwotsukeru",
+    "kanji": "気を付ける",
+    "kana": "きをつける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be careful, to pay attention"],
+      "es": ["tener cuidado", "estar alerta"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "ikiru",
+    "kanji": "生きる",
+    "kana": "いきる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to live, to be alive"],
+      "es": ["vivir (de estar vivo)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "kaeru-change",
+    "kanji": "変える",
+    "kana": "かえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to change (something)"],
+      "es": ["cambiar", "modificar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "fukeru",
+    "kanji": "老ける",
+    "kana": "ふける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to age, to look older"],
+      "es": ["verse viejo"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "obieru",
+    "kanji": "怯える",
+    "kana": "おびえる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be frightened"],
+      "es": ["sentirse atemorizado"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "osoreru",
+    "kanji": "恐れる",
+    "kana": "おそれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to fear, to be afraid of"],
+      "es": ["temer (de respeto)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "akogareru",
+    "kanji": "憧れる",
+    "kana": "あこがれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to long for, to admire, to look up to"],
+      "es": ["idealizar", "admirar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.8"
+  },
+  {
+    "id": "yureru",
+    "kanji": "揺れる",
+    "kana": "ゆれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to shake, to sway, to rock"],
+      "es": ["moverse", "sacudirse el suelo (Ej,barco, temblor)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  },
+  {
+    "id": "fureru",
+    "kanji": "触れる",
+    "kana": "ふれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to touch (lightly), to brush against"],
+      "es": ["rozar"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  },
+  {
+    "id": "hareru-swell",
+    "kanji": "腫れる",
+    "kana": "はれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to swell"],
+      "es": ["hincharse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  },
+  {
+    "id": "tsubureru",
+    "kanji": "潰れる",
+    "kana": "つぶれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to be crushed, to collapse"],
+      "es": ["aplastarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  },
+  {
+    "id": "koboreru",
+    "kanji": "零れる",
+    "kana": "こぼれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to spill (intransitive), to overflow"],
+      "es": ["derramarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  },
+  {
+    "id": "tokeru",
+    "kanji": "溶ける",
+    "kana": "とける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to melt, to dissolve"],
+      "es": ["derretirse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  },
+  {
+    "id": "sureru",
+    "kanji": "擦れる",
+    "kana": "すれる",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to wear down by rubbing, to chafe"],
+      "es": ["desgastarse por roce (Ej, suela de un zapato)"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  },
+  {
+    "id": "nukeru",
+    "kanji": "抜ける",
+    "kana": "ぬける",
+    "pos": "verb",
+    "verbGroup": 2,
+    "meaning": {
+      "en": ["to come out, to fall out", "to get through"],
+      "es": ["zafarse", "arrancarse"]
+    },
+    "tags": [],
+    "added": "2026-10-08",
+    "source": "動詞グループ２ p.9"
+  }
+]

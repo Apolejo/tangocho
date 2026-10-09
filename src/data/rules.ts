@@ -59,10 +59,14 @@ export function isGroup1Exception(word: Pick<Word, 'kanji' | 'kana'>): boolean {
   return GROUP1_EXCEPTIONS.some(([k, r]) => kanji.endsWith(k) && kana.endsWith(r));
 }
 
-/** する, くる, noun + する, and verbs ending in てくる/でくる, checked on the kana (SPEC §5.5). */
+/** する, くる, noun + する, and verbs ending in てくる/でくる/にくる, checked on the kana (SPEC §5.5). */
 export function isGroup3Form(kana: string): boolean {
   return (
-    kana.endsWith('する') || kana === 'くる' || kana.endsWith('てくる') || kana.endsWith('でくる')
+    kana.endsWith('する') ||
+    kana === 'くる' ||
+    kana.endsWith('てくる') ||
+    kana.endsWith('でくる') ||
+    kana.endsWith('にくる')
   );
 }
 
@@ -166,7 +170,7 @@ function checkWord({ value: w, file }: Located<Word>): Problem[] {
       if (w.verbGroup === 3 && !isGroup3Form(w.kana)) {
         error(
           'g3-form',
-          `group 3 verb "${w.kana}" is not する, くる, noun + する or ...てくる/でくる`,
+          `group 3 verb "${w.kana}" is not する, くる, noun + する or ...てくる/でくる/にくる`,
           'check the group; 出来る (できる) is group 2',
         );
       }

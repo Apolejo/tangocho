@@ -122,7 +122,7 @@ describe('checkWords errors', () => {
     expect(check(word({ kanji: '寝る', kana: 'ねる', verbGroup: 2 }))).toEqual([]);
   });
 
-  it('g3-form: する, くる, noun + する, ...てくる/でくる', () => {
+  it('g3-form: する, くる, noun + する, ...てくる/でくる/にくる', () => {
     expect(codes(check(word({ verbGroup: 3 })))).toEqual(['g3-form']);
     expect(codes(check(word({ kanji: '出来る', kana: 'できる', verbGroup: 3 })))).toEqual([
       'g3-form',
@@ -132,6 +132,7 @@ describe('checkWords errors', () => {
       ['来る', 'くる'],
       ['勉強する', 'べんきょうする'],
       ['持ってくる', 'もってくる'],
+      ['迎えに来る', 'むかえにくる'],
     ];
     for (const [kanji, kana] of fine) {
       expect(check(word({ kanji, kana, verbGroup: 3 }))).toEqual([]);

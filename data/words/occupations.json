@@ -1,0 +1,1364 @@
+[
+  {
+    "id": "sensei",
+    "kanji": "先生",
+    "kana": "せんせい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["teacher", "master (of a craft); also used for doctors, lawyers"],
+      "es": ["maestro (profesor o persona muy pro en una labor)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "kyoushi",
+    "kanji": "教師",
+    "kana": "きょうし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["teacher (as a job title)"],
+      "es": ["profesor (ocupación literal)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "kenkyuusha",
+    "kanji": "研究者",
+    "kana": "けんきゅうしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["researcher"],
+      "es": ["investigador"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "gakusei",
+    "kanji": "学生",
+    "kana": "がくせい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["student"],
+      "es": ["estudiante"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "shougakusei",
+    "kanji": "小学生",
+    "kana": "しょうがくせい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["elementary school student"],
+      "es": ["estudiante de primaria"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "koukousei",
+    "kanji": "高校生",
+    "kana": "こうこうせい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["high school student"],
+      "es": ["estudiante de preparatoria"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "koumuin",
+    "kanji": "公務員",
+    "kana": "こうむいん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["civil servant, public official"],
+      "es": ["funcionario público"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "hoikushi",
+    "kanji": "保育士",
+    "kana": "ほいくし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["nursery school teacher, childcare worker"],
+      "es": ["educador de guardería"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "panshokunin",
+    "kanji": "パン職人",
+    "kana": "パンしょくにん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["baker"],
+      "es": ["panadero"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "kyouju",
+    "kanji": "教授",
+    "kana": "きょうじゅ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["professor"],
+      "es": ["profesor universitario"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "kagakusha",
+    "kanji": "科学者",
+    "kana": "かがくしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["scientist"],
+      "es": ["científico"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "senmongakusei",
+    "kanji": "専門学生",
+    "kana": "せんもんがくせい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["vocational school student"],
+      "es": ["estudiante de escuela técnica"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "chuugakusei",
+    "kanji": "中学生",
+    "kana": "ちゅうがくせい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["junior high school student"],
+      "es": ["estudiante de secundaria"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "daigakusei",
+    "kanji": "大学生",
+    "kana": "だいがくせい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["university student"],
+      "es": ["estudiante universitario"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "keisatsukan",
+    "kanji": "警察官",
+    "kana": "けいさつかん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["police officer"],
+      "es": ["oficial de policía"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "josanshi",
+    "kanji": "助産師",
+    "kana": "じょさんし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["midwife"],
+      "es": ["partera"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.1"
+  },
+  {
+    "id": "shouboushi",
+    "kanji": "消防士",
+    "kana": "しょうぼうし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["firefighter"],
+      "es": ["bombero"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "kangoshi",
+    "kanji": "看護師",
+    "kana": "かんごし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["nurse"],
+      "es": ["enfermero (a)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "shinrishi",
+    "kanji": "心理師",
+    "kana": "しんりし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["(clinical) psychologist"],
+      "es": ["psicólogo (clínico)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "haisha",
+    "kanji": "歯医者",
+    "kana": "はいしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dentist"],
+      "es": ["dentista"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "yakuzaishi",
+    "kanji": "薬剤師",
+    "kana": "やくざいし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pharmacist"],
+      "es": ["farmacéutico"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "honyakushi",
+    "kanji": "翻訳士",
+    "kana": "ほんやくし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["translator"],
+      "es": ["traductor"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "kaishain",
+    "kanji": "会社員",
+    "kana": "かいしゃいん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["office worker, company employee"],
+      "es": ["asalariado"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "shain",
+    "kanji": "社員",
+    "kana": "しゃいん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["employee (of a specific company)"],
+      "es": ["empleado de una empresa (especificar empresa)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "kensatsukan",
+    "kanji": "検察官",
+    "kana": "けんさつかん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["public prosecutor"],
+      "es": ["abogado fiscal"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "gunjin",
+    "kanji": "軍人",
+    "kana": "ぐんじん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["soldier, military officer"],
+      "es": ["militar"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "isha",
+    "kanji": "医者",
+    "kana": "いしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["doctor, physician"],
+      "es": ["médico"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "seishinkai",
+    "kanji": "精神科医",
+    "kana": "せいしんかい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["psychiatrist"],
+      "es": ["psiquiatra"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "shikajoshu",
+    "kanji": "歯科助手",
+    "kana": "しかじょしゅ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dental assistant"],
+      "es": ["ayudante de dentista", "asistente dental"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "juui",
+    "kanji": "獣医",
+    "kana": "じゅうい",
+    "pos": "noun",
+    "meaning": {
+      "en": ["veterinarian"],
+      "es": ["veterinario"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "tsuuyakushi",
+    "kanji": "通訳士",
+    "kana": "つうやくし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["interpreter"],
+      "es": ["intérprete"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "keieisha",
+    "kanji": "経営者",
+    "kana": "けいえいしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["business owner, executive"],
+      "es": ["empresario (administrador de empresas)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "bengoshi",
+    "kanji": "弁護士",
+    "kana": "べんごし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lawyer"],
+      "es": ["abogado"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "saibankan",
+    "kanji": "裁判官",
+    "kana": "さいばんかん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["judge (in court)"],
+      "es": ["juez (de juzgado)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.2"
+  },
+  {
+    "id": "seijika",
+    "kanji": "政治家",
+    "kana": "せいじか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["politician"],
+      "es": ["político"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "kaikeishi",
+    "kanji": "会計士",
+    "kana": "かいけいし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["accountant"],
+      "es": ["contador"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "enjinia",
+    "kana": "エンジニア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["engineer"],
+      "es": ["ingeniero (general)"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "shisutemuenjinia",
+    "kana": "システムエンジニア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["systems engineer"],
+      "es": ["ingeniero de sistemas"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "puroguramaa",
+    "kana": "プログラマー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["programmer"],
+      "es": ["programador"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "sofutoweatesutaa",
+    "kana": "ソフトウェアテスター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["software tester"],
+      "es": ["tester de software"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "kenchikuka",
+    "kanji": "建築家",
+    "kana": "けんちくか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["architect"],
+      "es": ["arquitecto"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "daiku",
+    "kanji": "大工",
+    "kana": "だいく",
+    "pos": "noun",
+    "meaning": {
+      "en": ["carpenter"],
+      "es": ["carpintero"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "riyoushi",
+    "kanji": "理容師",
+    "kana": "りようし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["barber"],
+      "es": ["barbero"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "keizaigakusha",
+    "kanji": "経済学者",
+    "kana": "けいざいがくしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["economist"],
+      "es": ["economista"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "zeirishi",
+    "kanji": "税理士",
+    "kana": "ぜいりし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tax accountant"],
+      "es": ["contador público (impuestos)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "gijutsusha",
+    "kanji": "技術者",
+    "kana": "ぎじゅつしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["engineer, technician (industrial, mechanical)"],
+      "es": ["ingeniero (industrial, mecánico)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "dezainaa",
+    "kana": "デザイナー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["designer"],
+      "es": ["diseñador"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "geemukaihatsusha",
+    "kanji": "ゲーム開発者",
+    "kana": "ゲームかいはつしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["game developer"],
+      "es": ["desarrollador de videojuegos"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "jushinopereetaa",
+    "kanji": "受信オペレーター",
+    "kana": "じゅしんオペレーター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["inbound call center operator"],
+      "es": ["operador de recepción (call center)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "kensetsusagyouin",
+    "kanji": "建設作業員",
+    "kana": "けんせつさぎょういん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["construction worker"],
+      "es": ["trabajador de obra", "construcción"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "denkikou",
+    "kanji": "電気工",
+    "kana": "でんきこう",
+    "pos": "noun",
+    "meaning": {
+      "en": ["electrician"],
+      "es": ["electricista"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "biyoushi",
+    "kanji": "美容師",
+    "kana": "びようし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hairdresser, stylist"],
+      "es": ["estilista"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.3"
+  },
+  {
+    "id": "untenshu",
+    "kanji": "運転手",
+    "kana": "うんてんしゅ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["driver, chauffeur"],
+      "es": ["chofer"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "neirisuto",
+    "kana": "ネイリスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["nail artist, manicurist"],
+      "es": ["manicurista"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "shachou",
+    "kanji": "社長",
+    "kana": "しゃちょう",
+    "pos": "noun",
+    "meaning": {
+      "en": ["company president, CEO"],
+      "es": ["presidente de una empresa", "director general"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "tenin",
+    "kanji": "店員",
+    "kana": "てんいん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["shop clerk, store staff"],
+      "es": ["personal de una tienda"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "weitaa",
+    "kana": "ウェイター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["waiter"],
+      "es": ["mesero"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "haitatsuin",
+    "kanji": "配達員",
+    "kana": "はいたついん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["delivery person"],
+      "es": ["repartidor"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "shounin",
+    "kanji": "商人",
+    "kana": "しょうにん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["merchant, trader"],
+      "es": ["comerciante"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "uriko",
+    "kanji": "売り子",
+    "kana": "うりこ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["salesperson (at events, stalls)"],
+      "es": ["vendedor (en eventos)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "ryourinin",
+    "kanji": "料理人",
+    "kana": "りょうりにん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cook, chef"],
+      "es": ["cocinero"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "seibishi",
+    "kanji": "整備士",
+    "kana": "せいびし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mechanic"],
+      "es": ["mecánico"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "ekiin",
+    "kanji": "駅員",
+    "kana": "えきいん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["station attendant"],
+      "es": ["funcionario de estación"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "tenchou",
+    "kanji": "店長",
+    "kana": "てんちょう",
+    "pos": "noun",
+    "meaning": {
+      "en": ["store manager"],
+      "es": ["gerente de un local comercial"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "rejigakari",
+    "kanji": "レジ係",
+    "kana": "レジがかり",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cashier"],
+      "es": ["cajero (tienda, supermercado)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "weitoresu",
+    "kana": "ウェイトレス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["waitress"],
+      "es": ["mesera"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "seisouin",
+    "kanji": "清掃員",
+    "kana": "せいそういん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cleaner, janitor"],
+      "es": ["personal de aseo"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "keibiin",
+    "kanji": "警備員",
+    "kana": "けいびいん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["security guard"],
+      "es": ["guarda de seguridad"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "seerusuman",
+    "kana": "セールスマン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["salesman"],
+      "es": ["vendedor por comisión"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "ginkouin",
+    "kanji": "銀行員",
+    "kana": "ぎんこういん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bank employee"],
+      "es": ["funcionario de banco"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.4"
+  },
+  {
+    "id": "itamae",
+    "kanji": "板前",
+    "kana": "いたまえ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chef (of traditional Japanese cuisine)"],
+      "es": ["cocinero de gastronomía tradicional japonesa"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "nouka",
+    "kanji": "農家",
+    "kana": "のうか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["farmer"],
+      "es": ["agricultor"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "haiyuu",
+    "kanji": "俳優",
+    "kana": "はいゆう",
+    "pos": "noun",
+    "meaning": {
+      "en": ["actor"],
+      "es": ["actor"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "joyuu",
+    "kanji": "女優",
+    "kana": "じょゆう",
+    "pos": "noun",
+    "meaning": {
+      "en": ["actress"],
+      "es": ["actriz"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "aidoru",
+    "kana": "アイドル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["idol (pop star)"],
+      "es": ["idol"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "moderu",
+    "kana": "モデル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["model"],
+      "es": ["modelo"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "gaka",
+    "kanji": "画家",
+    "kana": "がか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["painter, artist"],
+      "es": ["pintor"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "mangaka",
+    "kanji": "漫画家",
+    "kana": "まんがか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["manga artist"],
+      "es": ["mangaka"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "sakka",
+    "kanji": "作家",
+    "kana": "さっか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["writer, author"],
+      "es": ["escritor"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "hisho",
+    "kanji": "秘書",
+    "kana": "ひしょ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["secretary"],
+      "es": ["secretario"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "kashu",
+    "kanji": "歌手",
+    "kana": "かしゅ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["singer"],
+      "es": ["cantante"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "seiyuu",
+    "kanji": "声優",
+    "kana": "せいゆう",
+    "pos": "noun",
+    "meaning": {
+      "en": ["voice actor"],
+      "es": ["actor de voz"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "infuruensaa",
+    "kana": "インフルエンサー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["influencer"],
+      "es": ["influencer"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "supootsusenshu",
+    "kanji": "スポーツ選手",
+    "kana": "スポーツせんしゅ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["professional athlete"],
+      "es": ["atleta profesional"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "shinpan",
+    "kanji": "審判",
+    "kana": "しんぱん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["referee, umpire"],
+      "es": ["árbitro"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "furiiransu",
+    "kana": "フリーランス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["freelancer"],
+      "es": ["freelance"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "mushoku",
+    "kanji": "無職",
+    "kana": "むしょく",
+    "pos": "noun",
+    "meaning": {
+      "en": ["unemployed"],
+      "es": ["desempleado"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "shufu-housewife",
+    "kanji": "主婦",
+    "kana": "しゅふ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["housewife"],
+      "es": ["ama de casa"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.5"
+  },
+  {
+    "id": "shousetsuka",
+    "kanji": "小説家",
+    "kana": "しょうせつか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["novelist"],
+      "es": ["novelista"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "kisha",
+    "kanji": "記者",
+    "kana": "きしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["journalist, reporter"],
+      "es": ["periodista"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "kyakushitsujoumuin",
+    "kanji": "客室乗務員",
+    "kana": "きゃくしつじょうむいん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["flight attendant"],
+      "es": ["auxiliar de vuelo", "azafata"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "henshuusha",
+    "kanji": "編集者",
+    "kana": "へんしゅうしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["editor (publishing)"],
+      "es": ["editor (editorial)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "shashinka",
+    "kanji": "写真家",
+    "kana": "しゃしんか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["photographer"],
+      "es": ["fotógrafo"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "kanrinin",
+    "kanji": "管理人",
+    "kana": "かんりにん",
+    "pos": "noun",
+    "meaning": {
+      "en": ["caretaker, building manager"],
+      "es": ["conserje"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "shitsuji",
+    "kanji": "執事",
+    "kana": "しつじ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["butler"],
+      "es": ["mayordomo"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "toushika",
+    "kanji": "投資家",
+    "kana": "とうしか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["investor"],
+      "es": ["inversionista"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "kigyouka",
+    "kanji": "起業家",
+    "kana": "きぎょうか",
+    "pos": "noun",
+    "meaning": {
+      "en": ["entrepreneur"],
+      "es": ["emprendedor"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "shufu-househusband",
+    "kanji": "主夫",
+    "kana": "しゅふ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["househusband"],
+      "es": ["amo de casa"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "toreenaa",
+    "kana": "トレーナー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["trainer, coach"],
+      "es": ["entrenador"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "pairotto",
+    "kana": "パイロット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pilot"],
+      "es": ["piloto"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "yakuza",
+    "kana": "ヤクザ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["yakuza (Japanese gangster)"],
+      "es": ["Yakuza (mafioso japonés)"]
+    },
+    "tags": ["occupations", "katakana"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "kantoku",
+    "kanji": "監督",
+    "kana": "かんとく",
+    "pos": "noun",
+    "meaning": {
+      "en": ["director (film, theater)", "supervisor (construction)", "manager, coach (sports)"],
+      "es": ["director de una obra (cine, teatro, ingeniería civil, etc)"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "niwashi",
+    "kanji": "庭師",
+    "kana": "にわし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["gardener"],
+      "es": ["jardinero"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "kaseifu",
+    "kanji": "家政婦",
+    "kana": "かせいふ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["housekeeper, maid"],
+      "es": ["empleada doméstica"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "ryoushi",
+    "kanji": "漁師",
+    "kana": "りょうし",
+    "pos": "noun",
+    "meaning": {
+      "en": ["fisherman"],
+      "es": ["pescador"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  },
+  {
+    "id": "haishinsha",
+    "kanji": "配信者",
+    "kana": "はいしんしゃ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["streamer"],
+      "es": ["creador de contenido en vivo"]
+    },
+    "tags": ["occupations"],
+    "added": "2026-10-09",
+    "source": "職業 p.6"
+  }
+]

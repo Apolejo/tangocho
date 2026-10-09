@@ -1,0 +1,7355 @@
+[
+  {
+    "id": "aisukuriimu",
+    "kana": "アイスクリーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ice cream"],
+      "es": ["helado"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "aikon",
+    "kana": "アイコン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["icon"],
+      "es": ["icono"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "aidea",
+    "kana": "アイデア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["idea"],
+      "es": ["idea"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "airon",
+    "kana": "アイロン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["iron (for clothes)"],
+      "es": ["plancha"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "auto",
+    "kana": "アウト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["out (in games, sports)"],
+      "es": ["fuera", "eliminado (juego, deporte)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "akusesarii",
+    "kana": "アクセサリー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["accessory"],
+      "es": ["accesorio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "akuseru",
+    "kana": "アクセル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["accelerator (pedal)"],
+      "es": ["acelerador"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "akusento",
+    "kana": "アクセント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["accent (pitch, stress)"],
+      "es": ["acento (tono)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "ajia",
+    "kana": "アジア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Asia"],
+      "es": ["Asia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "akaunto",
+    "kana": "アカウント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["account (online)"],
+      "es": ["cuenta (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "anaunsaa",
+    "kana": "アナウンサー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["announcer, newscaster"],
+      "es": ["locutor de programa"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "apaato",
+    "kana": "アパート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["apartment (light construction)"],
+      "es": ["apartamento (construcción ligera)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "appuroodo",
+    "kana": "アップロード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["upload"],
+      "es": ["subir (plataforma, redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "appudeeto",
+    "kana": "アップデート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["update"],
+      "es": ["update"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "appugureedo",
+    "kana": "アップグレード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["upgrade"],
+      "es": ["upgrade"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "arugorizumu",
+    "kana": "アルゴリズム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["algorithm"],
+      "es": ["algoritmo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "ibento",
+    "kana": "イベント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["event"],
+      "es": ["evento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "intaanetto",
+    "kana": "インターネット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["internet"],
+      "es": ["internet"]
+    },
+    "note": {
+      "en": "short form: ネット",
+      "es": "forma corta: ネット"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "imeeji",
+    "kana": "イメージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["image, impression"],
+      "es": ["imagen (impresiones subjetivas)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "inku",
+    "kana": "インク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ink"],
+      "es": ["tinta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "insutooru",
+    "kana": "インストール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["install (software)"],
+      "es": ["instalar"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "intaanshippu",
+    "kana": "インターンシップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["internship"],
+      "es": ["pasantía"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "apuroochi",
+    "kana": "アプローチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["approach"],
+      "es": ["acercamiento", "enfoque"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "autoretto",
+    "kana": "アウトレット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["outlet (store)"],
+      "es": ["outlet"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "amachua",
+    "kana": "アマチュア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["amateur"],
+      "es": ["amateur"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "amerika",
+    "kana": "アメリカ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["United States, America"],
+      "es": ["Estados Unidos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "arerugii",
+    "kana": "アレルギー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["allergy"],
+      "es": ["alergia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "apuri",
+    "kana": "アプリ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["app"],
+      "es": ["aplicación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "arukooru",
+    "kana": "アルコール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["alcohol"],
+      "es": ["alcohol"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "arubaito",
+    "kana": "アルバイト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["part-time job"],
+      "es": ["trabajo de tiempo parcial"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "arubamu",
+    "kana": "アルバム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["album"],
+      "es": ["álbum"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "arumi",
+    "kana": "アルミ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["aluminum"],
+      "es": ["aluminio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "ankeeto",
+    "kana": "アンケート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["survey, questionnaire"],
+      "es": ["encuesta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "ankooru",
+    "kana": "アンコール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["encore"],
+      "es": ["solicitar repetir la función (encore)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "antena",
+    "kana": "アンテナ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["antenna"],
+      "es": ["antena"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "autoputto",
+    "kana": "アウトプット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["output"],
+      "es": ["output"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "aninsutooru",
+    "kana": "アンインストール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["uninstall"],
+      "es": ["desinstalar"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "anrokku",
+    "kana": "アンロック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["unlock (system)"],
+      "es": ["desbloqueo (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "intaahon",
+    "kana": "インターホン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["intercom"],
+      "es": ["citófono"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "intabyuu",
+    "kana": "インタビュー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["interview"],
+      "es": ["entrevista"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "infomeeshon",
+    "kana": "インフォメーション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["information"],
+      "es": ["información"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "infure",
+    "kana": "インフレ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["inflation"],
+      "es": ["inflación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "uuru",
+    "kana": "ウール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["wool"],
+      "es": ["lana"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.1"
+  },
+  {
+    "id": "intaanashonaru",
+    "kana": "インターナショナル",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["international"],
+      "es": ["internacional"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "webu",
+    "kana": "ウェブ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["web"],
+      "es": ["web"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "uisukii",
+    "kana": "ウイスキー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["whisky"],
+      "es": ["whisky"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "uirusu",
+    "kana": "ウイルス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["virus"],
+      "es": ["virus"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "esukareetaa",
+    "kana": "エスカレーター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["escalator"],
+      "es": ["escaleras eléctricas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "eakon",
+    "kana": "エアコン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["air conditioner"],
+      "es": ["aire acondicionado"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ekobaggu",
+    "kana": "エコバッグ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["reusable shopping bag"],
+      "es": ["bolsa ecológica"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "esuenuesu",
+    "kana": "エスエヌエス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["social media"],
+      "es": ["redes sociales"]
+    },
+    "note": {
+      "en": "usually written SNS",
+      "es": "se suele escribir SNS"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "enerugii",
+    "kana": "エネルギー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["energy"],
+      "es": ["energía"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "epuron",
+    "kana": "エプロン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["apron"],
+      "es": ["delantal"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "oiru",
+    "kana": "オイル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["oil (not for cooking, e.g. engine oil)"],
+      "es": ["aceite (NO de cocina. Ej, motor)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ookesutora",
+    "kana": "オーケストラ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["orchestra"],
+      "es": ["orquesta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ootobai",
+    "kana": "オートバイ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["motorcycle"],
+      "es": ["motocicleta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ootomachikku",
+    "kana": "オートマチック",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["automatic"],
+      "es": ["automático"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "orenji",
+    "kana": "オレンジ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["orange"],
+      "es": ["naranja"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "opushon",
+    "kana": "オプション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["option (settings)"],
+      "es": ["opción (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "omuretsu",
+    "kana": "オムレツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["omelet"],
+      "es": ["omelette"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ofurain",
+    "kana": "オフライン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["offline"],
+      "es": ["desconectado (red)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kaaten",
+    "kana": "カーテン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["curtain"],
+      "es": ["cortina"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kaado",
+    "kana": "カード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["card (bank)"],
+      "es": ["tarjeta (banco)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kaabu",
+    "kana": "カーブ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["curve"],
+      "es": ["curva"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kaapetto",
+    "kana": "カーペット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["carpet"],
+      "es": ["alfombra"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kakuteru",
+    "kana": "カクテル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cocktail"],
+      "es": ["cóctel"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kasetto",
+    "kana": "カセット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cassette"],
+      "es": ["cassette"]
+    },
+    "note": {
+      "en": "also カセットテープ",
+      "es": "también カセットテープ"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "katto",
+    "kana": "カット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cut"],
+      "es": ["corte"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "eraa",
+    "kana": "エラー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["error (system)"],
+      "es": ["error (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ereganto",
+    "kana": "エレガント",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["elegant"],
+      "es": ["elegante"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "erebeetaa",
+    "kana": "エレベーター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["elevator"],
+      "es": ["ascensor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ekuseru",
+    "kana": "エクセル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Excel"],
+      "es": ["excel"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "enjin",
+    "kana": "エンジン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["engine"],
+      "es": ["motor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "orugan",
+    "kana": "オルガン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["organ (instrument)"],
+      "es": ["órgano (instrumento)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "oobun",
+    "kana": "オーブン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["oven"],
+      "es": ["horno"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ofisu",
+    "kana": "オフィス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["office"],
+      "es": ["oficina"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "orienteeshon",
+    "kana": "オリエンテーション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["orientation (academic)"],
+      "es": ["orientación (académica)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "orinpikku",
+    "kana": "オリンピック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Olympics"],
+      "es": ["olimpiada"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "onrain",
+    "kana": "オンライン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["online"],
+      "es": ["en línea (red)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "omuraisu",
+    "kana": "オムライス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["omurice (omelet over rice)"],
+      "es": ["omelette de arroz"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "ooganikku",
+    "kana": "オーガニック",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["organic"],
+      "es": ["orgánico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kategorii",
+    "kana": "カテゴリー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["category"],
+      "es": ["categoría"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kabaa",
+    "kana": "カバー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cover, protector"],
+      "es": ["cobertor", "protector"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kamera",
+    "kana": "カメラ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["camera"],
+      "es": ["cámara"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kameraman",
+    "kana": "カメラマン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["photographer, cameraman"],
+      "es": ["fotógrafo"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "karaa",
+    "kana": "カラー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["color"],
+      "es": ["color"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "karute",
+    "kana": "カルテ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["medical record (of a patient)"],
+      "es": ["historia médica de un paciente"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "karee",
+    "kana": "カレー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["curry"],
+      "es": ["curry"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "karorii",
+    "kana": "カロリー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["calorie"],
+      "es": ["calorías"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kanningu",
+    "kana": "カンニング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cheating (on an exam)"],
+      "es": ["copia (trampa) en examen"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.2"
+  },
+  {
+    "id": "kappu",
+    "kana": "カップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cup"],
+      "es": ["taza", "copa", "pocillo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "karendaa",
+    "kana": "カレンダー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["calendar"],
+      "es": ["calendario"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gaido",
+    "kana": "ガイド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["guide"],
+      "es": ["guía"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gasu",
+    "kana": "ガス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["gas"],
+      "es": ["gas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gasorin",
+    "kana": "ガソリン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["gasoline"],
+      "es": ["gasolina"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyuuaarukoodo",
+    "kana": "キューアールコード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["QR code"],
+      "es": ["código QR"]
+    },
+    "note": {
+      "en": "usually written QRコード",
+      "es": "se suele escribir QRコード"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyaputen",
+    "kana": "キャプテン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["captain (sports)"],
+      "es": ["capitán (deportes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyaria",
+    "kana": "キャリア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["career"],
+      "es": ["trayectoria profesional"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyappu",
+    "kana": "キャップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cap (hat)"],
+      "es": ["gorra", "cachucha"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyarakutaa",
+    "kana": "キャラクター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["character (anime)"],
+      "es": ["personaje (anime)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyanpasu",
+    "kana": "キャンパス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["campus"],
+      "es": ["campus"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gyangu",
+    "kana": "ギャング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["gangster, gang"],
+      "es": ["pandillero"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kuizu",
+    "kana": "クイズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["quiz"],
+      "es": ["quiz"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kurasshu",
+    "kana": "クラッシュ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["crash (system)"],
+      "es": ["colapso (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kurashikku",
+    "kana": "クラシック",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["classical", "classic"],
+      "es": ["clásico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kurasu",
+    "kana": "クラス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["class (school)"],
+      "es": ["clase (estudio)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gurasu",
+    "kana": "グラス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["glass (for drinks)"],
+      "es": ["copa o vaso de licor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "guramu",
+    "kana": "グラム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["gram"],
+      "es": ["gramo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gumi",
+    "kana": "グミ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["gummy candy"],
+      "es": ["gomita de comer"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gurando",
+    "kana": "グランド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sports field"],
+      "es": ["campo de deporte"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "keeki",
+    "kana": "ケーキ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cake"],
+      "es": ["pastel"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "keesu",
+    "kana": "ケース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["case (container)"],
+      "es": ["funda", "contenedor de un objeto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "koosu",
+    "kana": "コース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["course (of study)", "route"],
+      "es": ["curso (de estudio o también desplazamiento)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gasorinsutando",
+    "kana": "ガソリンスタンド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["gas station"],
+      "es": ["gasolinería"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gamu",
+    "kana": "ガム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chewing gum"],
+      "es": ["goma de mascar"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "garasu",
+    "kana": "ガラス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["glass (material)"],
+      "es": ["vidrio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gareeji",
+    "kana": "ガレージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["garage"],
+      "es": ["garaje"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kiroguramu",
+    "kana": "キログラム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["kilogram"],
+      "es": ["kilogramo"]
+    },
+    "note": {
+      "en": "short form: キロ",
+      "es": "forma corta: キロ"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kiromeetoru",
+    "kana": "キロメートル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["kilometer"],
+      "es": ["kilómetro"]
+    },
+    "note": {
+      "en": "short form: キロ",
+      "es": "forma corta: キロ"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyanpu",
+    "kana": "キャンプ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["camping, camp"],
+      "es": ["campamento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyanseru",
+    "kana": "キャンセル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cancellation"],
+      "es": ["cancelación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyasshu",
+    "kana": "キャッシュ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cache (computing)", "cash"],
+      "es": ["caché (informática)", "dinero efectivo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kyasshuresu",
+    "kana": "キャッシュレス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cashless payment"],
+      "es": ["pago sin efectivo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gitaa",
+    "kana": "ギター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["guitar"],
+      "es": ["guitarra"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kukkii",
+    "kana": "クッキー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cookie (biscuit", "internet)"],
+      "es": ["galleta", "cookies (internet)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kurisumasu",
+    "kana": "クリスマス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Christmas"],
+      "es": ["navidad"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kuriiningu",
+    "kana": "クリーニング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dry cleaning, laundry service"],
+      "es": ["lavandería"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kuriimu",
+    "kana": "クリーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cream"],
+      "es": ["crema"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kuraudo",
+    "kana": "クラウド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cloud (computing)"],
+      "es": ["nube (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "kuraianto",
+    "kana": "クライアント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["client"],
+      "es": ["cliente"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "guruupu",
+    "kana": "グループ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["group"],
+      "es": ["grupo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "guuguru",
+    "kana": "グーグル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Google"],
+      "es": ["google"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "geemu",
+    "kana": "ゲーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["game"],
+      "es": ["juego"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "keshigomu",
+    "kanji": "消しゴム",
+    "kana": "けしゴム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["eraser"],
+      "es": ["goma de borrar"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "keeburu",
+    "kana": "ケーブル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cable"],
+      "es": ["cable"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "gesuto",
+    "kana": "ゲスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["guest"],
+      "es": ["invitado"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.3"
+  },
+  {
+    "id": "koochi",
+    "kana": "コーチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["coach"],
+      "es": ["entrenador"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "koodo",
+    "kana": "コード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["code"],
+      "es": ["código"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "koonaa",
+    "kana": "コーナー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["section", "corner"],
+      "es": ["sección", "esquina"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "koohii",
+    "kana": "コーヒー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["coffee"],
+      "es": ["café (bebida)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "konseputo",
+    "kana": "コンセプト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["concept"],
+      "es": ["concepto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "komento",
+    "kana": "コメント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["comment"],
+      "es": ["comentario"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "korekushon",
+    "kana": "コレクション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["collection"],
+      "es": ["colección"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "konkuuru",
+    "kana": "コンクール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["competition (contest)"],
+      "es": ["competencia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "konkuriito",
+    "kana": "コンクリート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["concrete"],
+      "es": ["concreto (cemento)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "konsaato",
+    "kana": "コンサート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["concert"],
+      "es": ["concierto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "konsento",
+    "kana": "コンセント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["power outlet"],
+      "es": ["enchufe", "tomacorriente"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kontakuto",
+    "kana": "コンタクト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["contact lenses"],
+      "es": ["contacto (lentes)"]
+    },
+    "note": {
+      "en": "short for コンタクトレンズ",
+      "es": "abreviatura de コンタクトレンズ"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "gooru",
+    "kana": "ゴール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["goal", "finish line"],
+      "es": ["arco en fútbol", "línea de meta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "saizu",
+    "kana": "サイズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["size"],
+      "es": ["tamaño"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sairen",
+    "kana": "サイレン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["siren"],
+      "es": ["sirena (alarma)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sain",
+    "kana": "サイン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["signature", "sign, signal"],
+      "es": ["firma", "señal"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "saakuru",
+    "kana": "サークル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["club, circle (hobby group)"],
+      "es": ["círculo (grupos de aficionados)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "saabisu",
+    "kana": "サービス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["service (customer)"],
+      "es": ["servicio (al cliente)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sapooto",
+    "kana": "サポート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["support (service)"],
+      "es": ["soporte (servicio)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shiizun",
+    "kana": "シーズン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["season (entertainment)"],
+      "es": ["temporada (entretenimiento)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shiichikin",
+    "kana": "シーチキン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["canned tuna"],
+      "es": ["atún de conserva"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shiitsu",
+    "kana": "シーツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bed sheet"],
+      "es": ["sábanas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shiito",
+    "kana": "シート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["seat"],
+      "es": ["asiento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shisutemu",
+    "kana": "システム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["system"],
+      "es": ["sistema"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shea",
+    "kana": "シェア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["share (social media)"],
+      "es": ["compartir (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kooto-coat",
+    "kana": "コート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["coat"],
+      "es": ["abrigo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kooto-court",
+    "kana": "コート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["court (sports)"],
+      "es": ["cancha (deporte)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kokku",
+    "kana": "コック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cook, chef"],
+      "es": ["cocinero"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "koppu",
+    "kana": "コップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["glass, cup (for drinking)"],
+      "es": ["vaso"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kopii",
+    "kana": "コピー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["copy, photocopy"],
+      "es": ["copia", "fotocopia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "komaasharu",
+    "kana": "コマーシャル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["commercial (advertisement)"],
+      "es": ["comercial (propaganda)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "komyunikeeshon",
+    "kana": "コミュニケーション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["communication"],
+      "es": ["comunicación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kontesuto",
+    "kana": "コンテスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["contest"],
+      "es": ["concurso"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kontorasuto",
+    "kana": "コントラスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["contrast"],
+      "es": ["contraste"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "kontorooru",
+    "kana": "コントロール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["control"],
+      "es": ["control"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "konbini",
+    "kana": "コンビニ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["convenience store"],
+      "es": ["tienda de conveniencia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "konpyuutaa",
+    "kana": "コンピューター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["computer"],
+      "es": ["computador"]
+    },
+    "note": {
+      "en": "a bit dated; パソコン is the usual word",
+      "es": "vocabulario un poco obsoleto; lo usual es パソコン"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "gomu",
+    "kana": "ゴム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rubber"],
+      "es": ["goma", "caucho"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sarada",
+    "kana": "サラダ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["salad"],
+      "es": ["ensalada"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sarariiman",
+    "kana": "サラリーマン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["salaried office worker"],
+      "es": ["oficinista"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sangurasu",
+    "kana": "サングラス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sunglasses"],
+      "es": ["gafas de sol"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sabusukuripushon",
+    "kana": "サブスクリプション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["subscription (online service)"],
+      "es": ["suscripción (servicio de internet)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sandaru",
+    "kana": "サンダル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sandals"],
+      "es": ["sandalias"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sandoitchi",
+    "kana": "サンドイッチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sandwich"],
+      "es": ["sándwich"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "sanpuru",
+    "kana": "サンプル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sample"],
+      "es": ["muestra (ref de un producto)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "saabaa",
+    "kana": "サーバー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["server"],
+      "es": ["servidor (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shatsu",
+    "kana": "シャツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["shirt"],
+      "es": ["camisa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shattaa",
+    "kana": "シャッター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["(security) shutter"],
+      "es": ["persiana de seguridad (reja)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shawaa",
+    "kana": "シャワー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["shower"],
+      "es": ["ducha"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shokku",
+    "kana": "ショック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["shock"],
+      "es": ["shock"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.4"
+  },
+  {
+    "id": "shinario",
+    "kana": "シナリオ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["scenario, script"],
+      "es": ["guión"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "shiriizu",
+    "kana": "シリーズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["series"],
+      "es": ["serie (entretenimiento)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "jiipan",
+    "kana": "ジーパン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["jeans"],
+      "es": ["pantalón de jean"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "jiinzu",
+    "kana": "ジーンズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["jeans"],
+      "es": ["jean"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "jazu",
+    "kana": "ジャズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["jazz"],
+      "es": ["jazz"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "jaaji",
+    "kana": "ジャージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tracksuit"],
+      "es": ["sudadera (poliéster)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "janru",
+    "kana": "ジャンル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["genre"],
+      "es": ["género (entretenimiento)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suitchi",
+    "kana": "スイッチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["switch"],
+      "es": ["interruptor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukurooru",
+    "kana": "スクロール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["scroll"],
+      "es": ["deslizar", "desplazar (pantalla táctil)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukaato",
+    "kana": "スカート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["skirt"],
+      "es": ["falda"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukii",
+    "kana": "スキー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["skiing"],
+      "es": ["ski"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukuriin",
+    "kana": "スクリーン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["screen"],
+      "es": ["pantalla"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukusho",
+    "kana": "スクショ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["screenshot"],
+      "es": ["screenshot", "pantallazo"]
+    },
+    "note": {
+      "en": "short for スクリーンショット",
+      "es": "abreviatura de スクリーンショット"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukeeto",
+    "kana": "スケート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["skating"],
+      "es": ["patinaje"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukejuuru",
+    "kana": "スケジュール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["schedule"],
+      "es": ["cronograma de agenda"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suutsu",
+    "kana": "スーツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["suit"],
+      "es": ["traje"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suutsukeesu",
+    "kana": "スーツケース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["suitcase"],
+      "es": ["valija de viajes"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suupaa",
+    "kana": "スーパー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["supermarket"],
+      "es": ["supermercado"]
+    },
+    "note": {
+      "en": "short for スーパーマーケット",
+      "es": "abreviatura de スーパーマーケット"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suupu",
+    "kana": "スープ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["soup"],
+      "es": ["sopa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutairu",
+    "kana": "スタイル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["style", "figure (body)"],
+      "es": ["estilo", "silueta del cuerpo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutajio",
+    "kana": "スタジオ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["studio"],
+      "es": ["estudio (audiovisual)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutaato",
+    "kana": "スタート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["start"],
+      "es": ["inicio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutando",
+    "kana": "スタンド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["stand"],
+      "es": ["stand"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoreeji",
+    "kana": "ストレージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["storage (device)"],
+      "es": ["almacenamiento (dispositivo)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suchiimu",
+    "kana": "スチーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["steam"],
+      "es": ["vapor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "shoppu",
+    "kana": "ショップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["shop"],
+      "es": ["tienda"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "jamu",
+    "kana": "ジャム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["jam"],
+      "es": ["mermelada"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "jaanarisuto",
+    "kana": "ジャーナリスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["journalist"],
+      "es": ["periodista"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "jaketto",
+    "kana": "ジャケット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["jacket"],
+      "es": ["chaqueta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "janpu",
+    "kana": "ジャンプ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["jump"],
+      "es": ["salto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "juusu",
+    "kana": "ジュース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["juice"],
+      "es": ["jugo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutookaa",
+    "kana": "ストーカー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["stalker"],
+      "es": ["acosador"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoppu",
+    "kana": "ストップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["stop"],
+      "es": ["stop"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sukyan",
+    "kana": "スキャン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["scan"],
+      "es": ["escaneo", "escáner"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoobu",
+    "kana": "ストーブ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["heater, stove"],
+      "es": ["calentador (ambiente)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoraiki",
+    "kana": "ストライキ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["strike (labor)"],
+      "es": ["huelga laboral"]
+    },
+    "note": {
+      "en": "short form: スト",
+      "es": "forma corta: スト"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoresu",
+    "kana": "ストレス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["stress"],
+      "es": ["estrés"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoretchi",
+    "kana": "ストレッチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["stretching"],
+      "es": ["estiramiento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoikku",
+    "kana": "ストイック",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["stoic"],
+      "es": ["estoico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutoroo",
+    "kana": "ストロー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["(drinking) straw"],
+      "es": ["pitillo", "pajilla"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "supiikaa",
+    "kana": "スピーカー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["speaker"],
+      "es": ["parlante"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "supiichi",
+    "kana": "スピーチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["speech"],
+      "es": ["discurso", "charla"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "supuun",
+    "kana": "スプーン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["spoon"],
+      "es": ["cuchara"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "supeesu",
+    "kana": "スペース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["space"],
+      "es": ["espacio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "supootsu",
+    "kana": "スポーツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sports"],
+      "es": ["deporte"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sutooriizu",
+    "kana": "ストーリーズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["stories (social media)"],
+      "es": ["historia (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "zubon",
+    "kana": "ズボン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["trousers, pants"],
+      "es": ["pantalón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sumaato",
+    "kana": "スマート",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["smart, sleek"],
+      "es": ["sofisticado", "funcional"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suraido",
+    "kana": "スライド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["slide (presentation)"],
+      "es": ["diapositivas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "sumaatofon",
+    "kana": "スマートフォン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["smartphone"],
+      "es": ["teléfono inteligente"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.5"
+  },
+  {
+    "id": "suteeki",
+    "kana": "ステーキ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["steak"],
+      "es": ["carne asada"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "supamu",
+    "kana": "スパム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["spam"],
+      "es": ["spam"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "zuumu",
+    "kana": "ズーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["zoom"],
+      "es": ["zoom"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sekushon",
+    "kana": "セクション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["section"],
+      "es": ["sección"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "seetaa",
+    "kana": "セーター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sweater"],
+      "es": ["suéter"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "seeru",
+    "kana": "セール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sale"],
+      "es": ["venta (promociones)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sekkusu",
+    "kana": "セックス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sex"],
+      "es": ["sexo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "setto",
+    "kana": "セット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["set", "combo"],
+      "es": ["set", "combo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sekyuritii",
+    "kana": "セキュリティー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["security"],
+      "es": ["seguridad"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "serufureji",
+    "kana": "セルフレジ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["self-checkout"],
+      "es": ["caja de pago automática"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "seminaa",
+    "kana": "セミナー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["seminar"],
+      "es": ["seminario"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "zemi",
+    "kana": "ゼミ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["seminar (university research group)"],
+      "es": ["seminario de estudiantes (investigación)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "zerii",
+    "kana": "ゼリー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["jelly"],
+      "es": ["gelatina"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sooseeji",
+    "kana": "ソーセージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sausage"],
+      "es": ["salchicha"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "soosu",
+    "kana": "ソース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sauce"],
+      "es": ["salsa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "zonbi",
+    "kana": "ゾンビ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["zombie"],
+      "es": ["zombi"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taitoru",
+    "kana": "タイトル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["title"],
+      "es": ["título (enunciado)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taipingu",
+    "kana": "タイピング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["typing"],
+      "es": ["mecanografía"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taipu",
+    "kana": "タイプ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["type"],
+      "es": ["tipo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taimaa",
+    "kana": "タイマー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["timer"],
+      "es": ["temporizador"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "tabu",
+    "kana": "タブ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tab (browser)"],
+      "es": ["pestaña (navegador)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taburetto",
+    "kana": "タブレット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tablet"],
+      "es": ["tablet"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "tasuku",
+    "kana": "タスク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["task"],
+      "es": ["tarea (task)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "tawaa",
+    "kana": "タワー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tower"],
+      "es": ["torre"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "surippa",
+    "kana": "スリッパ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["slippers"],
+      "es": ["pantuflas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sutaffu",
+    "kana": "スタッフ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["staff"],
+      "es": ["personal (trabajadores)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "suteeji",
+    "kana": "ステージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["stage"],
+      "es": ["escenario (tarima)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sukiru",
+    "kana": "スキル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["skill"],
+      "es": ["skill (habilidad)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "semento",
+    "kana": "セメント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cement"],
+      "es": ["cemento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "seremonii",
+    "kana": "セレモニー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ceremony"],
+      "es": ["ceremonia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sensu",
+    "kana": "センス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sense (of taste, style)"],
+      "es": ["sentido del gusto (tener gusto)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sentaa",
+    "kana": "センター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["center"],
+      "es": ["centro"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "serufii",
+    "kana": "セルフィー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["selfie"],
+      "es": ["selfie"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "serapii",
+    "kana": "セラピー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["therapy"],
+      "es": ["terapia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "senchi",
+    "kana": "センチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["centimeter"],
+      "es": ["centímetro"]
+    },
+    "note": {
+      "en": "short for センチメートル",
+      "es": "abreviatura de センチメートル"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "zero",
+    "kana": "ゼロ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["zero"],
+      "es": ["cero"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sofaa",
+    "kana": "ソファー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sofa"],
+      "es": ["sofá"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "sofuto",
+    "kana": "ソフト",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["soft", "software"],
+      "es": ["suave"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taimu",
+    "kana": "タイム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["time"],
+      "es": ["tiempo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taimingu",
+    "kana": "タイミング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["timing"],
+      "es": ["momento oportuno"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taiya",
+    "kana": "タイヤ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tire"],
+      "es": ["llanta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "taoru",
+    "kana": "タオル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["towel"],
+      "es": ["toalla"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "tatuu",
+    "kana": "タトゥー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tattoo"],
+      "es": ["tatuaje"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "takushii",
+    "kana": "タクシー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["taxi"],
+      "es": ["taxi"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "tappu",
+    "kana": "タップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tap (touchscreen)", "tap dance"],
+      "es": ["toque, golpe (pantalla táctil)", "tap (baile)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "daietto",
+    "kana": "ダイエット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["diet"],
+      "es": ["dieta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "daunroodo",
+    "kana": "ダウンロード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["download"],
+      "es": ["descarga (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "daatsu",
+    "kana": "ダーツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["darts"],
+      "es": ["dardos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.6"
+  },
+  {
+    "id": "daiyamondo",
+    "kana": "ダイヤモンド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["diamond"],
+      "es": ["diamante"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "dansu",
+    "kana": "ダンス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dance"],
+      "es": ["danza"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "dameeji",
+    "kana": "ダメージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["damage"],
+      "es": ["daño (pelea)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chatto",
+    "kana": "チャット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chat"],
+      "es": ["chat"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chekku",
+    "kana": "チェック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["check"],
+      "es": ["chequeo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chesu",
+    "kana": "チェス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chess"],
+      "es": ["ajedrez"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chenji",
+    "kana": "チェンジ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["change"],
+      "es": ["cambio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chiizu",
+    "kana": "チーズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cheese"],
+      "es": ["queso"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chiimu",
+    "kana": "チーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["team"],
+      "es": ["equipo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chiri",
+    "kana": "チリ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Chile", "chili"],
+      "es": ["chile (país, picante)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "teikuauto",
+    "kana": "テイクアウト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["takeout"],
+      "es": ["para llevar (comida)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tesuto",
+    "kana": "テスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["test"],
+      "es": ["prueba"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "teepu",
+    "kana": "テープ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tape"],
+      "es": ["cinta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "teeburu",
+    "kana": "テーブル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["table"],
+      "es": ["mesa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "teema",
+    "kana": "テーマ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["theme"],
+      "es": ["tema"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tekisuto",
+    "kana": "テキスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["text"],
+      "es": ["texto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "terewaaku",
+    "kana": "テレワーク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["telework"],
+      "es": ["teletrabajo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "dekoreeshon",
+    "kana": "デコレーション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["decoration"],
+      "es": ["decoración"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "dezain",
+    "kana": "デザイン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["design"],
+      "es": ["diseño"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "dejitaru",
+    "kana": "デジタル",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["digital"],
+      "es": ["digital"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "debaisu",
+    "kana": "デバイス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["device"],
+      "es": ["dispositivo (Ej, celular)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "dezaato",
+    "kana": "デザート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dessert"],
+      "es": ["postre"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "toire",
+    "kana": "トイレ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["toilet, restroom"],
+      "es": ["baño (del 1 y 2)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tomato",
+    "kana": "トマト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tomato"],
+      "es": ["tomate"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "torendo",
+    "kana": "トレンド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["trend"],
+      "es": ["tendencia (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "damu",
+    "kana": "ダム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dam"],
+      "es": ["represa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chippu",
+    "kana": "チップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tip (gratuity)"],
+      "es": ["propina"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chansu",
+    "kana": "チャンス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chance, opportunity"],
+      "es": ["oportunidad"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "channeru",
+    "kana": "チャンネル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["channel"],
+      "es": ["canal"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chokoreeto",
+    "kana": "チョコレート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chocolate"],
+      "es": ["chocolate"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chooku",
+    "kana": "チョーク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chalk"],
+      "es": ["tiza"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "chensoo",
+    "kana": "チェンソー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["chainsaw"],
+      "es": ["motosierra"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tsuuru",
+    "kana": "ツール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tool"],
+      "es": ["herramienta (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tsuaa",
+    "kana": "ツアー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tour"],
+      "es": ["tour"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "terebi",
+    "kana": "テレビ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["television"],
+      "es": ["televisión"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tento",
+    "kana": "テント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tent"],
+      "es": ["carpa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tenpo",
+    "kana": "テンポ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tempo"],
+      "es": ["tempo (ritmo", "velocidad)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tenisu",
+    "kana": "テニス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tennis"],
+      "es": ["tenis (deporte)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tisshu",
+    "kana": "ティッシュ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tissue (paper)"],
+      "es": ["papel tipo pañuelo (kleenex)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tenshon",
+    "kana": "テンション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mood, energy level"],
+      "es": ["estado anímico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "deeta",
+    "kana": "データ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["data"],
+      "es": ["datos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "deeto",
+    "kana": "デート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["date (romantic)"],
+      "es": ["cita romántica"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "depaato",
+    "kana": "デパート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["department store"],
+      "es": ["tienda de departamentos (almacén)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "demo",
+    "kana": "デモ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["demonstration (protest)"],
+      "es": ["paro", "manifestación"]
+    },
+    "note": {
+      "en": "short for デモンストレーション, which mostly means a demonstration of a product",
+      "es": "abreviatura de デモンストレーション, que suele significar demostración (de un producto)"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "deribarii",
+    "kana": "デリバリー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["delivery"],
+      "es": ["domicilio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "torakku",
+    "kana": "トラック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["truck"],
+      "es": ["camión"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "toraburu",
+    "kana": "トラブル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["trouble"],
+      "es": ["problema"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "toosuto",
+    "kana": "トースト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["toast"],
+      "es": ["tostada de pan"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "toreeningu",
+    "kana": "トレーニング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["training"],
+      "es": ["entrenamiento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "tonneru",
+    "kana": "トンネル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["tunnel"],
+      "es": ["túnel"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.7"
+  },
+  {
+    "id": "toranpu",
+    "kana": "トランプ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["playing cards"],
+      "es": ["naipes"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "doa",
+    "kana": "ドア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["door"],
+      "es": ["puerta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "dorai",
+    "kana": "ドライ",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["dry"],
+      "es": ["seco"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "dorama",
+    "kana": "ドラマ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["drama (TV series)"],
+      "es": ["drama (telenovela)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "naifu",
+    "kana": "ナイフ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["knife"],
+      "es": ["cuchillo", "navaja"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nairon",
+    "kana": "ナイロン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["nylon"],
+      "es": ["nailon"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nyuansu",
+    "kana": "ニュアンス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["nuance"],
+      "es": ["matiz"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nyuusu",
+    "kana": "ニュース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["news"],
+      "es": ["noticias"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nokku",
+    "kana": "ノック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["knock"],
+      "es": ["golpe para anunciarse (Ej, puerta)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "haikingu",
+    "kana": "ハイキング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hiking"],
+      "es": ["senderismo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "hamu",
+    "kana": "ハム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ham"],
+      "es": ["jamón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "hansamu",
+    "kana": "ハンサム",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["handsome"],
+      "es": ["guapo (masculino)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "handoru",
+    "kana": "ハンドル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["handlebar", "steering wheel"],
+      "es": ["manubrio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "haiburiddo",
+    "kana": "ハイブリッド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hybrid"],
+      "es": ["híbrido"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "hasshutagu",
+    "kana": "ハッシュタグ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hashtag"],
+      "es": ["hashtag"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "baiorin",
+    "kana": "バイオリン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["violin"],
+      "es": ["violín"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "basu",
+    "kana": "バス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bus"],
+      "es": ["bus"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "baggu",
+    "kana": "バッグ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bag"],
+      "es": ["bolso"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "bajji",
+    "kana": "バッジ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["badge"],
+      "es": ["insignia"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "bakkuappu",
+    "kana": "バックアップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["backup"],
+      "es": ["copia de seguridad"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "bakkuguraundo",
+    "kana": "バックグラウンド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["background"],
+      "es": ["segundo plano"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "batterii",
+    "kana": "バッテリー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["battery"],
+      "es": ["batería"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "batto",
+    "kana": "バット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bat"],
+      "es": ["bate"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "banana",
+    "kana": "バナナ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["banana"],
+      "es": ["banano"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "bareebooru",
+    "kana": "バレーボール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["volleyball"],
+      "es": ["voleibol"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "doonatsu",
+    "kana": "ドーナツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["donut"],
+      "es": ["dona"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "doraibaa",
+    "kana": "ドライバー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["driver"],
+      "es": ["conductor", "chofer"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "doresu",
+    "kana": "ドレス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dress"],
+      "es": ["vestido"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "napukin",
+    "kana": "ナプキン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["napkin", "sanitary pad"],
+      "es": ["servilleta", "toalla higiénica"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nattsu",
+    "kana": "ナッツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["nuts"],
+      "es": ["nueces"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nuudoru",
+    "kana": "ヌードル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["(instant) noodles"],
+      "es": ["fideos instantáneos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "negatibu",
+    "kana": "ネガティブ",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["negative"],
+      "es": ["negativo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nekutai",
+    "kana": "ネクタイ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["necktie"],
+      "es": ["corbata"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nekkuresu",
+    "kana": "ネックレス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["necklace"],
+      "es": ["collar"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "nooto",
+    "kana": "ノート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["notebook"],
+      "es": ["cuaderno"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "haafu",
+    "kana": "ハーフ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["person of mixed Japanese heritage"],
+      "es": ["mestizo japonés"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "hangaa",
+    "kana": "ハンガー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hanger"],
+      "es": ["percha (gancho)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "hankachi",
+    "kana": "ハンカチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["handkerchief"],
+      "es": ["pañuelo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "hanbaagu",
+    "kana": "ハンバーグ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hamburger steak"],
+      "es": ["albóndiga de hamburguesa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "haiteku",
+    "kana": "ハイテク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["high tech"],
+      "es": ["alta tecnología"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "hanbaagaa",
+    "kana": "ハンバーガー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hamburger"],
+      "es": ["hamburguesa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "baketsu",
+    "kana": "バケツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bucket"],
+      "es": ["balde"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "bataa",
+    "kana": "バター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["butter"],
+      "es": ["mantequilla"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "bakkumiraa",
+    "kana": "バックミラー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rearview mirror"],
+      "es": ["espejo retrovisor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "baa",
+    "kana": "バー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bar"],
+      "es": ["bar"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "baransu",
+    "kana": "バランス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["balance"],
+      "es": ["equilibrio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "baabekyuu",
+    "kana": "バーベキュー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["barbecue"],
+      "es": ["asado", "barbacoa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "basukettobooru",
+    "kana": "バスケットボール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["basketball"],
+      "es": ["baloncesto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "pakku",
+    "kana": "パック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pack"],
+      "es": ["pack (paquete de algo)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "bagu",
+    "kana": "バグ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bug (software)"],
+      "es": ["fallo de sistema"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.8"
+  },
+  {
+    "id": "paakaa",
+    "kana": "パーカー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hoodie"],
+      "es": ["hoodie (buzo con capucha)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "baajon",
+    "kana": "バージョン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["version"],
+      "es": ["versión"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pajama",
+    "kana": "パジャマ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pajamas"],
+      "es": ["pijama"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pasuta",
+    "kana": "パスタ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pasta"],
+      "es": ["pasta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pasupooto",
+    "kana": "パスポート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["passport"],
+      "es": ["pasaporte"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pasokon",
+    "kana": "パソコン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["personal computer, PC"],
+      "es": ["PC"]
+    },
+    "note": {
+      "en": "use this rather than コンピューター",
+      "es": "usar este en vez de コンピューター"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "patokaa",
+    "kana": "パトカー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["police car"],
+      "es": ["carro patrulla"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "paasento",
+    "kana": "パーセント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["percent"],
+      "es": ["por ciento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "paatii",
+    "kana": "パーティー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["party"],
+      "es": ["fiesta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pasu",
+    "kana": "パス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pass (skip a turn", "in sports)"],
+      "es": ["pasar (saltar turno)", "pase (deporte)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "paato",
+    "kana": "パート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["part-time job"],
+      "es": ["trabajo de medio tiempo"]
+    },
+    "note": {
+      "en": "short for パートタイム",
+      "es": "abreviatura de パートタイム"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pazuru",
+    "kana": "パズル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["puzzle"],
+      "es": ["rompecabezas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "hinto",
+    "kana": "ヒント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hint"],
+      "es": ["pista (idea)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "bideo",
+    "kana": "ビデオ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["video"],
+      "es": ["video"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "biniiru",
+    "kana": "ビニール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["vinyl, plastic"],
+      "es": ["vinilo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "biiru",
+    "kana": "ビール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["beer"],
+      "es": ["cerveza"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "biru",
+    "kana": "ビル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["building"],
+      "es": ["edificio"]
+    },
+    "note": {
+      "en": "short for ビルディング",
+      "es": "abreviatura de ビルディング"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "piasu",
+    "kana": "ピアス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["piercing, pierced earrings"],
+      "es": ["piercing"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pinku",
+    "kana": "ピンク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pink"],
+      "es": ["rosado"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "piiman",
+    "kana": "ピーマン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["green pepper"],
+      "es": ["pimentón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "furaipan",
+    "kana": "フライパン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["frying pan"],
+      "es": ["sartén"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "furonto",
+    "kana": "フロント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["front desk, reception"],
+      "es": ["puesto de recepción (Ej, hotel)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "burausu",
+    "kana": "ブラウス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["blouse"],
+      "es": ["blusa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "paipu",
+    "kana": "パイプ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pipe"],
+      "es": ["tubo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "painappuru",
+    "kana": "パイナップル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pineapple"],
+      "es": ["piña"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pataan",
+    "kana": "パターン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pattern"],
+      "es": ["patrón (repetición)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pachinko",
+    "kana": "パチンコ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pachinko"],
+      "es": ["pachinko (juego de azar japonés)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "papa",
+    "kana": "パパ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["daddy", "sugar daddy"],
+      "es": ["papi", "sugar daddy"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pan",
+    "kana": "パン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bread"],
+      "es": ["pan"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pasuwaado",
+    "kana": "パスワード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["password"],
+      "es": ["contraseña"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pasukoodo",
+    "kana": "パスコード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["passcode"],
+      "es": ["código de acceso"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pantsu",
+    "kana": "パンツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["underwear"],
+      "es": ["calzones", "calzoncillos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "bijinesu",
+    "kana": "ビジネス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["business"],
+      "es": ["negocios"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "bitamin",
+    "kana": "ビタミン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["vitamin"],
+      "es": ["vitaminas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "piano",
+    "kana": "ピアノ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["piano"],
+      "es": ["piano"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pikunikku",
+    "kana": "ピクニック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["picnic"],
+      "es": ["picnic"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pisutoru",
+    "kana": "ピストル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pistol"],
+      "es": ["pistola"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "piza",
+    "kana": "ピザ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pizza"],
+      "es": ["pizza"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pitchaa",
+    "kana": "ピッチャー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pitcher (jug", "baseball)"],
+      "es": ["jarra", "lanzador (béisbol)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "pikurusu",
+    "kana": "ピクルス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pickles"],
+      "es": ["pepinillos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "piinattsu",
+    "kana": "ピーナッツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["peanuts"],
+      "es": ["maní"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "furii",
+    "kana": "フリー",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["free"],
+      "es": ["libre", "gratis"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "buzaa",
+    "kana": "ブザー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["buzzer"],
+      "es": ["zumbador (alarma de seguridad)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "burauza",
+    "kana": "ブラウザ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["browser"],
+      "es": ["navegador (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.9"
+  },
+  {
+    "id": "burashi",
+    "kana": "ブラシ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["brush"],
+      "es": ["cepillo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "bureeki",
+    "kana": "ブレーキ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["brake"],
+      "es": ["freno"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "puuru",
+    "kana": "プール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["swimming pool"],
+      "es": ["piscina"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "buruutuusu",
+    "kana": "ブルートゥース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Bluetooth"],
+      "es": ["bluetooth"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purezento",
+    "kana": "プレゼント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["present, gift"],
+      "es": ["regalo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purebyuu",
+    "kana": "プレビュー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["preview"],
+      "es": ["vista previa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "puroguramu",
+    "kana": "プログラム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["program"],
+      "es": ["programa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purojekuto",
+    "kana": "プロジェクト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["project"],
+      "es": ["proyecto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purofiiru",
+    "kana": "プロフィール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["profile"],
+      "es": ["perfil"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "faito",
+    "kana": "ファイト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["fight"],
+      "es": ["pelea", "lucha"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "fairu",
+    "kana": "ファイル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["file"],
+      "es": ["archivo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "fasunaa",
+    "kana": "ファスナー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["zipper"],
+      "es": ["cremallera"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "fan",
+    "kana": "ファン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["fan"],
+      "es": ["fan"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "foroo",
+    "kana": "フォロー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["follow", "support"],
+      "es": ["apoyo", "seguimiento (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "herikoputaa",
+    "kana": "ヘリコプター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["helicopter"],
+      "es": ["helicóptero"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "herumetto",
+    "kana": "ヘルメット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["helmet"],
+      "es": ["casco"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "beddo",
+    "kana": "ベッド",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bed"],
+      "es": ["cama"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "beteran",
+    "kana": "ベテラン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["veteran"],
+      "es": ["veterano"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "beranda",
+    "kana": "ベランダ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["balcony"],
+      "es": ["balcón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "beru",
+    "kana": "ベル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bell"],
+      "es": ["campana"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "beruto",
+    "kana": "ベルト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["belt"],
+      "es": ["cinturón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "petto",
+    "kana": "ペット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pet"],
+      "es": ["mascota"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "penki",
+    "kana": "ペンキ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["paint"],
+      "es": ["pintura (industrial)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "hoteru",
+    "kana": "ホテル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hotel"],
+      "es": ["hotel"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "buutsu",
+    "kana": "ブーツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["boots"],
+      "es": ["botas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "buumu",
+    "kana": "ブーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["boom, craze"],
+      "es": ["auge"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "burokku",
+    "kana": "ブロック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["block"],
+      "es": ["bloqueo", "bloque"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purasu",
+    "kana": "プラス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["plus"],
+      "es": ["más (+)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purasuchikku",
+    "kana": "プラスチック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["plastic"],
+      "es": ["plástico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purintaa",
+    "kana": "プリンター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["printer"],
+      "es": ["impresora"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purattofoomu",
+    "kana": "プラットフォーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["platform"],
+      "es": ["plataforma"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "puran",
+    "kana": "プラン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["plan"],
+      "es": ["plan de servicio (viajes, internet, etc)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "purezen",
+    "kana": "プレゼン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["presentation"],
+      "es": ["presentación de proyecto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "firutaa",
+    "kana": "フィルター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["filter"],
+      "es": ["filtro"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "fiidobakku",
+    "kana": "フィードバック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["feedback"],
+      "es": ["retroalimentación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "fooku",
+    "kana": "フォーク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["fork"],
+      "es": ["tenedor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "foomu",
+    "kana": "フォーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["form", "form (posture)"],
+      "es": ["formulario", "forma (posición)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "forowaa",
+    "kana": "フォロワー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["follower"],
+      "es": ["seguidor (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "foroobakku",
+    "kana": "フォローバック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["follow back"],
+      "es": ["seguir también (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "besuto",
+    "kana": "ベスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["best"],
+      "es": ["lo mejor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "beesu",
+    "kana": "ベース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["base"],
+      "es": ["base"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "benchi",
+    "kana": "ベンチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bench"],
+      "es": ["banca", "banqueta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "beekon",
+    "kana": "ベーコン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bacon"],
+      "es": ["tocino"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "pea",
+    "kana": "ペア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pair"],
+      "es": ["par", "pareja (equipo)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "peeji",
+    "kana": "ページ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["page"],
+      "es": ["página"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "penchi",
+    "kana": "ペンチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pliers"],
+      "es": ["alicates"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "hoosu",
+    "kana": "ホース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hose"],
+      "es": ["manguera"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "boikotto",
+    "kana": "ボイコット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["boycott"],
+      "es": ["boicot"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.10"
+  },
+  {
+    "id": "hoomu",
+    "kana": "ホーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["home (button)", "platform (station)"],
+      "es": ["botón home", "plataforma de espera en estación de transporte"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "hooru",
+    "kana": "ホール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["hall"],
+      "es": ["hall", "salón abierto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "booto",
+    "kana": "ボート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["boat"],
+      "es": ["bote"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "boodogeemu",
+    "kana": "ボードゲーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["board game"],
+      "es": ["juego de mesa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "bouringu",
+    "kana": "ボウリング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bowling"],
+      "es": ["bolos", "boliche"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "pointo",
+    "kana": "ポイント",
+    "pos": "noun",
+    "meaning": {
+      "en": ["points"],
+      "es": ["puntos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "poochi",
+    "kana": "ポーチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pouch"],
+      "es": ["cartera de almacenamiento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "poppuappu",
+    "kana": "ポップアップ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pop-up"],
+      "es": ["ventana emergente (navegador)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "poppukoon",
+    "kana": "ポップコーン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["popcorn"],
+      "es": ["palomitas", "maíz pira"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "poketto",
+    "kana": "ポケット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pocket"],
+      "es": ["bolsillo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "pojishon",
+    "kana": "ポジション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["position"],
+      "es": ["posición"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "posutaa",
+    "kana": "ポスター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["poster"],
+      "es": ["póster"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "pojitibu",
+    "kana": "ポジティブ",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["positive"],
+      "es": ["positivo (positivismo)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "mainasu",
+    "kana": "マイナス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["minus"],
+      "es": ["menos"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "masuku",
+    "kana": "マスク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mask"],
+      "es": ["tapabocas", "mascarilla"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "masukomi",
+    "kana": "マスコミ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mass media"],
+      "es": ["medios de comunicación masiva (televisión, radio, periódico)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "mafuraa",
+    "kana": "マフラー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["scarf", "muffler (exhaust)"],
+      "es": ["bufanda", "escape (auto, moto)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "mama",
+    "kana": "ママ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mommy", "madam (bar owner)"],
+      "es": ["mami", "mujer dueña de cabaret"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "maaku",
+    "kana": "マーク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mark"],
+      "es": ["marca (símbolo o rastro)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "mishin",
+    "kana": "ミシン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sewing machine"],
+      "es": ["máquina de coser"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "miitingu",
+    "kana": "ミーティング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["meeting"],
+      "es": ["reunión"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "muudo",
+    "kana": "ムード",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mood, atmosphere"],
+      "es": ["mood (ambiente en situación)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "mentenansu",
+    "kana": "メンテナンス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["maintenance"],
+      "es": ["mantenimiento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "botan",
+    "kana": "ボタン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["button"],
+      "es": ["botón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "booru",
+    "kana": "ボール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ball"],
+      "es": ["pelota"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "boorupen",
+    "kana": "ボールペン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ballpoint pen"],
+      "es": ["bolígrafo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "boonasu",
+    "kana": "ボーナス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bonus"],
+      "es": ["bonus (prima salarial)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "bokushingu",
+    "kana": "ボクシング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["boxing"],
+      "es": ["boxeo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "boruto",
+    "kana": "ボルト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["bolt"],
+      "es": ["perno", "tornillo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "posuto",
+    "kana": "ポスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mailbox", "post (social media)"],
+      "es": ["buzón (físico)", "publicación (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "pootoforio",
+    "kana": "ポートフォリオ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["portfolio"],
+      "es": ["portafolio (inversiones, trabajos)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "potetochippusu",
+    "kana": "ポテトチップス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["potato chips"],
+      "es": ["papas de paquete"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "potto",
+    "kana": "ポット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["electric kettle, thermos"],
+      "es": ["termo calentador de agua"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "poozu",
+    "kana": "ポーズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pose"],
+      "es": ["pose"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "ponpu",
+    "kana": "ポンプ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["pump"],
+      "es": ["bomba de agua (bombear)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "maiku",
+    "kana": "マイク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["microphone"],
+      "es": ["micrófono"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "masutaa",
+    "kana": "マスター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["owner (of a small café or bar)"],
+      "es": ["master (dueño de negocio, que lo atiende él mismo. Ej, un café)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "matchingu",
+    "kana": "マッチング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["matching"],
+      "es": ["matching (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "massaaji",
+    "kana": "マッサージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["massage"],
+      "es": ["masaje"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "matchi",
+    "kana": "マッチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["match (for fire)"],
+      "es": ["cerillo", "fósforo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "maneejaa",
+    "kana": "マネージャー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["manager"],
+      "es": ["manager"]
+    },
+    "tags": ["katakana", "occupations"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "marason",
+    "kana": "マラソン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["marathon"],
+      "es": ["maratón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "manshon",
+    "kana": "マンション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["apartment (solid construction)"],
+      "es": ["apartamento (construcción sólida)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "myuujikku",
+    "kana": "ミュージック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["music"],
+      "es": ["música"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "miri",
+    "kana": "ミリ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["millimeter"],
+      "es": ["milímetro"]
+    },
+    "note": {
+      "en": "short for ミリメートル",
+      "es": "abreviatura de ミリメートル"
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "misu",
+    "kana": "ミス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mistake"],
+      "es": ["error (miss)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.11"
+  },
+  {
+    "id": "messeeji",
+    "kana": "メッセージ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["message"],
+      "es": ["mensaje"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "media",
+    "kana": "メディア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["media"],
+      "es": ["medios de comunicación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "meron",
+    "kana": "メロン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["melon"],
+      "es": ["melón"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "menshon",
+    "kana": "メンション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mention"],
+      "es": ["mención (redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "menyuu",
+    "kana": "メニュー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["menu"],
+      "es": ["menú"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "meekaa",
+    "kana": "メーカー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["manufacturer"],
+      "es": ["fabricante", "fabricador"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "meetaa",
+    "kana": "メーター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["meter (gauge)"],
+      "es": ["medidor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "mochibeeshon",
+    "kana": "モチベーション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["motivation"],
+      "es": ["motivación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "modan",
+    "kana": "モダン",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["modern"],
+      "es": ["moderno"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "monitaa",
+    "kana": "モニター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["monitor"],
+      "es": ["monitor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "yuniiku",
+    "kana": "ユニーク",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["unique"],
+      "es": ["único", "auténtico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "yuuchuubu",
+    "kana": "ユーチューブ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["YouTube"],
+      "es": ["youtube"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "yotto",
+    "kana": "ヨット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["yacht, sailboat"],
+      "es": ["yate"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "raisu",
+    "kana": "ライス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rice (served on a plate)"],
+      "es": ["arroz (no japonés)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "raion",
+    "kana": "ライオン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lion"],
+      "es": ["león"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "raitaa",
+    "kana": "ライター",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lighter"],
+      "es": ["encendedor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "raito",
+    "kana": "ライト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["light", "flashlight"],
+      "es": ["luz", "linterna"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "raibaru",
+    "kana": "ライバル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rival"],
+      "es": ["rival"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "raibu",
+    "kana": "ライブ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["live (concert, stream)"],
+      "es": ["en vivo (internet, concierto, etc)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "raketto",
+    "kana": "ラケット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["racket"],
+      "es": ["raqueta"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rajio",
+    "kana": "ラジオ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["radio"],
+      "es": ["radio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rizumu",
+    "kana": "リズム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rhythm"],
+      "es": ["ritmo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "risetto",
+    "kana": "リセット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["reset"],
+      "es": ["reset"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rinku",
+    "kana": "リンク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["link"],
+      "es": ["link"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "miruku",
+    "kana": "ミルク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["milk"],
+      "es": ["leche"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "myuuto",
+    "kana": "ミュート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["mute"],
+      "es": ["mute"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "mikisaa",
+    "kana": "ミキサー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["blender"],
+      "es": ["licuadora"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "mein",
+    "kana": "メイン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["main"],
+      "es": ["principal"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "meetoru",
+    "kana": "メートル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["meter (unit)"],
+      "es": ["metro (unidad de medida)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "meeru",
+    "kana": "メール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["email"],
+      "es": ["correo (electrónico)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "memo",
+    "kana": "メモ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["memo, note"],
+      "es": ["memorando (nota corta)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "menbaa",
+    "kana": "メンバー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["member"],
+      "es": ["miembro (comunidad)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "mentaru",
+    "kana": "メンタル",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["mental"],
+      "es": ["mental (salud mental)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "monoreeru",
+    "kana": "モノレール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["monorail"],
+      "es": ["monorriel"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "yunifoomu",
+    "kana": "ユニフォーム",
+    "pos": "noun",
+    "meaning": {
+      "en": ["uniform (sports)"],
+      "es": ["uniforme (deporte)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "yuumoa",
+    "kana": "ユーモア",
+    "pos": "noun",
+    "meaning": {
+      "en": ["sense of humor"],
+      "es": ["sentido del humor"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "yooguruto",
+    "kana": "ヨーグルト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["yogurt"],
+      "es": ["yogurt"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "yooroppa",
+    "kana": "ヨーロッパ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Europe"],
+      "es": ["Europa"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rasshuawaa",
+    "kana": "ラッシュアワー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rush hour"],
+      "es": ["hora pico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "ranchi",
+    "kana": "ランチ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lunch"],
+      "es": ["almuerzo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "ranningu",
+    "kana": "ランニング",
+    "pos": "noun",
+    "meaning": {
+      "en": ["running"],
+      "es": ["running"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "ranpu",
+    "kana": "ランプ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lamp"],
+      "es": ["lámpara"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rimooto",
+    "kana": "リモート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["remote"],
+      "es": ["remoto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rimokon",
+    "kana": "リモコン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["remote control"],
+      "es": ["control remoto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "ribon",
+    "kana": "リボン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ribbon"],
+      "es": ["moño"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rirakkusu",
+    "kana": "リラックス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["relaxation"],
+      "es": ["relajación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "ririisu",
+    "kana": "リリース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["release"],
+      "es": ["lanzamiento (entretenimiento)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "risuto",
+    "kana": "リスト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["list"],
+      "es": ["lista"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "ruuru",
+    "kana": "ルール",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rules"],
+      "es": ["reglas"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.12"
+  },
+  {
+    "id": "rittoru",
+    "kana": "リットル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["liter"],
+      "es": ["litro"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "risuku",
+    "kana": "リスク",
+    "pos": "noun",
+    "meaning": {
+      "en": ["risk"],
+      "es": ["riesgo"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "riidaa",
+    "kana": "リーダー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["leader"],
+      "es": ["líder"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "ruuzu",
+    "kana": "ルーズ",
+    "pos": "na-adj",
+    "meaning": {
+      "en": ["sloppy, loose"],
+      "es": ["descuidado", "poco estricto"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "reinkooto",
+    "kana": "レインコート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["raincoat"],
+      "es": ["impermeable"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "regyuraa",
+    "kana": "レギュラー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["regular (team member)", "regular gasoline"],
+      "es": ["regular (persona que hace parte de un equipo como jugador", "gasolina corriente)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rekurieeshon",
+    "kana": "レクリエーション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["recreation"],
+      "es": ["recreación"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "ressun",
+    "kana": "レッスン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lesson"],
+      "es": ["lección (aprendizaje de arte. Ej, baile)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "reberu",
+    "kana": "レベル",
+    "pos": "noun",
+    "meaning": {
+      "en": ["level"],
+      "es": ["nivel"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "repooto",
+    "kana": "レポート",
+    "pos": "noun",
+    "meaning": {
+      "en": ["report"],
+      "es": ["reporte"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "reesu",
+    "kana": "レース",
+    "pos": "noun",
+    "meaning": {
+      "en": ["race"],
+      "es": ["carrera"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "roketto",
+    "kana": "ロケット",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rocket"],
+      "es": ["cohete"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rooteeshon",
+    "kana": "ローテーション",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rotation"],
+      "es": ["rotación (turno)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rokkaa",
+    "kana": "ロッカー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["locker"],
+      "es": ["casillero"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "robii",
+    "kana": "ロビー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lobby"],
+      "es": ["vestíbulo (lobby)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rokku",
+    "kana": "ロック",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lock", "rock (music)"],
+      "es": ["bloqueo (lock)", "rock"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rokkudaun",
+    "kana": "ロックダウン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lockdown"],
+      "es": ["aislamiento"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "waifai",
+    "kana": "ワイファイ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["Wi-Fi"],
+      "es": ["wifi"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "reji",
+    "kana": "レジ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["cash register"],
+      "es": ["caja registradora"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "ruuchin",
+    "kana": "ルーチン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["routine"],
+      "es": ["rutina diaria"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rejaa",
+    "kana": "レジャー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["leisure"],
+      "es": ["ocio"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "remon",
+    "kana": "レモン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lemon"],
+      "es": ["limón (amarillo)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "resutoran",
+    "kana": "レストラン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["restaurant"],
+      "es": ["restaurante"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rebaa",
+    "kana": "レバー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lever", "liver"],
+      "es": ["palanca", "hígado"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "renzu",
+    "kana": "レンズ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["lens"],
+      "es": ["lente"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rentogen",
+    "kana": "レントゲン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["X-ray"],
+      "es": ["radiografía"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "rogu",
+    "kana": "ログ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["log"],
+      "es": ["registro", "historial (sistema, redes)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "roguin",
+    "kana": "ログイン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["log in"],
+      "es": ["iniciar sesión", "acceso al sistema"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "roguauto",
+    "kana": "ログアウト",
+    "pos": "noun",
+    "meaning": {
+      "en": ["log out"],
+      "es": ["cerrar sesión (sistema)"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "roopu",
+    "kana": "ロープ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["rope"],
+      "es": ["soga"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "roopuuei",
+    "kana": "ロープウエイ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["ropeway, cable car"],
+      "es": ["teleférico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "waiyaa",
+    "kana": "ワイヤー",
+    "pos": "noun",
+    "meaning": {
+      "en": ["wire"],
+      "es": ["guaya"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "wain",
+    "kana": "ワイン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["wine"],
+      "es": ["vino"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "wakuchin",
+    "kana": "ワクチン",
+    "pos": "noun",
+    "meaning": {
+      "en": ["vaccine"],
+      "es": ["vacuna"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "waiyaresu",
+    "kana": "ワイヤレス",
+    "pos": "noun",
+    "meaning": {
+      "en": ["wireless"],
+      "es": ["inalámbrico"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  },
+  {
+    "id": "waishatsu",
+    "kana": "ワイシャツ",
+    "pos": "noun",
+    "meaning": {
+      "en": ["dress shirt"],
+      "es": ["camisa de cuello"]
+    },
+    "tags": ["katakana"],
+    "added": "2026-10-09",
+    "source": "カタカナ語 p.13"
+  }
+]

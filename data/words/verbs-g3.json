@@ -1,0 +1,1703 @@
+[
+  {
+    "id": "kuru",
+    "kanji": "来る",
+    "kana": "くる",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to come"],
+      "es": ["venir"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "tsuretekuru",
+    "kanji": "連れて来る",
+    "kana": "つれてくる",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to bring (a person or animal) along"],
+      "es": ["traer consigo (seres animados)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "mottekuru",
+    "kanji": "持って来る",
+    "kana": "もってくる",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to bring (an object)"],
+      "es": ["traer consigo (cosas o seres inanimados)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "mukaenikuru",
+    "kanji": "迎えに来る",
+    "kana": "むかえにくる",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to come to pick (someone) up"],
+      "es": ["venir a recoger"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "suru",
+    "kana": "する",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to do"],
+      "es": ["hacer"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "benkyou-suru",
+    "kanji": "勉強する",
+    "kana": "べんきょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to study"],
+      "es": ["estudiar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "kekkon-suru",
+    "kanji": "結婚する",
+    "kana": "けっこんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to get married"],
+      "es": ["casarse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "unten-suru",
+    "kanji": "運転する",
+    "kana": "うんてんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to drive"],
+      "es": ["conducir un vehículo"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "ryouri-suru",
+    "kanji": "料理する",
+    "kana": "りょうりする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to cook"],
+      "es": ["cocinar", "hacer un plato"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "undou-suru",
+    "kanji": "運動する",
+    "kana": "うんどうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to exercise"],
+      "es": ["hacer ejercicio físico"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "sanpo-suru",
+    "kanji": "散歩する",
+    "kana": "さんぽする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to take a walk"],
+      "es": ["dar un paseo (caminata)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "renshuu-suru",
+    "kanji": "練習する",
+    "kana": "れんしゅうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to practice"],
+      "es": ["practicar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "kenka-suru",
+    "kanji": "喧嘩する",
+    "kana": "けんかする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to fight, to quarrel"],
+      "es": ["pelear"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "shoukai-suru",
+    "kanji": "紹介する",
+    "kana": "しょうかいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to introduce (someone)"],
+      "es": ["presentar", "introducir"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "daietto-suru",
+    "kana": "ダイエットする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to go on a diet"],
+      "es": ["hacer dieta"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "chikoku-suru",
+    "kanji": "遅刻する",
+    "kana": "ちこくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to be late (for)"],
+      "es": ["llegar tarde"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.1"
+  },
+  {
+    "id": "souji-suru",
+    "kanji": "掃除する",
+    "kana": "そうじする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to clean (a room)"],
+      "es": ["hacer aseo"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "sentaku-suru",
+    "kanji": "洗濯する",
+    "kana": "せんたくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to do the laundry"],
+      "es": ["lavar la ropa"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "kinchou-suru",
+    "kanji": "緊張する",
+    "kana": "きんちょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to be nervous, to get tense"],
+      "es": ["estar nervioso"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "shinpai-suru",
+    "kanji": "心配する",
+    "kana": "しんぱいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to worry"],
+      "es": ["preocuparse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "kandou-suru",
+    "kanji": "感動する",
+    "kana": "かんどうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to be moved, to be touched"],
+      "es": ["conmoverse (positivo)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "soudan-suru",
+    "kanji": "相談する",
+    "kana": "そうだんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to consult, to ask for advice"],
+      "es": ["hacer una consulta (tipo consejo)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "puropoozu-suru",
+    "kana": "プロポーズする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to propose (marriage)"],
+      "es": ["pedir la mano en matrimonio"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "sotsugyou-suru",
+    "kanji": "卒業する",
+    "kana": "そつぎょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to graduate"],
+      "es": ["graduarse (finalidad académica)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "junbi-suru",
+    "kanji": "準備する",
+    "kana": "じゅんびする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to prepare"],
+      "es": ["hacer preparación"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "ryuugaku-suru",
+    "kanji": "留学する",
+    "kana": "りゅうがくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to study abroad"],
+      "es": ["estudiar en el extranjero"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "yoyaku-suru",
+    "kanji": "予約する",
+    "kana": "よやくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to make a reservation, to book"],
+      "es": ["hacer una reservación"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "nebou-suru",
+    "kanji": "寝坊する",
+    "kana": "ねぼうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to oversleep"],
+      "es": ["quedarse dormido (no levantarse a tiempo)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "annai-suru",
+    "kanji": "案内する",
+    "kana": "あんないする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to guide, to show (someone) around"],
+      "es": ["guiar por un lugar", "mostrar el lugar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "setsumei-suru",
+    "kanji": "説明する",
+    "kana": "せつめいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to explain"],
+      "es": ["explicar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "ryokou-suru",
+    "kanji": "旅行する",
+    "kana": "りょこうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to travel"],
+      "es": ["viajar (turismo)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "kaimono-suru",
+    "kanji": "買い物する",
+    "kana": "かいものする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to go shopping"],
+      "es": ["hacer compras"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "seikou-suru",
+    "kanji": "成功する",
+    "kana": "せいこうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to succeed"],
+      "es": ["tener éxito"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "yunyuu-suru",
+    "kanji": "輸入する",
+    "kana": "ゆにゅうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to import"],
+      "es": ["importar (importación)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.2"
+  },
+  {
+    "id": "youi-suru",
+    "kanji": "用意する",
+    "kana": "よういする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to prepare, to get (something) ready"],
+      "es": ["alistar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "shitaku-suru",
+    "kanji": "支度する",
+    "kana": "したくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to get ready (to go out)"],
+      "es": ["alistarse para salir"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "keikaku-suru",
+    "kanji": "計画する",
+    "kana": "けいかくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to plan"],
+      "es": ["planear un plan", "proyecto"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "sewawosuru",
+    "kanji": "世話をする",
+    "kana": "せわをする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to take care of, to look after"],
+      "es": ["cuidar a un ser dependiente (mascota, niño, anciano, enfermo,etc)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "shippai-suru",
+    "kanji": "失敗する",
+    "kana": "しっぱいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to fail, to make a mistake"],
+      "es": ["fallar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "kyousou-suru",
+    "kanji": "競争する",
+    "kana": "きょうそうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to compete"],
+      "es": ["competir con alguien"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "anshin-suru",
+    "kanji": "安心する",
+    "kana": "あんしんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to feel relieved, to be reassured"],
+      "es": ["aliviarse (de una preocupación)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "bikkuri-suru",
+    "kana": "びっくりする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to be surprised, to be startled"],
+      "es": ["sorprenderse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "yushutsu-suru",
+    "kanji": "輸出する",
+    "kana": "ゆしゅつする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to export"],
+      "es": ["exportar (exportación)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "keiken-suru",
+    "kanji": "経験する",
+    "kana": "けいけんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to experience"],
+      "es": ["experimentar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "yakusoku-suru",
+    "kanji": "約束する",
+    "kana": "やくそくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to promise"],
+      "es": ["hacer una promesa"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "doujou-suru",
+    "kanji": "同情する",
+    "kana": "どうじょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to sympathize, to feel pity"],
+      "es": ["compadecerse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "gaman-suru",
+    "kanji": "我慢する",
+    "kana": "がまんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to put up with, to bear, to be patient"],
+      "es": ["aguantar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "gakkari-suru",
+    "kana": "がっかりする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to be disappointed"],
+      "es": ["decepcionarse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "bakanisuru",
+    "kana": "バカにする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to make a fool of, to look down on"],
+      "es": ["tomar de estúpido o pendejo a alguien"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "koukan-suru",
+    "kanji": "交換する",
+    "kana": "こうかんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to exchange, to swap"],
+      "es": ["intercambiar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.3"
+  },
+  {
+    "id": "shuppatsu-suru",
+    "kanji": "出発する",
+    "kana": "しゅっぱつする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to depart, to set off"],
+      "es": ["partir (emprender un viaje o trayecto)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "housou-suru",
+    "kanji": "放送する",
+    "kana": "ほうそうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to broadcast"],
+      "es": ["transmitir por señal pública (radio, televisión)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "hirunewosuru",
+    "kanji": "昼寝をする",
+    "kana": "ひるねをする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to take a nap (after lunch)"],
+      "es": ["hacer una siesta (después de almuerzo)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "kaminwosuru",
+    "kanji": "仮眠をする",
+    "kana": "かみんをする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to take a short nap"],
+      "es": ["tomar una siesta (microsueño)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4",
+    "note": {
+      "en": "more often said with とります (仮眠をとる)",
+      "es": "más común con とります (仮眠をとる)"
+    }
+  },
+  {
+    "id": "sansei-suru",
+    "kanji": "賛成する",
+    "kana": "さんせいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to agree, to approve"],
+      "es": ["estar de acuerdo"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "hantai-suru",
+    "kanji": "反対する",
+    "kana": "はんたいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to oppose, to object"],
+      "es": ["oponerse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "tetsuya-suru",
+    "kanji": "徹夜する",
+    "kana": "てつやする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to stay up all night (working, studying)"],
+      "es": ["trasnochar por deber (trabajo, estudio,etc)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "chuumon-suru",
+    "kanji": "注文する",
+    "kana": "ちゅうもんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to order (food, goods)"],
+      "es": ["pedir (un pedido)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "honyaku-suru",
+    "kanji": "翻訳する",
+    "kana": "ほんやくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to translate"],
+      "es": ["hacer traducción"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "yofukashi-suru",
+    "kanji": "夜更かしする",
+    "kana": "よふかしする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to stay up late (for fun)"],
+      "es": ["trasnochar por gusto (fiesta, juegos, series, etc)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "kegawosuru",
+    "kanji": "怪我をする",
+    "kana": "けがをする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to get injured"],
+      "es": ["lesionarse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "rikon-suru",
+    "kanji": "離婚する",
+    "kana": "りこんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to get divorced"],
+      "es": ["divorciarse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "renraku-suru",
+    "kanji": "連絡する",
+    "kana": "れんらくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to contact, to get in touch"],
+      "es": ["contactar a alguien"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "onegai-suru",
+    "kanji": "お願いする",
+    "kana": "おねがいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to ask (a favor), to request"],
+      "es": ["pedir un favor"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.4"
+  },
+  {
+    "id": "chuui-suru",
+    "kanji": "注意する",
+    "kana": "ちゅういする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to warn, to caution", "to pay attention"],
+      "es": ["llamar la atención", "poner atención"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "kyouryoku-suru",
+    "kanji": "協力する",
+    "kana": "きょうりょくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to cooperate, to collaborate"],
+      "es": ["colaborar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "jushou-suru",
+    "kanji": "受賞する",
+    "kana": "じゅしょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to receive an award"],
+      "es": ["recibir un premio (Ej, nobel)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "nagaiki-suru",
+    "kanji": "長生きする",
+    "kana": "ながいきする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to live long"],
+      "es": ["vivir longevo"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "yuushou-suru",
+    "kanji": "優勝する",
+    "kana": "ゆうしょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to win (a championship)"],
+      "es": ["ganar (todo un torneo o campeonato)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "keisan-suru",
+    "kanji": "計算する",
+    "kana": "けいさんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to calculate"],
+      "es": ["hacer cálculo matemático"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "soutai-suru",
+    "kanji": "早退する",
+    "kana": "そうたいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to leave early (work, school)"],
+      "es": ["retirarse a mitad de jornada (laboral,académica)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "nyuuin-suru",
+    "kanji": "入院する",
+    "kana": "にゅういんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to be hospitalized"],
+      "es": ["ser hospitalizado"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "kansha-suru",
+    "kanji": "感謝する",
+    "kana": "かんしゃする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to thank, to be grateful"],
+      "es": ["agradecer"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "haiken-suru",
+    "kanji": "拝見する",
+    "kana": "はいけんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to see, to look at (humble)"],
+      "es": ["ver", "revisar (situación formal)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "konyaku-suru",
+    "kanji": "婚約する",
+    "kana": "こんやくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to get engaged"],
+      "es": ["comprometerse a matrimonio"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "nyuuryoku-suru",
+    "kanji": "入力する",
+    "kana": "にゅうりょくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to input, to type in (data)"],
+      "es": ["introducir datos", "digitar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "chousetsu-suru",
+    "kanji": "調節する",
+    "kana": "ちょうせつする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to adjust, to regulate"],
+      "es": ["graduar", "ajustar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "touchaku-suru",
+    "kanji": "到着する",
+    "kana": "とうちゃくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to arrive"],
+      "es": ["arribar", "llegar en vehículo"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "seiri-suru",
+    "kanji": "整理する",
+    "kana": "せいりする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to organize, to put in order"],
+      "es": ["organizar", "poner orden a las cosas"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "taiin-suru",
+    "kanji": "退院する",
+    "kana": "たいいんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to be discharged from hospital"],
+      "es": ["ser dado de alta"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.5"
+  },
+  {
+    "id": "riyou-suru",
+    "kanji": "利用する",
+    "kana": "りようする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to use, to make use of"],
+      "es": ["usar (para beneficio personal)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "hakken-suru",
+    "kanji": "発見する",
+    "kana": "はっけんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to discover"],
+      "es": ["descubrir"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "shoutai-suru",
+    "kanji": "招待する",
+    "kana": "しょうたいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to invite (formally)"],
+      "es": ["invitar (invitación formal. Ej, matrimonio)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "setsuyaku-suru",
+    "kanji": "節約する",
+    "kana": "せつやくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to save, to economize"],
+      "es": ["economizar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "shitsumon-suru",
+    "kanji": "質問する",
+    "kana": "しつもんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to ask a question"],
+      "es": ["hacer una pregunta"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "goukaku-suru",
+    "kanji": "合格する",
+    "kana": "ごうかくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to pass (an exam)"],
+      "es": ["aprobar una evaluación"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "shusseki-suru",
+    "kanji": "出席する",
+    "kana": "しゅっせきする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to attend (an event, a class)"],
+      "es": ["asistir a un evento"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "yoshuu-suru",
+    "kanji": "予習する",
+    "kana": "よしゅうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to prepare a lesson in advance"],
+      "es": ["adelantarse en tema (académico)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "sanka-suru",
+    "kanji": "参加する",
+    "kana": "さんかする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to participate, to take part"],
+      "es": ["participar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "sekkei-suru",
+    "kanji": "設計する",
+    "kana": "せっけいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to design (plans, blueprints)"],
+      "es": ["diseñar (planos)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "hatsumei-suru",
+    "kanji": "発明する",
+    "kana": "はつめいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to invent"],
+      "es": ["inventar (invención)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "chokin-suru",
+    "kanji": "貯金する",
+    "kana": "ちょきんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to save money"],
+      "es": ["ahorrar dinero"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "chousen-suru",
+    "kanji": "挑戦する",
+    "kana": "ちょうせんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to challenge, to take on a challenge"],
+      "es": ["retarse", "tomar un reto"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "yukkuri-suru",
+    "kana": "ゆっくりする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to relax, to take it easy"],
+      "es": ["pasar el rato relajado"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "kyuukei-suru",
+    "kanji": "休憩する",
+    "kana": "きゅうけいする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to take a break"],
+      "es": ["tomar un descanso corto"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "fukushuu-suru-review",
+    "kanji": "復習する",
+    "kana": "ふくしゅうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to review (a lesson)"],
+      "es": ["repasar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "fukushuu-suru-revenge",
+    "kanji": "復讐する",
+    "kana": "ふくしゅうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to take revenge"],
+      "es": ["tomar venganza"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "hikkoshi-suru",
+    "kanji": "引っ越しする",
+    "kana": "ひっこしする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to move (house)"],
+      "es": ["hacer una mudanza"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.6"
+  },
+  {
+    "id": "denwa-suru",
+    "kanji": "電話する",
+    "kana": "でんわする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to phone, to call"],
+      "es": ["hacer una llamada"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "kengaku-suru",
+    "kanji": "見学する",
+    "kana": "けんがくする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to visit (a museum, a site) for study"],
+      "es": ["visitar (lugar cultural. Ej, centro histórico, museos, etc)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "zangyou-suru",
+    "kanji": "残業する",
+    "kana": "ざんぎょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to work overtime"],
+      "es": ["trabajar horas extra"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "shokuji-suru",
+    "kanji": "食事する",
+    "kana": "しょくじする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to have a meal"],
+      "es": ["comer (tener una comida)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "settei-suru",
+    "kanji": "設定する",
+    "kana": "せっていする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to set up, to configure"],
+      "es": ["configurar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "kopii-suru",
+    "kana": "コピーする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to copy, to photocopy"],
+      "es": ["sacar fotocopias"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "daunroodo-suru",
+    "kana": "ダウンロードする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to download"],
+      "es": ["descargar (sistemas)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "kaiketsu-suru",
+    "kanji": "解決する",
+    "kana": "かいけつする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to solve, to be solved"],
+      "es": ["solucionarse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "shuuri-suru",
+    "kanji": "修理する",
+    "kana": "しゅうりする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to repair"],
+      "es": ["reparar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "shutchou-suru",
+    "kanji": "出張する",
+    "kana": "しゅっちょうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to go on a business trip"],
+      "es": ["hacer un viaje de negocios o trabajo"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "kenkyuu-suru",
+    "kanji": "研究する",
+    "kana": "けんきゅうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to research, to do research"],
+      "es": ["hacer una investigación (académica)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "chousa-suru",
+    "kanji": "調査する",
+    "kana": "ちょうさする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to investigate, to survey"],
+      "es": ["hacer una investigación (recopilación de datos)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "setchi-suru",
+    "kanji": "設置する",
+    "kana": "せっちする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to install, to set up (physically)"],
+      "es": ["instalar algo físico (Ej, una repisa)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "supootsu-suru",
+    "kana": "スポーツする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to play sports"],
+      "es": ["hacer deporte"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "insutooru-suru",
+    "kana": "インストールする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to install (software)"],
+      "es": ["instalar (sistemas)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "kakunin-suru",
+    "kanji": "確認する",
+    "kana": "かくにんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to confirm, to check"],
+      "es": ["confirmar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.7"
+  },
+  {
+    "id": "jisatsu-suru",
+    "kanji": "自殺する",
+    "kana": "じさつする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to commit suicide"],
+      "es": ["suicidarse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  },
+  {
+    "id": "seigen-suru",
+    "kanji": "制限する",
+    "kana": "せいげんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to limit, to restrict"],
+      "es": ["limitar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  },
+  {
+    "id": "hozon-suru",
+    "kanji": "保存する",
+    "kana": "ほぞんする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to save (a file)", "to preserve"],
+      "es": ["guardar", "preservar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  },
+  {
+    "id": "dokusho-suru",
+    "kanji": "読書する",
+    "kana": "どくしょする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to read (as an activity)"],
+      "es": ["leer (actividad)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  },
+  {
+    "id": "souzou-suru",
+    "kanji": "想像する",
+    "kana": "そうぞうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to imagine"],
+      "es": ["imaginarse"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  },
+  {
+    "id": "hitei-suru",
+    "kanji": "否定する",
+    "kana": "ひていする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to deny"],
+      "es": ["negar"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  },
+  {
+    "id": "henkou-suru",
+    "kanji": "変更する",
+    "kana": "へんこうする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to change, to modify (a plan)"],
+      "es": ["modificar (plan, agenda)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  },
+  {
+    "id": "uwaki-suru",
+    "kanji": "浮気する",
+    "kana": "うわきする",
+    "pos": "verb",
+    "verbGroup": 3,
+    "meaning": {
+      "en": ["to cheat (on a partner)"],
+      "es": ["poner cachos (traición de romance)"]
+    },
+    "tags": [],
+    "added": "2026-10-09",
+    "source": "動詞グループ３ p.8"
+  }
+]

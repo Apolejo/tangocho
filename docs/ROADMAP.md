@@ -64,7 +64,7 @@ Goal: your notebook in the app, safely.
 - [x] Review `.claude/skills/add-vocab/SKILL.md` against the real validator and adjust it.
 - [x] Ask Claude for a hook that runs `npm run validate` after any edit in `data/` and exits with code 2 when validation fails. With code 2 the report goes back to Claude; with code 1 you'd only see a notice.
 - [x] Import one real notebook page with `/add-vocab notebook-1 p.1`; decide every flag yourself; commit.
-- [ ] Import the rest of the notebook, a few pages per session.
+- [x] Import the rest of the notebook, a few pages per session.
 
 Done when: your own words are live on the phone; you decided every flagged item; the hook catches a deliberately broken data edit.
 

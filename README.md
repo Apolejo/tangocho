@@ -7,7 +7,7 @@ Minigames for drilling the Japanese vocabulary from my own notebook (a quick qui
 - Roadmap and status: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Instructions for Claude Code: [CLAUDE.md](CLAUDE.md)
 
-Status: M2, the import pipeline. The notebook shows my own words, imported page by page with `/add-vocab`; the games arrive from M3.
+Status: M2 done. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`; the games arrive from M3.
 
 ## Run it
 

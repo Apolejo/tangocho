@@ -165,27 +165,38 @@ A card is a (word, skill) pair with its own spaced-repetition state.
 
 `src/play/` runs every round: it builds the queue (§10.2), times answers, keeps score, shows ◯/✕ feedback and explanations, logs events and shows results. A game only renders one question and judges one answer. Games stay small and consistent, and mixed review sessions across games become possible later.
 
-Starting shape, to be refined in the M3 plan:
+The shape, as built in M3:
 
 ```ts
 // src/games/types.ts
 export interface Minigame {
   id: GameId;                              // 'quiz' | 'sorter' | 'kana' | 'conjugation'
-  name: Localized;                         // { en, es }
+  nameKey: MessageKey;                     // UI text lives in src/i18n
+  nameJa: string;                          // Japanese subtitle on the game card
+  descriptionKey: MessageKey;
   skills: Skill[];
+  options: OptionKey[];                    // which setup controls to show: 'furigana', 'direction'
+  skillsFor(options): Skill[];             // the skills a round trains; the queue picks one per card
+  variant(options): string;                // the game's part of the personal-best key (§10.3)
   eligible(word: Word, skill: Skill): boolean;
   minPool: number;                         // fewer eligible words → game disabled with a message
+  available(allWords, lang): boolean;      // a game-specific check, explained by unavailableKey
+  unavailableKey: MessageKey;
   Question: ComponentType<QuestionProps>;  // renders one question, calls onAnswer exactly once
 }
 
 export interface QuestionProps {
   card: Card;                              // { wordId, skill, form? }
   word: Word;
-  pool: Word[];                            // all eligible words, e.g. for distractors
-  options: RoundOptions;                   // furigana, direction, inputMode, forms
-  onAnswer(result: AnswerResult): void;    // { correct, hinted, given, expected, explanation? }
+  pool: Word[];                            // all eligible words of the selected decks, e.g. for distractors
+  allWords: Word[];                        // every word, for when the decks alone aren't enough
+  options: RoundOptions;                   // furigana, direction (inputMode and forms arrive in M5, M7)
+  seed: number;                            // seeds the question's randomness, so rendering stays pure
+  onAnswer(result: AnswerResult): void;    // { correct, hinted, given, expected, expectedLang?, explanation? }
 }
 ```
+
+The round queue is shuffled until M8 brings the §10.2 order: each word at most once, round size = min(10 or 20, pool). *Quit* goes back to setup; answers already given stay logged, and no round event is written.
 
 Answer checking and distractor generation are pure functions next to each game, with unit tests.
 
@@ -203,8 +214,8 @@ Each game's "Done when" line is its acceptance test.
 
 ### 9.1 Quick quiz — `meaning`, `recall`
 
-- Forward: Japanese → four meanings in the current language. Reverse: a meaning → four Japanese options.
-- Exactly one correct option, and no two options with the same displayed text. Distractors prefer the same `pos` from the selected decks, then any deck.
+- Forward: Japanese → four meanings in the current language (every gloss, joined as in the notebook). Reverse: a meaning → four Japanese options. Mixed: a direction per question.
+- Exactly one correct option, and no two options with the same displayed text. A distractor never shares a gloss with the answer in either language (parenthesized details ignored: "tomar (fotos)" counts as "tomar"), and never looks the same in Japanese. Distractors prefer the same `pos` from the selected decks, then the same `pos` from any deck, then any word.
 - Disabled, with a message, when the whole word list has fewer than four distinct meanings.
 
 Done when: e2e answers right and wrong by keyboard (desktop) and by tap (mobile), with furigana on and off, in both directions.
@@ -250,7 +261,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 
 ### 10.1 Event log
 
-- Every answer appends an `AnswerEvent { id, at, roundId, game, wordId, skill, form?, correct, hinted, ms, device }`; every finished round appends a `RoundEvent { id, at, game, deckIds, size, score, correct, total }`.
+- Every answer appends an `AnswerEvent { type: 'answer', id, at, roundId, game, wordId, skill, form?, correct, hinted, ms, device }`; every finished round appends a `RoundEvent { type: 'round', id, at, game, deckIds, size, variant, practice, score, correct, total }`. The round event's `id` is the `roundId` of its answers; it is written with the last answer. `at` is an ISO timestamp; `device` is a random id per install; `variant` is the game's part of the personal-best key (the quiz direction); `practice` marks a *Practice these* round.
 - Events are append-only, in IndexedDB. Spaced-repetition state, scores, streaks and mastery are derived from them (cached for speed, always rebuildable).
 - Export saves the event log as a JSON file. Import merges by event id (importing the same file twice changes nothing) and rebuilds. This is how progress moves between phone and computer in v1.
 - Ask for persistent storage (`navigator.storage.persist()`). Browsers may clear data for sites that haven't been used in a while, Safari on iPhone especially, so install the app on the phone; Settings shows the last export date and reminds me after 7 days.
@@ -265,7 +276,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 ### 10.3 Scores
 
 - A correct answer earns 100 × combo multiplier (starts at 1.0, +0.1 per consecutive correct answer, max 2.0). A hinted answer earns half. A wrong answer earns 0 and resets the combo.
-- Personal best per (game, deck selection, round size); beating it shows a 新記録 stamp.
+- Personal best per (game, deck selection, round size, variant), where the variant is the quiz direction; derived from the round events. Beating it shows a 新記録 stamp, and so does the first round for a key when it scores above 0. *Practice these* rounds never count.
 
 ### 10.4 Daily goal and streak
 

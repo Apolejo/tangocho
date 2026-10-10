@@ -6,16 +6,69 @@
 import { mkdirSync } from 'node:fs';
 import { relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { chromium } from 'playwright';
+import { chromium, type Page } from 'playwright';
 import { createServer } from 'vite';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const OUT = fileURLToPath(new URL('../shots/', import.meta.url));
 
-/** Add a line here when a screen appears. */
-const SCREENS = [
+/** Answers the current quiz question right or wrong by keyboard (the e2e trick: matching word ids). */
+async function answerQuiz(page: Page, correct: boolean): Promise<void> {
+  const target = await page.locator('[data-quiz-prompt]').getAttribute('data-word-id');
+  const choices = page.locator('[data-choice]');
+  const ids: (string | null)[] = [];
+  for (let i = 0; i < (await choices.count()); i++) {
+    ids.push(await choices.nth(i).getAttribute('data-word-id'));
+  }
+  const index = correct ? ids.indexOf(target) : ids.findIndex((id) => id !== target);
+  await page.keyboard.press(String(index + 1));
+}
+
+async function startQuiz(page: Page): Promise<void> {
+  await page.getByRole('button', { name: 'Start' }).click();
+  await page.locator('[data-quiz-prompt]').waitFor();
+}
+
+/** A round of 10 with two misses, ending on the results screen. */
+async function playQuizRound(page: Page): Promise<void> {
+  await startQuiz(page);
+  for (let i = 0; i < 10; i++) {
+    await page
+      .locator('[data-progress]')
+      .getByText(`${i + 1} / 10`)
+      .waitFor();
+    const correct = i !== 2 && i !== 6;
+    await answerQuiz(page, correct);
+    if (!correct) await page.keyboard.press('Enter');
+  }
+  await page.getByRole('heading', { name: 'Results' }).waitFor();
+}
+
+/** Add a line here when a screen appears. `steps` clicks through to screens without a URL. */
+const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<void> }[] = [
   { name: 'notebook', hash: '#/notebook' },
   { name: 'notebook-verbs-g2', hash: '#/notebook/verbs-g2' },
+  { name: 'play', hash: '#/play' },
+  { name: 'quiz-setup', hash: '#/play/quiz' },
+  { name: 'quiz-question', hash: '#/play/quiz', steps: startQuiz },
+  {
+    name: 'quiz-correct',
+    hash: '#/play/quiz',
+    steps: async (page) => {
+      await startQuiz(page);
+      await answerQuiz(page, true);
+    },
+  },
+  {
+    name: 'quiz-wrong',
+    hash: '#/play/quiz',
+    steps: async (page) => {
+      await startQuiz(page);
+      await answerQuiz(page, false);
+      await page.getByRole('button', { name: 'Continue' }).waitFor();
+    },
+  },
+  { name: 'quiz-results', hash: '#/play/quiz', steps: playQuizRound },
 ];
 
 const VIEWPORTS = [
@@ -55,6 +108,7 @@ async function main(): Promise<void> {
           });
           const page = await context.newPage();
           await page.goto(url + screen.hash, { waitUntil: 'networkidle' });
+          await screen.steps?.(page);
           await page.evaluate('document.fonts.ready');
           const file = `${OUT}${screen.name}-${viewport.name}-${colorScheme}.png`;
           await page.screenshot({ path: file, fullPage });

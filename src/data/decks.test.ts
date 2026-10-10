@@ -5,6 +5,7 @@ import {
   matchesDeck,
   notebookDecks,
   wordsInDeck,
+  wordsInDecks,
   type NotebookDeck,
 } from './decks.ts';
 import type { Deck, Word } from './schema.ts';
@@ -91,5 +92,29 @@ describe('wordsInDeck', () => {
     expect(wordsInDeck(all, words, now)).toEqual(words);
     expect(wordsInDeck(fresh, words, now).map((w) => w.id)).toEqual(['kaku', 'taberu']);
     expect(wordsInDeck(data, words, now).map((w) => w.id)).toEqual(['sensei']);
+  });
+});
+
+describe('wordsInDecks', () => {
+  const now = new Date(2026, 9, 8);
+  const words = [verb1, verb2, noun];
+  const deck = (id: string, match: Deck['match']): NotebookDeck => ({
+    kind: 'data',
+    deck: { id, name: { en: id, es: id }, match },
+  });
+
+  it('joins the decks, each word once, in data order', () => {
+    const occupations = deck('occupations', { tags: ['occupations'] });
+    const group1 = deck('verbs-g1', { pos: 'verb', verbGroup: 1 });
+    const verbs = deck('verbs', { pos: 'verb' });
+    expect(wordsInDecks([occupations, group1], words, now).map((w) => w.id)).toEqual([
+      'kaku',
+      'sensei',
+    ]);
+    expect(wordsInDecks([verbs, group1], words, now).map((w) => w.id)).toEqual(['kaku', 'taberu']);
+  });
+
+  it('is empty for no decks', () => {
+    expect(wordsInDecks([], words, now)).toEqual([]);
   });
 });

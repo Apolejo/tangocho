@@ -1,0 +1,40 @@
+.stamp {
+  display: block;
+  flex: none;
+  width: var(--stamp-size);
+  height: var(--stamp-size);
+  stroke: currentColor;
+}
+
+.maru {
+  color: var(--shu);
+  transform: rotate(-6deg);
+}
+
+.batsu {
+  color: var(--ink);
+  transform: rotate(4deg);
+}
+
+.hanamaru {
+  width: var(--stamp-size-lg);
+  height: var(--stamp-size-lg);
+  color: var(--shu);
+  transform: rotate(-8deg);
+}
+
+/* a square seal with a double border, like a red hanko */
+.record {
+  display: inline-block;
+  flex: none;
+  padding: var(--space-1) var(--space-2);
+  border: 3px double var(--shu);
+  border-radius: var(--radius-sm);
+  color: var(--shu);
+  font-family: var(--font-ja);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  transform: rotate(-6deg);
+}

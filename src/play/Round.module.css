@@ -1,0 +1,138 @@
+.round {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4) var(--space-6);
+}
+
+.bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.quit {
+  min-height: var(--tap-min);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.count {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--rule);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ai);
+  transition: inline-size 200ms ease;
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-3);
+  margin: 0;
+  text-align: end;
+}
+
+.stats dt {
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+}
+
+.stats dd {
+  margin: 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* the question sits on a ruled card, with the stamp pressed onto its corner */
+.sheet {
+  position: relative;
+  padding: var(--space-2) var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.stamp {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-3);
+  pointer-events: none;
+}
+
+.feedback {
+  min-height: 1.5em;
+  text-align: center;
+}
+
+.feedback p {
+  margin: 0;
+}
+
+.correct {
+  color: var(--shu);
+  font-weight: 700;
+}
+
+.wrong {
+  font-weight: 700;
+}
+
+.expected {
+  font-family: var(--font-ja);
+}
+
+.expected:not(:lang(ja)) {
+  font-family: inherit;
+}
+
+.explanation {
+  margin-top: var(--space-1);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.continue {
+  align-self: stretch;
+  min-height: calc(var(--tap-min) + var(--space-2));
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--ai);
+  color: var(--paper);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .continue {
+    align-self: center;
+    min-width: 16rem;
+  }
+}

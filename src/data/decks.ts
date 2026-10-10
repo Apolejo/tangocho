@@ -46,3 +46,13 @@ export function wordsInDeck(deck: NotebookDeck, words: readonly Word[], now: Dat
       return words.filter((w) => matchesDeck(w, deck.deck.match));
   }
 }
+
+/** A round over several decks uses their union (SPEC §5.2): each word once, in data order. */
+export function wordsInDecks(
+  selected: readonly NotebookDeck[],
+  words: readonly Word[],
+  now: Date,
+): Word[] {
+  const ids = new Set(selected.flatMap((deck) => wordsInDeck(deck, words, now).map((w) => w.id)));
+  return words.filter((w) => ids.has(w.id));
+}

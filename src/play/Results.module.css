@@ -1,0 +1,132 @@
+.results {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4) var(--space-6);
+}
+
+.title {
+  margin: var(--space-2) 0 var(--space-3);
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.card {
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.scoreLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.scoreLabel {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.score {
+  margin: 0;
+  font-size: var(--text-score);
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stamps {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.accuracy {
+  margin: var(--space-2) 0 0;
+}
+
+.best {
+  min-height: 1.5em;
+  margin: var(--space-1) 0 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.subtitle {
+  margin: var(--space-5) 0 var(--space-2);
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.page {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* the red margin line of ruled paper, as in the notebook */
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--space-4);
+  width: 1px;
+  background: var(--margin-line);
+  pointer-events: none;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  margin: 0;
+  padding: var(--space-5);
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.primary,
+.secondary {
+  min-height: calc(var(--tap-min) + var(--space-2));
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary {
+  border: none;
+  background: var(--ai);
+  color: var(--paper);
+}
+
+.secondary {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

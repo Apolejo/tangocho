@@ -82,7 +82,7 @@ Done when: §9.1 passes; every answer appends an event; personal bests survive a
 
 ## M4 — Verb group sorter · SPEC §9.2
 
-- [ ] The game with its rule explanations, using the round shell from M3 unchanged (if the shell needs a change, the plan says why).
+- [x] The game with its rule explanations, using the round shell from M3 unchanged (if the shell needs a change, the plan says why).
 
 Done when: §9.2 passes.
 

@@ -62,6 +62,23 @@ async function answerSorter(page: Page, group: 1 | 2): Promise<void> {
   await page.locator('[data-explanation]').waitFor();
 }
 
+/** Starts a kana typing round in a mode; recall over the katakana deck. */
+async function startKana(page: Page, mode: 'Reading' | 'Recall'): Promise<void> {
+  await page.getByRole('radio', { name: new RegExp(`^${mode}:`) }).check();
+  if (mode === 'Recall') {
+    await page.getByRole('checkbox', { name: /All words/ }).uncheck();
+    await page.getByRole('checkbox', { name: /Katakana words/ }).check();
+  }
+  await page.getByRole('button', { name: 'Start' }).click();
+  await page.locator('[data-kana-prompt]').waitFor();
+}
+
+/** Types the current word's id, which is the romaji of its reading (minus any gloss), with any data. */
+async function typeKanaId(page: Page): Promise<void> {
+  const id = (await page.locator('[data-kana-prompt]').getAttribute('data-word-id')) ?? '';
+  await page.keyboard.type(id.split('-')[0] ?? '');
+}
+
 /** Add a line here when a screen appears. `steps` clicks through to screens without a URL. */
 const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<void> }[] = [
   { name: 'notebook', hash: '#/notebook' },
@@ -103,6 +120,44 @@ const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<voi
     steps: async (page) => {
       await startSorter(page);
       await answerSorter(page, 2);
+    },
+  },
+  { name: 'kana-setup', hash: '#/play/kana' },
+  {
+    name: 'kana-question',
+    hash: '#/play/kana',
+    steps: async (page) => {
+      await startKana(page, 'Reading');
+      await typeKanaId(page);
+    },
+  },
+  {
+    name: 'kana-hint',
+    hash: '#/play/kana',
+    steps: async (page) => {
+      await startKana(page, 'Reading');
+      await page.getByRole('button', { name: 'Hint' }).click();
+      await page.locator('[data-hint]').waitFor();
+    },
+  },
+  {
+    name: 'kana-wrong',
+    hash: '#/play/kana',
+    steps: async (page) => {
+      await startKana(page, 'Reading');
+      await page.keyboard.type('tanaka');
+      await page.keyboard.press('Enter');
+      await page.getByRole('button', { name: 'Continue' }).waitFor();
+    },
+  },
+  {
+    name: 'kana-recall',
+    hash: '#/play/kana',
+    steps: async (page) => {
+      await startKana(page, 'Recall');
+      await typeKanaId(page);
+      await page.keyboard.press('Enter');
+      await page.locator('[data-kana-reveal]').waitFor();
     },
   },
 ];

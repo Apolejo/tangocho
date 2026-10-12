@@ -1,15 +1,62 @@
+/* phone: brand and language on top, the sections below; wider: one row */
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'brand . lang'
+    'nav nav nav';
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+  gap: var(--space-2) var(--space-3);
   max-width: var(--page-max);
   margin: 0 auto;
   padding: var(--space-4) var(--space-4) var(--space-2);
 }
 
+@media (min-width: 640px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'brand nav lang';
+  }
+}
+
+.lang {
+  grid-area: lang;
+}
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  gap: var(--space-1);
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: var(--ink);
+}
+
+.navLink[aria-current='page'] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--shu);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
 /* a strip of washi tape holding the title down */
 .brand {
+  grid-area: brand;
+  justify-self: start;
   position: relative;
   display: inline-flex;
   align-items: baseline;

@@ -72,11 +72,11 @@ Done when: your own words are live on the phone; you decided every flagged item;
 
 Goal: the first complete game, and the architecture every other game reuses.
 
-- [ ] The `Minigame` interface and the round shell: queue, timing, score and combo, ◯/✕ feedback.
-- [ ] Game setup, play and results screens.
-- [ ] Round queue: shuffled for now; the spaced-repetition order (§10.2) arrives in M8.
-- [ ] Event log in IndexedDB; personal bests.
-- [ ] Quick quiz in both directions.
+- [x] The `Minigame` interface and the round shell: queue, timing, score and combo, ◯/✕ feedback.
+- [x] Game setup, play and results screens.
+- [x] Round queue: shuffled for now; the spaced-repetition order (§10.2) arrives in M8.
+- [x] Event log in IndexedDB; personal bests.
+- [x] Quick quiz in both directions.
 
 Done when: §9.1 passes; every answer appends an event; personal bests survive a reload.
 

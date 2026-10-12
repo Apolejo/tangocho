@@ -1,0 +1,80 @@
+.hub {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4) var(--space-6);
+}
+
+.title {
+  margin: var(--space-3) 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* each game is an index card held by a strip of washi tape */
+.game {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'name ja'
+    'description description'
+    'warning warning';
+  gap: var(--space-1) var(--space-3);
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 120ms ease;
+}
+
+.game::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: var(--space-5);
+  width: 4.5rem;
+  height: 18px;
+  background: var(--washi);
+  transform: rotate(-3deg);
+}
+
+.game:hover {
+  border-color: var(--ai);
+}
+
+.name {
+  grid-area: name;
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.ja {
+  grid-area: ja;
+  color: var(--ink-soft);
+  font-family: var(--font-ja);
+  font-weight: 600;
+}
+
+.description {
+  grid-area: description;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.warning {
+  grid-area: warning;
+  color: var(--shu);
+  font-size: var(--text-sm);
+}

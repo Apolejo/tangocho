@@ -7,7 +7,7 @@ Minigames for drilling the Japanese vocabulary from my own notebook (a quick qui
 - Roadmap and status: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Instructions for Claude Code: [CLAUDE.md](CLAUDE.md)
 
-Status: M2 done. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`; the games arrive from M3.
+Status: M3 done. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`. The quick quiz is playable (Play tab); every answer goes into a progress log in IndexedDB, and personal bests come from it. The other games arrive from M4.
 
 ## Run it
 
@@ -37,6 +37,9 @@ Open http://localhost:5173/tangocho/ (the `/tangocho/` path matches the GitHub P
 - `data/fixtures/words.json`: a frozen copy of the sample words. Tests never read `data/words/`, so adding vocabulary can't break a test.
 - `src/data/`: the Zod schema, the §5.5 rules and the deck queries, shared by the app and the validator.
 - `src/lib/`: pure helpers such as furigana placement.
+- `src/games/`: the `Minigame` interface and one folder per game; a game renders one question and judges one answer (SPEC §8.2).
+- `src/play/`: the round shell, shared by every game: setup, queue, scoring, ◯/✕ feedback, logging and results.
+- `src/progress/`: the append-only event log in IndexedDB (Dexie) and what's derived from it, such as personal bests (§10).
 - `src/i18n/`: every UI string, in English and Spanish.
 - `src/styles/tokens.css`: every color and size.
 - `scripts/`: the validator and the screenshot script.

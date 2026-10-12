@@ -14,6 +14,8 @@ import { Stamp } from './Stamp.tsx';
 
 /** A correct answer moves on by itself after this long (SPEC §8.3). */
 const ADVANCE_MS = 800;
+/** …or after this long when it comes with a rule, so the rule can be read. */
+const RULE_ADVANCE_MS = 2500;
 
 /** Logging never blocks play: a failed write is reported and the round goes on. */
 function log(event: ProgressEvent): void {
@@ -105,19 +107,22 @@ export function Round({
     else dispatch({ type: 'next' });
   };
 
-  // correct: move on after a moment; wrong: wait for Continue
+  // correct: move on after a moment (longer with a rule); wrong: wait for Continue
   const advanceLater = useEffectEvent(advance);
   const correctShown = feedback?.result.correct === true;
+  const ruleShown = feedback?.result.explanation !== undefined;
   useEffect(() => {
     if (!correctShown) return;
-    const timer = window.setTimeout(advanceLater, ADVANCE_MS);
+    const timer = window.setTimeout(advanceLater, ruleShown ? RULE_ADVANCE_MS : ADVANCE_MS);
     return () => window.clearTimeout(timer);
-  }, [correctShown, state.index]);
+  }, [correctShown, ruleShown, state.index]);
 
+  // Continue after a wrong answer, and after a correct one with a rule, to move on sooner
   const wrongShown = feedback?.result.correct === false;
+  const continueShown = wrongShown || (correctShown && ruleShown);
   useEffect(() => {
-    if (wrongShown) continueRef.current?.focus();
-  }, [wrongShown, state.index]);
+    if (continueShown) continueRef.current?.focus();
+  }, [continueShown, state.index]);
 
   // Enter or Space continues, unless a control has focus (a focused button handles them itself)
   const onKey = useEffectEvent((e: KeyboardEvent) => {
@@ -191,25 +196,28 @@ export function Round({
       </div>
 
       <div className={styles.feedback} role="status">
-        {feedback !== undefined &&
-          (feedback.result.correct ? (
-            <p className={styles.correct}>{t('feedback_correct')}</p>
-          ) : (
-            <>
+        {feedback !== undefined && (
+          <>
+            {feedback.result.correct ? (
+              <p className={styles.correct}>{t('feedback_correct')}</p>
+            ) : (
               <p className={styles.wrong}>
                 {t('feedback_wrong')} {t('feedback_answer')}{' '}
                 <span className={styles.expected} lang={feedback.result.expectedLang}>
                   {feedback.result.expected}
                 </span>
               </p>
-              {feedback.result.explanation !== undefined && (
-                <p className={styles.explanation}>{feedback.result.explanation}</p>
-              )}
-            </>
-          ))}
+            )}
+            {ruleShown && (
+              <p className={styles.explanation} data-explanation>
+                {feedback.result.explanation}
+              </p>
+            )}
+          </>
+        )}
       </div>
 
-      {wrongShown && (
+      {continueShown && (
         <button ref={continueRef} type="button" className={styles.continue} onClick={advance}>
           {t('feedback_continue')}
         </button>

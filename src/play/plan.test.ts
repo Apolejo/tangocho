@@ -1,0 +1,61 @@
+import { describe, expect, it } from 'vitest';
+import fixtures from '../../data/fixtures/words.json';
+import { WordsFileSchema } from '../data/schema.ts';
+import { quiz } from '../games/quiz/index.ts';
+import { sorter } from '../games/sorter/index.ts';
+import type { RoundOptions } from '../games/types.ts';
+import { mulberry32 } from '../lib/random.ts';
+import { eligibleWords, planRound } from './plan.ts';
+
+const all = WordsFileSchema.parse(fixtures);
+const verbs = all.filter((w) => w.pos === 'verb');
+const options: RoundOptions = { furigana: true, direction: 'forward' };
+
+describe('eligibleWords', () => {
+  it('keeps every word for the quiz', () => {
+    expect(eligibleWords(quiz, options, all)).toEqual(all);
+  });
+
+  it('keeps only the verbs for the sorter', () => {
+    expect(verbs.length).toBeGreaterThan(0);
+    expect(verbs.length).toBeLessThan(all.length);
+    expect(eligibleWords(sorter, options, all)).toEqual(verbs);
+  });
+});
+
+describe('planRound', () => {
+  it('asks the sorter about verbs only, with the group skill', () => {
+    for (const seed of [1, 2, 3]) {
+      const plan = planRound({
+        id: 'r',
+        game: sorter,
+        deckIds: ['all'],
+        size: 20,
+        options,
+        words: all,
+        rng: mulberry32(seed),
+      });
+      expect(plan.pool).toEqual(verbs);
+      expect(plan.queue).toHaveLength(20);
+      for (const { card } of plan.queue) {
+        expect(card.skill).toBe('group');
+        expect(verbs.some((w) => w.id === card.wordId)).toBe(true);
+      }
+    }
+  });
+
+  it('gives an empty queue when the decks have no verbs', () => {
+    const nouns = all.filter((w) => w.pos !== 'verb');
+    const plan = planRound({
+      id: 'r',
+      game: sorter,
+      deckIds: ['occupations'],
+      size: 10,
+      options,
+      words: nouns,
+      rng: mulberry32(1),
+    });
+    expect(plan.pool).toEqual([]);
+    expect(plan.queue).toEqual([]);
+  });
+});

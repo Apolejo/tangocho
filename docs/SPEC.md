@@ -141,7 +141,7 @@ Warnings (printed, never block):
 |---|---|---|
 | 7.1 | Today (home) | Streak and stamp card, daily-goal progress, due count per game, a *Continue* button. |
 | 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Verbs are shown in ます form, derived from the stored dictionary form (§5.1, §11); tapping a verb shows all its forms once the engine exists (M7). Built first; it doubles as a data check. |
-| 7.3 | Game setup | Decks (remembers the last choice), round size (10 or 20), options (furigana, direction, input mode, forms). |
+| 7.3 | Game setup | Decks (remembers the last choice; the counts are of the words the game can use, so verbs only for the sorter), round size (10 or 20), options (furigana, direction, input mode, forms). |
 | 7.4 | Play | Progress, score and combo, the question, the answer area, ◯/✕ feedback. |
 | 7.5 | Results | Score, accuracy, a 新記録 stamp for a personal best, 花丸 for a perfect round, missed words with *Practice these*. |
 | 7.6 | Stats | Mastery per deck, accuracy per verb group and per conjugation form, weakest words, streak calendar. |
@@ -196,6 +196,8 @@ export interface QuestionProps {
 }
 ```
 
+`explanation` is a React node, not a string, so the Japanese it quotes can carry `lang="ja"` (§6).
+
 The round queue is shuffled until M8 brings the §10.2 order: each word at most once, round size = min(10 or 20, pool). *Quit* goes back to setup; answers already given stay logged, and no round event is written.
 
 Answer checking and distractor generation are pure functions next to each game, with unit tests.
@@ -203,7 +205,7 @@ Answer checking and distractor generation are pure functions next to each game, 
 ### 8.3 Rules for every game
 
 - Fully playable by touch alone and by keyboard alone. Keys: 1–4 choose an option, Enter submits, Enter or Space continues.
-- Correct: ◯ stamp, then auto-advance after about 0.8 s. Wrong: ✕, and the correct answer and explanation stay until I continue.
+- Correct: ◯ stamp, then auto-advance after about 0.8 s. When the game gives a rule (§9.2, §9.4), the rule shows too and the answer stays about 2.5 s, or until Enter, Space or *Continue*. Wrong: ✕, and the correct answer and explanation stay until I continue.
 - Tap targets at least 44×44 px; answer controls within thumb reach on a phone.
 - Feedback is announced to screen readers (`aria-live`).
 - Verbs are shown in ます form, like the notebook (§7.2); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
@@ -222,8 +224,8 @@ Done when: e2e answers right and wrong by keyboard (desktop) and by tap (mobile)
 
 ### 9.2 Verb group sorter — `group`
 
-- A verb appears; answer 1, 2 or 3 (buttons or keys).
-- Each answer is followed by the rule that decides it:
+- A verb appears in ます form (§8.3); answer 1, 2 or 3 (buttons or keys). Only verbs: decks without verbs can't start a round.
+- Each answer is followed by the rule that decides it, quoting the dictionary form with its reading (帰る（かえる）— exception: …). The rule explains the stored group; it never decides it:
   - "doesn't end in -iru/-eru → group 1"
   - "ends in -iru/-eru → group 2"
   - "する, 来る and noun + する → group 3"

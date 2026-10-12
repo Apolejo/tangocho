@@ -1,0 +1,158 @@
+.question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 7.5rem;
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  text-align: center;
+}
+
+.promptJa {
+  font-family: var(--font-ja);
+  font-size: var(--text-prompt);
+  line-height: 1.3;
+}
+
+.promptMeaning {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* the word, revealed under the meaning once answered */
+.reveal {
+  font-family: var(--font-ja);
+  font-size: var(--text-ja-lg);
+  line-height: 1.3;
+}
+
+/* room above the line for the furigana, kept from the start so nothing moves when it appears */
+.withRuby {
+  padding-top: var(--ruby-room);
+}
+
+.ask {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.answer {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+/* at least 16 px, or Safari on iPhone zooms in when the field gets focus */
+.input {
+  width: 100%;
+  min-height: calc(var(--tap-min) + var(--space-3));
+  padding: var(--space-2) calc(var(--space-4) + 1.5em) var(--space-2) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ja);
+  font-size: var(--text-lg);
+  line-height: 1.3;
+}
+
+.input::placeholder {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+}
+
+.input[data-state='correct'] {
+  border-color: var(--shu);
+  box-shadow: inset 0 0 0 1px var(--shu);
+}
+
+.input[data-state='wrong'] {
+  border-color: var(--ink-soft);
+  border-style: dashed;
+}
+
+/* the shape carries the meaning, not only the color (SPEC §13) */
+.mark {
+  position: absolute;
+  top: 50%;
+  right: var(--space-3);
+  transform: translateY(-50%);
+  font-family: var(--font-ja);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.mark[data-mark='correct'] {
+  color: var(--shu);
+}
+
+.mark[data-mark='wrong'] {
+  color: var(--ink);
+}
+
+.check {
+  flex: none;
+  min-width: 6rem;
+  min-height: calc(var(--tap-min) + var(--space-3));
+  padding: 0 var(--space-4);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--ai);
+  color: var(--paper);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.check:disabled {
+  background: var(--rule);
+  color: var(--ink-soft);
+  cursor: default;
+}
+
+.hintRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+}
+
+.hintButton {
+  min-height: var(--tap-min);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ai);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.hint {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.hint [lang='ja'] {
+  color: var(--ink);
+  font-family: var(--font-ja);
+  font-size: var(--text-lg);
+}

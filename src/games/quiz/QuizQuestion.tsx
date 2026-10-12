@@ -2,11 +2,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Ruby } from '../../components/Ruby.tsx';
 import type { Word } from '../../data/schema.ts';
 import { useLang, useT } from '../../i18n/hooks.ts';
+import { meaningText } from '../../i18n/localized.ts';
 import { furiganaFor } from '../../lib/furigana.ts';
 import { mulberry32 } from '../../lib/random.ts';
 import { displayForm } from '../../lib/verbs.ts';
 import type { QuestionProps } from '../types.ts';
-import { buildChoices, meaningText, writtenForm } from './choices.ts';
+import { buildChoices, writtenForm } from './choices.ts';
 import styles from './QuizQuestion.module.css';
 
 /**

@@ -20,6 +20,7 @@ const quizLike: Pick<Minigame, 'skillsFor' | 'eligible'> = {
 const opts = (direction: RoundOptions['direction']): RoundOptions => ({
   furigana: true,
   direction,
+  mode: 'reading',
 });
 
 describe('buildQueue', () => {

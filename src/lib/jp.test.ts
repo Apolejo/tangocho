@@ -9,6 +9,7 @@ import {
   isKanjiFieldChar,
   isKanjiRunChar,
   isKatakana,
+  japaneseRuns,
   trailingKana,
 } from './jp.ts';
 
@@ -54,5 +55,34 @@ describe('character classes', () => {
     expect(trailingKana('先生')).toBe('');
     expect(trailingKana('勉強する')).toBe('する');
     expect(trailingKana('一ヶ月')).toBe('');
+  });
+});
+
+describe('japaneseRuns', () => {
+  it('splits mixed text into Japanese and other runs', () => {
+    expect(japaneseRuns('する, 来る and noun + する → group 3')).toEqual([
+      { text: 'する', ja: true },
+      { text: ', ', ja: false },
+      { text: '来る', ja: true },
+      { text: ' and noun + ', ja: false },
+      { text: 'する', ja: true },
+      { text: ' → group 3', ja: false },
+    ]);
+  });
+
+  it('keeps ー, 々 and ヶ inside the Japanese run', () => {
+    expect(japaneseRuns('時々 デザイナー 一ヶ月')).toEqual([
+      { text: '時々', ja: true },
+      { text: ' ', ja: false },
+      { text: 'デザイナー', ja: true },
+      { text: ' ', ja: false },
+      { text: '一ヶ月', ja: true },
+    ]);
+  });
+
+  it('gives one run for text in one language, and none for no text', () => {
+    expect(japaneseRuns('group 1')).toEqual([{ text: 'group 1', ja: false }]);
+    expect(japaneseRuns('食べる')).toEqual([{ text: '食べる', ja: true }]);
+    expect(japaneseRuns('')).toEqual([]);
   });
 });

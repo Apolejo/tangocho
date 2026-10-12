@@ -1,0 +1,119 @@
+.question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 7.5rem;
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  text-align: center;
+}
+
+.promptJa {
+  font-family: var(--font-ja);
+  font-size: var(--text-prompt);
+  line-height: 1.3;
+}
+
+/* room above the line for the furigana */
+.withRuby {
+  padding-top: var(--ruby-room);
+}
+
+.ask {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+/* three groups side by side, at the bottom of the card where the thumb reaches */
+.groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  width: 100%;
+  min-height: calc(var(--tap-min) * 2);
+  padding: var(--space-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 120ms ease;
+}
+
+.group:hover:not(:disabled) {
+  border-color: var(--ai);
+}
+
+.group:disabled {
+  cursor: default;
+}
+
+.group[data-state='correct'] {
+  border-color: var(--shu);
+  box-shadow: inset 0 0 0 1px var(--shu);
+}
+
+.group[data-state='wrong'] {
+  border-color: var(--ink-soft);
+  border-style: dashed;
+}
+
+.group[data-state='other'] {
+  color: var(--ink-soft);
+  box-shadow: none;
+}
+
+.number {
+  color: var(--ai);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.group[data-state='other'] .number {
+  color: inherit;
+}
+
+.label {
+  font-size: var(--text-sm);
+}
+
+/* the shape carries the meaning, not only the color (SPEC §13) */
+.mark {
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-2);
+  font-family: var(--font-ja);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mark[data-mark='correct'] {
+  color: var(--shu);
+}
+
+.mark[data-mark='wrong'] {
+  color: var(--ink);
+}

@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import type { Word } from '../data/schema.ts';
 import type { MessageKey } from '../i18n/en.ts';
 import type { Lang } from '../i18n/lang.ts';
@@ -40,8 +40,11 @@ export interface AnswerResult {
   expected: string;
   /** The `lang` of `expected` when it isn't in the UI language, e.g. 'ja'. */
   expectedLang?: string;
-  /** The rule behind the answer, shown with the feedback. */
-  explanation?: string;
+  /**
+   * The rule behind the answer, shown with the feedback (a node, so Japanese inside it can carry
+   * lang="ja"). A correct answer with a rule stays up longer, so the rule can be read.
+   */
+  explanation?: ReactNode;
 }
 
 export interface QuestionProps {

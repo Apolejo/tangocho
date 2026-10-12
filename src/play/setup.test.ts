@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Word } from '../data/schema.ts';
 import { quiz } from '../games/quiz/index.ts';
+import { sorter } from '../games/sorter/index.ts';
 import { DEFAULT_SETUP, parseSetup, unavailableReason } from './setup.ts';
 
 const known = new Set(['all', 'new', 'verbs-g1', 'occupations']);
@@ -52,5 +53,12 @@ describe('unavailableReason', () => {
     const sameMeaning = [...three, word('d', 'three')];
     expect(unavailableReason(quiz, sameMeaning, 'en')).toEqual({ key: 'quiz_unavailable' });
     expect(unavailableReason(quiz, [...three, word('d', 'four')], 'en')).toBeUndefined();
+  });
+
+  it('turns the sorter off when there is no verb', () => {
+    const nouns = [word('a', 'one'), word('b', 'two')];
+    expect(unavailableReason(sorter, nouns, 'en')).toEqual({ key: 'sorter_unavailable' });
+    const verb: Word = { ...word('c', 'to buy'), kana: 'かう', pos: 'verb', verbGroup: 1 };
+    expect(unavailableReason(sorter, [...nouns, verb], 'en')).toBeUndefined();
   });
 });

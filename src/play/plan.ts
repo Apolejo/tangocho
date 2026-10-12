@@ -19,6 +19,16 @@ export interface RoundPlan {
   practice: boolean;
 }
 
+/** The words a round with these options can ask about (the quiz takes every word, the sorter verbs). */
+export function eligibleWords(
+  game: Pick<Minigame, 'skillsFor' | 'eligible'>,
+  options: RoundOptions,
+  words: readonly Word[],
+): Word[] {
+  const skills = game.skillsFor(options);
+  return words.filter((w) => skills.some((s) => game.eligible(w, s)));
+}
+
 export function planRound({
   id,
   game,
@@ -40,8 +50,7 @@ export function planRound({
   only?: readonly Word[];
   rng: Rng;
 }): RoundPlan {
-  const skills = game.skillsFor(options);
-  const pool = words.filter((w) => skills.some((s) => game.eligible(w, s)));
+  const pool = eligibleWords(game, options, words);
   const practice = only !== undefined;
   const queue = buildQueue({
     pool: only ?? pool,

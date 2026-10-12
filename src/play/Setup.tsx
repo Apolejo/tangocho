@@ -7,6 +7,7 @@ import { useLang, useT } from '../i18n/hooks.ts';
 import { deckName, deckNameJa } from '../i18n/names.ts';
 import { bestKey } from '../progress/bests.ts';
 import { useBest } from '../progress/useBest.ts';
+import { eligibleWords } from './plan.ts';
 import { ROUND_SIZES } from './queue.ts';
 import { unavailableReason, type SetupChoice } from './setup.ts';
 import styles from './Setup.module.css';
@@ -38,7 +39,9 @@ export function Setup({
   const t = useT();
   const { lang } = useLang();
   const selected = decks.filter((d) => choice.deckIds.includes(deckId(d)));
-  const pool = wordsInDecks(selected, allWords, now);
+  // counts are of the words this game can ask about, not every word in the decks
+  const playable = (words: readonly Word[]) => eligibleWords(game, choice.options, words);
+  const pool = playable(wordsInDecks(selected, allWords, now));
   const reason = unavailableReason(game, allWords, lang);
   const best = useBest(
     game.id,
@@ -95,7 +98,7 @@ export function Setup({
                     </span>
                   )}
                   <span className={styles.deckCount}>
-                    {wordsInDeck(deck, allWords, now).length}
+                    {playable(wordsInDeck(deck, allWords, now)).length}
                   </span>
                 </label>
               );

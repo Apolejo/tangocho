@@ -62,3 +62,24 @@ export function trailingKana(text: string): string {
   while (i > 0 && isKana(cs[i - 1] ?? '') && !isKanjiRunChar(cs[i - 1] ?? '')) i--;
   return cs.slice(i).join('');
 }
+
+/** A stretch of text that is all Japanese or all not, for marking the Japanese with lang="ja". */
+export interface TextRun {
+  text: string;
+  ja: boolean;
+}
+
+/**
+ * Splits mixed text into Japanese and other runs: "する, 来る and noun + する" →
+ * する | ", " | 来る | " and noun + " | する. Japanese = kanji, kana, ー, 々 and ヶ.
+ */
+export function japaneseRuns(text: string): TextRun[] {
+  const runs: TextRun[] = [];
+  for (const ch of chars(text)) {
+    const ja = isKanjiFieldChar(ch);
+    const last = runs.at(-1);
+    if (last?.ja === ja) last.text += ch;
+    else runs.push({ text: ch, ja });
+  }
+  return runs;
+}

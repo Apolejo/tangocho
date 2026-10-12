@@ -17,6 +17,10 @@ const ADVANCE_MS = 800;
 /** …or after this long when it comes with a rule, so the rule can be read. */
 const RULE_ADVANCE_MS = 2500;
 
+/** A field a typed answer went into (kana typing), as opposed to buttons and other controls. */
+const isTextField = (el: Element | null): boolean =>
+  el instanceof HTMLInputElement && el.type === 'text';
+
 /** Logging never blocks play: a failed write is reported and the round goes on. */
 function log(event: ProgressEvent): void {
   appendEvent(event).catch((error: unknown) => console.warn('could not save progress', error));
@@ -107,29 +111,35 @@ export function Round({
     else dispatch({ type: 'next' });
   };
 
-  // correct: move on after a moment (longer with a rule); wrong: wait for Continue
+  // correct: move on after a moment (longer with a rule, or with something revealed to read);
+  // wrong: wait for Continue
   const advanceLater = useEffectEvent(advance);
   const correctShown = feedback?.result.correct === true;
   const ruleShown = feedback?.result.explanation !== undefined;
+  const lingers = ruleShown || feedback?.result.reveals === true;
   useEffect(() => {
     if (!correctShown) return;
-    const timer = window.setTimeout(advanceLater, ruleShown ? RULE_ADVANCE_MS : ADVANCE_MS);
+    const timer = window.setTimeout(advanceLater, lingers ? RULE_ADVANCE_MS : ADVANCE_MS);
     return () => window.clearTimeout(timer);
-  }, [correctShown, ruleShown, state.index]);
+  }, [correctShown, lingers, state.index]);
 
-  // Continue after a wrong answer, and after a correct one with a rule, to move on sooner
+  // Continue after a wrong answer, and after a correct one that lingers, to move on sooner. A right
+  // answer typed into a field leaves the focus there, so a phone keeps its keyboard up.
   const wrongShown = feedback?.result.correct === false;
-  const continueShown = wrongShown || (correctShown && ruleShown);
+  const continueShown = wrongShown || (correctShown && lingers);
   useEffect(() => {
-    if (continueShown) continueRef.current?.focus();
-  }, [continueShown, state.index]);
+    if (!continueShown) return;
+    if (correctShown && isTextField(document.activeElement)) return;
+    continueRef.current?.focus();
+  }, [continueShown, correctShown, state.index]);
 
-  // Enter or Space continues, unless a control has focus (a focused button handles them itself)
+  // Enter or Space continues, unless a control has focus (a focused button handles them itself).
+  // In a text field that kept its focus, Enter continues and Space stays a space.
   const onKey = useEffectEvent((e: KeyboardEvent) => {
-    if (e.repeat || (e.key !== 'Enter' && e.key !== ' ')) return;
-    if (e.target instanceof Element && e.target.closest('button, a, input, select, textarea')) {
-      return;
-    }
+    if (e.repeat || e.defaultPrevented || (e.key !== 'Enter' && e.key !== ' ')) return;
+    const target = e.target instanceof Element ? e.target : null;
+    const control = target?.closest('button, a, input, select, textarea') ?? null;
+    if (isTextField(target) ? e.key !== 'Enter' : control !== null) return;
     e.preventDefault();
     advance();
   });

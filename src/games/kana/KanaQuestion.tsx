@@ -63,6 +63,8 @@ export function KanaQuestion({ card, word, allWords, onAnswer }: QuestionProps) 
       expected,
       expectedLang: 'ja',
       ...(note !== undefined && { explanation: note }),
+      // reading mode reveals the meaning, which needs a moment to be read
+      reveals: reading,
     });
   };
 
@@ -79,7 +81,17 @@ export function KanaQuestion({ card, word, allWords, onAnswer }: QuestionProps) 
     <div className={styles.question}>
       <div className={styles.prompt} data-kana-prompt data-word-id={word.id}>
         {reading ? (
-          <Ruby pairs={pairs} readings={done} className={`${styles.promptJa} ${styles.withRuby}`} />
+          <>
+            <Ruby
+              pairs={pairs}
+              readings={done}
+              className={`${styles.promptJa} ${styles.withRuby}`}
+            />
+            {/* the line is there from the start, so nothing moves when the meaning appears */}
+            <span className={styles.meaning} lang={meaning.lang} data-kana-meaning>
+              {done ? meaning.text : '\u00a0'}
+            </span>
+          </>
         ) : (
           <>
             <span className={styles.promptMeaning} lang={meaning.lang}>

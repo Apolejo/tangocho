@@ -27,6 +27,12 @@
   line-height: 1.35;
 }
 
+/* the meaning, revealed under the word once answered (reading mode) */
+.meaning {
+  font-size: var(--text-md);
+  line-height: 1.35;
+}
+
 /* the word, revealed under the meaning once answered */
 .reveal {
   font-family: var(--font-ja);

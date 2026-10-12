@@ -50,6 +50,11 @@ export interface AnswerResult {
    * lang="ja"). A correct answer with a rule stays up longer, so the rule can be read.
    */
   explanation?: ReactNode;
+  /**
+   * The question shows something new once answered (kana typing's meaning), so a correct answer
+   * stays up as long as one with a rule.
+   */
+  reveals?: boolean;
 }
 
 export interface QuestionProps {

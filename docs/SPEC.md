@@ -192,7 +192,7 @@ export interface QuestionProps {
   allWords: Word[];                        // every word, for when the decks alone aren't enough
   options: RoundOptions;                   // furigana, direction, mode (inputMode and forms arrive in M7)
   seed: number;                            // seeds the question's randomness, so rendering stays pure
-  onAnswer(result: AnswerResult): void;    // { correct, hinted, given, expected, expectedLang?, explanation? }
+  onAnswer(result: AnswerResult): void;    // { correct, hinted, given, expected, expectedLang?, explanation?, reveals? }
 }
 ```
 
@@ -205,7 +205,8 @@ Answer checking and distractor generation are pure functions next to each game, 
 ### 8.3 Rules for every game
 
 - Fully playable by touch alone and by keyboard alone. Keys: 1–4 choose an option, Enter submits, Enter or Space continues.
-- Correct: ◯ stamp, then auto-advance after about 0.8 s. When the game gives a rule (§9.2, §9.4), the rule shows too and the answer stays about 2.5 s, or until Enter, Space or *Continue*. Wrong: ✕, and the correct answer and explanation stay until I continue.
+- Correct: ◯ stamp, then auto-advance after about 0.8 s. When the game gives a rule (§9.2, §9.4) or reveals something to read (the meaning in §9.3, flagged by `reveals`), the answer stays about 2.5 s, or until Enter, Space or *Continue*. Wrong: ✕, and the correct answer and explanation stay until I continue.
+- A right answer typed into a field leaves the focus there, so a phone keeps its keyboard up between questions, and Enter in the field continues. After a wrong answer the focus moves to *Continue* (the keyboard goes down, so the answer can be read).
 - Tap targets at least 44×44 px; answer controls within thumb reach on a phone.
 - Feedback is announced to screen readers (`aria-live`).
 - Verbs are shown in ます form, like the notebook (§7.2); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
@@ -246,7 +247,7 @@ Done when: e2e covers one verb of each group plus 帰る, and the exception expl
   - hiragana is compared exactly, so long vowels must be right: とおい ≠ とうい, and センセー ≠ せんせい.
 - The exact kanji form is also accepted. In recall mode, if two words share the meaning (the same meaning text in the language shown, like 続く and 続ける, both "continuar"), either counts, and a note names the card's word. One shared gloss isn't enough: アパート and マンション are different apartments.
 - A hint reveals the first kana and marks the answer as hinted.
-- Once answered, the word shows with its furigana.
+- Once answered, right or wrong, the word shows with its furigana, and in reading mode its meaning, under the word on the card (below the card it would be behind a phone keyboard). Reading answers flag `reveals`, so a right one stays about 2.5 s (§8.3).
 
 Done when: unit tests cover every acceptance case above; e2e types answers on desktop and on mobile.
 

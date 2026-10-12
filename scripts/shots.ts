@@ -132,6 +132,16 @@ const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<voi
     },
   },
   {
+    name: 'kana-correct',
+    hash: '#/play/kana',
+    steps: async (page) => {
+      await startKana(page, 'Reading');
+      await typeKanaId(page);
+      await page.keyboard.press('Enter');
+      await page.locator('input[data-state]').waitFor();
+    },
+  },
+  {
     name: 'kana-hint',
     hash: '#/play/kana',
     steps: async (page) => {

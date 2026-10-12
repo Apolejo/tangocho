@@ -28,6 +28,16 @@ const KANJI: Record<string, string> = {
   keisatsukan: '警察官',
 };
 
+/** The English meanings of the words with kanji, shown once a reading is answered. */
+const MEANING: Record<string, string> = {
+  sensei: 'teacher',
+  isha: 'doctor',
+  kaishain: 'office worker, company employee',
+  gakusei: 'student',
+  kangoshi: 'nurse',
+  keisatsukan: 'police officer',
+};
+
 const ROMAJI: Record<string, string> = {
   sensei: 'sensei',
   isha: 'isha',
@@ -46,6 +56,7 @@ const status = (page: Page) => page.getByRole('status');
 const prompt = (page: Page) => page.locator('[data-kana-prompt]');
 const field = (page: Page) => page.getByRole('textbox', { name: 'Your answer' });
 const explanation = (page: Page) => page.locator('[data-explanation]');
+const meaning = (page: Page) => page.locator('[data-kana-meaning]');
 
 async function openSetup(page: Page): Promise<void> {
   await page.goto('#/play');
@@ -89,6 +100,20 @@ async function moveOn(page: Page, isMobile: boolean): Promise<void> {
   }
 }
 
+/**
+ * Moves on from a right answer that stays up to be read: Enter in the field, which keeps its
+ * focus (so a phone keeps its keyboard), or a tap on Continue.
+ */
+async function moveOnFromField(page: Page, isMobile: boolean): Promise<void> {
+  await expect(page.getByRole('button', { name: 'Continue' })).toBeVisible();
+  if (isMobile) {
+    await page.getByRole('button', { name: 'Continue' }).tap();
+  } else {
+    await expect(field(page)).toBeFocused();
+    await page.keyboard.press('Enter');
+  }
+}
+
 /** The app's IndexedDB log, summarized (a string, so it runs in the page). */
 const SUMMARIZE_EVENTS = `new Promise((resolve, reject) => {
   const req = indexedDB.open('tangocho');
@@ -122,7 +147,10 @@ test('setup counts words with kanji for reading and every word for recall', asyn
   await expect(page.getByText('6 words in this selection')).toBeVisible();
 });
 
-test('reading mode: romaji answers, a hint, and a wrong answer', async ({ page, isMobile }) => {
+test('reading mode: romaji answers, the meaning, a hint, and a wrong answer', async ({
+  page,
+  isMobile,
+}) => {
   await openSetup(page);
   await onlyDeck(page, 'Occupations');
   await page.getByRole('button', { name: 'Start' }).click();
@@ -133,15 +161,17 @@ test('reading mode: romaji answers, a hint, and a wrong answer', async ({ page, 
     // the kanji form, furigana hidden
     await expect(prompt(page).locator('[lang="ja"]')).toHaveText(KANJI[id] ?? '');
     await expect(page.locator('main rt')).toHaveCount(0);
+    await expect(meaning(page)).toHaveText(/^\s*$/);
 
     if (i === 1) {
-      // wrong: ✕, the answer, and the reading shown over the kanji until Continue
+      // wrong: ✕, the answer, and the reading and meaning shown until Continue
       await write(page, isMobile, 'tanaka');
       await submit(page, isMobile);
       await expect(status(page)).toContainText(`Not quite. Answer: ${KANA[id]}`);
       await expect(field(page)).toHaveAttribute('data-state', 'wrong');
       await expect(field(page)).toHaveValue('たなか');
       await expect(page.locator('main rt').first()).toBeVisible();
+      await expect(meaning(page)).toHaveText(MEANING[id] ?? '');
       await moveOn(page, isMobile);
     } else if (i === 2) {
       // a hint shows the first kana; the answer still counts, for half the points
@@ -151,6 +181,8 @@ test('reading mode: romaji answers, a hint, and a wrong answer', async ({ page, 
       await submit(page, isMobile);
       await expect(status(page)).toContainText('Correct!');
       await expect(page.locator('[data-score]')).toHaveText('50');
+      await expect(meaning(page)).toHaveText(MEANING[id] ?? '');
+      await moveOnFromField(page, isMobile);
     } else {
       await write(page, isMobile, ROMAJI[id] ?? '');
       if (id === 'kaishain' || id === 'keisatsukan') {
@@ -163,6 +195,9 @@ test('reading mode: romaji answers, a hint, and a wrong answer', async ({ page, 
       await expect(status(page)).toContainText('Correct!');
       await expect(field(page)).toHaveValue(KANA[id] ?? '');
       await expect(field(page)).toHaveAttribute('data-state', 'correct');
+      // right too: the meaning shows, and the answer stays up until moved on
+      await expect(meaning(page)).toHaveText(MEANING[id] ?? '');
+      await moveOnFromField(page, isMobile);
     }
   }
 
@@ -217,7 +252,7 @@ test('recall mode: katakana, ー or its vowel, and a Japanese keyboard', async (
     }
     // the word appears under the meaning
     await expect(page.locator('[data-kana-reveal]')).toContainText(kanji ?? KANA[id] ?? '');
-    if (id === 'dezainaa') await moveOn(page, isMobile);
+    if (id === 'dezainaa') await moveOnFromField(page, isMobile);
   }
   expect(asked.sort()).toEqual(Object.keys(KANA).sort());
 

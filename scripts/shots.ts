@@ -44,6 +44,24 @@ async function playQuizRound(page: Page): Promise<void> {
   await page.getByRole('heading', { name: 'Results' }).waitFor();
 }
 
+/** Sorter setup over group 1 only, so 1 is always right and 2 always wrong with any data. */
+async function sorterGroup1(page: Page): Promise<void> {
+  await page.getByRole('checkbox', { name: /All words/ }).uncheck();
+  await page.getByRole('checkbox', { name: /Verbs · Group 1/ }).check();
+}
+
+async function startSorter(page: Page): Promise<void> {
+  await sorterGroup1(page);
+  await page.getByRole('button', { name: 'Start' }).click();
+  await page.locator('[data-sorter-prompt]').waitFor();
+}
+
+/** Answers the current sorter question, then waits for the rule. */
+async function answerSorter(page: Page, group: 1 | 2): Promise<void> {
+  await page.keyboard.press(String(group));
+  await page.locator('[data-explanation]').waitFor();
+}
+
 /** Add a line here when a screen appears. `steps` clicks through to screens without a URL. */
 const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<void> }[] = [
   { name: 'notebook', hash: '#/notebook' },
@@ -69,6 +87,24 @@ const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<voi
     },
   },
   { name: 'quiz-results', hash: '#/play/quiz', steps: playQuizRound },
+  { name: 'sorter-setup', hash: '#/play/sorter', steps: sorterGroup1 },
+  { name: 'sorter-question', hash: '#/play/sorter', steps: startSorter },
+  {
+    name: 'sorter-correct',
+    hash: '#/play/sorter',
+    steps: async (page) => {
+      await startSorter(page);
+      await answerSorter(page, 1);
+    },
+  },
+  {
+    name: 'sorter-wrong',
+    hash: '#/play/sorter',
+    steps: async (page) => {
+      await startSorter(page);
+      await answerSorter(page, 2);
+    },
+  },
 ];
 
 const VIEWPORTS = [

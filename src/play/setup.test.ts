@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import type { Word } from '../data/schema.ts';
+import { conjugation } from '../games/conjugation/index.ts';
 import { kana } from '../games/kana/index.ts';
 import { quiz } from '../games/quiz/index.ts';
 import { sorter } from '../games/sorter/index.ts';
-import { FORMS } from '../lib/conjugate.ts';
+import { FORMS, type ConjugationForm } from '../lib/conjugate.ts';
 import { DEFAULT_SETUP, defaultSetup, parseSetup, unavailableReason } from './setup.ts';
 
 const known = new Set(['all', 'new', 'verbs-g1', 'occupations']);
@@ -118,8 +119,37 @@ describe('unavailableReason', () => {
     expect(unavailableReason(sorter, [...nouns, verb], 'en')).toBeUndefined();
   });
 
+  it('turns the conjugation drill off when no verb can be conjugated', () => {
+    const nouns = [word('a', 'one')];
+    expect(unavailableReason(conjugation, nouns, 'en')).toEqual({ key: 'conj_unavailable' });
+    // 為る written for する: the engine can't conjugate it
+    const odd: Word = {
+      ...word('b', 'to do'),
+      kanji: '為る',
+      kana: 'する',
+      pos: 'verb',
+      verbGroup: 3,
+    };
+    expect(unavailableReason(conjugation, [...nouns, odd], 'en')).toEqual({
+      key: 'conj_unavailable',
+    });
+    const verb: Word = { ...word('c', 'to buy'), kana: 'かう', pos: 'verb', verbGroup: 1 };
+    expect(unavailableReason(conjugation, [...nouns, verb], 'en')).toBeUndefined();
+  });
+
   it('runs kana typing on any word, and on none turns it off', () => {
     expect(unavailableReason(kana, [], 'en')).toEqual({ key: 'kana_unavailable' });
     expect(unavailableReason(kana, [word('a', 'one')], 'en')).toBeUndefined();
+  });
+});
+
+describe('the conjugation drill’s personal-best variant', () => {
+  it('is the input mode and the forms, in the engine’s order', () => {
+    const variant = (inputMode: 'typing' | 'choices', forms: readonly ConjugationForm[]) =>
+      conjugation.variant({ ...DEFAULT_SETUP.options, inputMode, forms });
+    expect(variant('typing', FORMS)).toBe(
+      'typing|辞書形+ます+ません+ました+ませんでした+て+ない+た',
+    );
+    expect(variant('choices', ['た', 'て'])).toBe('choices|て+た');
   });
 });

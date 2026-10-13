@@ -94,17 +94,18 @@ Done when: §9.3 passes, including with your phone's keyboard.
 
 ## M6 — Conjugation engine, test-first · SPEC §11
 
-- [ ] Session 1: Claude writes `src/lib/conjugate.test.ts` only. No engine yet.
-- [ ] **You** check every row against a reliable conjugation chart (a textbook table, or a dictionary's conjugation tables), fix anything wrong and commit the table.
-- [ ] Session 2, a new session: implement `src/lib/conjugate.ts` until the table passes, without touching the table.
+- [x] Session 1: Claude writes `src/lib/conjugate.test.ts` only. No engine yet.
+- [x] **You** check every row against a reliable conjugation chart (a textbook table, or a dictionary's conjugation tables), fix anything wrong and commit the table.
+- [x] Session 2, a new session: implement `src/lib/conjugate.ts` until the table passes, without touching the table.
 
 Done when: the whole table passes and you've checked every row yourself.
 
-## M7 — Conjugation drill · SPEC §9.4
+## M7 — Conjugation drill · SPEC §9.4, §5.7
 
 - [ ] Verb inspection in the notebook: tap a verb → its eight forms (§7.2).
+- [ ] Word reports: the ⚑ button on words and answers, and the launch banner with the open count (§5.7).
 
-Done when: §9.4 passes and a tapped verb shows its forms.
+Done when: §9.4 passes and a tapped verb shows its forms; a report made on the phone opens a prefilled issue, and the banner counts it on the computer.
 
 ## M8 — Progress · SPEC §10, §7.1, §7.6, §7.7
 

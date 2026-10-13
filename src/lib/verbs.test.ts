@@ -1,60 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import fixtures from '../../data/fixtures/words.json';
-import { WordsFileSchema, type VerbGroup, type Word } from '../data/schema.ts';
+import { WordsFileSchema, type Word } from '../data/schema.ts';
+import { conjugate, FORMS } from './conjugate.ts';
 import { furiganaFor, placeFurigana } from './furigana.ts';
-import { displayForm, masuForm } from './verbs.ts';
+import { displayForm } from './verbs.ts';
 
-const masu = (kanji: string | undefined, kana: string, verbGroup: VerbGroup) =>
-  masuForm({ kanji, kana, verbGroup });
-
-describe('masuForm', () => {
-  it('group 1: every ending', () => {
-    const rows: [string, string, string, string][] = [
-      ['買う', 'かう', '買います', 'かいます'],
-      ['書く', 'かく', '書きます', 'かきます'],
-      ['泳ぐ', 'およぐ', '泳ぎます', 'およぎます'],
-      ['話す', 'はなす', '話します', 'はなします'],
-      ['待つ', 'まつ', '待ちます', 'まちます'],
-      ['死ぬ', 'しぬ', '死にます', 'しにます'],
-      ['遊ぶ', 'あそぶ', '遊びます', 'あそびます'],
-      ['読む', 'よむ', '読みます', 'よみます'],
-      ['帰る', 'かえる', '帰ります', 'かえります'],
-      ['行く', 'いく', '行きます', 'いきます'],
-    ];
-    for (const [kanji, kana, kanjiMasu, kanaMasu] of rows) {
-      expect(masu(kanji, kana, 1), kanji).toEqual({ kanji: kanjiMasu, kana: kanaMasu });
-    }
-    expect(masu(undefined, 'ある', 1)).toEqual({ kana: 'あります' });
-  });
-
-  it('group 2: drop る', () => {
-    expect(masu('食べる', 'たべる', 2)).toEqual({ kanji: '食べます', kana: 'たべます' });
-    expect(masu('見る', 'みる', 2)).toEqual({ kanji: '見ます', kana: 'みます' });
-    expect(masu('着る', 'きる', 2)).toEqual({ kanji: '着ます', kana: 'きます' });
-  });
-
-  it('group 3: する, 来る and their compounds', () => {
-    expect(masu(undefined, 'する', 3)).toEqual({ kana: 'します' });
-    expect(masu('勉強する', 'べんきょうする', 3)).toEqual({
-      kanji: '勉強します',
-      kana: 'べんきょうします',
-    });
-    expect(masu('来る', 'くる', 3)).toEqual({ kanji: '来ます', kana: 'きます' });
-    expect(masu(undefined, 'くる', 3)).toEqual({ kana: 'きます' });
-    expect(masu('持ってくる', 'もってくる', 3)).toEqual({
-      kanji: '持ってきます',
-      kana: 'もってきます',
-    });
-  });
-
-  it('refuses shapes that do not fit the group', () => {
-    expect(masu('書く', 'かく', 2)).toBeUndefined();
-    expect(masu('食べる', 'たべ', 2)).toBeUndefined();
-    expect(masu('書く', 'かく', 3)).toBeUndefined();
-    expect(masu('書く', 'かう', 1)).toBeUndefined();
-    expect(masuForm({ kanji: '書く', kana: 'かく', verbGroup: undefined })).toBeUndefined();
-  });
-});
+// The ます forms themselves are rows of the conjugation table (conjugate.test.ts).
 
 describe('displayForm', () => {
   const base: Word = {
@@ -83,13 +34,20 @@ describe('displayForm', () => {
     expect(displayForm(noun)).toEqual({ kanji: '先生', kana: 'せんせい', furigana: undefined });
   });
 
-  it('every fixture verb has a ます form whose furigana places', () => {
+  it('falls back to the stored form when the verb does not fit its group', () => {
+    const misfit: Word = { ...base, verbGroup: 2 };
+    expect(displayForm(misfit)).toEqual({ kanji: '書く', kana: 'かく', furigana: undefined });
+  });
+
+  it('every fixture verb has all eight forms, and their furigana places', () => {
     for (const word of WordsFileSchema.parse(fixtures)) {
       if (word.pos !== 'verb') continue;
-      const shown = masuForm(word);
-      expect(shown, word.id).toBeDefined();
-      if (shown?.kanji !== undefined) {
-        expect(placeFurigana(shown.kanji, shown.kana).ok, word.id).toBe(true);
+      for (const form of FORMS) {
+        const shown = conjugate(word, form);
+        expect(shown, `${word.id} ${form}`).toBeDefined();
+        if (shown?.kanji !== undefined) {
+          expect(placeFurigana(shown.kanji, shown.kana).ok, `${word.id} ${form}`).toBe(true);
+        }
       }
     }
   });

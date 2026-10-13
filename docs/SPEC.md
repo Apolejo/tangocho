@@ -115,6 +115,7 @@ Errors:
 - A group 2 verb that doesn't end in an い-row or え-row kana + る, or that is on the known group 1 exceptions list below (帰る labelled group 2 is the classic learner mistake).
 - A group 3 verb whose kana isn't one of: ending in する, exactly くる, or ending in てくる/でくる (持ってくる) or にくる (迎えに来る). Checked on the kana, not the kanji: 出来る (できる) is group 2.
 - A verb whose `kanji` doesn't end with the same kana as `kana`.
+- A verb that passes every rule above but that the conjugation engine (§11) still can't conjugate, such as 為る written for する. Reported only when no other error is, so it never repeats one.
 - A deck `match` that uses an unknown field.
 
 Warnings (printed, never block):
@@ -128,6 +129,14 @@ Warnings (printed, never block):
 `data/fixtures/words.json` is a frozen copy of the sample words. Tests never read `data/words/`, so adding vocabulary can never break a test:
 - Unit tests use the fixtures, or words defined inside the test for special cases (invalid entries, two words sharing a meaning).
 - e2e tests run against a build that bundles the fixtures instead of `data/words/` (a Vite mode, for example `--mode e2e`).
+
+### 5.7 Reporting a mistake
+
+The words come from my handwritten notes, so some will be wrong. Reports go to GitHub, next to the data they fix.
+- A small ⚑ button on every word in the notebook (including a verb's forms) and in every game's answer feedback. It opens a prefilled new issue on the repo, labelled `word-report`, with the word id, what the app showed (and the conjugation form, if any) and a line for what looks wrong. Nothing is sent until I submit the issue on GitHub.
+- At launch, when online, the app asks GitHub's public API how many `word-report` issues are open and shows a small banner ("2 open word reports") that links to them. Offline, or if the request fails, nothing shows. It's the app's only request to another site, and it never blocks anything.
+- Fixing happens in a Claude session ("fix the open word reports"): Claude reads them with `gh`, shows each proposed change for me to decide, as `/add-vocab` does, commits with `vocab:` and closes the issue. A wrong id is never fixed by renaming it (§5.1).
+- The repo is public, so reports are public; they contain only words.
 
 ## 6. Languages
 
@@ -296,17 +305,17 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 
 ## 11. Conjugation engine — `src/lib/conjugate.ts`
 
-- Pure function `conjugate(word, form) → { kanji?, kana }`. It applies the rules to the kana and rewrites the ending of both forms.
-- Forms in v1: dictionary, ます, ません, ました, ませんでした, て, ない, た.
+- Pure function `conjugate(word, form) → { kanji?, kana }`, or nothing when the verb doesn't fit its group (the validator reports those). It applies the rules to the kana and rewrites the ending of both forms.
+- Forms in v1, by id: 辞書形 (dictionary), ます, ません, ました, ませんでした, て, ない, た. The ids are Japanese on purpose and are stored in answer events (§10.1), so they never change.
 - Group 2: drop る and add the ending (食べる → 食べます, 食べて, 食べない, 食べた).
 - Group 1:
   - ます forms: the final kana moves from the う-row to the い-row (書く → 書きます).
   - ない: the final kana moves to the あ-row, + ない, with う → わ (書く → 書かない, 買う → 買わない).
   - て and た: う・つ・る → って/った; む・ぶ・ぬ → んで/んだ; く → いて/いた; ぐ → いで/いだ; す → して/した.
-- Group 3: する → します, して, しない, した…; noun + する keeps the noun (勉強します). 来る keeps its kanji but changes its reading: 来ます (きます), 来て (きて), 来ない (こない), 来た (きた). Verbs ending in てくる/でくる conjugate like 来る (持ってくる → 持ってきます, 持ってこない).
+- Group 3: する → します, して, しない, した…; noun + する keeps the noun (勉強します). 来る keeps its kanji but changes its reading: 来ます (きます), 来て (きて), 来ない (こない), 来た (きた). Verbs ending in てくる/でくる/にくる conjugate like 来る (持ってくる → 持ってきます, 持ってこない; 迎えに来る → 迎えに来ます, 迎えに来ない (むかえにこない)).
 - Exceptions: 行く → 行って, 行った, and so do verbs ending in ていく/でいく (持っていく → 持っていって). ある → ない.
 - The ます form helper from M1 (`src/lib/verbs.ts`, what the notebook shows) is folded into the engine; its rows join the table below.
-- **Test-first.** `src/lib/conjugate.test.ts` is a table of (verb, form, expected kanji, expected kana) covering every group 1 ending, both exceptions, 来る, する, a noun + する verb, 持っていく and 持ってくる, and the homophones 切る (group 1) and 着る (group 2). I check every row against a reliable conjugation chart before the engine exists; after that, the agent never edits the table.
+- **Test-first.** `src/lib/conjugate.test.ts` is a table of (verb, form, expected kanji, expected kana) covering every group 1 ending, both exceptions, 来る, する, a noun + する verb and a katakana one (コピーする), 持っていく and 持ってくる with their kanji spellings 持って行く and 持って来る, 迎えに来る, the homophones 切る (group 1) and 着る (group 2), and 作る (group 1, though its reading ends in くる). I check every row against a reliable conjugation chart before the engine exists; after that, the agent never edits the table.
 
 ## 12. Importing from the paper notebook — `/add-vocab`
 

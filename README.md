@@ -7,7 +7,7 @@ Minigames for drilling the Japanese vocabulary from my own notebook (a quick qui
 - Roadmap and status: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Instructions for Claude Code: [CLAUDE.md](CLAUDE.md)
 
-Status: M5 done. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`. The quick quiz, the verb group sorter and kana typing are playable (Play tab); every answer goes into a progress log in IndexedDB, and personal bests come from it. The conjugation drill arrives in M7.
+Status: M6 done. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`. The quick quiz, the verb group sorter and kana typing are playable (Play tab); every answer goes into a progress log in IndexedDB, and personal bests come from it. The conjugation engine derives every verb's forms; the drill that uses it arrives in M7.
 
 ## Run it
 

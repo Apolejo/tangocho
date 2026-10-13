@@ -96,7 +96,7 @@ Done when: §9.3 passes, including with your phone's keyboard.
 
 - [x] Session 1: Claude writes `src/lib/conjugate.test.ts` only. No engine yet.
 - [x] **You** check every row against a reliable conjugation chart (a textbook table, or a dictionary's conjugation tables), fix anything wrong and commit the table.
-- [ ] Session 2, a new session: implement `src/lib/conjugate.ts` until the table passes, without touching the table.
+- [x] Session 2, a new session: implement `src/lib/conjugate.ts` until the table passes, without touching the table.
 
 Done when: the whole table passes and you've checked every row yourself.
 

@@ -1,6 +1,7 @@
 import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { JaText } from '../../components/JaText.tsx';
 import { KanaInput } from '../../components/KanaInput.tsx';
+import { MeaningPeek } from '../../components/MeaningPeek.tsx';
 import { Ruby } from '../../components/Ruby.tsx';
 import type { Word } from '../../data/schema.ts';
 import { useLang, useT, type Translate } from '../../i18n/hooks.ts';
@@ -76,17 +77,20 @@ export function KanaQuestion({ card, word, allWords, onAnswer }: QuestionProps) 
   const done = check !== null;
   const state = check === null ? undefined : check.correct ? 'correct' : 'wrong';
   const meaning = meaningText(word, lang);
-  const pairs = furiganaFor(displayForm(word));
+  const shown = displayForm(word);
+  const pairs = furiganaFor(shown);
   return (
     <div className={styles.question}>
       <div className={styles.prompt} data-kana-prompt data-word-id={word.id}>
         {reading ? (
           <>
-            <Ruby
-              pairs={pairs}
-              readings={done}
-              className={`${styles.promptJa} ${styles.withRuby}`}
-            />
+            <MeaningPeek word={word} label={shown.kanji ?? shown.kana}>
+              <Ruby
+                pairs={pairs}
+                readings={done}
+                className={`${styles.promptJa} ${styles.withRuby}`}
+              />
+            </MeaningPeek>
             {/* the line is there from the start, so nothing moves when the meaning appears */}
             <span className={styles.meaning} lang={meaning.lang} data-kana-meaning>
               {done ? meaning.text : '\u00a0'}

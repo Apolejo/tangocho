@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { KanaInput } from '../../components/KanaInput.tsx';
+import { MeaningPeek } from '../../components/MeaningPeek.tsx';
 import { Ruby } from '../../components/Ruby.tsx';
 import type { Word } from '../../data/schema.ts';
 import { FORM_LABELS } from '../../i18n/forms.ts';
@@ -42,11 +43,13 @@ export function ConjugationQuestion({ card, word, options, seed, onAnswer }: Que
   return (
     <div className={styles.question}>
       <div className={styles.prompt} data-conj-prompt data-word-id={word.id} data-form={form}>
-        <Ruby
-          pairs={furiganaFor(shown)}
-          readings={options.furigana}
-          className={`${styles.promptJa} ${options.furigana ? styles.withRuby : ''}`}
-        />
+        <MeaningPeek word={word} label={written(shown)}>
+          <Ruby
+            pairs={furiganaFor(shown)}
+            readings={options.furigana}
+            className={`${styles.promptJa} ${options.furigana ? styles.withRuby : ''}`}
+          />
+        </MeaningPeek>
         <span className={styles.target}>
           <span aria-hidden="true">→ </span>
           <span lang="ja" data-target>

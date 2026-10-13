@@ -1,0 +1,88 @@
+.peek {
+  position: relative;
+  display: inline-flex;
+}
+
+/* the word as a button: a dotted line under it says it can be tapped */
+.word {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1.5px dotted var(--ink-soft);
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.word:hover {
+  border-bottom-color: var(--ai);
+}
+
+/* a speech bubble over the card: it never moves anything */
+.bubble {
+  position: absolute;
+  z-index: 2;
+  width: max-content;
+  max-width: min(16rem, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: start;
+  cursor: default;
+}
+
+/* its tail, pointing at the word */
+.bubble::before {
+  content: '';
+  position: absolute;
+  width: var(--space-2);
+  height: var(--space-2);
+  border: 1px solid var(--rule);
+  border-width: 0 0 1px 1px;
+  background: var(--paper);
+}
+
+.bubble[data-placement='side'] {
+  top: 50%;
+  left: calc(100% + var(--space-3));
+  transform: translateY(-50%);
+}
+
+.bubble[data-placement='side']::before {
+  top: 50%;
+  left: calc(-1 * var(--space-1) - 1px);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.bubble[data-placement='above'] {
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bubble[data-placement='above']::before {
+  bottom: calc(-1 * var(--space-1) - 1px);
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.bubble[data-placement='below'] {
+  top: calc(100% + var(--space-3));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bubble[data-placement='below']::before {
+  top: calc(-1 * var(--space-1) - 1px);
+  left: 50%;
+  transform: translateX(-50%) rotate(135deg);
+}

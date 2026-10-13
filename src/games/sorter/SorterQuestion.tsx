@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { MeaningPeek } from '../../components/MeaningPeek.tsx';
 import { Ruby } from '../../components/Ruby.tsx';
 import { VERB_GROUPS, type VerbGroup } from '../../data/schema.ts';
 import { useT } from '../../i18n/hooks.ts';
@@ -44,14 +45,17 @@ export function SorterQuestion({ word, options, onAnswer }: QuestionProps) {
     return () => window.removeEventListener('keydown', onKey);
   });
 
+  const shown = displayForm(word);
   return (
     <div className={styles.question}>
       <div className={styles.prompt} data-sorter-prompt data-word-id={word.id}>
-        <Ruby
-          pairs={furiganaFor(displayForm(word))}
-          readings={options.furigana}
-          className={`${styles.promptJa} ${options.furigana ? styles.withRuby : ''}`}
-        />
+        <MeaningPeek word={word} label={shown.kanji ?? shown.kana}>
+          <Ruby
+            pairs={furiganaFor(shown)}
+            readings={options.furigana}
+            className={`${styles.promptJa} ${options.furigana ? styles.withRuby : ''}`}
+          />
+        </MeaningPeek>
       </div>
       <p className={styles.ask}>{t('sorter_ask')}</p>
       <ol className={styles.groups}>

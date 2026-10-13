@@ -166,6 +166,15 @@ const SCREENS: {
       await answerSorter(page, 2);
     },
   },
+  {
+    name: 'sorter-meaning',
+    hash: '#/play/sorter',
+    steps: async (page) => {
+      await startSorter(page);
+      await page.locator('[data-meaning-peek]').click();
+      await page.locator('[data-meaning-bubble]').waitFor();
+    },
+  },
   { name: 'kana-setup', hash: '#/play/kana' },
   {
     name: 'kana-question',
@@ -228,6 +237,15 @@ const SCREENS: {
       await page.keyboard.insertText((await conjugationAnswer(page)).kana);
       await page.keyboard.press('Enter');
       await page.locator('[data-explanation]').waitFor();
+    },
+  },
+  {
+    name: 'conjugation-meaning',
+    hash: '#/play/conjugation',
+    steps: async (page) => {
+      await startConjugation(page, 'Typing');
+      await page.locator('[data-meaning-peek]').click();
+      await page.locator('[data-meaning-bubble]').waitFor();
     },
   },
   {

@@ -1,6 +1,6 @@
 import { IDBKeyRange, indexedDB } from 'fake-indexeddb';
 import { afterEach, describe, expect, it } from 'vitest';
-import { appendEvent, openProgressDb, roundEvents, type ProgressDb } from './db.ts';
+import { answerEvents, appendEvent, openProgressDb, roundEvents, type ProgressDb } from './db.ts';
 import { answerEvent, roundEvent } from './events.ts';
 
 const AT = new Date('2026-10-10T12:00:00Z');
@@ -18,11 +18,11 @@ afterEach(async () => {
   opened = [];
 });
 
-const answer = (id: string, roundId: string) =>
+const answer = (id: string, roundId: string, game: 'quiz' | 'conjugation' = 'quiz') =>
   answerEvent(
     {
       roundId,
-      game: 'quiz',
+      game,
       wordId: 'taberu',
       skill: 'meaning',
       correct: true,
@@ -93,5 +93,15 @@ describe('the event log', () => {
     const rounds = await roundEvents('quiz', db);
     expect(rounds.map((r) => r.id).sort()).toEqual(['r1', 'r3']);
     expect(rounds[0]?.deckIds).toEqual(['all', 'verbs-g2']);
+  });
+
+  it('lists the answer events of one game', async () => {
+    const db = freshDb();
+    await appendEvent(answer('a1', 'r1'), db);
+    await appendEvent(answer('a2', 'r2', 'conjugation'), db);
+    await appendEvent(round('r1'), db);
+    await appendEvent(answer('a3', 'r2', 'conjugation'), db);
+    const answers = await answerEvents('conjugation', db);
+    expect(answers.map((a) => a.id).sort()).toEqual(['a2', 'a3']);
   });
 });

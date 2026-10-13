@@ -3,7 +3,8 @@ import fixtures from '../../data/fixtures/words.json';
 import { WordsFileSchema, type Word } from '../data/schema.ts';
 import type { Minigame, RoundOptions, Skill } from '../games/types.ts';
 import { mulberry32 } from '../lib/random.ts';
-import { buildQueue } from './queue.ts';
+import { buildQueue, practiceQueue } from './queue.ts';
+import { DEFAULT_SETUP } from './setup.ts';
 
 const all = WordsFileSchema.parse(fixtures);
 
@@ -18,9 +19,8 @@ const quizLike: Pick<Minigame, 'skillsFor' | 'eligible'> = {
 };
 
 const opts = (direction: RoundOptions['direction']): RoundOptions => ({
-  furigana: true,
+  ...DEFAULT_SETUP.options,
   direction,
-  mode: 'reading',
 });
 
 describe('buildQueue', () => {
@@ -105,5 +105,86 @@ describe('buildQueue', () => {
       rng: mulberry32(5),
     });
     expect(new Set(queue.map((q) => q.seed)).size).toBe(20);
+  });
+});
+
+describe('buildQueue with forms', () => {
+  const verbs = all.filter((w) => w.pos === 'verb');
+  const drillLike: Pick<Minigame, 'skillsFor' | 'eligible' | 'formsFor'> = {
+    skillsFor: () => ['conjugation'],
+    eligible: (w) => w.pos === 'verb',
+    formsFor: (_w, o) => o.forms,
+  };
+  const withForms = (forms: RoundOptions['forms']): RoundOptions => ({
+    ...DEFAULT_SETUP.options,
+    forms,
+  });
+
+  it('gives each card one of the selected forms', () => {
+    const queue = buildQueue({
+      pool: verbs,
+      game: drillLike,
+      options: withForms(['て', 'ない']),
+      size: 20,
+      rng: mulberry32(6),
+    });
+    expect(queue).toHaveLength(20);
+    for (const { card } of queue) expect(['て', 'ない']).toContain(card.form);
+    expect(new Set(queue.map((q) => q.card.form))).toEqual(new Set(['て', 'ない']));
+  });
+
+  it('asks the forms missed more often more often', () => {
+    const counts = { て: 0, た: 0 };
+    for (let seed = 0; seed < 100; seed++) {
+      const queue = buildQueue({
+        pool: verbs,
+        game: drillLike,
+        options: withForms(['て', 'た']),
+        size: 20,
+        rng: mulberry32(seed),
+        formStats: new Map([
+          ['て', { answers: 20, misses: 20 }],
+          ['た', { answers: 20, misses: 0 }],
+        ]),
+      });
+      for (const { card } of queue) counts[card.form as 'て' | 'た']++;
+    }
+    // weights 3.86 and 1.14: about 3.4 to 1
+    expect(counts.て / counts.た).toBeGreaterThan(2.7);
+    expect(counts.て / counts.た).toBeLessThan(4.2);
+  });
+
+  it('skips a word with no form to ask, and leaves games without forms alone', () => {
+    const none = buildQueue({
+      pool: verbs,
+      game: { ...drillLike, formsFor: () => [] },
+      options: withForms(['て']),
+      size: 10,
+      rng: mulberry32(7),
+    });
+    expect(none).toEqual([]);
+    const quiz = buildQueue({
+      pool: all,
+      game: quizLike,
+      options: opts('forward'),
+      size: 10,
+      rng: mulberry32(7),
+    });
+    for (const { card } of quiz) expect(card).not.toHaveProperty('form');
+  });
+});
+
+describe('practiceQueue', () => {
+  it('replays the cards as they were, shuffled, each with a seed', () => {
+    const cards = [
+      { wordId: 'kaku', skill: 'conjugation' as const, form: 'て' },
+      { wordId: 'taberu', skill: 'conjugation' as const, form: 'ない' },
+      { wordId: 'sensei', skill: 'recall' as const },
+    ];
+    const queue = practiceQueue(cards, mulberry32(8));
+    expect(queue.map((q) => q.card).sort((a, b) => a.wordId.localeCompare(b.wordId))).toEqual(
+      [...cards].sort((a, b) => a.wordId.localeCompare(b.wordId)),
+    );
+    expect(new Set(queue.map((q) => q.seed)).size).toBe(3);
   });
 });

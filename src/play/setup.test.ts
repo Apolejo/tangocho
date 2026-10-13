@@ -3,7 +3,8 @@ import type { Word } from '../data/schema.ts';
 import { kana } from '../games/kana/index.ts';
 import { quiz } from '../games/quiz/index.ts';
 import { sorter } from '../games/sorter/index.ts';
-import { DEFAULT_SETUP, parseSetup, unavailableReason } from './setup.ts';
+import { FORMS } from '../lib/conjugate.ts';
+import { DEFAULT_SETUP, defaultSetup, parseSetup, unavailableReason } from './setup.ts';
 
 const known = new Set(['all', 'new', 'verbs-g1', 'occupations']);
 
@@ -12,9 +13,42 @@ describe('parseSetup', () => {
     const stored = {
       deckIds: ['verbs-g1', 'occupations'],
       size: 20,
-      options: { furigana: false, direction: 'mixed', mode: 'recall' },
+      options: {
+        furigana: false,
+        direction: 'mixed',
+        mode: 'recall',
+        inputMode: 'choices',
+        forms: ['て', 'た'],
+      },
     };
     expect(parseSetup(JSON.stringify(stored), known)).toEqual(stored);
+  });
+
+  it('gives a choice saved before the conjugation drill every form and the device’s input mode', () => {
+    const stored = {
+      deckIds: ['all'],
+      size: 10,
+      options: { furigana: true, direction: 'forward', mode: 'reading' },
+    };
+    const onPhone = parseSetup(JSON.stringify(stored), known, defaultSetup('choices'));
+    expect(onPhone.options).toEqual({ ...stored.options, inputMode: 'choices', forms: FORMS });
+    expect(parseSetup(JSON.stringify(stored), known).options.inputMode).toBe('typing');
+  });
+
+  it('keeps forms in the engine’s order, drops unknown ones, and takes every form for none', () => {
+    const withForms = (forms: unknown) =>
+      parseSetup(JSON.stringify({ deckIds: ['all'], size: 10, options: { forms } }), known).options
+        .forms;
+    expect(withForms(['た', 'masu', 'ます', 'た'])).toEqual(['ます', 'た']);
+    expect(withForms([])).toEqual(FORMS);
+    expect(withForms(['gone'])).toEqual(FORMS);
+    expect(withForms('て')).toEqual(FORMS);
+  });
+
+  it('defaults to typing, with every form', () => {
+    expect(DEFAULT_SETUP.options.inputMode).toBe('typing');
+    expect(DEFAULT_SETUP.options.forms).toEqual(FORMS);
+    expect(defaultSetup('choices').options.inputMode).toBe('choices');
   });
 
   it('gives a choice saved before kana typing the default mode', () => {
@@ -36,12 +70,24 @@ describe('parseSetup', () => {
     const stored = {
       deckIds: ['gone', 'verbs-g1', 'verbs-g1'],
       size: 15,
-      options: { furigana: 'yes', direction: 'reverse', mode: 'writing' },
+      options: {
+        furigana: 'yes',
+        direction: 'reverse',
+        mode: 'writing',
+        inputMode: 'voice',
+        forms: ['ない'],
+      },
     };
     expect(parseSetup(JSON.stringify(stored), known)).toEqual({
       deckIds: ['verbs-g1'],
       size: 10,
-      options: { furigana: true, direction: 'reverse', mode: 'reading' },
+      options: {
+        furigana: true,
+        direction: 'reverse',
+        mode: 'reading',
+        inputMode: 'typing',
+        forms: ['ない'],
+      },
     });
     expect(parseSetup(JSON.stringify({ deckIds: ['gone'] }), known).deckIds).toEqual(['all']);
   });

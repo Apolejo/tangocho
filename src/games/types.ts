@@ -2,6 +2,7 @@ import type { ComponentType, ReactNode } from 'react';
 import type { Word } from '../data/schema.ts';
 import type { MessageKey } from '../i18n/en.ts';
 import type { Lang } from '../i18n/lang.ts';
+import type { ConjugationForm } from '../lib/conjugate.ts';
 
 /**
  * The contract between the round shell (src/play/) and a game (SPEC §8.2). The shell owns the
@@ -28,11 +29,18 @@ export type Direction = (typeof DIRECTIONS)[number];
 export const KANA_MODES = ['reading', 'recall'] as const;
 export type KanaMode = (typeof KANA_MODES)[number];
 
-/** Per-round options from the setup screen (SPEC §7.3). Input mode and forms arrive with M7. */
+/** Conjugation drill input: type the form, or pick it among four (SPEC §9.4). */
+export const INPUT_MODES = ['typing', 'choices'] as const;
+export type InputMode = (typeof INPUT_MODES)[number];
+
+/** Per-round options from the setup screen (SPEC §7.3). */
 export interface RoundOptions {
   furigana: boolean;
   direction: Direction;
   mode: KanaMode;
+  inputMode: InputMode;
+  /** The conjugation forms a round asks, in the engine's order; never empty when a round starts. */
+  forms: readonly ConjugationForm[];
 }
 
 export type OptionKey = keyof RoundOptions;
@@ -85,6 +93,11 @@ export interface Minigame {
   /** The part of the personal-best key that comes from the options (SPEC §10.3). */
   variant(options: RoundOptions): string;
   eligible(word: Word, skill: Skill): boolean;
+  /**
+   * The forms a card of this word can ask, for a game whose cards have one (the conjugation
+   * drill). The queue picks one per card, favoring the forms missed more often (SPEC §9.4).
+   */
+  formsFor?(word: Word, options: RoundOptions): readonly string[];
   /** Fewer eligible words in the whole list → the game is disabled with a message. */
   minPool: number;
   /** A game-specific check on the whole word list; `unavailableKey` says why it failed. */

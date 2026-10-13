@@ -3,6 +3,7 @@ import type { AnswerResult } from '../games/types.ts';
 import type { QueuedCard } from './queue.ts';
 import {
   isLastQuestion,
+  missedCards,
   missedWordIds,
   roundReducer,
   startRound,
@@ -72,5 +73,22 @@ describe('missedWordIds', () => {
     let s = startRound([...queue, { card: { wordId: 'kau', skill: 'recall' }, seed: 9 }]);
     for (const correct of [false, true, false, false]) s = next(answer(s, correct));
     expect(missedWordIds(s.answers)).toEqual(['kau', 'taberu']);
+  });
+});
+
+describe('missedCards', () => {
+  it('keeps the skill and form of each missed card, one per word', () => {
+    const drill: QueuedCard[] = [
+      { card: { wordId: 'kaku', skill: 'conjugation', form: 'て' }, seed: 1 },
+      { card: { wordId: 'kau', skill: 'conjugation', form: 'ない' }, seed: 2 },
+      { card: { wordId: 'taberu', skill: 'conjugation', form: 'た' }, seed: 3 },
+      { card: { wordId: 'kaku', skill: 'conjugation', form: 'ます' }, seed: 4 },
+    ];
+    let s = startRound(drill);
+    for (const correct of [false, true, false, false]) s = next(answer(s, correct));
+    expect(missedCards(s.answers)).toEqual([
+      { wordId: 'kaku', skill: 'conjugation', form: 'て' },
+      { wordId: 'taberu', skill: 'conjugation', form: 'た' },
+    ]);
   });
 });

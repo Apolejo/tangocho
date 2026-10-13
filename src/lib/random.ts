@@ -47,6 +47,27 @@ export function pick<T>(items: readonly T[], rng: Rng): T | undefined {
 }
 
 /**
+ * A random element, each as likely as its weight (weights above 0); undefined for an empty list.
+ * Draws one number only when there is a list to draw from.
+ */
+export function weightedPick<T>(
+  items: readonly T[],
+  weight: (item: T) => number,
+  rng: Rng,
+): T | undefined {
+  if (items.length === 0) return undefined;
+  const weights = items.map(weight);
+  const total = weights.reduce((sum, w) => sum + w, 0);
+  let x = rng() * total;
+  for (let i = 0; i < items.length; i++) {
+    x -= weights[i] ?? 0;
+    if (x < 0) return items[i];
+  }
+  // rounding can leave x at a hair above 0: the last item takes it
+  return items.at(-1);
+}
+
+/**
  * A random UUID v4. Built from getRandomValues because crypto.randomUUID needs a secure context,
  * and the phone reaches the dev server over plain http on the LAN.
  */

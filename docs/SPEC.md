@@ -129,6 +129,14 @@ Warnings (printed, never block):
 - Unit tests use the fixtures, or words defined inside the test for special cases (invalid entries, two words sharing a meaning).
 - e2e tests run against a build that bundles the fixtures instead of `data/words/` (a Vite mode, for example `--mode e2e`).
 
+### 5.7 Reporting a mistake
+
+The words come from my handwritten notes, so some will be wrong. Reports go to GitHub, next to the data they fix.
+- A small ⚑ button on every word in the notebook (including a verb's forms) and in every game's answer feedback. It opens a prefilled new issue on the repo, labelled `word-report`, with the word id, what the app showed (and the conjugation form, if any) and a line for what looks wrong. Nothing is sent until I submit the issue on GitHub.
+- At launch, when online, the app asks GitHub's public API how many `word-report` issues are open and shows a small banner ("2 open word reports") that links to them. Offline, or if the request fails, nothing shows. It's the app's only request to another site, and it never blocks anything.
+- Fixing happens in a Claude session ("fix the open word reports"): Claude reads them with `gh`, shows each proposed change for me to decide, as `/add-vocab` does, commits with `vocab:` and closes the issue. A wrong id is never fixed by renaming it (§5.1).
+- The repo is public, so reports are public; they contain only words.
+
 ## 6. Languages
 
 - UI and meanings in English and Spanish, switched from the header and from Settings. Default from the browser language (`es*` → Spanish, otherwise English); the choice is remembered.

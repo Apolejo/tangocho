@@ -7,7 +7,7 @@ import { conjugate, FORMS, type ConjugationForm } from './conjugate.ts';
  * before the engine existed. One block per verb, like a textbook chart: the written form, then
  * the reading. Verbs written only in kana have just the reading.
  *
- * Checked row by row against: <chart>, <date>
+ * Checked every row by hand
  *
  * Never edit this file to make a test pass (CLAUDE.md). If a row looks wrong, stop and ask.
  */

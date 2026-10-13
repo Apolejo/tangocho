@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { WordRow } from '../components/WordRow.tsx';
 import type { Word } from '../data/schema.ts';
-import type { Minigame } from '../games/types.ts';
+import type { Card, Minigame } from '../games/types.ts';
 import { useLang, useT } from '../i18n/hooks.ts';
 import { bestKey, isNewRecord } from '../progress/bests.ts';
 import { useBest } from '../progress/useBest.ts';
 import type { RoundPlan } from './plan.ts';
 import styles from './Results.module.css';
-import { missedWordIds, type AnswerRecord } from './round.ts';
+import { missedCards, missedWordIds, type AnswerRecord } from './round.ts';
 import { accuracy, isPerfect, type Tally } from './score.ts';
 import { Stamp } from './Stamp.tsx';
 
@@ -30,7 +30,8 @@ export function Results({
   answers: readonly AnswerRecord[];
   tally: Tally;
   allWords: readonly Word[];
-  onPractice(words: readonly Word[]): void;
+  /** Replays the missed cards, each with its skill and form. */
+  onPractice(cards: readonly Card[]): void;
   onAgain(): void;
   onSetup(): void;
 }) {
@@ -93,7 +94,7 @@ export function Results({
         ) : (
           <ol className={styles.list}>
             {missed.map((word) => (
-              <WordRow key={word.id} word={word} />
+              <WordRow key={word.id} word={word} from={t(game.nameKey)} />
             ))}
           </ol>
         )}
@@ -101,7 +102,11 @@ export function Results({
 
       <div className={styles.actions}>
         {missed.length > 0 && (
-          <button type="button" className={styles.primary} onClick={() => onPractice(missed)}>
+          <button
+            type="button"
+            className={styles.primary}
+            onClick={() => onPractice(missedCards(answers))}
+          >
             {t('results_practice')}
           </button>
         )}

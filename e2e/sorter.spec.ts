@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test.ts';
 
 /**
  * Verb group sorter (SPEC §9.2): one verb of each group plus 帰る, and the exception

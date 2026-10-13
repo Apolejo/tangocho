@@ -133,8 +133,8 @@ Warnings (printed, never block):
 ### 5.7 Reporting a mistake
 
 The words come from my handwritten notes, so some will be wrong. Reports go to GitHub, next to the data they fix.
-- A small ⚑ button on every word in the notebook (including a verb's forms) and in every game's answer feedback. It opens a prefilled new issue on the repo, labelled `word-report`, with the word id, what the app showed (and the conjugation form, if any) and a line for what looks wrong. Nothing is sent until I submit the issue on GitHub.
-- At launch, when online, the app asks GitHub's public API how many `word-report` issues are open and shows a small banner ("2 open word reports") that links to them. Offline, or if the request fails, nothing shows. It's the app's only request to another site, and it never blocks anything.
+- A small ⚑ button on every word in the notebook (including each of a verb's forms, §7.2), on the missed words in Results, and in every game's answer feedback. It opens a prefilled new issue on the repo in a new tab (`issues/new?labels=word-report&title=…&body=…`), with the word id, the word as the app shows it with its reading, its meaning, the conjugation form and the app's answer (if any), where the report was made, the notebook page (`source`) and a line for what looks wrong. Nothing is sent until I submit the issue on GitHub.
+- At launch, when online, the app asks GitHub's public API how many `word-report` issues are open (`GET /repos/Apolejo/tangocho/issues?labels=word-report&state=open`; pull requests don't count) and shows a small banner ("2 open word reports") that links to them, on the notebook and the game list, never during a round. ✕ hides it until the next launch. Offline, with none open, or if the request fails or takes over 5 s, nothing shows. It's the app's only request to another site, and it never blocks anything. e2e answers the API itself, so tests never reach GitHub.
 - Fixing happens in a Claude session ("fix the open word reports"): Claude reads them with `gh`, shows each proposed change for me to decide, as `/add-vocab` does, commits with `vocab:` and closes the issue. A wrong id is never fixed by renaming it (§5.1).
 - The repo is public, so reports are public; they contain only words.
 
@@ -149,7 +149,7 @@ The words come from my handwritten notes, so some will be wrong. Reports go to G
 | § | Screen | Contents |
 |---|---|---|
 | 7.1 | Today (home) | Streak and stamp card, daily-goal progress, due count per game, a *Continue* button. |
-| 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Verbs are shown in ます form, derived from the stored dictionary form (§5.1, §11); tapping a verb shows all its forms once the engine exists (M7). Built first; it doubles as a data check. |
+| 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Verbs are shown in ます form, derived from the stored dictionary form (§5.1, §11); tapping a verb opens its eight forms with furigana, each with its ⚑ (§5.7): a bottom sheet on a phone, a dialog on the computer (✕, Esc or a tap outside closes it). Built first; it doubles as a data check. |
 | 7.3 | Game setup | Decks (remembers the last choice; the counts are of the words the game can use, so verbs only for the sorter), round size (10 or 20), options (furigana, direction, kana typing mode, input mode, forms). |
 | 7.4 | Play | Progress, score and combo, the question, the answer area, ◯/✕ feedback. |
 | 7.5 | Results | Score, accuracy, a 新記録 stamp for a personal best, 花丸 for a perfect round, missed words with *Practice these*. |
@@ -184,10 +184,11 @@ export interface Minigame {
   nameJa: string;                          // Japanese subtitle on the game card
   descriptionKey: MessageKey;
   skills: Skill[];
-  options: OptionKey[];                    // which setup controls to show: 'furigana', 'direction', 'mode'
+  options: OptionKey[];                    // setup controls: 'furigana', 'direction', 'mode', 'inputMode', 'forms'
   skillsFor(options): Skill[];             // the skills a round trains; the queue picks one per card
   variant(options): string;                // the game's part of the personal-best key (§10.3)
   eligible(word: Word, skill: Skill): boolean;
+  formsFor?(word, options): string[];      // a card's possible forms (the drill); the queue picks one
   minPool: number;                         // fewer eligible words → game disabled with a message
   available(allWords, lang): boolean;      // a game-specific check, explained by unavailableKey
   unavailableKey: MessageKey;
@@ -199,7 +200,7 @@ export interface QuestionProps {
   word: Word;
   pool: Word[];                            // all eligible words of the selected decks, e.g. for distractors
   allWords: Word[];                        // every word, for when the decks alone aren't enough
-  options: RoundOptions;                   // furigana, direction, mode (inputMode and forms arrive in M7)
+  options: RoundOptions;                   // furigana, direction, mode, inputMode, forms
   seed: number;                            // seeds the question's randomness, so rendering stays pure
   onAnswer(result: AnswerResult): void;    // { correct, hinted, given, expected, expectedLang?, explanation?, reveals? }
 }
@@ -207,7 +208,7 @@ export interface QuestionProps {
 
 `explanation` is a React node, not a string, so the Japanese it quotes can carry `lang="ja"` (§6).
 
-The round queue is shuffled until M8 brings the §10.2 order: each word at most once, round size = min(10 or 20, pool). *Quit* goes back to setup; answers already given stay logged, and no round event is written.
+The round queue is shuffled until M8 brings the §10.2 order: each word at most once, round size = min(10 or 20, pool). A game with `formsFor` gets one form per card, drawn toward the forms missed more often (§9.4). *Practice these* replays the missed cards, each with its skill and form. *Quit* goes back to setup; answers already given stay logged, and no round event is written.
 
 Answer checking and distractor generation are pure functions next to each game, with unit tests.
 
@@ -218,7 +219,7 @@ Answer checking and distractor generation are pure functions next to each game, 
 - A right answer typed into a field leaves the focus there, so a phone keeps its keyboard up between questions, and Enter in the field continues. After a wrong answer the focus moves to *Continue* (the keyboard goes down, so the answer can be read).
 - Tap targets at least 44×44 px; answer controls within thumb reach on a phone.
 - Feedback is announced to screen readers (`aria-live`).
-- Verbs are shown in ます form, like the notebook (§7.2); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
+- Verbs are shown in ます form, like the notebook (§7.2), except a drill question that asks for the ます form, which shows the dictionary form (§9.4); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
 
 ## 9. Games in v1
 
@@ -262,12 +263,13 @@ Done when: unit tests cover every acceptance case above; e2e types answers on de
 
 ### 9.4 Conjugation drill — `conjugation`
 
-- A verb and a target form → produce the form.
-- Forms selectable per round; default all eight (§11). Forms I miss more often come up more often.
-- Input: typing (default on computer) or four choices (default on phone), switchable.
-- Typing accepts kana or the kanji form (こない or 来ない).
-- Choice distractors are plausible mistakes: another group's rule, or the wrong て/た sound change (書って, 書きて). Never duplicates, never a second correct answer.
-- Each answer is followed by the rule: "group 1, ends in く → いて".
+- A verb in ます form (§8.3) and a target form → produce the form: 書きます → て形. A ます question shows the dictionary form instead (書く → ます形). Form names are Japanese in both UI languages: 辞書形, ます形, ません, ました, ませんでした, て形, ない形, た形.
+- Forms selectable per round; default all eight (§11). Forms I miss more often come up more often: the queue draws each card's form with weight 1 + 3 × miss rate, where the miss rate is (misses + 1) / (answers + 2) over that form's last 20 answers. A form missed every time comes up about 3.4× as often as one never missed; a form never asked sits in between.
+- Input: typing (default on a computer) or four choices (default on a touch screen), switchable, and remembered with the rest of the setup.
+- Typing accepts kana or the kanji form (こない or 来ない), compared as in §9.3.
+- Choice distractors are plausible mistakes: another group's rule (帰ない, 食べって), the wrong て/た sound change (書って, 書きて), an exception ignored (行いて, あらない), the wrong stem (書くます, 書きない, 買あない) or the wrong way back to the dictionary form (書きる). When a verb has fewer than three, its other forms fill in, never the form it's shown in. Never duplicates, never a second correct answer.
+- Options are written as the notebook writes them, with furigana per the round's option. When two would look the same in kanji (来ない read こない or きない), that question shows all four in kana.
+- Each answer is followed by the rule, quoting the dictionary form: "書く（かく）— group 1, ends in く → いて"; 行く and ある are named as exceptions.
 
 Done when: e2e answers in both input modes; the distractor generator is unit-tested.
 
@@ -275,7 +277,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 
 ### 10.1 Event log
 
-- Every answer appends an `AnswerEvent { type: 'answer', id, at, roundId, game, wordId, skill, form?, correct, hinted, ms, device }`; every finished round appends a `RoundEvent { type: 'round', id, at, game, deckIds, size, variant, practice, score, correct, total }`. The round event's `id` is the `roundId` of its answers; it is written with the last answer. `at` is an ISO timestamp; `device` is a random id per install; `variant` is the game's part of the personal-best key (the quiz direction, the kana typing mode, or empty); `practice` marks a *Practice these* round.
+- Every answer appends an `AnswerEvent { type: 'answer', id, at, roundId, game, wordId, skill, form?, correct, hinted, ms, device }`; every finished round appends a `RoundEvent { type: 'round', id, at, game, deckIds, size, variant, practice, score, correct, total }`. The round event's `id` is the `roundId` of its answers; it is written with the last answer. `at` is an ISO timestamp; `device` is a random id per install; `variant` is the game's part of the personal-best key (the quiz direction, the kana typing mode, the drill's input mode and forms like `choices|て+た`, or empty); `practice` marks a *Practice these* round.
 - Events are append-only, in IndexedDB. Spaced-repetition state, scores, streaks and mastery are derived from them (cached for speed, always rebuildable).
 - Export saves the event log as a JSON file. Import merges by event id (importing the same file twice changes nothing) and rebuilds. This is how progress moves between phone and computer in v1.
 - Ask for persistent storage (`navigator.storage.persist()`). Browsers may clear data for sites that haven't been used in a while, Safari on iPhone especially, so install the app on the phone; Settings shows the last export date and reminds me after 7 days.
@@ -290,7 +292,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 ### 10.3 Scores
 
 - A correct answer earns 100 × combo multiplier (starts at 1.0, +0.1 per consecutive correct answer, max 2.0). A hinted answer earns half. A wrong answer earns 0 and resets the combo.
-- Personal best per (game, deck selection, round size, variant), where the variant is the quiz direction or the kana typing mode; derived from the round events. Beating it shows a 新記録 stamp, and so does the first round for a key when it scores above 0. *Practice these* rounds never count.
+- Personal best per (game, deck selection, round size, variant), where the variant is the quiz direction, the kana typing mode, or the drill's input mode and selected forms; derived from the round events. Beating it shows a 新記録 stamp, and so does the first round for a key when it scores above 0. *Practice these* rounds never count.
 
 ### 10.4 Daily goal and streak
 

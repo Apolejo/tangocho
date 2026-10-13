@@ -3,14 +3,24 @@
  * shots/ (SPEC §14). Starts the dev server itself. `--only <screen>` limits to one screen,
  * `--full` captures the whole page instead of the viewport.
  */
-import { mkdirSync } from 'node:fs';
-import { relative } from 'node:path';
+import { mkdirSync, readdirSync, readFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium, type Page } from 'playwright';
 import { createServer } from 'vite';
+import { WordsFileSchema } from '../src/data/schema.ts';
+import { conjugate, isForm, type Conjugated } from '../src/lib/conjugate.ts';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const OUT = fileURLToPath(new URL('../shots/', import.meta.url));
+const WORDS_DIR = fileURLToPath(new URL('../data/words/', import.meta.url));
+
+/** The words the dev server shows, for knowing a conjugation question's answer. */
+const WORDS = readdirSync(WORDS_DIR)
+  .filter((file) => file.endsWith('.json'))
+  .flatMap((file) =>
+    WordsFileSchema.parse(JSON.parse(readFileSync(join(WORDS_DIR, file), 'utf8'))),
+  );
 
 /** Answers the current quiz question right or wrong by keyboard (the e2e trick: matching word ids). */
 async function answerQuiz(page: Page, correct: boolean): Promise<void> {
@@ -79,10 +89,44 @@ async function typeKanaId(page: Page): Promise<void> {
   await page.keyboard.type(id.split('-')[0] ?? '');
 }
 
+/** Starts a conjugation round over group 1 verbs, typed or with four choices. */
+async function startConjugation(page: Page, input: 'Typing' | 'Four choices'): Promise<void> {
+  await sorterGroup1(page);
+  await page.getByRole('radio', { name: input }).check();
+  await page.getByRole('button', { name: 'Start' }).click();
+  await page.locator('[data-conj-prompt]').waitFor();
+}
+
+/** The current conjugation question's answer, from the engine (any data). */
+async function conjugationAnswer(page: Page): Promise<Conjugated> {
+  const prompt = page.locator('[data-conj-prompt]');
+  const id = await prompt.getAttribute('data-word-id');
+  const form = (await prompt.getAttribute('data-form')) ?? undefined;
+  const word = WORDS.find((w) => w.id === id);
+  const answer = word !== undefined && isForm(form) ? conjugate(word, form) : undefined;
+  if (answer === undefined) throw new Error(`no answer for ${id} ${form}`);
+  return answer;
+}
+
 /** Add a line here when a screen appears. `steps` clicks through to screens without a URL. */
-const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<void> }[] = [
+const SCREENS: {
+  name: string;
+  hash: string;
+  steps?: (page: Page) => Promise<void>;
+  /** Open word reports GitHub answers with (none unless given), so screens don't depend on it. */
+  reports?: number;
+}[] = [
   { name: 'notebook', hash: '#/notebook' },
+  { name: 'notebook-reports', hash: '#/notebook', reports: 2 },
   { name: 'notebook-verbs-g2', hash: '#/notebook/verbs-g2' },
+  {
+    name: 'notebook-verb-forms',
+    hash: '#/notebook/verbs-g1',
+    steps: async (page) => {
+      await page.locator('[data-show-forms]').nth(3).click();
+      await page.locator('dialog[open]').waitFor();
+    },
+  },
   { name: 'play', hash: '#/play' },
   { name: 'quiz-setup', hash: '#/play/quiz' },
   { name: 'quiz-question', hash: '#/play/quiz', steps: startQuiz },
@@ -170,6 +214,38 @@ const SCREENS: { name: string; hash: string; steps?: (page: Page) => Promise<voi
       await page.locator('[data-kana-reveal]').waitFor();
     },
   },
+  { name: 'conjugation-setup', hash: '#/play/conjugation' },
+  {
+    name: 'conjugation-typing',
+    hash: '#/play/conjugation',
+    steps: (page) => startConjugation(page, 'Typing'),
+  },
+  {
+    name: 'conjugation-typing-correct',
+    hash: '#/play/conjugation',
+    steps: async (page) => {
+      await startConjugation(page, 'Typing');
+      await page.keyboard.insertText((await conjugationAnswer(page)).kana);
+      await page.keyboard.press('Enter');
+      await page.locator('[data-explanation]').waitFor();
+    },
+  },
+  {
+    name: 'conjugation-choices',
+    hash: '#/play/conjugation',
+    steps: (page) => startConjugation(page, 'Four choices'),
+  },
+  {
+    name: 'conjugation-choices-wrong',
+    hash: '#/play/conjugation',
+    steps: async (page) => {
+      await startConjugation(page, 'Four choices');
+      const answer = await conjugationAnswer(page);
+      const right = answer.kanji ?? answer.kana;
+      await page.locator(`[data-choice]:not([data-option="${right}"])`).first().click();
+      await page.getByRole('button', { name: 'Continue' }).waitFor();
+    },
+  },
 ];
 
 const VIEWPORTS = [
@@ -208,6 +284,12 @@ async function main(): Promise<void> {
             locale: 'en-US',
           });
           const page = await context.newPage();
+          await page.route('https://api.github.com/**', (route) =>
+            route.fulfill({
+              json: Array.from({ length: screen.reports ?? 0 }, (_, i) => ({ number: i + 1 })),
+              headers: { 'Access-Control-Allow-Origin': '*' },
+            }),
+          );
           await page.goto(url + screen.hash, { waitUntil: 'networkidle' });
           await screen.steps?.(page);
           await page.evaluate('document.fonts.ready');

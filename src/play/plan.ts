@@ -1,7 +1,8 @@
 import type { Word } from '../data/schema.ts';
-import type { GameId, Minigame, RoundOptions } from '../games/types.ts';
+import type { Card, GameId, Minigame, RoundOptions } from '../games/types.ts';
 import type { Rng } from '../lib/random.ts';
-import { buildQueue, type QueuedCard } from './queue.ts';
+import type { FormStats } from '../progress/forms.ts';
+import { buildQueue, practiceQueue, type QueuedCard } from './queue.ts';
 
 /** Everything a round needs, fixed when it starts. */
 export interface RoundPlan {
@@ -9,13 +10,13 @@ export interface RoundPlan {
   id: string;
   game: GameId;
   deckIds: readonly string[];
-  /** The size chosen on setup; a practice round's size is its number of words. */
+  /** The size chosen on setup; a practice round's size is its number of cards. */
   size: number;
   options: RoundOptions;
   /** Every eligible word of the selected decks, for distractors. */
   pool: readonly Word[];
   queue: readonly QueuedCard[];
-  /** A *Practice these* round over missed words: never a personal best. */
+  /** A *Practice these* round over missed cards: never a personal best. */
   practice: boolean;
 }
 
@@ -37,28 +38,28 @@ export function planRound({
   options,
   words,
   only,
+  formStats,
   rng,
 }: {
   id: string;
-  game: Pick<Minigame, 'id' | 'skillsFor' | 'eligible'>;
+  game: Pick<Minigame, 'id' | 'skillsFor' | 'eligible' | 'formsFor'>;
   deckIds: readonly string[];
   size: number;
   options: RoundOptions;
   /** The words of the selected decks. */
   words: readonly Word[];
-  /** Practice: just these words (the missed ones). */
-  only?: readonly Word[];
+  /** Practice: just these cards (the missed ones), each with its skill and form. */
+  only?: readonly Card[];
+  /** Misses per form, for a game whose cards have one. */
+  formStats?: FormStats;
   rng: Rng;
 }): RoundPlan {
   const pool = eligibleWords(game, options, words);
   const practice = only !== undefined;
-  const queue = buildQueue({
-    pool: only ?? pool,
-    game,
-    options,
-    size: only?.length ?? size,
-    rng,
-  });
+  const queue =
+    only === undefined
+      ? buildQueue({ pool, game, options, size, rng, formStats })
+      : practiceQueue(only, rng);
   return {
     id,
     game: game.id,

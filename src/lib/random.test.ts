@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mulberry32, newId, nextSeed, pick, randomSeed, shuffle } from './random.ts';
+import { mulberry32, newId, nextSeed, pick, randomSeed, shuffle, weightedPick } from './random.ts';
 
 describe('mulberry32', () => {
   it('gives the same sequence for the same seed', () => {
@@ -52,6 +52,31 @@ describe('pick and seeds', () => {
       expect(seed).toBeGreaterThanOrEqual(0);
       expect(seed).toBeLessThan(2 ** 32);
     }
+  });
+});
+
+describe('weightedPick', () => {
+  it('picks in proportion to the weights', () => {
+    const rng = mulberry32(11);
+    const counts = { a: 0, b: 0, c: 0 };
+    const weights = { a: 1, b: 3, c: 0 };
+    for (let i = 0; i < 4000; i++) {
+      const item = weightedPick(['a', 'b', 'c'] as const, (x) => weights[x], rng);
+      if (item !== undefined) counts[item]++;
+    }
+    expect(counts.c).toBe(0);
+    expect(counts.b / counts.a).toBeGreaterThan(2.6);
+    expect(counts.b / counts.a).toBeLessThan(3.4);
+  });
+
+  it('gives undefined for an empty list without drawing', () => {
+    let draws = 0;
+    const rng = () => {
+      draws++;
+      return 0.5;
+    };
+    expect(weightedPick([], () => 1, rng)).toBeUndefined();
+    expect(draws).toBe(0);
   });
 });
 

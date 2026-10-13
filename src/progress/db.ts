@@ -1,6 +1,6 @@
 import { Dexie, type DexieOptions, type Table } from 'dexie';
 import type { GameId } from '../games/types.ts';
-import type { ProgressEvent, RoundEvent } from './events.ts';
+import type { AnswerEvent, ProgressEvent, RoundEvent } from './events.ts';
 
 /** The progress log in IndexedDB (SPEC §10.1), through Dexie. */
 
@@ -30,4 +30,9 @@ export async function appendEvent(event: ProgressEvent, db = progressDb()): Prom
 export async function roundEvents(game: GameId, db = progressDb()): Promise<RoundEvent[]> {
   const rows = await db.events.where('[type+game]').equals(['round', game]).toArray();
   return rows.filter((e): e is RoundEvent => e.type === 'round');
+}
+
+export async function answerEvents(game: GameId, db = progressDb()): Promise<AnswerEvent[]> {
+  const rows = await db.events.where('[type+game]').equals(['answer', game]).toArray();
+  return rows.filter((e): e is AnswerEvent => e.type === 'answer');
 }

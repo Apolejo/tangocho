@@ -67,7 +67,22 @@ export function isLastQuestion(state: RoundState): boolean {
   return state.index >= state.queue.length - 1;
 }
 
-/** Words answered wrong, each once, in the order they came up (for *Practice these*). */
+/** Words answered wrong, each once, in the order they came up (the results list). */
 export function missedWordIds(answers: readonly AnswerRecord[]): string[] {
-  return [...new Set(answers.filter((a) => !a.result.correct).map((a) => a.card.wordId))];
+  return [...new Set(missedCards(answers).map((card) => card.wordId))];
+}
+
+/**
+ * The cards answered wrong, one per word, in the order they came up (for *Practice these*): each
+ * keeps its skill and form, so a missed て form comes back as a て form.
+ */
+export function missedCards(answers: readonly AnswerRecord[]): Card[] {
+  const seen = new Set<string>();
+  const cards: Card[] = [];
+  for (const { card, result } of answers) {
+    if (result.correct || seen.has(card.wordId)) continue;
+    seen.add(card.wordId);
+    cards.push(card);
+  }
+  return cards;
 }

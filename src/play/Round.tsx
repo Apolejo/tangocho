@@ -6,6 +6,7 @@ import { newId } from '../lib/random.ts';
 import { appendEvent } from '../progress/db.ts';
 import { deviceId } from '../progress/device.ts';
 import { answerEvent, roundEvent, type ProgressEvent } from '../progress/events.ts';
+import { ReportLink } from '../reports/ReportLink.tsx';
 import type { RoundPlan } from './plan.ts';
 import { isLastQuestion, roundReducer, startRound, type AnswerRecord } from './round.ts';
 import { addAnswer, formatMultiplier, type Tally } from './score.ts';
@@ -205,25 +206,39 @@ export function Round({
         )}
       </div>
 
-      <div className={styles.feedback} role="status">
-        {feedback !== undefined && (
-          <>
-            {feedback.result.correct ? (
-              <p className={styles.correct}>{t('feedback_correct')}</p>
-            ) : (
-              <p className={styles.wrong}>
-                {t('feedback_wrong')} {t('feedback_answer')}{' '}
-                <span className={styles.expected} lang={feedback.result.expectedLang}>
-                  {feedback.result.expected}
-                </span>
-              </p>
-            )}
-            {ruleShown && (
-              <p className={styles.explanation} data-explanation>
-                {feedback.result.explanation}
-              </p>
-            )}
-          </>
+      <div className={styles.feedbackRow}>
+        <div className={styles.feedback} role="status">
+          {feedback !== undefined && (
+            <>
+              {feedback.result.correct ? (
+                <p className={styles.correct}>{t('feedback_correct')}</p>
+              ) : (
+                <p className={styles.wrong}>
+                  {t('feedback_wrong')} {t('feedback_answer')}{' '}
+                  <span className={styles.expected} lang={feedback.result.expectedLang}>
+                    {feedback.result.expected}
+                  </span>
+                </p>
+              )}
+              {ruleShown && (
+                <p className={styles.explanation} data-explanation>
+                  {feedback.result.explanation}
+                </p>
+              )}
+            </>
+          )}
+        </div>
+        {/* outside the live region, so it isn't read out with every answer (SPEC §5.7) */}
+        {feedback !== undefined && word !== undefined && (
+          <ReportLink
+            className={styles.report}
+            report={{
+              word,
+              from: t(game.nameKey),
+              ...(feedback.card.form !== undefined && { form: feedback.card.form }),
+              answer: feedback.result.expected,
+            }}
+          />
         )}
       </div>
 

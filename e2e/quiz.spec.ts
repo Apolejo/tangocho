@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test.ts';
 
 /**
  * Quick quiz (SPEC §9.1): right and wrong answers by keyboard on desktop and by tap on mobile,

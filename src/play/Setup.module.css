@@ -148,6 +148,11 @@
   outline-offset: 3px;
 }
 
+.pillJa {
+  font-family: var(--font-ja);
+  font-size: var(--text-md);
+}
+
 .radio {
   position: absolute;
   inset: 0;

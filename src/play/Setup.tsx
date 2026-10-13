@@ -3,14 +3,18 @@ import { deckId, wordsInDeck, wordsInDecks, type NotebookDeck } from '../data/de
 import type { Word } from '../data/schema.ts';
 import {
   DIRECTIONS,
+  INPUT_MODES,
   KANA_MODES,
   type Direction,
+  type InputMode,
   type KanaMode,
   type Minigame,
 } from '../games/types.ts';
 import type { MessageKey } from '../i18n/en.ts';
+import { FORM_LABELS } from '../i18n/forms.ts';
 import { useLang, useT } from '../i18n/hooks.ts';
 import { deckName, deckNameJa } from '../i18n/names.ts';
+import { FORMS, type ConjugationForm } from '../lib/conjugate.ts';
 import { bestKey } from '../progress/bests.ts';
 import { useBest } from '../progress/useBest.ts';
 import { eligibleWords } from './plan.ts';
@@ -29,6 +33,11 @@ const MODE_KEYS: Record<KanaMode, MessageKey> = {
   recall: 'mode_recall',
 };
 
+const INPUT_KEYS: Record<InputMode, MessageKey> = {
+  typing: 'input_typing',
+  choices: 'input_choices',
+};
+
 /** Game setup (SPEC §7.3): decks, round size and the game's options, plus the personal best. */
 export function Setup({
   game,
@@ -36,6 +45,7 @@ export function Setup({
   allWords,
   now,
   choice,
+  starting,
   onChange,
   onStart,
 }: {
@@ -44,6 +54,8 @@ export function Setup({
   allWords: readonly Word[];
   now: Date;
   choice: SetupChoice;
+  /** Start was pressed and the round is being prepared. */
+  starting: boolean;
   onChange(next: SetupChoice): void;
   onStart(): void;
 }) {
@@ -66,13 +78,21 @@ export function Setup({
         ? t('setup_decks_none')
         : pool.length === 0
           ? t('setup_pool_empty')
-          : undefined;
+          : game.options.includes('forms') && choice.options.forms.length === 0
+            ? t('setup_forms_none')
+            : undefined;
 
   const toggleDeck = (id: string, on: boolean) => {
     const deckIds = on
       ? [...choice.deckIds, id]
       : choice.deckIds.filter((selectedId) => selectedId !== id);
     onChange({ ...choice, deckIds });
+  };
+
+  // kept in the engine's order, so the same selection always makes the same personal-best key
+  const toggleForm = (form: ConjugationForm, on: boolean) => {
+    const forms = FORMS.filter((f) => (f === form ? on : choice.options.forms.includes(f)));
+    onChange({ ...choice, options: { ...choice.options, forms } });
   };
 
   return (
@@ -160,6 +180,47 @@ export function Setup({
           </fieldset>
         )}
 
+        {game.options.includes('forms') && (
+          <fieldset className={styles.group}>
+            <legend className={styles.legend}>{t('setup_forms')}</legend>
+            <div className={styles.pills}>
+              {FORMS.map((form) => (
+                <label key={form} className={`${styles.pill} ${styles.pillJa}`}>
+                  <input
+                    type="checkbox"
+                    className={styles.radio}
+                    checked={choice.options.forms.includes(form)}
+                    onChange={(e) => toggleForm(form, e.target.checked)}
+                  />
+                  <span lang="ja">{FORM_LABELS[form]}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
+
+        {game.options.includes('inputMode') && (
+          <fieldset className={styles.group}>
+            <legend className={styles.legend}>{t('setup_input')}</legend>
+            <div className={styles.pills}>
+              {INPUT_MODES.map((inputMode) => (
+                <label key={inputMode} className={styles.pill}>
+                  <input
+                    type="radio"
+                    name={`${game.id}-input`}
+                    className={styles.radio}
+                    checked={choice.options.inputMode === inputMode}
+                    onChange={() =>
+                      onChange({ ...choice, options: { ...choice.options, inputMode } })
+                    }
+                  />
+                  {t(INPUT_KEYS[inputMode])}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
+
         {game.options.includes('mode') && (
           <fieldset className={styles.group}>
             <legend className={styles.legend}>{t('setup_mode')}</legend>
@@ -214,7 +275,7 @@ export function Setup({
         <button
           type="button"
           className={styles.start}
-          disabled={blocker !== undefined}
+          disabled={blocker !== undefined || starting}
           onClick={onStart}
         >
           {t('setup_start')}

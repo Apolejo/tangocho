@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test.ts';
 
 /**
  * Kana typing (SPEC §9.3). Rounds use the Occupations deck of the fixtures: six words with kanji

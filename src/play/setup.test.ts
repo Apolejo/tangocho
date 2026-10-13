@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Word } from '../data/schema.ts';
+import { kana } from '../games/kana/index.ts';
 import { quiz } from '../games/quiz/index.ts';
 import { sorter } from '../games/sorter/index.ts';
 import { DEFAULT_SETUP, parseSetup, unavailableReason } from './setup.ts';
@@ -11,9 +12,18 @@ describe('parseSetup', () => {
     const stored = {
       deckIds: ['verbs-g1', 'occupations'],
       size: 20,
-      options: { furigana: false, direction: 'mixed' },
+      options: { furigana: false, direction: 'mixed', mode: 'recall' },
     };
     expect(parseSetup(JSON.stringify(stored), known)).toEqual(stored);
+  });
+
+  it('gives a choice saved before kana typing the default mode', () => {
+    const stored = {
+      deckIds: ['all'],
+      size: 10,
+      options: { furigana: true, direction: 'forward' },
+    };
+    expect(parseSetup(JSON.stringify(stored), known).options.mode).toBe('reading');
   });
 
   it('falls back to the defaults for nothing or garbage', () => {
@@ -26,12 +36,12 @@ describe('parseSetup', () => {
     const stored = {
       deckIds: ['gone', 'verbs-g1', 'verbs-g1'],
       size: 15,
-      options: { furigana: 'yes', direction: 'reverse' },
+      options: { furigana: 'yes', direction: 'reverse', mode: 'writing' },
     };
     expect(parseSetup(JSON.stringify(stored), known)).toEqual({
       deckIds: ['verbs-g1'],
       size: 10,
-      options: { furigana: true, direction: 'reverse' },
+      options: { furigana: true, direction: 'reverse', mode: 'reading' },
     });
     expect(parseSetup(JSON.stringify({ deckIds: ['gone'] }), known).deckIds).toEqual(['all']);
   });
@@ -60,5 +70,10 @@ describe('unavailableReason', () => {
     expect(unavailableReason(sorter, nouns, 'en')).toEqual({ key: 'sorter_unavailable' });
     const verb: Word = { ...word('c', 'to buy'), kana: 'かう', pos: 'verb', verbGroup: 1 };
     expect(unavailableReason(sorter, [...nouns, verb], 'en')).toBeUndefined();
+  });
+
+  it('runs kana typing on any word, and on none turns it off', () => {
+    expect(unavailableReason(kana, [], 'en')).toEqual({ key: 'kana_unavailable' });
+    expect(unavailableReason(kana, [word('a', 'one')], 'en')).toBeUndefined();
   });
 });

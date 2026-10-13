@@ -1,6 +1,12 @@
 import { z } from 'zod';
 import type { Word } from '../data/schema.ts';
-import { DIRECTIONS, type GameId, type Minigame, type RoundOptions } from '../games/types.ts';
+import {
+  DIRECTIONS,
+  KANA_MODES,
+  type GameId,
+  type Minigame,
+  type RoundOptions,
+} from '../games/types.ts';
 import type { Lang } from '../i18n/lang.ts';
 import { ROUND_SIZES, type RoundSize } from './queue.ts';
 
@@ -14,7 +20,7 @@ export interface SetupChoice {
 export const DEFAULT_SETUP: SetupChoice = {
   deckIds: ['all'],
   size: 10,
-  options: { furigana: true, direction: 'forward' },
+  options: { furigana: true, direction: 'forward', mode: 'reading' },
 };
 
 const StoredSetup = z.object({
@@ -24,6 +30,7 @@ const StoredSetup = z.object({
     .object({
       furigana: z.boolean().catch(DEFAULT_SETUP.options.furigana),
       direction: z.enum(DIRECTIONS).catch(DEFAULT_SETUP.options.direction),
+      mode: z.enum(KANA_MODES).catch(DEFAULT_SETUP.options.mode),
     })
     .catch(DEFAULT_SETUP.options),
 });

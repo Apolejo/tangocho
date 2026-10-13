@@ -24,10 +24,15 @@ export interface Card {
 export const DIRECTIONS = ['forward', 'reverse', 'mixed'] as const;
 export type Direction = (typeof DIRECTIONS)[number];
 
-/** Per-round options from the setup screen (SPEC §7.3). Input mode and forms arrive with M5 and M7. */
+/** Kana typing mode: reading = kanji → its reading, recall = meaning → the word in kana. */
+export const KANA_MODES = ['reading', 'recall'] as const;
+export type KanaMode = (typeof KANA_MODES)[number];
+
+/** Per-round options from the setup screen (SPEC §7.3). Input mode and forms arrive with M7. */
 export interface RoundOptions {
   furigana: boolean;
   direction: Direction;
+  mode: KanaMode;
 }
 
 export type OptionKey = keyof RoundOptions;
@@ -45,6 +50,11 @@ export interface AnswerResult {
    * lang="ja"). A correct answer with a rule stays up longer, so the rule can be read.
    */
   explanation?: ReactNode;
+  /**
+   * The question shows something new once answered (kana typing's meaning), so a correct answer
+   * stays up as long as one with a rule.
+   */
+  reveals?: boolean;
 }
 
 export interface QuestionProps {

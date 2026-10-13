@@ -1,5 +1,6 @@
 import type { Word } from '../../data/schema.ts';
 import type { Lang } from '../../i18n/lang.ts';
+import { meaningText } from '../../i18n/localized.ts';
 import { shuffle, type Rng } from '../../lib/random.ts';
 import { displayForm } from '../../lib/verbs.ts';
 import type { Skill } from '../types.ts';
@@ -7,20 +8,6 @@ import type { Skill } from '../types.ts';
 /** Quick quiz options (SPEC §9.1). Pure: the component only renders what this returns. */
 
 export const CHOICE_COUNT = 4;
-
-/** A word's glosses in the UI language, else in the other one. */
-export function glosses(word: Word, lang: Lang): { lang: Lang; glosses: readonly string[] } {
-  const own = word.meaning[lang];
-  if (own !== undefined && own.length > 0) return { lang, glosses: own };
-  const other: Lang = lang === 'en' ? 'es' : 'en';
-  return { lang: other, glosses: word.meaning[other] ?? [] };
-}
-
-/** The meaning as shown: every gloss, joined like the notebook does. */
-export function meaningText(word: Word, lang: Lang): { lang: Lang; text: string } {
-  const g = glosses(word, lang);
-  return { lang: g.lang, text: g.glosses.join(', ') };
-}
 
 /** The Japanese as shown without furigana: verbs in ます form (SPEC §8.3). */
 export function writtenForm(word: Word): string {

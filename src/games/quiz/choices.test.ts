@@ -2,16 +2,10 @@ import { describe, expect, it } from 'vitest';
 import fixtures from '../../../data/fixtures/words.json';
 import { WordsFileSchema, type Word } from '../../data/schema.ts';
 import type { Lang } from '../../i18n/lang.ts';
+import { meaningText } from '../../i18n/localized.ts';
 import { mulberry32 } from '../../lib/random.ts';
 import type { Skill } from '../types.ts';
-import {
-  buildChoices,
-  conflicts,
-  meaningText,
-  quizAvailable,
-  writtenForm,
-  type Choice,
-} from './choices.ts';
+import { buildChoices, conflicts, quizAvailable, writtenForm, type Choice } from './choices.ts';
 
 const all = WordsFileSchema.parse(fixtures);
 
@@ -203,14 +197,6 @@ describe('distractor preference', () => {
       rng: mulberry32(1),
     });
     expect(ids(choices)).toEqual(['v1', 'v2', 'v3']);
-  });
-});
-
-describe('meaningText', () => {
-  it('joins every gloss and falls back to the other language', () => {
-    const w = word({ id: 'miru', meaning: { en: ['to see', 'to watch'], es: [] } });
-    expect(meaningText(w, 'en')).toEqual({ lang: 'en', text: 'to see, to watch' });
-    expect(meaningText(w, 'es')).toEqual({ lang: 'en', text: 'to see, to watch' });
   });
 });
 

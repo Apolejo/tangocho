@@ -88,7 +88,7 @@ Done when: §9.2 passes.
 
 ## M5 — Kana typing · SPEC §9.3
 
-- [ ] Answer normalization first, as a pure function with unit tests; then the game.
+- [x] Answer normalization first, as a pure function with unit tests; then the game.
 
 Done when: §9.3 passes, including with your phone's keyboard.
 

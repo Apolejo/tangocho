@@ -1,7 +1,13 @@
 import { PLAY_HREF } from '../app/routes.ts';
 import { deckId, wordsInDeck, wordsInDecks, type NotebookDeck } from '../data/decks.ts';
 import type { Word } from '../data/schema.ts';
-import { DIRECTIONS, type Direction, type Minigame } from '../games/types.ts';
+import {
+  DIRECTIONS,
+  KANA_MODES,
+  type Direction,
+  type KanaMode,
+  type Minigame,
+} from '../games/types.ts';
 import type { MessageKey } from '../i18n/en.ts';
 import { useLang, useT } from '../i18n/hooks.ts';
 import { deckName, deckNameJa } from '../i18n/names.ts';
@@ -16,6 +22,11 @@ const DIRECTION_KEYS: Record<Direction, MessageKey> = {
   forward: 'direction_forward',
   reverse: 'direction_reverse',
   mixed: 'direction_mixed',
+};
+
+const MODE_KEYS: Record<KanaMode, MessageKey> = {
+  reading: 'mode_reading',
+  recall: 'mode_recall',
 };
 
 /** Game setup (SPEC §7.3): decks, round size and the game's options, plus the personal best. */
@@ -143,6 +154,26 @@ export function Setup({
                     }
                   />
                   {t(DIRECTION_KEYS[direction])}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
+
+        {game.options.includes('mode') && (
+          <fieldset className={styles.group}>
+            <legend className={styles.legend}>{t('setup_mode')}</legend>
+            <div className={styles.pills}>
+              {KANA_MODES.map((mode) => (
+                <label key={mode} className={styles.pill}>
+                  <input
+                    type="radio"
+                    name={`${game.id}-mode`}
+                    className={styles.radio}
+                    checked={choice.options.mode === mode}
+                    onChange={() => onChange({ ...choice, options: { ...choice.options, mode } })}
+                  />
+                  {t(MODE_KEYS[mode])}
                 </label>
               ))}
             </div>

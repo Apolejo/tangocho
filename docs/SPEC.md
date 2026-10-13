@@ -141,7 +141,7 @@ Warnings (printed, never block):
 |---|---|---|
 | 7.1 | Today (home) | Streak and stamp card, daily-goal progress, due count per game, a *Continue* button. |
 | 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Verbs are shown in ます form, derived from the stored dictionary form (§5.1, §11); tapping a verb shows all its forms once the engine exists (M7). Built first; it doubles as a data check. |
-| 7.3 | Game setup | Decks (remembers the last choice; the counts are of the words the game can use, so verbs only for the sorter), round size (10 or 20), options (furigana, direction, input mode, forms). |
+| 7.3 | Game setup | Decks (remembers the last choice; the counts are of the words the game can use, so verbs only for the sorter), round size (10 or 20), options (furigana, direction, kana typing mode, input mode, forms). |
 | 7.4 | Play | Progress, score and combo, the question, the answer area, ◯/✕ feedback. |
 | 7.5 | Results | Score, accuracy, a 新記録 stamp for a personal best, 花丸 for a perfect round, missed words with *Practice these*. |
 | 7.6 | Stats | Mastery per deck, accuracy per verb group and per conjugation form, weakest words, streak calendar. |
@@ -175,7 +175,7 @@ export interface Minigame {
   nameJa: string;                          // Japanese subtitle on the game card
   descriptionKey: MessageKey;
   skills: Skill[];
-  options: OptionKey[];                    // which setup controls to show: 'furigana', 'direction'
+  options: OptionKey[];                    // which setup controls to show: 'furigana', 'direction', 'mode'
   skillsFor(options): Skill[];             // the skills a round trains; the queue picks one per card
   variant(options): string;                // the game's part of the personal-best key (§10.3)
   eligible(word: Word, skill: Skill): boolean;
@@ -190,9 +190,9 @@ export interface QuestionProps {
   word: Word;
   pool: Word[];                            // all eligible words of the selected decks, e.g. for distractors
   allWords: Word[];                        // every word, for when the decks alone aren't enough
-  options: RoundOptions;                   // furigana, direction (inputMode and forms arrive in M5, M7)
+  options: RoundOptions;                   // furigana, direction, mode (inputMode and forms arrive in M7)
   seed: number;                            // seeds the question's randomness, so rendering stays pure
-  onAnswer(result: AnswerResult): void;    // { correct, hinted, given, expected, expectedLang?, explanation? }
+  onAnswer(result: AnswerResult): void;    // { correct, hinted, given, expected, expectedLang?, explanation?, reveals? }
 }
 ```
 
@@ -205,7 +205,8 @@ Answer checking and distractor generation are pure functions next to each game, 
 ### 8.3 Rules for every game
 
 - Fully playable by touch alone and by keyboard alone. Keys: 1–4 choose an option, Enter submits, Enter or Space continues.
-- Correct: ◯ stamp, then auto-advance after about 0.8 s. When the game gives a rule (§9.2, §9.4), the rule shows too and the answer stays about 2.5 s, or until Enter, Space or *Continue*. Wrong: ✕, and the correct answer and explanation stay until I continue.
+- Correct: ◯ stamp, then auto-advance after about 0.8 s. When the game gives a rule (§9.2, §9.4) or reveals something to read (the meaning in §9.3, flagged by `reveals`), the answer stays about 2.5 s, or until Enter, Space or *Continue*. Wrong: ✕, and the correct answer and explanation stay until I continue.
+- A right answer typed into a field leaves the focus there, so a phone keeps its keyboard up between questions, and Enter in the field continues. After a wrong answer the focus moves to *Continue* (the keyboard goes down, so the answer can be read).
 - Tap targets at least 44×44 px; answer controls within thumb reach on a phone.
 - Feedback is announced to screen readers (`aria-live`).
 - Verbs are shown in ます form, like the notebook (§7.2); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
@@ -237,14 +238,16 @@ Done when: e2e covers one verb of each group plus 帰る, and the exception expl
 
 - Reading mode: the kanji form (furigana hidden) → type the reading. Only words with kanji.
 - Recall mode: a meaning → type the word in kana. All words.
-- Romaji converts as I type, into hiragana or katakana to match the expected answer; a Japanese keyboard (IME or flick input) also works.
+- The mode is a setup option and the personal-best variant (§10.3). Verbs are asked and answered in ます form (§8.3: 食べます → たべます); the dictionary form (たべる, 食べる) counts too.
+- Romaji converts as I type, into hiragana or katakana to match the expected answer, position by position in mixed words (`kopi-suru` → コピーする, `keshigomu` → けしゴム). As on a Japanese IME, nn is ん (こんにちは takes `konnnichiha`) and づ is `du`. A Japanese keyboard (IME or flick input) also works: nothing converts while it composes, and the Enter that confirms its conversion doesn't submit.
 - Submitting finishes the conversion in the expected answer's script, so a trailing n becomes ん or ン (`kaishain` → かいしゃいん; `sarari-man` → サラリーマン, not サラリーマん).
-- Answers are compared after converting both sides with WanaKana's `toHiragana`. That one rule gives the behavior we want:
-  - the script doesn't matter (a note appears when it's wrong), including mixed words like コピーする;
-  - in katakana, ー equals the vowel it lengthens, so `dezaina-` and `dezainaa` both match デザイナー;
+- Answers are compared after converting both sides with WanaKana's `toHiragana`, once every ー is spelled out as the vowel it lengthens. (On its own, `toHiragana` reads オー as おう, so `koohii`, WanaKana's own romaji for コーヒー, would be wrong and `kouhii` right.) That gives the behavior we want:
+  - the script doesn't matter (a note shows how the word is written when the spelling differs), including mixed words like コピーする, typed all in hiragana or all in katakana;
+  - ー equals the vowel it lengthens, so `dezaina-` and `dezainaa` both match デザイナー, and `ko-hi-` and `koohii` match コーヒー (`kouhii` doesn't);
   - hiragana is compared exactly, so long vowels must be right: とおい ≠ とうい, and センセー ≠ せんせい.
-- The exact kanji form is also accepted. In recall mode, if two words share the meaning, either counts.
+- The exact kanji form is also accepted. In recall mode, if two words share the meaning (the same meaning text in the language shown, like 続く and 続ける, both "continuar"), either counts, and a note names the card's word. One shared gloss isn't enough: アパート and マンション are different apartments.
 - A hint reveals the first kana and marks the answer as hinted.
+- Once answered, right or wrong, the word shows with its furigana, and in reading mode its meaning, under the word on the card (below the card it would be behind a phone keyboard). Reading answers flag `reveals`, so a right one stays about 2.5 s (§8.3).
 
 Done when: unit tests cover every acceptance case above; e2e types answers on desktop and on mobile.
 
@@ -263,7 +266,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 
 ### 10.1 Event log
 
-- Every answer appends an `AnswerEvent { type: 'answer', id, at, roundId, game, wordId, skill, form?, correct, hinted, ms, device }`; every finished round appends a `RoundEvent { type: 'round', id, at, game, deckIds, size, variant, practice, score, correct, total }`. The round event's `id` is the `roundId` of its answers; it is written with the last answer. `at` is an ISO timestamp; `device` is a random id per install; `variant` is the game's part of the personal-best key (the quiz direction); `practice` marks a *Practice these* round.
+- Every answer appends an `AnswerEvent { type: 'answer', id, at, roundId, game, wordId, skill, form?, correct, hinted, ms, device }`; every finished round appends a `RoundEvent { type: 'round', id, at, game, deckIds, size, variant, practice, score, correct, total }`. The round event's `id` is the `roundId` of its answers; it is written with the last answer. `at` is an ISO timestamp; `device` is a random id per install; `variant` is the game's part of the personal-best key (the quiz direction, the kana typing mode, or empty); `practice` marks a *Practice these* round.
 - Events are append-only, in IndexedDB. Spaced-repetition state, scores, streaks and mastery are derived from them (cached for speed, always rebuildable).
 - Export saves the event log as a JSON file. Import merges by event id (importing the same file twice changes nothing) and rebuilds. This is how progress moves between phone and computer in v1.
 - Ask for persistent storage (`navigator.storage.persist()`). Browsers may clear data for sites that haven't been used in a while, Safari on iPhone especially, so install the app on the phone; Settings shows the last export date and reminds me after 7 days.
@@ -278,7 +281,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 ### 10.3 Scores
 
 - A correct answer earns 100 × combo multiplier (starts at 1.0, +0.1 per consecutive correct answer, max 2.0). A hinted answer earns half. A wrong answer earns 0 and resets the combo.
-- Personal best per (game, deck selection, round size, variant), where the variant is the quiz direction; derived from the round events. Beating it shows a 新記録 stamp, and so does the first round for a key when it scores above 0. *Practice these* rounds never count.
+- Personal best per (game, deck selection, round size, variant), where the variant is the quiz direction or the kana typing mode; derived from the round events. Beating it shows a 新記録 stamp, and so does the first round for a key when it scores above 0. *Practice these* rounds never count.
 
 ### 10.4 Daily goal and streak
 

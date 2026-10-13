@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { en } from './en.ts';
 import { es } from './es.ts';
 import { detectLang, format, initialLang, translate } from './lang.ts';
-import { pickLocalized } from './localized.ts';
+import type { Word } from '../data/schema.ts';
+import { meaningText, pickLocalized } from './localized.ts';
 
 describe('messages', () => {
   it('es defines exactly the keys of en', () => {
@@ -50,5 +51,21 @@ describe('pickLocalized', () => {
     expect(pickLocalized({ en: ['a'], es: ['b'] }, 'es')).toEqual({ lang: 'es', value: ['b'] });
     expect(pickLocalized({ en: ['a'] }, 'es')).toEqual({ lang: 'en', value: ['a'] });
     expect(pickLocalized({}, 'en')).toBeUndefined();
+  });
+});
+
+describe('meaningText', () => {
+  it('joins every gloss and falls back to the other language', () => {
+    const w: Word = {
+      id: 'miru',
+      kana: 'みる',
+      pos: 'verb',
+      verbGroup: 2,
+      meaning: { en: ['to see', 'to watch'], es: [] },
+      tags: [],
+      added: '2026-10-08',
+    };
+    expect(meaningText(w, 'en')).toEqual({ lang: 'en', text: 'to see, to watch' });
+    expect(meaningText(w, 'es')).toEqual({ lang: 'en', text: 'to see, to watch' });
   });
 });

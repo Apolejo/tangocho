@@ -9,7 +9,7 @@ import { eligibleWords, planRound } from './plan.ts';
 
 const all = WordsFileSchema.parse(fixtures);
 const verbs = all.filter((w) => w.pos === 'verb');
-const options: RoundOptions = { furigana: true, direction: 'forward' };
+const options: RoundOptions = { furigana: true, direction: 'forward', mode: 'reading' };
 
 describe('eligibleWords', () => {
   it('keeps every word for the quiz', () => {

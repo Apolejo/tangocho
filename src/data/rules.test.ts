@@ -142,6 +142,17 @@ describe('checkWords errors', () => {
   it('kanji-kana-ending: the okurigana must match', () => {
     expect(codes(check(word({ kanji: '書く', kana: 'かう' })))).toContain('kanji-kana-ending');
   });
+
+  it('conjugation: what passes every other rule but the engine cannot conjugate', () => {
+    expect(codes(check(word({ kanji: '為る', kana: 'する', verbGroup: 3 })))).toEqual([
+      'conjugation',
+    ]);
+    expect(codes(check(word({ kanji: '持って來る', kana: 'もってくる', verbGroup: 3 })))).toEqual([
+      'conjugation',
+    ]);
+    // Never on top of another verb error: those already say what's wrong.
+    expect(codes(check(word({ verbGroup: 2 })))).toEqual(['g2-ending']);
+  });
 });
 
 describe('checkWords warnings', () => {

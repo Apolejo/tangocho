@@ -1,3 +1,4 @@
+import { conjugate, FORMS } from '../lib/conjugate.ts';
 import { joinsBack, placeFurigana } from '../lib/furigana.ts';
 import { chars, hasKanji, isKanaFieldChar, isKanjiFieldChar, trailingKana } from '../lib/jp.ts';
 import { matchesDeck } from './decks.ts';
@@ -190,6 +191,16 @@ function checkWord({ value: w, file }: Located<Word>): Problem[] {
             'the okurigana of kanji must be the end of kana',
           );
         }
+      }
+      // A safety net for spellings the rules above let through (為る for する), so it never
+      // repeats one of their errors.
+      const clean = !out.some((p) => p.level === 'error');
+      if (clean && FORMS.some((form) => conjugate(w, form) === undefined)) {
+        error(
+          'conjugation',
+          `${w.kanji ?? w.kana} cannot be conjugated as group ${w.verbGroup}`,
+          'group 3 written forms end in する, くる or 来る; check kanji, kana and verbGroup',
+        );
       }
     }
   } else if (w.verbGroup !== undefined) {

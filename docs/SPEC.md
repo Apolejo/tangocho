@@ -115,6 +115,7 @@ Errors:
 - A group 2 verb that doesn't end in an い-row or え-row kana + る, or that is on the known group 1 exceptions list below (帰る labelled group 2 is the classic learner mistake).
 - A group 3 verb whose kana isn't one of: ending in する, exactly くる, or ending in てくる/でくる (持ってくる) or にくる (迎えに来る). Checked on the kana, not the kanji: 出来る (できる) is group 2.
 - A verb whose `kanji` doesn't end with the same kana as `kana`.
+- A verb that passes every rule above but that the conjugation engine (§11) still can't conjugate, such as 為る written for する. Reported only when no other error is, so it never repeats one.
 - A deck `match` that uses an unknown field.
 
 Warnings (printed, never block):

@@ -102,8 +102,8 @@ Done when: the whole table passes and you've checked every row yourself.
 
 ## M7 — Conjugation drill · SPEC §9.4, §5.7
 
-- [ ] Verb inspection in the notebook: tap a verb → its eight forms (§7.2).
-- [ ] Word reports: the ⚑ button on words and answers, and the launch banner with the open count (§5.7).
+- [x] Verb inspection in the notebook: tap a verb → its eight forms (§7.2).
+- [x] Word reports: the ⚑ button on words and answers, and the launch banner with the open count (§5.7).
 
 Done when: §9.4 passes and a tapped verb shows its forms; a report made on the phone opens a prefilled issue, and the banner counts it on the computer.
 

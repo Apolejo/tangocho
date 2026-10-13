@@ -94,7 +94,7 @@ export function Results({
         ) : (
           <ol className={styles.list}>
             {missed.map((word) => (
-              <WordRow key={word.id} word={word} />
+              <WordRow key={word.id} word={word} from={t(game.nameKey)} />
             ))}
           </ol>
         )}

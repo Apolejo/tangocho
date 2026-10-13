@@ -18,6 +18,10 @@ export const FORMS = [
 ] as const;
 export type ConjugationForm = (typeof FORMS)[number];
 
+export function isForm(value: string | undefined): value is ConjugationForm {
+  return FORMS.some((form) => form === value);
+}
+
 export interface Conjugated {
   kanji?: string;
   kana: string;

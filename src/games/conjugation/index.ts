@@ -1,7 +1,7 @@
 import { FORMS } from '../../lib/conjugate.ts';
+import { isConjugable } from '../../lib/verbs.ts';
 import type { Minigame } from '../types.ts';
 import { ConjugationQuestion } from './ConjugationQuestion.tsx';
-import { isDrillable } from './drill.ts';
 
 /**
  * Conjugation drill (SPEC §9.4): `conjugation`, verbs only. Each card carries a form, picked by
@@ -18,11 +18,11 @@ export const conjugation: Minigame = {
   // typing and choices, and different form selections, are different games to beat
   variant: ({ inputMode, forms }) =>
     `${inputMode}|${FORMS.filter((f) => forms.includes(f)).join('+')}`,
-  eligible: (word, skill) => skill === 'conjugation' && isDrillable(word),
+  eligible: (word, skill) => skill === 'conjugation' && isConjugable(word),
   formsFor: (_word, { forms }) => forms,
   // no word count to reach: available() says it better ("needs at least one verb")
   minPool: 0,
-  available: (allWords) => allWords.some(isDrillable),
+  available: (allWords) => allWords.some(isConjugable),
   unavailableKey: 'conj_unavailable',
   Question: ConjugationQuestion,
 };

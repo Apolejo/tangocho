@@ -1,12 +1,24 @@
+import { useState } from 'react';
 import { LangToggle } from '../components/LangToggle.tsx';
 import { useT } from '../i18n/hooks.ts';
+import { ReportsBanner } from '../reports/ReportsBanner.tsx';
 import styles from './Layout.module.css';
 import { PLAY_HREF } from './routes.ts';
 
 export type Section = 'notebook' | 'play' | undefined;
 
-export function Layout({ section, children }: { section: Section; children: React.ReactNode }) {
+export function Layout({
+  section,
+  reports,
+  children,
+}: {
+  section: Section;
+  /** Show the open word reports (SPEC §5.7): on the notebook and the game list, never mid-round. */
+  reports: boolean;
+  children: React.ReactNode;
+}) {
   const t = useT();
+  const [reportsHidden, setReportsHidden] = useState(false);
   return (
     <>
       <header className={styles.header}>
@@ -36,6 +48,7 @@ export function Layout({ section, children }: { section: Section; children: Reac
           <LangToggle />
         </div>
       </header>
+      {reports && !reportsHidden && <ReportsBanner onHide={() => setReportsHidden(true)} />}
       <main className={styles.main}>{children}</main>
     </>
   );

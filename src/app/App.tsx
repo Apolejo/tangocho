@@ -38,7 +38,7 @@ function Screen({ route }: { route: Route }) {
 function Shell() {
   const route = useHashRoute();
   return (
-    <Layout section={sectionOf(route)}>
+    <Layout section={sectionOf(route)} reports={route.name === 'notebook' || route.name === 'play'}>
       <Screen route={route} />
     </Layout>
   );

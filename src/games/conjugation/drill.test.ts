@@ -3,7 +3,7 @@ import fixtures from '../../../data/fixtures/words.json';
 import { WordsFileSchema, type Word } from '../../data/schema.ts';
 import { conjugate } from '../../lib/conjugate.ts';
 import { finishKana, typeKana } from '../../lib/kana.ts';
-import { asForm, checkTyped, isDrillable, promptForm, withReading, written } from './drill.ts';
+import { asForm, checkTyped, promptForm, withReading, written } from './drill.ts';
 
 const all = WordsFileSchema.parse(fixtures);
 const byId = (id: string): Word => {
@@ -11,17 +11,6 @@ const byId = (id: string): Word => {
   if (word === undefined) throw new Error(`no fixture ${id}`);
   return word;
 };
-
-describe('isDrillable', () => {
-  it('takes the verbs the engine conjugates, nothing else', () => {
-    expect(isDrillable(byId('kaku'))).toBe(true);
-    expect(isDrillable(byId('kuru'))).toBe(true);
-    expect(isDrillable(byId('sensei'))).toBe(false);
-    // 為る written for する: the validator reports it, the drill leaves it out
-    expect(isDrillable({ ...byId('suru'), kanji: '為る' })).toBe(false);
-    expect(isDrillable({ ...byId('kaku'), verbGroup: undefined })).toBe(false);
-  });
-});
 
 describe('forms', () => {
   it('reads only real form ids', () => {

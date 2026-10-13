@@ -3,7 +3,7 @@ import fixtures from '../../data/fixtures/words.json';
 import { WordsFileSchema, type Word } from '../data/schema.ts';
 import { conjugate, FORMS } from './conjugate.ts';
 import { furiganaFor, placeFurigana } from './furigana.ts';
-import { displayForm } from './verbs.ts';
+import { displayForm, isConjugable } from './verbs.ts';
 
 // The ます forms themselves are rows of the conjugation table (conjugate.test.ts).
 
@@ -50,5 +50,24 @@ describe('displayForm', () => {
         }
       }
     }
+  });
+});
+
+describe('isConjugable', () => {
+  const all = WordsFileSchema.parse(fixtures);
+  const byId = (id: string): Word => {
+    const word = all.find((w) => w.id === id);
+    if (word === undefined) throw new Error(`no fixture ${id}`);
+    return word;
+  };
+
+  it('takes the verbs the engine conjugates in every form, nothing else', () => {
+    for (const word of all.filter((w) => w.pos === 'verb')) {
+      expect(isConjugable(word), word.id).toBe(true);
+    }
+    expect(isConjugable(byId('sensei'))).toBe(false);
+    // 為る written for する: the validator reports it; the notebook and the drill leave it out
+    expect(isConjugable({ ...byId('suru'), kanji: '為る' })).toBe(false);
+    expect(isConjugable({ ...byId('kaku'), verbGroup: undefined })).toBe(false);
   });
 });

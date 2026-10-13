@@ -87,9 +87,22 @@
   pointer-events: none;
 }
 
+/* the feedback, centered, with the ⚑ for reporting the word at its end */
+.feedbackRow {
+  display: grid;
+  grid-template-columns: var(--tap-min) minmax(0, 1fr) var(--tap-min);
+  align-items: start;
+}
+
 .feedback {
+  grid-column: 2;
   min-height: 1.5em;
   text-align: center;
+}
+
+.report {
+  grid-column: 3;
+  margin-top: calc(-1 * var(--space-2));
 }
 
 .feedback p {

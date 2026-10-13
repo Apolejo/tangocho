@@ -8,6 +8,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* the page behind an open dialog stays put */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
 body {
   min-height: 100dvh;
   margin: 0;

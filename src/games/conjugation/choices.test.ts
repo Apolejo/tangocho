@@ -5,7 +5,8 @@ import { conjugate, FORMS, type ConjugationForm } from '../../lib/conjugate.ts';
 import { answerKey } from '../../lib/kana.ts';
 import { mulberry32 } from '../../lib/random.ts';
 import { buildChoices, CHOICE_COUNT, mistakes } from './choices.ts';
-import { isDrillable, written } from './drill.ts';
+import { isConjugable } from '../../lib/verbs.ts';
+import { written } from './drill.ts';
 
 const all = WordsFileSchema.parse(fixtures);
 const byId = (id: string): Word => {
@@ -31,7 +32,7 @@ const extra = [
   verb('motte-iku', 'もっていく', 1, '持って行く'),
   verb('mukae-ni-kuru', 'むかえにくる', 3, '迎えに来る'),
 ];
-const verbs = [...all.filter(isDrillable), ...extra];
+const verbs = [...all.filter(isConjugable), ...extra];
 
 /** Every option as the question shows it: kana when written forms would collide. */
 const shown = (word: Word, form: ConjugationForm, seed: number): string[] => {
@@ -51,7 +52,7 @@ const offered = (word: Word, form: ConjugationForm): Set<string> => {
 };
 
 describe('buildChoices', () => {
-  it('covers every drillable fixture verb, the special cases included', () => {
+  it('covers every fixture verb, the special cases included', () => {
     expect(verbs.length).toBe(all.filter((w) => w.pos === 'verb').length + extra.length);
   });
 

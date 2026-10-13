@@ -1,21 +1,11 @@
-import type { Word } from '../../data/schema.ts';
+import { isForm, type Conjugated, type ConjugationForm } from '../../lib/conjugate.ts';
 import { answerKey } from '../../lib/kana.ts';
-import { conjugate, FORMS, type Conjugated, type ConjugationForm } from '../../lib/conjugate.ts';
 
 /** Conjugation drill (SPEC §9.4), the pure part shared by the question, the choices and the rule. */
 
-/** A verb the drill can ask about: the engine derives every one of its forms. */
-export function isDrillable(word: Word): boolean {
-  return (
-    word.pos === 'verb' &&
-    word.verbGroup !== undefined &&
-    FORMS.every((form) => conjugate(word, form) !== undefined)
-  );
-}
-
 /** A card's form as a form id; undefined for anything else. */
 export function asForm(form: string | undefined): ConjugationForm | undefined {
-  return FORMS.find((f) => f === form);
+  return isForm(form) ? form : undefined;
 }
 
 /**

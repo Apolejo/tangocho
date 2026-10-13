@@ -72,6 +72,7 @@ export const es: Messages = {
   reports_open_one: '{n} reporte de palabra abierto',
   reports_open_other: '{n} reportes de palabras abiertos',
   reports_hide: 'Ocultar',
+  meaning_show: 'Significado de {word}',
   reports_label: 'Reportes de palabras',
   forms_show: 'Ver las formas de {word}',
   forms_title: 'Formas',

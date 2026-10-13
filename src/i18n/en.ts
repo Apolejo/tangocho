@@ -69,6 +69,7 @@ export const en = {
   reports_open_one: '{n} open word report',
   reports_open_other: '{n} open word reports',
   reports_hide: 'Hide',
+  meaning_show: 'Meaning of {word}',
   reports_label: 'Word reports',
   forms_show: 'Show the forms of {word}',
   forms_title: 'Forms',

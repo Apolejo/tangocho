@@ -219,6 +219,7 @@ Answer checking and distractor generation are pure functions next to each game, 
 - A right answer typed into a field leaves the focus there, so a phone keeps its keyboard up between questions, and Enter in the field continues. After a wrong answer the focus moves to *Continue* (the keyboard goes down, so the answer can be read).
 - Tap targets at least 44×44 px; answer controls within thumb reach on a phone.
 - Feedback is announced to screen readers (`aria-live`).
+- Tapping the question's word shows its meaning in a small bubble beside it (above it when there's no room beside, below when there's none above), in the games whose question isn't about the meaning: the sorter, kana typing's reading mode and the drill. The quiz and kana recall don't offer it, since there the meaning is the question or the prompt. Looking never counts as a hint, and a typed answer's field keeps its focus. A tap on the word again, anywhere else, or Esc closes it. By keyboard, the word is a button.
 - Verbs are shown in ます form, like the notebook (§7.2), except a drill question that asks for the ます form, which shows the dictionary form (§9.4); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
 
 ## 9. Games in v1

@@ -296,17 +296,17 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 
 ## 11. Conjugation engine — `src/lib/conjugate.ts`
 
-- Pure function `conjugate(word, form) → { kanji?, kana }`. It applies the rules to the kana and rewrites the ending of both forms.
-- Forms in v1: dictionary, ます, ません, ました, ませんでした, て, ない, た.
+- Pure function `conjugate(word, form) → { kanji?, kana }`, or nothing when the verb doesn't fit its group (the validator reports those). It applies the rules to the kana and rewrites the ending of both forms.
+- Forms in v1, by id: 辞書形 (dictionary), ます, ません, ました, ませんでした, て, ない, た. The ids are Japanese on purpose and are stored in answer events (§10.1), so they never change.
 - Group 2: drop る and add the ending (食べる → 食べます, 食べて, 食べない, 食べた).
 - Group 1:
   - ます forms: the final kana moves from the う-row to the い-row (書く → 書きます).
   - ない: the final kana moves to the あ-row, + ない, with う → わ (書く → 書かない, 買う → 買わない).
   - て and た: う・つ・る → って/った; む・ぶ・ぬ → んで/んだ; く → いて/いた; ぐ → いで/いだ; す → して/した.
-- Group 3: する → します, して, しない, した…; noun + する keeps the noun (勉強します). 来る keeps its kanji but changes its reading: 来ます (きます), 来て (きて), 来ない (こない), 来た (きた). Verbs ending in てくる/でくる conjugate like 来る (持ってくる → 持ってきます, 持ってこない).
+- Group 3: する → します, して, しない, した…; noun + する keeps the noun (勉強します). 来る keeps its kanji but changes its reading: 来ます (きます), 来て (きて), 来ない (こない), 来た (きた). Verbs ending in てくる/でくる/にくる conjugate like 来る (持ってくる → 持ってきます, 持ってこない; 迎えに来る → 迎えに来ます, 迎えに来ない (むかえにこない)).
 - Exceptions: 行く → 行って, 行った, and so do verbs ending in ていく/でいく (持っていく → 持っていって). ある → ない.
 - The ます form helper from M1 (`src/lib/verbs.ts`, what the notebook shows) is folded into the engine; its rows join the table below.
-- **Test-first.** `src/lib/conjugate.test.ts` is a table of (verb, form, expected kanji, expected kana) covering every group 1 ending, both exceptions, 来る, する, a noun + する verb, 持っていく and 持ってくる, and the homophones 切る (group 1) and 着る (group 2). I check every row against a reliable conjugation chart before the engine exists; after that, the agent never edits the table.
+- **Test-first.** `src/lib/conjugate.test.ts` is a table of (verb, form, expected kanji, expected kana) covering every group 1 ending, both exceptions, 来る, する, a noun + する verb and a katakana one (コピーする), 持っていく and 持ってくる with their kanji spellings 持って行く and 持って来る, 迎えに来る, the homophones 切る (group 1) and 着る (group 2), and 作る (group 1, though its reading ends in くる). I check every row against a reliable conjugation chart before the engine exists; after that, the agent never edits the table.
 
 ## 12. Importing from the paper notebook — `/add-vocab`
 

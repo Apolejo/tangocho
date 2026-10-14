@@ -1,0 +1,228 @@
+.stats {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4) var(--space-6);
+}
+
+.title {
+  margin: var(--space-3) 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.titleJa {
+  margin-left: var(--space-2);
+  color: var(--ink-soft);
+  font-family: var(--font-ja);
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: var(--space-5) 0 var(--space-2);
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.note {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+/* mastery: the legend names every color, and each deck repeats the counts in words */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.key {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.swatch {
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 3px;
+}
+
+.decks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.deckHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.deckName {
+  font-weight: 700;
+}
+
+.deckJa {
+  margin-left: var(--space-2);
+  color: var(--ink-soft);
+  font-family: var(--font-ja);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.pct {
+  flex: none;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.bar {
+  display: flex;
+  gap: 2px;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.segment {
+  flex-basis: 0;
+}
+
+.new {
+  background: var(--level-new);
+}
+
+.learning {
+  background: var(--level-learning);
+}
+
+.familiar {
+  background: var(--level-familiar);
+}
+
+.mastered {
+  background: var(--level-mastered);
+}
+
+.counts {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+}
+
+/* accuracy tables, side by side when there's room */
+.tables {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0 var(--space-4);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  font-size: var(--text-sm);
+}
+
+.table th,
+.table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+
+.table thead th {
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.table tbody th {
+  font-weight: 700;
+}
+
+.form {
+  font-family: var(--font-ja);
+  font-size: var(--text-md);
+}
+
+.games {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.weak {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.weak li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ja {
+  flex: none;
+  font-family: var(--font-ja);
+  font-size: var(--text-ja-lg);
+  font-weight: 600;
+}
+
+.weakText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.weakMeta {
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+}
+
+.streaks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.months {
+  display: inline-flex;
+  gap: var(--space-1);
+}

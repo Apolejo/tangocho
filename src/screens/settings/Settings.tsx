@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import buttons from '../../components/Buttons.module.css';
 import pills from '../../components/Pills.module.css';
 import { GAMES } from '../../games/registry.ts';
@@ -89,6 +89,18 @@ export function Settings() {
   const [busy, setBusy] = useState(false);
   const [reset, setReset] = useState<ResetStep>('idle');
   const [storage, setStorage] = useState<PersistStatus>();
+
+  // Each confirmation step moves the focus to Cancel, so Enter pressed again never confirms the
+  // next step; back to idle, the focus returns to Reset.
+  const resetRef = useRef<HTMLButtonElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  const resetShown = useRef<ResetStep>(reset);
+  useEffect(() => {
+    if (resetShown.current === reset) return;
+    resetShown.current = reset;
+    (reset === 'idle' ? resetRef : cancelRef).current?.focus();
+  }, [reset]);
+  const warningId = useId();
 
   useEffect(() => {
     let alive = true;
@@ -261,6 +273,7 @@ export function Settings() {
           {reset === 'idle' ? (
             <div className={styles.actions}>
               <button
+                ref={resetRef}
                 type="button"
                 className={buttons.danger}
                 onClick={() => setReset('confirm')}
@@ -270,8 +283,8 @@ export function Settings() {
               </button>
             </div>
           ) : (
-            <div className={styles.confirm} role="group" aria-label={t('settings_reset')}>
-              <p className={styles.warning}>
+            <div key={reset} className={styles.confirm} role="group" aria-labelledby={warningId}>
+              <p id={warningId} className={styles.warning}>
                 {t(reset === 'confirm' ? 'reset_confirm_1' : 'reset_confirm_2')}
               </p>
               <div className={styles.actions}>
@@ -294,6 +307,7 @@ export function Settings() {
                   </button>
                 )}
                 <button
+                  ref={cancelRef}
                   type="button"
                   className={buttons.secondary}
                   onClick={() => setReset('idle')}

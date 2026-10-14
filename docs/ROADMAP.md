@@ -127,13 +127,59 @@ Done when: installed on your phone, it works in airplane mode; you've reviewed l
 
 ---
 
-## After v1 (ideas, not promises)
+## After v1
+
+Decided on 2026-10-14: other people may play my words, each with their own progress on their own devices; nobody gets an account or vocabulary of their own. The Oracle server serves a second copy of the site and runs the sync service; GitHub Pages stays. The decisions each milestone still needs are in SPEC §15: settle them before its planning session.
+
+## M10 — Open to other players · SPEC §1, §3, §5.7, §7.7
+
+Goal: someone who isn't me can open the link, play my words, and say thanks.
+
+- [ ] Settings → About: the app's version, the source on GitHub, a one-line privacy note (progress stays on this device), and ☕ *Buy me a coffee*, a plain link to my page drawn with the app's tokens. Not the Buy Me a Coffee widget: its script and cookies would be another request to another site (§5.7), and it does nothing offline. Never during a round.
+- [ ] `.github/FUNDING.yml` (`buy_me_a_coffee: <name>`), so the repo shows a Sponsor button; the link in the README too.
+- [ ] The open word reports banner only where I turn it on: a Settings switch, off by default. The ⚑ button stays for everyone.
+- [ ] Wording for more than one player in the UI, the README and SPEC §1 and §3; the final name (SPEC §15) before the link goes around.
+
+Done when: the coffee link opens my page from Settings on the phone and from the repo on GitHub; the reports banner shows only where it's turned on; the a11y and tap-target specs cover the new controls.
+
+## M11 — Oracle server: an HTTPS mirror · SPEC §4
+
+Goal: the same build, served over HTTPS from my Always Free VM and deployed by CI on every push to `main`, on a server ready to host the sync service.
+
+Before the session (you, about an hour in the Oracle console and at a DNS provider):
+
+- [ ] A hostname with an A record to the VM: a domain of my own, or a free DuckDNS name. A service worker and installing need HTTPS, and HTTPS needs a name.
+- [ ] The VM: Ubuntu LTS, SSH by key only, ports 80 and 443 open in the subnet's security list. (Oracle's Ubuntu images block them in iptables too; the runbook covers it.)
+
+The session:
+
+- [ ] `docs/ORACLE.md`, a runbook: the firewall at both layers, Caddy (automatic HTTPS), a `deploy` user that can only write the web root, unattended security upgrades, SSH hardening.
+- [ ] The Caddyfile: the site at `https://<host>/tangocho/`, the same path as Pages, so the build is identical; `index.html`, `sw.js` and the manifest with `no-cache`, hashed assets immutable; HSTS; `/api/` kept for M12.
+- [ ] A deploy job after the Pages build, with the same `dist/`: rsync over SSH to `releases/<sha>/`, then switch a `current` symlink, so a half-uploaded site is never served (the service worker precaches whatever `index.html` names); five releases kept for rollback. A smoke check fails the job unless the page, `sw.js` and the manifest answer 200 over HTTPS.
+
+Done when: a push to `main` updates both sites; the mirror installs on the phone and works in airplane mode; a deploy that fails halfway leaves the previous release serving.
+
+The mirror is another origin, with its own storage and its own installed app: progress doesn't follow between it and Pages until M12.
+
+## M12 — Progress sync · SPEC §3, §10.1
+
+Goal: one progress log shared by a person's devices, automatically and with no account. Export and import stay as the fallback.
+
+Progress is append-only events with unique ids, so sync is a set union with nothing to conflict: push what the server lacks, pull what this device lacks, and merge with the import that already exists.
+
+- [ ] Session 1, test-first: the sync service on the VM, Node and SQLite under systemd behind Caddy. A space per sync key, of which the server keeps only the SHA-256. `PUT /api/v1/events` (idempotent by event id), `GET /api/v1/events?after=<cursor>` (in the server's insertion order, so events imported late still arrive), `DELETE /api/v1/space`. Events validated with the import's Zod schema; size and rate limits; CORS for the Pages and mirror origins only; a nightly copy of the database.
+- [ ] Session 2: the client. An outbox in IndexedDB that every recorded or imported event enters and a push empties; pulls merge through `importEvents`. Sync at launch, after each round, back on screen and back online, with backoff, never blocking play; the service worker never caches the API. Settings → Sync: turn it on, the key for another device, join with a key, when it last synced, stop syncing here, delete my synced progress.
+- [ ] Session 3: pairing and reset across devices as decided (SPEC §15), the privacy note, SPEC and README.
+
+Done when: an answer on the phone shows up on the computer within a minute of both being online; airplane mode still plays and syncs once back online; two keys never see each other's events; importing the same file twice still changes nothing.
+
+---
+
+## Ideas, not promises
 
 - JMdict cross-check in the validator.
-- Sync progress between devices.
 - Pronunciation button.
 - More games: matching pairs, listening.
 - Adjective conjugation.
 - Mixed daily review across games.
 - Run `/add-vocab` from your phone with Claude Code in the cloud → pull request → automatic deploy.
-- Deploy to the Oracle server too (a second static target), or use it for the sync backend.

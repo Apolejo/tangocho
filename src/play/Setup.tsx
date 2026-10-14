@@ -1,5 +1,5 @@
 import { PLAY_HREF } from '../app/routes.ts';
-import { deckId, wordsInDeck, wordsInDecks, type NotebookDeck } from '../data/decks.ts';
+import { deckId, wordsInDeck, type NotebookDeck } from '../data/decks.ts';
 import type { Word } from '../data/schema.ts';
 import {
   DIRECTIONS,
@@ -19,7 +19,7 @@ import { bestKey } from '../progress/bests.ts';
 import { useBest } from '../progress/useBest.ts';
 import { eligibleWords } from './plan.ts';
 import { ROUND_SIZES } from './queue.ts';
-import { unavailableReason, type SetupChoice } from './setup.ts';
+import { setupBlocker, setupPool, type SetupChoice } from './setup.ts';
 import styles from './Setup.module.css';
 
 const DIRECTION_KEYS: Record<Direction, MessageKey> = {
@@ -61,26 +61,16 @@ export function Setup({
 }) {
   const t = useT();
   const { lang } = useLang();
-  const selected = decks.filter((d) => choice.deckIds.includes(deckId(d)));
   // counts are of the words this game can ask about, not every word in the decks
   const playable = (words: readonly Word[]) => eligibleWords(game, choice.options, words);
-  const pool = playable(wordsInDecks(selected, allWords, now));
-  const reason = unavailableReason(game, allWords, lang);
+  const pool = setupPool(game, choice, decks, allWords, now);
   const best = useBest(
     game.id,
     bestKey(game.id, choice.deckIds, choice.size, game.variant(choice.options)),
   );
 
-  const blocker =
-    reason !== undefined
-      ? t(reason.key, 'n' in reason ? { n: reason.n } : undefined)
-      : choice.deckIds.length === 0
-        ? t('setup_decks_none')
-        : pool.length === 0
-          ? t('setup_pool_empty')
-          : game.options.includes('forms') && choice.options.forms.length === 0
-            ? t('setup_forms_none')
-            : undefined;
+  const reason = setupBlocker(game, choice, pool, allWords, lang);
+  const blocker = reason && t(reason.key, 'n' in reason ? { n: reason.n } : undefined);
 
   const toggleDeck = (id: string, on: boolean) => {
     const deckIds = on

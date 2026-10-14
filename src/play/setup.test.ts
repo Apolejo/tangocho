@@ -5,7 +5,17 @@ import { kana } from '../games/kana/index.ts';
 import { quiz } from '../games/quiz/index.ts';
 import { sorter } from '../games/sorter/index.ts';
 import { FORMS, type ConjugationForm } from '../lib/conjugate.ts';
-import { DEFAULT_SETUP, defaultSetup, parseSetup, unavailableReason } from './setup.ts';
+import fixtures from '../../data/fixtures/words.json';
+import { BUILTIN_DECKS } from '../data/decks.ts';
+import { WordsFileSchema } from '../data/schema.ts';
+import {
+  DEFAULT_SETUP,
+  defaultSetup,
+  parseSetup,
+  setupBlocker,
+  setupPool,
+  unavailableReason,
+} from './setup.ts';
 
 const known = new Set(['all', 'new', 'verbs-g1', 'occupations']);
 
@@ -151,5 +161,32 @@ describe('the conjugation drill’s personal-best variant', () => {
       'typing|辞書形+ます+ません+ました+ませんでした+て+ない+た',
     );
     expect(variant('choices', ['た', 'て'])).toBe('choices|て+た');
+  });
+});
+
+describe('setupBlocker', () => {
+  const all = WordsFileSchema.parse(fixtures);
+  // years after the fixtures were added, so the "new this week" deck is empty
+  const now = new Date(2030, 0, 1, 12);
+  const blocker = (game: typeof quiz, choice = DEFAULT_SETUP, words: readonly Word[] = all) =>
+    setupBlocker(game, choice, setupPool(game, choice, BUILTIN_DECKS, words, now), words, 'en');
+
+  it('lets a round start with decks, words and forms', () => {
+    expect(blocker(quiz)).toBeUndefined();
+    expect(blocker(conjugation)).toBeUndefined();
+  });
+
+  it('names what stops it: the game, no decks, no words, no forms', () => {
+    expect(blocker(quiz, DEFAULT_SETUP, all.slice(0, 2))).toEqual({
+      key: 'game_unavailable_pool',
+      n: 4,
+    });
+    expect(blocker(quiz, { ...DEFAULT_SETUP, deckIds: [] })).toEqual({ key: 'setup_decks_none' });
+    expect(blocker(quiz, { ...DEFAULT_SETUP, deckIds: ['new'] })).toEqual({
+      key: 'setup_pool_empty',
+    });
+    expect(
+      blocker(conjugation, { ...DEFAULT_SETUP, options: { ...DEFAULT_SETUP.options, forms: [] } }),
+    ).toEqual({ key: 'setup_forms_none' });
   });
 });

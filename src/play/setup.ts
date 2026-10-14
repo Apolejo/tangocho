@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { deckId, wordsInDecks, type NotebookDeck } from '../data/decks.ts';
 import type { Word } from '../data/schema.ts';
 import {
   DIRECTIONS,
@@ -11,6 +12,7 @@ import {
 } from '../games/types.ts';
 import type { Lang } from '../i18n/lang.ts';
 import { FORMS } from '../lib/conjugate.ts';
+import { eligibleWords } from './plan.ts';
 import { ROUND_SIZES, type RoundSize } from './queue.ts';
 
 /** The setup screen's choice (SPEC §7.3), remembered per game in localStorage. */
@@ -117,5 +119,42 @@ export function unavailableReason(
   const eligible = allWords.filter((w) => game.skills.some((s) => game.eligible(w, s)));
   if (eligible.length < game.minPool) return { key: 'game_unavailable_pool', n: game.minPool };
   if (!game.available(allWords, lang)) return { key: game.unavailableKey };
+  return undefined;
+}
+
+/** The words a round with this setup can ask about: the eligible words of its decks. */
+export function setupPool(
+  game: Pick<Minigame, 'skillsFor' | 'eligible'>,
+  choice: SetupChoice,
+  decks: readonly NotebookDeck[],
+  allWords: readonly Word[],
+  now: Date,
+): Word[] {
+  const selected = decks.filter((d) => choice.deckIds.includes(deckId(d)));
+  return eligibleWords(game, choice.options, wordsInDecks(selected, allWords, now));
+}
+
+export type SetupBlocker =
+  | NonNullable<ReturnType<typeof unavailableReason>>
+  | { key: 'setup_decks_none' | 'setup_pool_empty' | 'setup_forms_none' };
+
+/** Why a round with this setup can't start, or undefined when it can. */
+export function setupBlocker(
+  game: Pick<
+    Minigame,
+    'skills' | 'eligible' | 'minPool' | 'available' | 'unavailableKey' | 'options'
+  >,
+  choice: SetupChoice,
+  pool: readonly Word[],
+  allWords: readonly Word[],
+  lang: Lang,
+): SetupBlocker | undefined {
+  const reason = unavailableReason(game, allWords, lang);
+  if (reason !== undefined) return reason;
+  if (choice.deckIds.length === 0) return { key: 'setup_decks_none' };
+  if (pool.length === 0) return { key: 'setup_pool_empty' };
+  if (game.options.includes('forms') && choice.options.forms.length === 0) {
+    return { key: 'setup_forms_none' };
+  }
   return undefined;
 }

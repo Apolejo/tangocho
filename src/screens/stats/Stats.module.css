@@ -88,7 +88,9 @@
   font-weight: 700;
 }
 
+/* moves to the next line whole rather than breaking */
 .deckJa {
+  display: inline-block;
   margin-left: var(--space-2);
   color: var(--ink-soft);
   font-family: var(--font-ja);
@@ -187,10 +189,12 @@
   list-style: none;
 }
 
+/* the word, then its meaning beside it, or below it when the word is long */
 .weak li {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: var(--space-3);
+  gap: 0 var(--space-3);
   padding: var(--space-2) 0;
   border-bottom: 1px solid var(--rule);
 }
@@ -204,6 +208,7 @@
 
 .weakText {
   display: flex;
+  flex: 1 1 11rem;
   flex-direction: column;
   min-width: 0;
 }

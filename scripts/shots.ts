@@ -8,8 +8,17 @@ import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium, type Page } from 'playwright';
 import { createServer } from 'vite';
+import {
+  daysAgo,
+  importProgress,
+  seedFile,
+  seedRound,
+  type ProgressEvent,
+  type SeedAnswer,
+} from '../e2e/seed.ts';
 import { WordsFileSchema } from '../src/data/schema.ts';
-import { conjugate, isForm, type Conjugated } from '../src/lib/conjugate.ts';
+import { conjugate, FORMS, isForm, type Conjugated } from '../src/lib/conjugate.ts';
+import { mulberry32 } from '../src/lib/random.ts';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const OUT = fileURLToPath(new URL('../shots/', import.meta.url));
@@ -21,6 +30,70 @@ const WORDS = readdirSync(WORDS_DIR)
   .flatMap((file) =>
     WordsFileSchema.parse(JSON.parse(readFileSync(join(WORDS_DIR, file), 'utf8'))),
   );
+
+/** The clock on the progress screens: Wednesday 14 October 2026, noon. */
+const NOW = new Date(2026, 9, 14, 12, 0);
+
+/**
+ * A few weeks of made-up progress over the real words, for Today and Stats: goal days with two
+ * gaps, perfect rounds, misses, sorter and drill answers, and a few words practiced for months.
+ */
+function demoProgress(): string {
+  const rng = mulberry32(14);
+  const ids = WORDS.map((w) => w.id);
+  const verbs = WORDS.filter((w) => w.pos === 'verb' && w.verbGroup !== undefined).map((w) => w.id);
+  const pick = (list: readonly string[], n: number) =>
+    Array.from({ length: n }, () => list[Math.floor(rng() * list.length)] ?? '');
+  const events: ProgressEvent[] = [];
+  // practiced for months: these end up mastered
+  for (const wordId of ids.slice(0, 12)) {
+    for (const [days, minute] of [
+      [200, 0],
+      [200, 15],
+      [197, 0],
+      [188, 0],
+      [160, 0],
+      [80, 0],
+    ] as const) {
+      events.push(
+        ...seedRound({
+          game: 'quiz',
+          at: daysAgo(NOW, days, 12, minute),
+          answers: [{ wordId, skill: 'meaning' }],
+        }),
+      );
+    }
+  }
+  for (let day = 20; day >= 0; day--) {
+    if (day === 5 || day === 12) continue;
+    const rounds = day === 0 ? 1 : 2;
+    for (let r = 0; r < rounds; r++) {
+      const perfect = r === 0 && (day === 1 || day === 4 || day === 9);
+      const quiz: SeedAnswer[] = pick(ids.slice(12, 120), 10).map((wordId) => ({
+        wordId,
+        skill: 'meaning',
+        correct: perfect || rng() > 0.2,
+      }));
+      events.push(...seedRound({ game: 'quiz', at: daysAgo(NOW, day, 9 + r), answers: quiz }));
+    }
+    if (day % 3 === 0) {
+      const sorter: SeedAnswer[] = pick(verbs, 10).map((wordId) => ({
+        wordId,
+        skill: 'group',
+        correct: rng() > 0.25,
+      }));
+      events.push(...seedRound({ game: 'sorter', at: daysAgo(NOW, day, 18), answers: sorter }));
+      const drill: SeedAnswer[] = pick(verbs, 10).map((wordId) => ({
+        wordId,
+        skill: 'conjugation',
+        form: FORMS[Math.floor(rng() * FORMS.length)] ?? 'て',
+        correct: rng() > 0.35,
+      }));
+      events.push(...seedRound({ game: 'conjugation', at: daysAgo(NOW, day, 19), answers: drill }));
+    }
+  }
+  return seedFile(events);
+}
 
 /** Answers the current quiz question right or wrong by keyboard (the e2e trick: matching word ids). */
 async function answerQuiz(page: Page, correct: boolean): Promise<void> {
@@ -115,7 +188,32 @@ const SCREENS: {
   steps?: (page: Page) => Promise<void>;
   /** Open word reports GitHub answers with (none unless given), so screens don't depend on it. */
   reports?: number;
+  /** The progress screens: the clock fixed at NOW, and no progress or the demo progress. */
+  progress?: 'empty' | 'demo';
 }[] = [
+  { name: 'today-empty', hash: '#/', progress: 'empty' },
+  { name: 'today', hash: '#/', progress: 'demo' },
+  {
+    name: 'today-es',
+    hash: '#/',
+    progress: 'demo',
+    steps: async (page) => {
+      await page.getByRole('button', { name: 'Español' }).click();
+      await page.getByRole('heading', { name: /Hoy/ }).waitFor();
+    },
+  },
+  { name: 'stats', hash: '#/stats', progress: 'demo' },
+  { name: 'settings', hash: '#/settings', progress: 'demo' },
+  {
+    name: 'settings-reset-confirm',
+    hash: '#/settings',
+    progress: 'demo',
+    steps: async (page) => {
+      await page.getByRole('button', { name: 'Reset progress' }).click();
+      await page.getByRole('button', { name: 'Yes, delete it' }).click();
+      await page.getByRole('button', { name: 'Delete everything' }).scrollIntoViewIfNeeded();
+    },
+  },
   { name: 'notebook', hash: '#/notebook' },
   { name: 'notebook-reports', hash: '#/notebook', reports: 2 },
   { name: 'notebook-verbs-g2', hash: '#/notebook/verbs-g2' },
@@ -284,6 +382,7 @@ async function main(): Promise<void> {
   const screens = SCREENS.filter((s) => only === undefined || s.name === only);
   if (screens.length === 0) throw new Error(`no screen named "${only}"`);
 
+  const demo = demoProgress();
   const server = await createServer({ root: ROOT, logLevel: 'silent' });
   await server.listen();
   const url = server.resolvedUrls?.local[0];
@@ -308,6 +407,13 @@ async function main(): Promise<void> {
               headers: { 'Access-Control-Allow-Origin': '*' },
             }),
           );
+          if (screen.progress !== undefined) await page.clock.setFixedTime(NOW);
+          if (screen.progress === 'demo') {
+            await importProgress(page, demo, `${url}#/settings`);
+            // a fresh load, so no screen keeps the import's message
+            await page.goto(`${url}#/`);
+            await page.reload({ waitUntil: 'networkidle' });
+          }
           await page.goto(url + screen.hash, { waitUntil: 'networkidle' });
           await screen.steps?.(page);
           await page.evaluate('document.fonts.ready');

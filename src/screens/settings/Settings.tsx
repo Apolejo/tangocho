@@ -80,6 +80,12 @@ export function Settings() {
   const { events } = useProgress();
   const today = dayKey(now);
   const [message, setMessage] = useState<Message>();
+  // counts the messages, so a test can tell a new one from the same text again
+  const [messages, setMessages] = useState(0);
+  const say = (next: Message) => {
+    setMessage(next);
+    setMessages((n) => n + 1);
+  };
   const [busy, setBusy] = useState(false);
   const [reset, setReset] = useState<ResetStep>('idle');
   const [storage, setStorage] = useState<PersistStatus>();
@@ -100,10 +106,10 @@ export function Settings() {
       const outcome = await exportProgress(events, deviceId(), at);
       if (outcome === 'cancelled') return;
       updateSettings((s) => ({ ...s, lastExportAt: at.toISOString() }));
-      setMessage({ key: 'settings_exported' });
+      say({ key: 'settings_exported' });
     } catch (error: unknown) {
       console.warn('could not export', error);
-      setMessage({ key: 'settings_export_failed' });
+      say({ key: 'settings_export_failed' });
     }
   };
 
@@ -114,7 +120,7 @@ export function Settings() {
     setBusy(true);
     try {
       const outcome = await importProgressFile(await file.text(), progress);
-      setMessage(
+      say(
         outcome.ok
           ? {
               key: 'import_result',
@@ -124,7 +130,7 @@ export function Settings() {
       );
     } catch (error: unknown) {
       console.warn('could not import', error);
-      setMessage({ key: 'import_failed' });
+      say({ key: 'import_failed' });
     } finally {
       setBusy(false);
     }
@@ -134,7 +140,7 @@ export function Settings() {
     setBusy(true);
     try {
       await progress.reset();
-      setMessage({ key: 'reset_done' });
+      say({ key: 'reset_done' });
     } finally {
       setBusy(false);
       setReset('idle');
@@ -229,7 +235,7 @@ export function Settings() {
               />
             </label>
           </div>
-          <p className={styles.status} role="status" data-transfer-status>
+          <p className={styles.status} role="status" data-transfer-status={messages}>
             {message !== undefined && t(message.key, message.vars)}
           </p>
           <p className={styles.line} data-last-export>

@@ -35,22 +35,24 @@
 
 .day,
 .blank {
-  height: 2.75rem;
+  height: 3rem;
   border: 1px solid var(--rule);
 }
 
 .day {
   position: relative;
   padding: 0;
-  text-align: center;
-  vertical-align: middle;
 }
 
+/* the date in the corner, like a printed stamp card, so a stamp never hides it */
 .number {
-  position: relative;
+  position: absolute;
+  top: 1px;
+  left: 4px;
   z-index: 1;
   color: var(--ink-soft);
   font-size: var(--text-xs);
+  line-height: 1.2;
 }
 
 .day[data-today] .number {
@@ -62,19 +64,19 @@
   text-underline-offset: 3px;
 }
 
-/* the seal sits over the number, as a stamp would */
+/* the seal fills the square below the date, as a stamp would */
 .hanko {
-  --stamp-size: 2.3rem;
+  --stamp-size: 2rem;
 
   position: absolute;
-  inset: 0;
+  inset: 0.65rem 0 0;
   display: grid;
   place-items: center;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .hanamaru {
-  --stamp-size-lg: 1.3rem;
+  --stamp-size-lg: 1.2rem;
 
   position: absolute;
   top: 1px;

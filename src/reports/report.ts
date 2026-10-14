@@ -6,12 +6,27 @@ import { isForm } from '../lib/conjugate.ts';
 import { displayForm } from '../lib/verbs.ts';
 
 /**
- * Word reports (SPEC §5.7): a ⚑ opens a prefilled new issue on the repo, next to the data it
- * fixes. Nothing is sent until the issue is submitted on GitHub. Pure.
+ * Word reports (SPEC §5.7): a ⚑ opens the repo's word-report issue form, its fields filled in,
+ * next to the data it fixes. The form labels the issue itself, so a report from anyone counts.
+ * Nothing is sent until the issue is submitted on GitHub. Pure.
  */
 
 export const REPO = 'Apolejo/tangocho';
 export const REPORT_LABEL = 'word-report';
+/** The issue form, in .github/ISSUE_TEMPLATE/. */
+export const REPORT_FORM = 'word-report.yml';
+
+/** The form's fields the app fills in, by id, in the form's order. */
+export const REPORT_FIELDS = [
+  'word-id',
+  'shown',
+  'meaning',
+  'form',
+  'answer',
+  'from',
+  'source',
+] as const;
+export type ReportField = (typeof REPORT_FIELDS)[number];
 
 export interface Report {
   word: Word;
@@ -39,30 +54,31 @@ export function reportTitle({ word, form }: Report, lang: Lang): string {
     : translate(lang, 'report_title_form', { word: text, form: formLabel(form), id: word.id });
 }
 
-/** The issue body: what the app showed, then a line for what looks wrong. */
-export function reportBody({ word, from, form, answer }: Report, lang: Lang): string {
-  const line = (key: Parameters<typeof translate>[1], value: string) =>
-    `- **${translate(lang, key)}:** ${value}`;
+/** What the app showed, as the form's fields; what a report doesn't have is left out. */
+export function reportFields(
+  { word, from, form, answer }: Report,
+  lang: Lang,
+): [ReportField, string][] {
   const meaning = meaningText(word, lang).text;
-  const lines = [
-    line('report_id', `\`${word.id}\``),
-    line('report_shown', shownWithReading(word)),
-    ...(meaning === '' ? [] : [line('report_meaning', meaning)]),
-    ...(form === undefined ? [] : [line('report_form', formLabel(form))]),
-    ...(answer === undefined ? [] : [line('report_answer', answer)]),
-    line('report_from', from),
-    ...(word.source === undefined ? [] : [line('report_source', word.source)]),
+  const fields: [ReportField, string | undefined][] = [
+    ['word-id', word.id],
+    ['shown', shownWithReading(word)],
+    ['meaning', meaning === '' ? undefined : meaning],
+    ['form', form === undefined ? undefined : formLabel(form)],
+    ['answer', answer],
+    ['from', from],
+    ['source', word.source],
   ];
-  return `${lines.join('\n')}\n\n**${translate(lang, 'report_wrong')}**\n\n`;
+  return fields.filter((field): field is [ReportField, string] => field[1] !== undefined);
 }
 
-/** The new-issue page, prefilled and labelled. */
+/** The new-issue page with the word-report form, filled in. */
 export function reportUrl(report: Report, lang: Lang): string {
-  const params = new URLSearchParams({
-    labels: REPORT_LABEL,
-    title: reportTitle(report, lang),
-    body: reportBody(report, lang),
-  });
+  const params = new URLSearchParams([
+    ['template', REPORT_FORM],
+    ['title', reportTitle(report, lang)],
+    ...reportFields(report, lang),
+  ]);
   return `https://github.com/${REPO}/issues/new?${params.toString()}`;
 }
 

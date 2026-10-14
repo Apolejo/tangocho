@@ -1,12 +1,12 @@
 # Tangochō 単語帳 — Product spec
 
-Working name. v1 draft, 2026-10-08. Owner: Alejandro.
+v1 draft, 2026-10-08; opened to other players in M10. Owner: Alejandro.
 
 This file says **what** we build; [ROADMAP.md](ROADMAP.md) says **in what order**. Sections are referenced as §n (for example §9.3). If code and spec disagree, stop and ask which one is right, then update the spec in the same pull request.
 
 ## 1. Summary
 
-A personal web app of minigames for practicing the Japanese words I study, entered from my own paper notebook. One player, phone and computer, works offline, no account and no server.
+A web app of minigames for practicing the Japanese words I study, entered from my own paper notebook. Anyone with the link can play my words, each player with their own progress on their own device; nobody gets an account or vocabulary of their own. Phone and computer, works offline, no account and no server.
 
 ## 2. Goals
 
@@ -23,7 +23,7 @@ A personal web app of minigames for practicing the Japanese words I study, enter
 - Adjective conjugation; verb forms beyond the eight in §11; honorific verbs (いらっしゃる, くださる…).
 - Kanji writing, stroke order, handwriting input.
 - Audio.
-- Other users, sharing, leaderboards.
+- Accounts, a vocabulary of one's own, sharing between players, leaderboards. Other people play my words, each with separate progress (§1).
 
 ## 4. Platform and stack
 
@@ -133,8 +133,8 @@ Warnings (printed, never block):
 ### 5.7 Reporting a mistake
 
 The words come from my handwritten notes, so some will be wrong. Reports go to GitHub, next to the data they fix.
-- A small ⚑ button on every word in the notebook (including each of a verb's forms, §7.2), on the missed words in Results, and in every game's answer feedback. It opens a prefilled new issue on the repo in a new tab (`issues/new?labels=word-report&title=…&body=…`), with the word id, the word as the app shows it with its reading, its meaning, the conjugation form and the app's answer (if any), where the report was made, the notebook page (`source`) and a line for what looks wrong. Nothing is sent until I submit the issue on GitHub.
-- At launch, when online, the app asks GitHub's public API how many `word-report` issues are open (`GET /repos/Apolejo/tangocho/issues?labels=word-report&state=open`; pull requests don't count) and shows a small banner ("2 open word reports") that links to them, on Today, the notebook and the game list, never during a round. ✕ hides it until the next launch. Offline, with none open, or if the request fails or takes over 5 s, nothing shows. It's the app's only request to another site, and it never blocks anything. e2e answers the API itself, so tests never reach GitHub.
+- A small ⚑ button on every word in the notebook (including each of a verb's forms, §7.2), on the missed words in Results, and in every game's answer feedback, for every player. It opens the repo's word-report issue form (`.github/ISSUE_TEMPLATE/word-report.yml`) in a new tab, with its fields filled in from the URL (`issues/new?template=word-report.yml&title=…&word-id=…`, each field by its `id`): the word id, the word as the app shows it with its reading, its meaning, the conjugation form and the app's answer (if any), where the report was made and the notebook page (`source`); the reporter writes what looks wrong. The form labels the issue `word-report` itself: a `labels=` parameter only works for people who can label issues in the repo, so another player's report would lose it. Its field labels are bilingual (English / Spanish), since the form is the same for everyone. Reporting needs a GitHub account (§15). Nothing is sent until the reporter submits the issue on GitHub.
+- Only where it's turned on in Settings (*Count open word reports*, off by default, §7.7): at launch, when online, the app asks GitHub's public API how many `word-report` issues are open (`GET /repos/Apolejo/tangocho/issues?labels=word-report&state=open`; pull requests don't count) and shows a small banner ("2 open word reports") that links to them, on Today, the notebook and the game list, never during a round. ✕ hides it until the next launch. Offline, with none open, or if the request fails or takes over 5 s, nothing shows. It's the app's only request to another site, and it never blocks anything; with the switch off (every new player), the app asks no other site anything. e2e answers the API itself, so tests never reach GitHub.
 - Fixing happens in a Claude session ("fix the open word reports"): Claude reads them with `gh`, shows each proposed change for me to decide, as `/add-vocab` does, commits with `vocab:` and closes the issue. A wrong id is never fixed by renaming it (§5.1).
 - The repo is public, so reports are public; they contain only words.
 
@@ -154,7 +154,7 @@ The words come from my handwritten notes, so some will be wrong. Reports go to G
 | 7.4 | Play | Progress, score and combo, the question, the answer area, ◯/✕ feedback. |
 | 7.5 | Results | Score, accuracy, a 新記録 stamp for a personal best, 花丸 for a perfect round, missed words with *Practice these*. |
 | 7.6 | Stats | Mastery per deck (§10.5) as a New/Learning/Familiar/Mastered bar with a legend and the % mastered; accuracy per verb group (sorter and drill side by side) and per conjugation form; the weakest words per game, each list with *Practice these*; the stamp card as a streak calendar, month by month, with the current and longest streak. |
-| 7.7 | Settings | Language, theme (system, light or dark; §13), furigana default (§5.4), daily goal (10, 20 or 50; §10.4), new cards per day (5, 10, 15, 20 or 30), export/import progress with the last export date (§10.1), whether storage is persistent, whether the app is ready to work offline (§4), reset progress (two confirmations, each moving the focus to Cancel; it deletes the event log and keeps the settings and the theme). |
+| 7.7 | Settings | Language, theme (system, light or dark; §13), furigana default (§5.4), daily goal (10, 20 or 50; §10.4), new cards per day (5, 10, 15, 20 or 30), export/import progress with the last export date (§10.1), whether storage is persistent, whether the app is ready to work offline (§4), reset progress (two confirmations, each moving the focus to Cancel; it deletes the event log and keeps the settings and the theme). Then About: the version (package.json's, with the commit CI built), a one-line privacy note (progress stays on this device), *Count open word reports* (§5.7; off by default), and two plain links in new tabs: *Buy me a coffee* (my page on buymeacoffee.com; a link, never their widget, whose script and cookies would be another request to another site) and the source on GitHub. None of it shows during a round. |
 
 ## 8. Game architecture
 
@@ -366,13 +366,12 @@ Starting tokens, adjusted in M1 from screenshots. Every text color passes AA (4.
 
 ## 15. Open questions
 
-- The final name (Tangochō is a working title). Settle it before M10 shares the link.
 - A pronunciation button using the browser's speech synthesis (voice quality varies by device).
 
-For the milestones after v1 (ROADMAP M10–M12), each decided before that milestone's planning:
-- M10: the name of my Buy Me a Coffee page.
+For the milestones after v1 (ROADMAP M11–M12), each decided before that milestone's planning (M10 settled the name, Tangochō, and the coffee page, `apolejo`):
 - M11: the hostname for the Oracle server, a domain of my own (about $10 a year) or a free DuckDNS name.
 - M12, pairing a device: typing the sync key, about 26 characters in groups, with no new dependency (proposed first); or also scanning a QR code that opens the app with the key, which needs a small runtime QR library and leaves the key in the browser history.
 - M12, reset with sync on: today's reset deletes the local log, and synced devices would send it back. Proposed: a reset starts a new generation of the space, so every device drops the older events and the server deletes them. Or: a reset only stops syncing on that device.
 - M12, what syncs: the events only (proposed). The goal history, new cards per day, the theme and the language stay per device, as §10.4 already assumes for the goal.
 - M12, retention: delete a sync space nobody has used for 12 months?
+- After M12, word reports without a GitHub account: today a report is a GitHub issue, so a player without an account can't send one (§5.7). The sync service on the Oracle server could take a report and open the issue with my token. It would need protection against spam (rate limits, perhaps a challenge), and the issue would no longer show who sent it.

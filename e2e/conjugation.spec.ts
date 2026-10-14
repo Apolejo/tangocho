@@ -258,15 +258,17 @@ test('four choices: ない形 of group 2, by keys or taps, with the ⚑ on the a
         'data-state',
         'correct',
       );
-      // the ⚑ reports this word in this form, on GitHub, prefilled
+      // the ⚑ reports this word in this form, on the word-report form, filled in
       const flag = page.locator(`[data-report="${id}"]`);
       await expect(flag).toHaveAttribute('data-report-form', 'ない');
       await expect(flag).toHaveAttribute('target', '_blank');
       const url = new URL((await flag.getAttribute('href')) ?? '');
       expect(url.pathname).toBe('/Apolejo/tangocho/issues/new');
-      expect(url.searchParams.get('labels')).toBe('word-report');
+      expect(url.searchParams.get('template')).toBe('word-report.yml');
       expect(url.searchParams.get('title')).toContain(`ない形 (${id})`);
-      expect(url.searchParams.get('body')).toContain('- **From:** Conjugation drill');
+      expect(url.searchParams.get('form')).toBe('ない形');
+      expect(url.searchParams.get('answer')).toContain(right);
+      expect(url.searchParams.get('from')).toBe('Conjugation drill');
       await moveOn(page, isMobile);
     } else {
       await expect(status(page)).toContainText('Correct!');

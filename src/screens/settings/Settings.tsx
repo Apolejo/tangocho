@@ -1,4 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { APP_COMMIT, APP_VERSION } from '../../app/build.ts';
+import { COFFEE_URL, SOURCE_URL } from '../../app/links.ts';
 import { THEMES, setTheme, type Theme } from '../../app/theme.ts';
 import { usePwa } from '../../app/pwa.ts';
 import { useTheme } from '../../app/useTheme.ts';
@@ -79,7 +81,8 @@ function Choice<T extends string | number | boolean>({
 
 /**
  * Settings (SPEC §7.7): language, theme, the furigana default, the daily goal, new cards per day,
- * export and import of progress, storage, offline use, and reset progress after two confirmations.
+ * export and import of progress, storage, offline use, and reset progress after two confirmations;
+ * then About: the version, the privacy note, the open word reports count, the coffee and the source.
  */
 export function Settings() {
   const t = useT();
@@ -343,6 +346,55 @@ export function Settings() {
               </div>
             </div>
           )}
+        </div>
+      </div>
+
+      <h2 className={styles.subtitle}>{t('settings_about')}</h2>
+      <div className={styles.sheet}>
+        <div className={styles.group}>
+          <p className={styles.legend}>
+            <span lang="ja">単語帳</span> {t('appName')}
+          </p>
+          <p className={styles.line} data-version>
+            {t('about_version', { version: `${APP_VERSION} · ${APP_COMMIT}` })}
+          </p>
+          <p className={styles.note}>{t('about_privacy')}</p>
+        </div>
+        <Choice
+          name="reports-banner"
+          legend={t('settings_reports')}
+          note={t('settings_reports_note')}
+          options={[true, false]}
+          value={settings.reportsBanner}
+          label={(on) => t(on ? 'setup_on' : 'setup_off')}
+          onChange={(reportsBanner) => updateSettings((s) => ({ ...s, reportsBanner }))}
+        />
+        <div className={styles.group}>
+          <p className={styles.note}>{t('about_thanks')}</p>
+          <div className={styles.actions}>
+            <a
+              href={COFFEE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttons.secondary}
+            >
+              {/* a cup drawn in ink, like the ⚑: the ☕ emoji would come in the system's colors */}
+              <svg viewBox="0 0 24 24" className={styles.icon} aria-hidden="true" focusable="false">
+                <path d="M8 3.5c-1 1 1 2 0 3.5M12 3.5c-1 1 1 2 0 3.5" />
+                <path d="M4 10h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z" />
+                <path d="M16 11.5h1.5a2.5 2.5 0 0 1 0 5H16M3 21.5h16" />
+              </svg>
+              {t('about_coffee')}
+            </a>
+            <a
+              href={SOURCE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttons.secondary}
+            >
+              {t('about_source')}
+            </a>
+          </div>
         </div>
       </div>
     </section>

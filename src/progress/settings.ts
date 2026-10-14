@@ -3,8 +3,9 @@ import type { DayKey } from './day.ts';
 
 /**
  * Settings (SPEC §7.7) kept on this device in localStorage: the daily goal and its history, new
- * cards per day, the furigana default and the last export. The language has its own key
- * (src/i18n/lang.ts). Parsing is pure; a bad or missing field falls back to its default alone.
+ * cards per day, the furigana default, whether to count the open word reports, and the last
+ * export. The language has its own key (src/i18n/lang.ts). Parsing is pure; a bad or missing
+ * field falls back to its default alone.
  */
 
 export const GOAL_OPTIONS = [10, 20, 50] as const;
@@ -23,6 +24,8 @@ export interface Settings {
   goals: GoalEntry[];
   newPerDay: number;
   furigana: boolean;
+  /** Ask GitHub at launch how many word reports are open, and show the banner (SPEC §5.7). */
+  reportsBanner: boolean;
   /** ISO timestamp of the last export from this device. */
   lastExportAt?: string;
 }
@@ -31,6 +34,7 @@ export const DEFAULT_SETTINGS: Settings = {
   goals: [],
   newPerDay: DEFAULT_NEW_PER_DAY,
   furigana: true,
+  reportsBanner: false,
 };
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -41,6 +45,7 @@ const stored = z.object({
     .catch([]),
   newPerDay: z.literal(NEW_PER_DAY_OPTIONS).catch(DEFAULT_NEW_PER_DAY),
   furigana: z.boolean().catch(true),
+  reportsBanner: z.boolean().catch(false),
   lastExportAt: z.iso.datetime().optional().catch(undefined),
 });
 

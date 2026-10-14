@@ -16,6 +16,7 @@ describe('parseSettings', () => {
       ],
       newPerDay: 5,
       furigana: false,
+      reportsBanner: true,
       lastExportAt: '2026-10-13T08:00:00.000Z',
     });
     expect(parseSettings(raw)).toEqual({
@@ -25,8 +26,14 @@ describe('parseSettings', () => {
       ],
       newPerDay: 5,
       furigana: false,
+      reportsBanner: true,
       lastExportAt: '2026-10-13T08:00:00.000Z',
     });
+  });
+
+  it('counts the open word reports only once turned on', () => {
+    expect(DEFAULT_SETTINGS.reportsBanner).toBe(false);
+    expect(parseSettings(JSON.stringify({ furigana: false })).reportsBanner).toBe(false);
   });
 
   it('falls back field by field', () => {
@@ -34,12 +41,14 @@ describe('parseSettings', () => {
       goals: [{ from: 'yesterday', goal: 20 }],
       newPerDay: 7,
       furigana: 'no',
+      reportsBanner: 'yes',
       lastExportAt: 'last week',
     });
     expect(parseSettings(raw)).toEqual({
       goals: [],
       newPerDay: DEFAULT_NEW_PER_DAY,
       furigana: true,
+      reportsBanner: false,
     });
     expect(parseSettings(JSON.stringify({ newPerDay: 30 }))).toEqual({
       ...DEFAULT_SETTINGS,

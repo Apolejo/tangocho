@@ -13,6 +13,12 @@ const root = fileURLToPath(new URL('.', import.meta.url));
 const wordsDir = (mode: string): string =>
   join(root, mode === 'e2e' || mode === 'test' ? 'data/fixtures' : 'data/words');
 
+/** About shows the version, and the commit CI built (src/app/build.ts). */
+const VERSION = (
+  JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')) as { version: string }
+).version;
+const COMMIT = process.env.GITHUB_SHA?.slice(0, 7) ?? 'dev';
+
 /** The paper color (tokens.css, src/app/theme.ts), for the installed app's splash and bars. */
 const PAPER = '#f6f1e7';
 
@@ -65,6 +71,10 @@ export default defineConfig(({ mode }) => {
   const slices = fontSlices(mode);
   return {
     base: '/tangocho/',
+    define: {
+      __APP_VERSION__: JSON.stringify(VERSION),
+      __APP_COMMIT__: JSON.stringify(COMMIT),
+    },
     plugins: [
       react(),
       // installable and offline (SPEC §4); not in unit tests
@@ -80,7 +90,8 @@ export default defineConfig(({ mode }) => {
                 id: '/tangocho/',
                 name: '単語帳 Tangochō',
                 short_name: '単語帳',
-                description: 'Minigames for the Japanese words in my notebook.',
+                description:
+                  'Minigames for drilling the Japanese words from a handwritten study notebook.',
                 display: 'standalone',
                 background_color: PAPER,
                 theme_color: PAPER,

@@ -2,12 +2,15 @@
 
 Minigames for drilling the Japanese vocabulary from my own notebook (a quick quiz, a verb group sorter, kana typing and a conjugation drill), with spaced repetition. Works on phone and computer, and offline.
 
+Anyone can play: open the link, no account needed. Each player's progress stays on their own device; nothing is sent anywhere.
+
 - Live: https://apolejo.github.io/tangocho/
+- ☕ [Buy me a coffee](https://buymeacoffee.com/apolejo) if it helps you
 - Product spec: [docs/SPEC.md](docs/SPEC.md)
 - Roadmap and status: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Instructions for Claude Code: [CLAUDE.md](CLAUDE.md)
 
-Status: M9 done, the last v1 milestone. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`; tapping a verb shows its eight forms. Four games are playable: the quick quiz, the verb group sorter, kana typing and the conjugation drill. Every answer goes into a progress log in IndexedDB; spaced repetition (FSRS), personal bests, the daily goal and streak, and mastery are derived from it. Today (home) shows the streak, the stamp card and each game's due cards, with *Continue*; Stats shows mastery per deck and the weakest words; Settings exports and imports progress, which is how it moves between phone and computer. A ⚑ on any word opens a prefilled GitHub issue to report a mistake, and the app shows how many are open. It installs on the phone's home screen and works in airplane mode; it has a night-notebook theme, stamps that press onto the paper, and a round plays by keyboard alone.
+Status: v1 done (M1–M9), and M10 opens it to other players. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`; tapping a verb shows its eight forms. Four games are playable: the quick quiz, the verb group sorter, kana typing and the conjugation drill. Every answer goes into a progress log in IndexedDB; spaced repetition (FSRS), personal bests, the daily goal and streak, and mastery are derived from it. Today (home) shows the streak, the stamp card and each game's due cards, with *Continue*; Stats shows mastery per deck and the weakest words; Settings exports and imports progress, which is how it moves between phone and computer. A ⚑ on any word opens the word-report issue form on GitHub, filled in and labelled for anyone with a GitHub account; Settings can turn on a banner that counts the open reports (off by default, so the app asks GitHub nothing until then). Settings → About shows the version, the source and the coffee link. It installs on the phone's home screen and works in airplane mode; it has a night-notebook theme, stamps that press onto the paper, and a round plays by keyboard alone.
 
 ## Run it
 

@@ -1,0 +1,50 @@
+import { readFileSync } from 'node:fs';
+import { expect, test } from './test.ts';
+
+/**
+ * Settings → About (SPEC §7.7): the version, the privacy note, the open word reports count (off
+ * at first) and two plain links out, in new tabs.
+ */
+
+const { version } = JSON.parse(readFileSync('package.json', 'utf8')) as { version: string };
+
+const LINKS = {
+  'Buy me a coffee': 'https://buymeacoffee.com/apolejo',
+  'Source on GitHub': 'https://github.com/Apolejo/tangocho',
+};
+
+test('About shows the version, the privacy note and the links, in both languages', async ({
+  page,
+}) => {
+  await page.goto('#/settings');
+  await expect(page.getByRole('heading', { name: 'About' })).toBeVisible();
+  await expect(page.locator('[data-version]')).toHaveText(
+    new RegExp(`^Version ${version} · \\S+$`),
+  );
+  await expect(page.getByText('Your progress stays on this device')).toBeVisible();
+  await expect(
+    page
+      .getByRole('group', { name: 'Count open word reports' })
+      .getByRole('radio', { name: 'Off' }),
+  ).toBeChecked();
+
+  for (const [name, href] of Object.entries(LINKS)) {
+    const link = page.getByRole('link', { name });
+    await expect(link).toHaveAttribute('href', href);
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  }
+
+  await page.getByRole('button', { name: 'Español' }).click();
+  await expect(page.getByRole('heading', { name: 'Acerca de' })).toBeVisible();
+  await expect(page.locator('[data-version]')).toHaveText(new RegExp(`^Versión ${version} · `));
+  await expect(page.getByText('Tu progreso se queda en este dispositivo')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Invítame a un café' })).toHaveAttribute(
+    'href',
+    LINKS['Buy me a coffee'],
+  );
+  await expect(page.getByRole('link', { name: 'Código en GitHub' })).toHaveAttribute(
+    'href',
+    LINKS['Source on GitHub'],
+  );
+});

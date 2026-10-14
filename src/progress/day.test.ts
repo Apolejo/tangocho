@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import {
   addDays,
   addMonths,
@@ -91,13 +91,12 @@ describe('monthGrid', () => {
 
 // Daylight saving moves the clock by an hour; the day boundary must stay at 04:00 local time.
 describe('across daylight saving (America/New_York)', () => {
-  const saved = process.env.TZ;
+  // Node picks up a new TZ at once, on Windows too
   beforeAll(() => {
-    process.env.TZ = 'America/New_York';
+    vi.stubEnv('TZ', 'America/New_York');
   });
   afterAll(() => {
-    if (saved === undefined) delete process.env.TZ;
-    else process.env.TZ = saved;
+    vi.unstubAllEnvs();
   });
 
   it('keeps the boundary at 04:00 on the day the clocks go forward', () => {

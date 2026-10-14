@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- The app icon: the favicon's ruled card with its red ◯, full-bleed on paper. The card stays
+       inside the maskable safe zone (a circle of radius 40), so one drawing serves every icon.
+       `npm run icons` renders the PNGs from it. -->
+  <rect width="100" height="100" fill="#F6F1E7"/>
+  <g transform="translate(16.8 16.8) scale(1.04)">
+    <rect x="6" y="4" width="52" height="56" rx="6" fill="#FBF8F2" stroke="#2F4B6E" stroke-width="3"/>
+    <path d="M14 20h36M14 30h36M14 40h36M14 50h24" stroke="#E3DBCB" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="44" cy="44" r="11" fill="none" stroke="#B8392A" stroke-width="4" transform="rotate(-8 44 44)"/>
+  </g>
+</svg>

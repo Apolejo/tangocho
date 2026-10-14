@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LangToggle } from '../components/LangToggle.tsx';
 import { useT } from '../i18n/hooks.ts';
 import type { MessageKey } from '../i18n/en.ts';
+import { UpdateBanner } from '../components/UpdateBanner.tsx';
 import { ReportsBanner } from '../reports/ReportsBanner.tsx';
+import { focusScreenHeading } from './focus.ts';
 import styles from './Layout.module.css';
 import { PLAY_HREF, SETTINGS_HREF, STATS_HREF, TODAY_HREF } from './routes.ts';
 
@@ -17,16 +19,26 @@ const NAV: readonly { section: Section; href: string; key: MessageKey }[] = [
 
 export function Layout({
   section,
-  reports,
+  banners,
   children,
 }: {
   section: Section;
-  /** Show the open word reports (SPEC §5.7): on Today, the notebook and the game list, never mid-round. */
-  reports: boolean;
+  /**
+   * Show a new version (SPEC §4) and the open word reports (SPEC §5.7): on Today, the notebook
+   * and the game list, never mid-round.
+   */
+  banners: boolean;
   children: React.ReactNode;
 }) {
   const t = useT();
   const [reportsHidden, setReportsHidden] = useState(false);
+  // ✕ takes a banner away with the focus on it: the screen's heading gets it back
+  const reportsShown = useRef(reportsHidden);
+  useEffect(() => {
+    if (reportsShown.current === reportsHidden) return;
+    reportsShown.current = reportsHidden;
+    focusScreenHeading();
+  }, [reportsHidden]);
   return (
     <>
       <header className={styles.header}>
@@ -65,7 +77,8 @@ export function Layout({
           </a>
         </div>
       </header>
-      {reports && !reportsHidden && <ReportsBanner onHide={() => setReportsHidden(true)} />}
+      {banners && <UpdateBanner />}
+      {banners && !reportsHidden && <ReportsBanner onHide={() => setReportsHidden(true)} />}
       <main className={styles.main}>{children}</main>
     </>
   );

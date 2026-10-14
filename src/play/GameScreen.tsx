@@ -1,4 +1,5 @@
 import { useEffect, useEffectEvent, useRef, useState } from 'react';
+import { focusScreenHeading } from '../app/focus.ts';
 import { gameHref, type GameIntent } from '../app/routes.ts';
 import { deckId, wordsInDecks } from '../data/decks.ts';
 import { words } from '../data/load.ts';
@@ -43,10 +44,17 @@ export function GameScreen({ game, intent }: { game: Minigame; intent?: GameInte
   const [starting, setStarting] = useState(false);
   const startingRef = useRef(false);
 
+  // each view starts at the top; setup and results take the focus at their heading (SPEC §8.3),
+  // while a round places it itself (Round.tsx). The first view is the screen's, focused by App.
   const view = 'plan' in phase ? `${phase.name}-${phase.plan.id}` : phase.name;
+  const viewShown = useRef(view);
+  const focusesHeading = phase.name === 'setup' || phase.name === 'results';
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [view]);
+    if (viewShown.current === view) return;
+    viewShown.current = view;
+    if (focusesHeading) focusScreenHeading();
+  }, [view, focusesHeading]);
 
   const change = (next: SetupChoice) => {
     setChoice(next);

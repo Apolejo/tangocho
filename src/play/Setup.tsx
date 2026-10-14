@@ -262,10 +262,15 @@ export function Setup({
               ? t('setup_no_best')
               : t('setup_best', { n: best.best.toLocaleString(lang) }))}
         </p>
-        {blocker !== undefined && <p className={styles.blocker}>{blocker}</p>}
+        {blocker !== undefined && (
+          <p id="setup-blocker" className={styles.blocker}>
+            {blocker}
+          </p>
+        )}
         <button
           type="button"
           className={styles.start}
+          aria-describedby={blocker !== undefined ? 'setup-blocker' : undefined}
           disabled={blocker !== undefined || starting}
           onClick={onStart}
         >

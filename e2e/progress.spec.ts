@@ -271,6 +271,34 @@ test('reset takes two confirmations and empties the log', async ({ page }) => {
   await expect(page.locator('[data-answered]')).toContainText('0 of 20 answers');
 });
 
+test('Enter pressed again and again never confirms the reset', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'keyboard');
+  await seed(page, seedRound({ game: 'quiz', at: daysAgo(NOW, 0, 9), answers: quizAnswers(5) }));
+  await expect.poll(() => page.evaluate(COUNT_EVENTS)).toBe(6);
+
+  const reset = page.getByRole('button', { name: 'Reset progress' });
+  await reset.focus();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('button', { name: 'Cancel' })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(reset).toBeFocused();
+  await page.keyboard.press('Enter');
+  await page.keyboard.press('Enter');
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('group', { name: /Delete all progress/ })).toBeVisible();
+  expect(await page.evaluate(COUNT_EVENTS)).toBe(6);
+
+  // the second step moves the focus to Cancel too
+  await page.getByRole('button', { name: 'Yes, delete it' }).click();
+  await expect(page.getByRole('button', { name: 'Cancel' })).toBeFocused();
+  await expect(
+    page.getByRole('group', { name: 'Are you sure? This cannot be undone.' }),
+  ).toBeVisible();
+  await page.keyboard.press('Enter');
+  await expect(reset).toBeFocused();
+  expect(await page.evaluate(COUNT_EVENTS)).toBe(6);
+});
+
 test('Today reminds me to export after a week, until hidden', async ({ page }) => {
   await seed(page, seedRound({ game: 'quiz', at: daysAgo(NOW, 8), answers: quizAnswers(3) }));
   await page.goto('#/');

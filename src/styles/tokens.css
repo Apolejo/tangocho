@@ -1,19 +1,27 @@
 /* Design tokens (SPEC §13). Components never hard-code colors or sizes. */
 :root {
+  /*
+   * Every color is light-dark(paper notebook, night notebook). The night notebook follows the
+   * system unless Settings chose a theme: <html data-theme> (src/app/theme.ts) sets color-scheme.
+   */
   color-scheme: light dark;
 
   /* paper and ink */
-  --paper: #f6f1e7;
-  --card: #fbf8f2;
-  --rule: #e3dbcb;
-  --ink: #24211d;
-  --ink-soft: #6b645a;
-  --ai: #2f4b6e; /* indigo: accents */
-  --shu: #b8392a; /* vermilion: the ◯ stamp */
+  --paper: light-dark(#f6f1e7, #171c27);
+  --card: light-dark(#fbf8f2, #1f2533);
+  --rule: light-dark(#e3dbcb, #2e3546);
+  --edge: light-dark(#8c8272, #6b7590); /* a field's or control's border: 3:1 on paper and card */
+  --ink: light-dark(#24211d, #ece5d8);
+  --ink-soft: light-dark(#6b645a, #a9a293);
+  --ai: light-dark(#2f4b6e, #8fa8cc); /* indigo: accents */
+  --shu: light-dark(#b8392a, #e36a55); /* vermilion: the ◯ stamp */
+  --grain: light-dark(rgba(77, 64, 51, 0.07), rgba(236, 229, 216, 0.035)); /* the paper's specks */
   --washi: color-mix(in srgb, var(--ai) 14%, transparent);
   --margin-line: color-mix(in srgb, var(--shu) 35%, transparent);
-  --shadow: 0 1px 2px rgba(36, 33, 29, 0.08), 0 6px 16px rgba(36, 33, 29, 0.06);
-  --backdrop: rgba(36, 33, 29, 0.35); /* behind a dialog */
+  --shadow:
+    0 1px 2px light-dark(rgba(36, 33, 29, 0.08), rgba(0, 0, 0, 0.4)),
+    0 6px 16px light-dark(rgba(36, 33, 29, 0.06), rgba(0, 0, 0, 0.3));
+  --backdrop: light-dark(rgba(36, 33, 29, 0.35), rgba(0, 0, 0, 0.55)); /* behind a dialog */
   /* mastery levels (SPEC §10.5), always shown with a text legend too */
   --level-new: var(--rule);
   --level-learning: color-mix(in srgb, var(--shu) 55%, var(--card));
@@ -50,19 +58,16 @@
   --stamp-size: 3.5rem;
   --stamp-size-lg: 6rem;
   --page-max: 52rem;
+
+  /* motion (SPEC §13), all of it off under prefers-reduced-motion (base.css) */
+  --motion-press: 280ms; /* a stamp pressed onto the paper */
+  --motion-draw: 520ms; /* each stroke of the 花丸 */
 }
 
-/* night notebook: follows the system; the Settings override arrives in M9 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #171c27;
-    --card: #1f2533;
-    --rule: #2e3546;
-    --ink: #ece5d8;
-    --ink-soft: #a9a293;
-    --ai: #8fa8cc;
-    --shu: #e36a55;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 16px rgba(0, 0, 0, 0.3);
-    --backdrop: rgba(0, 0, 0, 0.55);
-  }
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }

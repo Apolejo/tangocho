@@ -3,8 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+    <meta name="apple-mobile-web-app-title" content="単語帳" />
+    <meta name="description" content="Minigames for the Japanese words in my notebook." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#F6F1E7" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f1e7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171c27" />
+    <script>
+      // The theme chosen in Settings, before the first paint (src/app/theme.ts owns the key and
+      // the paper colors; theme.test.ts checks this copy).
+      try {
+        var theme = localStorage.getItem('tangocho:theme');
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.dataset.theme = theme;
+          var paper = theme === 'dark' ? '#171c27' : '#f6f1e7';
+          document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+            meta.content = paper;
+          });
+        }
+      } catch (e) {
+        // storage disabled: the system scheme
+      }
+    </script>
     <title>単語帳 · Tangochō</title>
   </head>
   <body>

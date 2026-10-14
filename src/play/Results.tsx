@@ -11,6 +11,10 @@ import { missedCards, missedWordIds, type AnswerRecord } from './round.ts';
 import { accuracy, isPerfect, type Tally } from './score.ts';
 import { Stamp } from './Stamp.tsx';
 
+/** The stamps land once the score is on screen; the 花丸 is drawn after the 新記録 is pressed. */
+const STAMP_DELAY_MS = 150;
+const HANAMARU_AFTER_RECORD_MS = 550;
+
 /**
  * Results (SPEC §7.5): score and accuracy, 新記録 for a personal best, 花丸 for a perfect round,
  * and the missed words with *Practice these*.
@@ -66,8 +70,17 @@ export function Results({
             </p>
           </div>
           <div className={styles.stamps}>
-            {record && <Stamp kind="record" label={t('results_new_record')} />}
-            {perfect && <Stamp kind="hanamaru" label={t('results_perfect')} />}
+            {record && (
+              <Stamp kind="record" label={t('results_new_record')} animate delay={STAMP_DELAY_MS} />
+            )}
+            {perfect && (
+              <Stamp
+                kind="hanamaru"
+                label={t('results_perfect')}
+                animate
+                delay={record ? HANAMARU_AFTER_RECORD_MS : STAMP_DELAY_MS}
+              />
+            )}
           </div>
         </div>
         <p className={styles.accuracy}>

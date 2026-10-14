@@ -6,6 +6,10 @@
 /* the word as a button: a dotted line under it says it can be tapped */
 .word {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--tap-min);
+  min-height: var(--tap-min);
   margin: 0;
   padding: 0;
   border: none;

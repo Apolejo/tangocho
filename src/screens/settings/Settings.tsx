@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
+import { THEMES, setTheme, type Theme } from '../../app/theme.ts';
+import { usePwa } from '../../app/pwa.ts';
+import { useTheme } from '../../app/useTheme.ts';
 import buttons from '../../components/Buttons.module.css';
 import pills from '../../components/Pills.module.css';
 import { GAMES } from '../../games/registry.ts';
@@ -18,6 +21,12 @@ import { useProgress } from '../../progress/useProgress.ts';
 import { useSettings } from '../../progress/useSettings.ts';
 import styles from './Settings.module.css';
 import { exportProgress } from './share.ts';
+
+const THEME_KEYS: Record<Theme, MessageKey> = {
+  system: 'theme_system',
+  light: 'theme_light',
+  dark: 'theme_dark',
+};
 
 const STORAGE_KEYS: Record<PersistStatus, MessageKey> = {
   persisted: 'storage_persisted',
@@ -69,14 +78,16 @@ function Choice<T extends string | number | boolean>({
 }
 
 /**
- * Settings (SPEC §7.7): language, the furigana default, the daily goal, new cards per day,
- * export and import of progress, storage, and reset progress after two confirmations.
+ * Settings (SPEC §7.7): language, theme, the furigana default, the daily goal, new cards per day,
+ * export and import of progress, storage, offline use, and reset progress after two confirmations.
  */
 export function Settings() {
   const t = useT();
   const { lang, setLang } = useLang();
   const now = useNow();
   const settings = useSettings();
+  const theme = useTheme();
+  const { offlineReady } = usePwa();
   const { events } = useProgress();
   const today = dayKey(now);
   const [message, setMessage] = useState<Message>();
@@ -89,6 +100,18 @@ export function Settings() {
   const [busy, setBusy] = useState(false);
   const [reset, setReset] = useState<ResetStep>('idle');
   const [storage, setStorage] = useState<PersistStatus>();
+
+  // Each confirmation step moves the focus to Cancel, so Enter pressed again never confirms the
+  // next step; back to idle, the focus returns to Reset.
+  const resetRef = useRef<HTMLButtonElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  const resetShown = useRef<ResetStep>(reset);
+  useEffect(() => {
+    if (resetShown.current === reset) return;
+    resetShown.current = reset;
+    (reset === 'idle' ? resetRef : cancelRef).current?.focus();
+  }, [reset]);
+  const warningId = useId();
 
   useEffect(() => {
     let alive = true;
@@ -174,6 +197,15 @@ export function Settings() {
           onChange={setLang}
         />
         <Choice
+          name="theme"
+          legend={t('settings_theme')}
+          note={t('settings_theme_note')}
+          options={THEMES}
+          value={theme}
+          label={(option) => t(THEME_KEYS[option])}
+          onChange={setTheme}
+        />
+        <Choice
           name="furigana"
           legend={t('settings_furigana')}
           note={t('settings_furigana_note')}
@@ -256,11 +288,18 @@ export function Settings() {
           </div>
         )}
         <div className={styles.group}>
+          <p className={styles.legend}>{t('settings_offline')}</p>
+          <p className={styles.note} data-offline={offlineReady ? 'ready' : 'pending'}>
+            {t(offlineReady ? 'offline_ready' : 'offline_pending')}
+          </p>
+        </div>
+        <div className={styles.group}>
           <p className={styles.legend}>{t('settings_reset')}</p>
           <p className={styles.note}>{t('reset_note')}</p>
           {reset === 'idle' ? (
             <div className={styles.actions}>
               <button
+                ref={resetRef}
                 type="button"
                 className={buttons.danger}
                 onClick={() => setReset('confirm')}
@@ -270,8 +309,8 @@ export function Settings() {
               </button>
             </div>
           ) : (
-            <div className={styles.confirm} role="group" aria-label={t('settings_reset')}>
-              <p className={styles.warning}>
+            <div key={reset} className={styles.confirm} role="group" aria-labelledby={warningId}>
+              <p id={warningId} className={styles.warning}>
                 {t(reset === 'confirm' ? 'reset_confirm_1' : 'reset_confirm_2')}
               </p>
               <div className={styles.actions}>
@@ -294,6 +333,7 @@ export function Settings() {
                   </button>
                 )}
                 <button
+                  ref={cancelRef}
                   type="button"
                   className={buttons.secondary}
                   onClick={() => setReset('idle')}

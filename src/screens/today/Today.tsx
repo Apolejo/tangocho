@@ -15,6 +15,7 @@ import { useNow } from '../../progress/useNow.ts';
 import { useProgress } from '../../progress/useProgress.ts';
 import { useSettings } from '../../progress/useSettings.ts';
 import { ExportBanner } from './ExportBanner.tsx';
+import { useFreshStamp } from './freshStamp.ts';
 import styles from './Today.module.css';
 
 /**
@@ -58,6 +59,7 @@ export function Today() {
     now,
   });
   const { year, month } = monthOf(today);
+  const fresh = useFreshStamp(today, status === 'ready', calendar.goalDays.has(today));
 
   return (
     <section className={styles.today} aria-labelledby="today-title">
@@ -133,6 +135,7 @@ export function Today() {
         today={today}
         goalDays={calendar.goalDays}
         perfectDays={calendar.perfectDays}
+        {...(fresh !== undefined && { fresh })}
       />
     </section>
   );

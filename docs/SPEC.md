@@ -376,3 +376,4 @@ For the milestones after v1 (ROADMAP M10–M12), each decided before that milest
 - M12, reset with sync on: today's reset deletes the local log, and synced devices would send it back. Proposed: a reset starts a new generation of the space, so every device drops the older events and the server deletes them. Or: a reset only stops syncing on that device.
 - M12, what syncs: the events only (proposed). The goal history, new cards per day, the theme and the language stay per device, as §10.4 already assumes for the goal.
 - M12, retention: delete a sync space nobody has used for 12 months?
+- After M12, word reports without a GitHub account: today a report is a GitHub issue, so a player without an account can't send one (§5.7). The sync service on the Oracle server could take a report and open the issue with my token. It would need protection against spam (rate limits, perhaps a challenge), and the issue would no longer show who sent it.

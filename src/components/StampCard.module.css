@@ -1,0 +1,83 @@
+/* a ruled card like a ラジオ体操 stamp card: one square per day */
+.card {
+  padding: var(--space-3) var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.month {
+  margin: 0;
+  font-weight: 700;
+}
+
+.grid {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.weekday {
+  padding-bottom: var(--space-1);
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  font-weight: 400;
+}
+
+.day,
+.blank {
+  height: 2.75rem;
+  border: 1px solid var(--rule);
+}
+
+.day {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.number {
+  position: relative;
+  z-index: 1;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+}
+
+.day[data-today] .number {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--shu);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* the seal sits over the number, as a stamp would */
+.hanko {
+  --stamp-size: 2.3rem;
+
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0.8;
+}
+
+.hanamaru {
+  --stamp-size-lg: 1.3rem;
+
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  z-index: 2;
+}

@@ -4,14 +4,20 @@ import { GameScreen } from '../play/GameScreen.tsx';
 import { PlayHub } from '../play/PlayHub.tsx';
 import { NotFound } from '../screens/NotFound.tsx';
 import { Notebook } from '../screens/notebook/Notebook.tsx';
+import { Settings } from '../screens/settings/Settings.tsx';
+import { Stats } from '../screens/stats/Stats.tsx';
+import { Today } from '../screens/today/Today.tsx';
 import { Layout, type Section } from './Layout.tsx';
 import type { Route } from './routes.ts';
 import { useHashRoute } from './useHashRoute.ts';
 
 function sectionOf(route: Route): Section {
   switch (route.name) {
+    case 'today':
     case 'notebook':
-      return 'notebook';
+    case 'stats':
+    case 'settings':
+      return route.name;
     case 'play':
     case 'game':
       return 'play';
@@ -22,13 +28,24 @@ function sectionOf(route: Route): Section {
 
 function Screen({ route }: { route: Route }) {
   switch (route.name) {
+    case 'today':
+      return <Today />;
     case 'notebook':
       return <Notebook deckId={route.deckId} />;
+    case 'stats':
+      return <Stats />;
+    case 'settings':
+      return <Settings />;
     case 'play':
       return <PlayHub />;
     case 'game': {
       const game = gameById(route.gameId);
-      return game === undefined ? <NotFound /> : <GameScreen key={game.id} game={game} />;
+      // keyed by game only: dropping the intent from the address keeps the round going
+      return game === undefined ? (
+        <NotFound />
+      ) : (
+        <GameScreen key={game.id} game={game} {...(route.intent && { intent: route.intent })} />
+      );
     }
     case 'not-found':
       return <NotFound />;
@@ -38,7 +55,10 @@ function Screen({ route }: { route: Route }) {
 function Shell() {
   const route = useHashRoute();
   return (
-    <Layout section={sectionOf(route)} reports={route.name === 'notebook' || route.name === 'play'}>
+    <Layout
+      section={sectionOf(route)}
+      reports={route.name === 'today' || route.name === 'notebook' || route.name === 'play'}
+    >
       <Screen route={route} />
     </Layout>
   );

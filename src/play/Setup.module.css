@@ -115,52 +115,6 @@
   font-size: var(--text-sm);
 }
 
-.pills {
-  clear: both;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-/* a radio as a pill: the native input stays for keyboard and screen readers */
-.pill {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--tap-min);
-  padding: 0 var(--space-4);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  color: var(--ink-soft);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.pill:has(:checked) {
-  border-color: var(--ai);
-  background: var(--ai);
-  color: var(--paper);
-}
-
-.pill:has(:focus-visible) {
-  outline: 2px solid var(--ai);
-  outline-offset: 3px;
-}
-
-.pillJa {
-  font-family: var(--font-ja);
-  font-size: var(--text-md);
-}
-
-.radio {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-
 .footer {
   display: flex;
   flex-direction: column;

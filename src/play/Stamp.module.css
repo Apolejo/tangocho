@@ -38,3 +38,17 @@
   line-height: 1.2;
   transform: rotate(-6deg);
 }
+
+/* a round seal stamped on a goal day of the stamp card */
+.hanko {
+  color: var(--shu);
+  transform: rotate(-12deg);
+}
+
+.hanko text {
+  fill: currentColor;
+  stroke: none;
+  font-family: var(--font-ja);
+  font-size: 52px;
+  font-weight: 600;
+}

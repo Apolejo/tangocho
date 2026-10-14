@@ -1,0 +1,62 @@
+/* buttons and links that look like buttons, for the Today, Stats and Settings screens */
+.primary,
+.secondary,
+.danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: calc(var(--tap-min) + var(--space-2));
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary {
+  border: none;
+  background: var(--ai);
+  color: var(--paper);
+}
+
+.secondary {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+}
+
+/* deleting things: vermilion ink, never the only signal (the label says what it does) */
+.danger {
+  border: 1px solid var(--shu);
+  background: var(--card);
+  color: var(--shu);
+}
+
+.primary:disabled,
+.secondary:disabled,
+.danger:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* small text-sized buttons, like the month arrows */
+.small {
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.small:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

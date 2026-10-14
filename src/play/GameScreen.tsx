@@ -1,12 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useEffectEvent, useRef, useState } from 'react';
+import { gameHref, type GameIntent } from '../app/routes.ts';
 import { deckId, wordsInDecks } from '../data/decks.ts';
 import { words } from '../data/load.ts';
 import type { Card, Minigame } from '../games/types.ts';
+import { useLang, useT } from '../i18n/hooks.ts';
 import { mulberry32, newId, randomSeed } from '../lib/random.ts';
 import { dayKey } from '../progress/day.ts';
 import { formStats } from '../progress/forms.ts';
 import { getSettings } from '../progress/settings.ts';
 import { introducedOn } from '../progress/srs.ts';
+import { weakestCards } from '../progress/stats.ts';
 import { progress } from '../progress/store.ts';
 import { DECKS, KNOWN_DECKS, OPENED_AT } from './catalog.ts';
 import { planRound, type RoundPlan } from './plan.ts';
@@ -15,21 +18,32 @@ import { Round } from './Round.tsx';
 import type { AnswerRecord } from './round.ts';
 import type { Tally } from './score.ts';
 import { Setup } from './Setup.tsx';
-import { loadSetup, saveSetup, type SetupChoice } from './setup.ts';
+import { loadSetup, saveSetup, setupBlocker, setupPool, type SetupChoice } from './setup.ts';
+
+const WORDS_BY_ID = new Map(words.map((w) => [w.id, w]));
 
 type Phase =
+  | { name: 'starting' }
   | { name: 'setup' }
   | { name: 'round'; plan: RoundPlan }
   | { name: 'results'; plan: RoundPlan; answers: readonly AnswerRecord[]; tally: Tally };
 
-/** One game's screens: setup → play → results. A reload mid-round goes back to setup. */
-export function GameScreen({ game }: { game: Minigame }) {
+/**
+ * One game's screens: setup → play → results. A reload mid-round goes back to setup. With an
+ * intent it starts a round at once: *Continue* from Today plays the remembered setup, *Practice
+ * these* from Stats plays the game's weakest cards (SPEC §7.1, §7.6); when that can't run, setup.
+ */
+export function GameScreen({ game, intent }: { game: Minigame; intent?: GameIntent }) {
+  const t = useT();
+  const { lang } = useLang();
   const [choice, setChoice] = useState(() => loadSetup(game.id, KNOWN_DECKS));
-  const [phase, setPhase] = useState<Phase>({ name: 'setup' });
+  const [phase, setPhase] = useState<Phase>(() =>
+    intent === undefined ? { name: 'setup' } : { name: 'starting' },
+  );
   const [starting, setStarting] = useState(false);
   const startingRef = useRef(false);
 
-  const view = phase.name === 'setup' ? 'setup' : `${phase.name}-${phase.plan.id}`;
+  const view = 'plan' in phase ? `${phase.name}-${phase.plan.id}` : phase.name;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
@@ -74,7 +88,46 @@ export function GameScreen({ game }: { game: Minigame }) {
     setPhase({ name: 'round', plan });
   };
 
+  // the intent is used once: the address goes back to the plain game, so a reload shows setup
+  const startAtOnce = useEffectEvent(() => {
+    window.history.replaceState(null, '', gameHref(game.id));
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    if (intent === 'weakest') {
+      const weak = weakestCards(progress.getSnapshot().cards, game, WORDS_BY_ID);
+      if (weak.length > 0) {
+        void start(
+          { deckIds: ['all'], size: weak.length, options: choice.options },
+          weak.map((w) => w.card),
+        );
+        return;
+      }
+    } else if (intent === 'continue') {
+      const pool = setupPool(game, choice, DECKS, words, OPENED_AT);
+      if (setupBlocker(game, choice, pool, words, lang) === undefined) {
+        void start(choice);
+        return;
+      }
+    }
+    setPhase({ name: 'setup' });
+  });
+  useEffect(() => {
+    if (intent === undefined) return;
+    let alive = true;
+    void progress.load().then(() => {
+      if (alive) startAtOnce();
+    });
+    return () => {
+      alive = false;
+    };
+  }, [intent]);
+
   switch (phase.name) {
+    case 'starting':
+      return (
+        <p role="status" style={{ padding: 'var(--space-6) var(--space-4)', textAlign: 'center' }}>
+          {t('progress_loading')}
+        </p>
+      );
     case 'setup':
       return (
         <Setup

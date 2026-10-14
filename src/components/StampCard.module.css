@@ -1,0 +1,85 @@
+/* a ruled card like a ラジオ体操 stamp card: one square per day */
+.card {
+  padding: var(--space-3) var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.month {
+  margin: 0;
+  font-weight: 700;
+}
+
+.grid {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.weekday {
+  padding-bottom: var(--space-1);
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  font-weight: 400;
+}
+
+.day,
+.blank {
+  height: 3rem;
+  border: 1px solid var(--rule);
+}
+
+.day {
+  position: relative;
+  padding: 0;
+}
+
+/* the date in the corner, like a printed stamp card, so a stamp never hides it */
+.number {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  z-index: 1;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  line-height: 1.2;
+}
+
+.day[data-today] .number {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--shu);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* the seal fills the square below the date, as a stamp would */
+.hanko {
+  --stamp-size: 2rem;
+
+  position: absolute;
+  inset: 0.65rem 0 0;
+  display: grid;
+  place-items: center;
+  opacity: 0.85;
+}
+
+.hanamaru {
+  --stamp-size-lg: 1.2rem;
+
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  z-index: 2;
+}

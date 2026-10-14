@@ -9,10 +9,12 @@ import type { ConjugationForm } from '../lib/conjugate.ts';
  * flow, scoring, feedback and logging; a game renders one question and judges one answer.
  */
 
-export type GameId = 'quiz' | 'sorter' | 'kana' | 'conjugation';
+export const GAME_IDS = ['quiz', 'sorter', 'kana', 'conjugation'] as const;
+export type GameId = (typeof GAME_IDS)[number];
 
 /** What a card trains (SPEC §8.1). */
-export type Skill = 'meaning' | 'recall' | 'reading' | 'group' | 'conjugation';
+export const SKILLS = ['meaning', 'recall', 'reading', 'group', 'conjugation'] as const;
+export type Skill = (typeof SKILLS)[number];
 
 /** A (word, skill) pair: the unit of spaced repetition (SPEC §8.1). */
 export interface Card {

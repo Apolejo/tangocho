@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    'brand . lang'
+    'brand . tools'
     'nav nav nav';
   align-items: center;
   gap: var(--space-2) var(--space-3);
@@ -15,25 +15,58 @@
 @media (min-width: 640px) {
   .header {
     grid-template-columns: auto 1fr auto;
-    grid-template-areas: 'brand nav lang';
+    grid-template-areas: 'brand nav tools';
   }
 }
 
-.lang {
-  grid-area: lang;
+.tools {
+  grid-area: tools;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
 }
 
+/* the gear: Settings */
+.settings {
+  display: grid;
+  place-items: center;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+}
+
+.settings svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.settings:hover,
+.settings[aria-current='page'] {
+  color: var(--ink);
+}
+
+.settings[aria-current='page'] {
+  background: var(--washi);
+}
+
+/* four sections; on a narrow phone the row wraps rather than overflowing */
 .nav {
   grid-area: nav;
   display: flex;
-  gap: var(--space-1);
+  flex-wrap: wrap;
+  gap: 0 var(--space-1);
 }
 
 .navLink {
   display: inline-flex;
   align-items: center;
   min-height: var(--tap-min);
-  padding: 0 var(--space-3);
+  padding: 0 var(--space-2);
   border-radius: var(--radius-sm);
   color: var(--ink-soft);
   font-size: var(--text-sm);
@@ -92,4 +125,10 @@
 .main {
   position: relative;
   z-index: 0;
+}
+
+@media (min-width: 640px) {
+  .navLink {
+    padding: 0 var(--space-3);
+  }
 }

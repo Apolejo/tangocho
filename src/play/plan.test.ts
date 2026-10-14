@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import fixtures from '../../data/fixtures/words.json';
 import { WordsFileSchema } from '../data/schema.ts';
+import { conjugation } from '../games/conjugation/index.ts';
 import { quiz } from '../games/quiz/index.ts';
 import { sorter } from '../games/sorter/index.ts';
 import type { RoundOptions } from '../games/types.ts';
@@ -81,5 +82,29 @@ describe('planRound for practice', () => {
     expect(plan.size).toBe(2);
     expect(plan.queue.map((q) => q.card.wordId).sort()).toEqual(['kaku', 'taberu']);
     expect(plan.pool).toEqual(verbs);
+  });
+
+  it('draws a selected form for a card without one, and drops cards of missing words', () => {
+    const only = [
+      { wordId: 'kaku', skill: 'conjugation' as const },
+      { wordId: 'taberu', skill: 'conjugation' as const, form: 'た' },
+      { wordId: 'gone', skill: 'conjugation' as const },
+    ];
+    for (const seed of [1, 2, 3, 4]) {
+      const plan = planRound({
+        id: 'r',
+        game: conjugation,
+        deckIds: ['all'],
+        size: 10,
+        options: { ...options, forms: ['て', 'ない'] },
+        words: all,
+        only,
+        rng: mulberry32(seed),
+      });
+      const byWord = new Map(plan.queue.map((q) => [q.card.wordId, q.card]));
+      expect([...byWord.keys()].sort()).toEqual(['kaku', 'taberu']);
+      expect(['て', 'ない']).toContain(byWord.get('kaku')?.form);
+      expect(byWord.get('taberu')?.form).toBe('た');
+    }
   });
 });

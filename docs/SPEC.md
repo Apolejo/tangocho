@@ -100,7 +100,7 @@ Group 1 = 五段 (u-verbs), group 2 = 一段 (ru-verbs), group 3 = irregular: �
 - Rendered with `<ruby>`. Placement is computed from `kanji` + `kana`: kana in the written form are fixed anchors, and each run of kanji takes the part of the reading between them. 食べる/たべる → 食(た)べる · 引き出し/ひきだし → 引(ひ)き出(だ)し · 先生/せんせい → 先生(せんせい) as one group.
 - 々 and ヶ belong to the kanji run, never act as anchors: 時々 → 時々(ときどき), 一ヶ月 → 一ヶ月(いっかげつ). (WanaKana counts ヶ as kana, so the code must special-case it.)
 - If placement fails or has more than one solution, validation errors and asks for a manual `furigana` field.
-- Global toggle (default on) with a per-round override. Furigana is at least half the base size and never under 10 px.
+- Global toggle in Settings (default on) with a per-round override: changing it sets furigana in every game's remembered setup and in setups not made yet, and a game's setup can still override it for that game until the global toggle changes again. The notebook always shows furigana; it's the reference. Furigana is at least half the base size and never under 10 px.
 
 ### 5.5 Validation — `npm run validate`
 
@@ -134,7 +134,7 @@ Warnings (printed, never block):
 
 The words come from my handwritten notes, so some will be wrong. Reports go to GitHub, next to the data they fix.
 - A small ⚑ button on every word in the notebook (including each of a verb's forms, §7.2), on the missed words in Results, and in every game's answer feedback. It opens a prefilled new issue on the repo in a new tab (`issues/new?labels=word-report&title=…&body=…`), with the word id, the word as the app shows it with its reading, its meaning, the conjugation form and the app's answer (if any), where the report was made, the notebook page (`source`) and a line for what looks wrong. Nothing is sent until I submit the issue on GitHub.
-- At launch, when online, the app asks GitHub's public API how many `word-report` issues are open (`GET /repos/Apolejo/tangocho/issues?labels=word-report&state=open`; pull requests don't count) and shows a small banner ("2 open word reports") that links to them, on the notebook and the game list, never during a round. ✕ hides it until the next launch. Offline, with none open, or if the request fails or takes over 5 s, nothing shows. It's the app's only request to another site, and it never blocks anything. e2e answers the API itself, so tests never reach GitHub.
+- At launch, when online, the app asks GitHub's public API how many `word-report` issues are open (`GET /repos/Apolejo/tangocho/issues?labels=word-report&state=open`; pull requests don't count) and shows a small banner ("2 open word reports") that links to them, on Today, the notebook and the game list, never during a round. ✕ hides it until the next launch. Offline, with none open, or if the request fails or takes over 5 s, nothing shows. It's the app's only request to another site, and it never blocks anything. e2e answers the API itself, so tests never reach GitHub.
 - Fixing happens in a Claude session ("fix the open word reports"): Claude reads them with `gh`, shows each proposed change for me to decide, as `/add-vocab` does, commits with `vocab:` and closes the issue. A wrong id is never fixed by renaming it (§5.1).
 - The repo is public, so reports are public; they contain only words.
 
@@ -148,13 +148,13 @@ The words come from my handwritten notes, so some will be wrong. Reports go to G
 
 | § | Screen | Contents |
 |---|---|---|
-| 7.1 | Today (home) | Streak and stamp card, daily-goal progress, due count per game, a *Continue* button. |
+| 7.1 | Today (home) | Streak and this month's stamp card (§10.4), daily-goal progress, and each game with its due count, counted over the game's remembered setup (its decks and options), linking to its setup. *Continue* starts a round at once in the game with the most due cards, with its remembered setup; with nothing due, the last game played (or the first available one). A small banner reminds me to export once 7 days have passed since the last export, or since the first answer if I never exported, as long as there is progress the last export doesn't have (§10.1); it links to Settings, and ✕ hides it until the next launch. |
 | 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Verbs are shown in ます form, derived from the stored dictionary form (§5.1, §11); tapping a verb opens its eight forms with furigana, each with its ⚑ (§5.7): a bottom sheet on a phone, a dialog on the computer (✕, Esc or a tap outside closes it). Built first; it doubles as a data check. |
 | 7.3 | Game setup | Decks (remembers the last choice; the counts are of the words the game can use, so verbs only for the sorter), round size (10 or 20), options (furigana, direction, kana typing mode, input mode, forms). |
 | 7.4 | Play | Progress, score and combo, the question, the answer area, ◯/✕ feedback. |
 | 7.5 | Results | Score, accuracy, a 新記録 stamp for a personal best, 花丸 for a perfect round, missed words with *Practice these*. |
-| 7.6 | Stats | Mastery per deck, accuracy per verb group and per conjugation form, weakest words, streak calendar. |
-| 7.7 | Settings | Language, furigana default, theme (system/light/dark), daily goal, new cards per day, export/import progress, reset progress (double confirmation). |
+| 7.6 | Stats | Mastery per deck (§10.5) as a New/Learning/Familiar/Mastered bar with a legend and the % mastered; accuracy per verb group (sorter and drill side by side) and per conjugation form; the weakest words per game, each list with *Practice these*; the stamp card as a streak calendar, month by month, with the current and longest streak. |
+| 7.7 | Settings | Language, furigana default (§5.4), daily goal (10, 20 or 50; §10.4), new cards per day (5, 10, 15, 20 or 30), export/import progress with the last export date (§10.1), whether storage is persistent, reset progress (two confirmations; it deletes the event log and keeps the settings). The theme option (system/light/dark) arrives with dark mode in M9. |
 
 ## 8. Game architecture
 
@@ -208,7 +208,7 @@ export interface QuestionProps {
 
 `explanation` is a React node, not a string, so the Japanese it quotes can carry `lang="ja"` (§6).
 
-The round queue is shuffled until M8 brings the §10.2 order: each word at most once, round size = min(10 or 20, pool). A game with `formsFor` gets one form per card, drawn toward the forms missed more often (§9.4). *Practice these* replays the missed cards, each with its skill and form. *Quit* goes back to setup; answers already given stay logged, and no round event is written.
+The round queue picks its cards in the §10.2 order, then shuffles them: each word at most once, round size = min(10 or 20, pool). A game with `formsFor` gets one form per card, drawn toward the forms missed more often (§9.4). *Practice these* replays the missed cards, each with its skill and form; from Stats (§7.6) it replays the weakest cards, and a card without a form gets one drawn as above. *Quit* goes back to setup; answers already given stay logged, and no round event is written.
 
 Answer checking and distractor generation are pure functions next to each game, with unit tests.
 
@@ -279,16 +279,19 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 ### 10.1 Event log
 
 - Every answer appends an `AnswerEvent { type: 'answer', id, at, roundId, game, wordId, skill, form?, correct, hinted, ms, device }`; every finished round appends a `RoundEvent { type: 'round', id, at, game, deckIds, size, variant, practice, score, correct, total }`. The round event's `id` is the `roundId` of its answers; it is written with the last answer. `at` is an ISO timestamp; `device` is a random id per install; `variant` is the game's part of the personal-best key (the quiz direction, the kana typing mode, the drill's input mode and forms like `choices|て+た`, or empty); `practice` marks a *Practice these* round.
-- Events are append-only, in IndexedDB. Spaced-repetition state, scores, streaks and mastery are derived from them (cached for speed, always rebuildable).
-- Export saves the event log as a JSON file. Import merges by event id (importing the same file twice changes nothing) and rebuilds. This is how progress moves between phone and computer in v1.
-- Ask for persistent storage (`navigator.storage.persist()`). Browsers may clear data for sites that haven't been used in a while, Safari on iPhone especially, so install the app on the phone; Settings shows the last export date and reminds me after 7 days.
+- Events are append-only, in IndexedDB. Spaced-repetition state, scores, streaks and mastery are derived from them: held in memory, rebuilt at launch, after an import and after a reset, never stored on their own.
+- Export saves the event log as a JSON file, `tangocho-progress-YYYY-MM-DD.json`: `{ app: "tangocho", version: 1, exportedAt, device, events }`. On a phone it opens the share sheet (save to Files, AirDrop, Mail) when the browser can share files; elsewhere it downloads.
+- Import merges by event id: an event already here is never overwritten, so importing the same file twice changes nothing. A file that isn't JSON, isn't a Tangochō file or comes from a newer version is refused; invalid events in it are skipped and counted. Then the state rebuilds and Settings says how many events were new, already here and skipped. This is how progress moves between phone and computer in v1.
+- Ask for persistent storage (`navigator.storage.persist()`) once there is progress, never on a blank first visit; Settings shows whether it was granted. Browsers may clear data for sites that haven't been used in a while, Safari on iPhone especially, so install the app on the phone. Settings shows the last export date; Today reminds me once 7 days have passed since the last export, or since the first answer if I never exported, unless nothing new happened since the last export (§7.1).
 
 ### 10.2 Spaced repetition
 
-- FSRS via ts-fsrs, default parameters.
+- FSRS via ts-fsrs, default parameters: no fuzz, so replaying the same log always gives the same state on every device, and the short-term learning steps (1 and 10 minutes), so a missed word comes back in the next round.
+- A card is (word, skill) (§8.1); the conjugation form isn't part of it. Every answer is a review of its card, including answers in *Practice these* rounds and in rounds I quit.
 - Answer → rating: wrong → *Again*; correct with a hint → *Hard*; correct → *Good*. *Easy* is never inferred.
-- Round queue: due cards first (most overdue first), then new cards (daily limit, default 15, shared by all games), then, if the round still isn't full, the least recently seen cards as extra practice.
-- Cards whose word was removed from the data are ignored, not deleted.
+- Due: a card scheduled in days is due from the start (04:00, §10.4) of its due day; a card in a learning step is due at its exact time.
+- Round queue: due cards first (most overdue first), then new cards up to the daily limit (default 15, shared by all games, counted by the cards first answered today), then the least recently seen cards as extra practice, then, only if the round still isn't full, new cards past the limit. The limit decides what comes first; it never leaves a round short.
+- Cards whose word was removed from the data, or that a game no longer accepts (a word that lost its kanji has no reading card), are ignored, not deleted.
 
 ### 10.3 Scores
 
@@ -297,14 +300,15 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 
 ### 10.4 Daily goal and streak
 
-- Daily goal: a number of answers (default 20; options 10, 20, 50).
+- Daily goal: a number of answers (default 20; options 10, 20, 50). A change applies from today on: past days keep the goal they had. The goal history stays on the device; days imported from the other device are judged by it.
 - The day starts at 04:00 local time, so practice at 1 a.m. counts for the previous day.
-- Streak = consecutive days with the goal met. Stamp card calendar: a hanko stamp for each goal day, 花丸 for days with a perfect round.
+- Streak = consecutive days with the goal met, up to today once today's goal is met, up to yesterday until then. Stamp card calendar: a hanko stamp for each goal day, 花丸 for days with a perfect round (every answer right, none hinted; *Practice these* rounds don't count here, though Results still shows their 花丸).
 
 ### 10.5 Mastery
 
 - From FSRS stability: *New* (never seen), *Learning* (under 3 days), *Familiar* (3 to 21 days), *Mastered* (21 days or more).
-- Stats: % mastered per deck, accuracy per verb group and per conjugation form, and the 10 weakest words (most lapses) with *Practice these*.
+- Mastery per deck counts cards: every (word, skill) some game can train, for the words in the deck.
+- Stats: % mastered per deck, accuracy per verb group and per conjugation form, and per game the 10 weakest words, with *Practice these*. Weakest = the most misses among the card's last 20 answers, ties to the lower stability; a card needs at least one miss to be listed, so a word drops off once I get it right again.
 
 ## 11. Conjugation engine — `src/lib/conjugate.ts`
 

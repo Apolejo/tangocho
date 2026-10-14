@@ -1,0 +1,108 @@
+.settings {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4) var(--space-6);
+}
+
+.title {
+  margin: var(--space-3) 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.titleJa {
+  margin-left: var(--space-2);
+  color: var(--ink-soft);
+  font-family: var(--font-ja);
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: var(--space-5) 0 var(--space-2);
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+/* one sheet of the notebook, ruled between its groups, like game setup */
+.sheet {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.group:last-child {
+  border-bottom: none;
+}
+
+.legend {
+  float: left;
+  width: 100%;
+  margin: 0 0 var(--space-1);
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.note,
+.line {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.line {
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* the file picker looks like a button; its input stays for keyboard and screen readers */
+.file {
+  position: relative;
+}
+
+.file:has(:focus-visible) {
+  outline: 2px solid var(--ai);
+  outline-offset: 3px;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.remind,
+.warning {
+  margin: 0;
+  color: var(--shu);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px dashed var(--shu);
+  border-radius: var(--radius-md);
+}

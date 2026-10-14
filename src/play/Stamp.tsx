@@ -2,10 +2,11 @@ import styles from './Stamp.module.css';
 
 /**
  * Hanko-style marks (SPEC §13): ◯ in vermilion for correct, ✕ in ink for wrong, the 新記録 seal
- * for a personal best and the 花丸 for a perfect round. Static for now; the animations come in M9.
+ * for a personal best, the 花丸 for a perfect round, and the round 済 seal for a day whose goal was
+ * met on the stamp card (SPEC §10.4). Static for now; the animations come in M9.
  * The shape carries the meaning; `label` names it for screen readers.
  */
-export type StampKind = 'maru' | 'batsu' | 'record' | 'hanamaru';
+export type StampKind = 'maru' | 'batsu' | 'record' | 'hanamaru' | 'hanko';
 
 export function Stamp({ kind, label }: { kind: StampKind; label?: string }) {
   const a11y = label === undefined ? { 'aria-hidden': true } : { role: 'img', 'aria-label': label };
@@ -36,6 +37,15 @@ export function Stamp({ kind, label }: { kind: StampKind; label?: string }) {
         <span className={styles.record} {...a11y}>
           <span lang="ja">新記録</span>
         </span>
+      );
+    case 'hanko':
+      return (
+        <svg className={`${styles.stamp} ${styles.hanko}`} viewBox="0 0 100 100" {...a11y}>
+          <circle cx="50" cy="50" r="43" fill="none" strokeWidth="6" />
+          <text x="50" y="54" textAnchor="middle" dominantBaseline="middle" lang="ja">
+            済
+          </text>
+        </svg>
       );
     case 'hanamaru':
       return (

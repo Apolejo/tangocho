@@ -1,5 +1,5 @@
 import { PLAY_HREF } from '../app/routes.ts';
-import { deckId, wordsInDeck, wordsInDecks, type NotebookDeck } from '../data/decks.ts';
+import { deckId, wordsInDeck, type NotebookDeck } from '../data/decks.ts';
 import type { Word } from '../data/schema.ts';
 import {
   DIRECTIONS,
@@ -19,7 +19,8 @@ import { bestKey } from '../progress/bests.ts';
 import { useBest } from '../progress/useBest.ts';
 import { eligibleWords } from './plan.ts';
 import { ROUND_SIZES } from './queue.ts';
-import { unavailableReason, type SetupChoice } from './setup.ts';
+import { setupBlocker, setupPool, type SetupChoice } from './setup.ts';
+import pills from '../components/Pills.module.css';
 import styles from './Setup.module.css';
 
 const DIRECTION_KEYS: Record<Direction, MessageKey> = {
@@ -61,26 +62,16 @@ export function Setup({
 }) {
   const t = useT();
   const { lang } = useLang();
-  const selected = decks.filter((d) => choice.deckIds.includes(deckId(d)));
   // counts are of the words this game can ask about, not every word in the decks
   const playable = (words: readonly Word[]) => eligibleWords(game, choice.options, words);
-  const pool = playable(wordsInDecks(selected, allWords, now));
-  const reason = unavailableReason(game, allWords, lang);
+  const pool = setupPool(game, choice, decks, allWords, now);
   const best = useBest(
     game.id,
     bestKey(game.id, choice.deckIds, choice.size, game.variant(choice.options)),
   );
 
-  const blocker =
-    reason !== undefined
-      ? t(reason.key, 'n' in reason ? { n: reason.n } : undefined)
-      : choice.deckIds.length === 0
-        ? t('setup_decks_none')
-        : pool.length === 0
-          ? t('setup_pool_empty')
-          : game.options.includes('forms') && choice.options.forms.length === 0
-            ? t('setup_forms_none')
-            : undefined;
+  const reason = setupBlocker(game, choice, pool, allWords, lang);
+  const blocker = reason && t(reason.key, 'n' in reason ? { n: reason.n } : undefined);
 
   const toggleDeck = (id: string, on: boolean) => {
     const deckIds = on
@@ -142,13 +133,13 @@ export function Setup({
 
         <fieldset className={styles.group}>
           <legend className={styles.legend}>{t('setup_size')}</legend>
-          <div className={styles.pills}>
+          <div className={pills.pills}>
             {ROUND_SIZES.map((size) => (
-              <label key={size} className={styles.pill}>
+              <label key={size} className={pills.pill}>
                 <input
                   type="radio"
                   name={`${game.id}-size`}
-                  className={styles.radio}
+                  className={pills.radio}
                   checked={choice.size === size}
                   onChange={() => onChange({ ...choice, size })}
                 />
@@ -161,13 +152,13 @@ export function Setup({
         {game.options.includes('direction') && (
           <fieldset className={styles.group}>
             <legend className={styles.legend}>{t('setup_direction')}</legend>
-            <div className={styles.pills}>
+            <div className={pills.pills}>
               {DIRECTIONS.map((direction) => (
-                <label key={direction} className={styles.pill}>
+                <label key={direction} className={pills.pill}>
                   <input
                     type="radio"
                     name={`${game.id}-direction`}
-                    className={styles.radio}
+                    className={pills.radio}
                     checked={choice.options.direction === direction}
                     onChange={() =>
                       onChange({ ...choice, options: { ...choice.options, direction } })
@@ -183,12 +174,12 @@ export function Setup({
         {game.options.includes('forms') && (
           <fieldset className={styles.group}>
             <legend className={styles.legend}>{t('setup_forms')}</legend>
-            <div className={styles.pills}>
+            <div className={pills.pills}>
               {FORMS.map((form) => (
-                <label key={form} className={`${styles.pill} ${styles.pillJa}`}>
+                <label key={form} className={`${pills.pill} ${pills.pillJa}`}>
                   <input
                     type="checkbox"
-                    className={styles.radio}
+                    className={pills.radio}
                     checked={choice.options.forms.includes(form)}
                     onChange={(e) => toggleForm(form, e.target.checked)}
                   />
@@ -202,13 +193,13 @@ export function Setup({
         {game.options.includes('inputMode') && (
           <fieldset className={styles.group}>
             <legend className={styles.legend}>{t('setup_input')}</legend>
-            <div className={styles.pills}>
+            <div className={pills.pills}>
               {INPUT_MODES.map((inputMode) => (
-                <label key={inputMode} className={styles.pill}>
+                <label key={inputMode} className={pills.pill}>
                   <input
                     type="radio"
                     name={`${game.id}-input`}
-                    className={styles.radio}
+                    className={pills.radio}
                     checked={choice.options.inputMode === inputMode}
                     onChange={() =>
                       onChange({ ...choice, options: { ...choice.options, inputMode } })
@@ -224,13 +215,13 @@ export function Setup({
         {game.options.includes('mode') && (
           <fieldset className={styles.group}>
             <legend className={styles.legend}>{t('setup_mode')}</legend>
-            <div className={styles.pills}>
+            <div className={pills.pills}>
               {KANA_MODES.map((mode) => (
-                <label key={mode} className={styles.pill}>
+                <label key={mode} className={pills.pill}>
                   <input
                     type="radio"
                     name={`${game.id}-mode`}
-                    className={styles.radio}
+                    className={pills.radio}
                     checked={choice.options.mode === mode}
                     onChange={() => onChange({ ...choice, options: { ...choice.options, mode } })}
                   />
@@ -244,13 +235,13 @@ export function Setup({
         {game.options.includes('furigana') && (
           <fieldset className={styles.group}>
             <legend className={styles.legend}>{t('setup_furigana')}</legend>
-            <div className={styles.pills}>
+            <div className={pills.pills}>
               {[true, false].map((furigana) => (
-                <label key={String(furigana)} className={styles.pill}>
+                <label key={String(furigana)} className={pills.pill}>
                   <input
                     type="radio"
                     name={`${game.id}-furigana`}
-                    className={styles.radio}
+                    className={pills.radio}
                     checked={choice.options.furigana === furigana}
                     onChange={() =>
                       onChange({ ...choice, options: { ...choice.options, furigana } })

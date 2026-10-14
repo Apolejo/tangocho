@@ -14,6 +14,11 @@
   --margin-line: color-mix(in srgb, var(--shu) 35%, transparent);
   --shadow: 0 1px 2px rgba(36, 33, 29, 0.08), 0 6px 16px rgba(36, 33, 29, 0.06);
   --backdrop: rgba(36, 33, 29, 0.35); /* behind a dialog */
+  /* mastery levels (SPEC §10.5), always shown with a text legend too */
+  --level-new: var(--rule);
+  --level-learning: color-mix(in srgb, var(--shu) 55%, var(--card));
+  --level-familiar: color-mix(in srgb, var(--ai) 45%, var(--card));
+  --level-mastered: var(--ai);
 
   /* type: Klee One for Japanese prompts, Zen Kaku Gothic New for the UI (chosen in M1 from screenshots) */
   --font-ja: 'Klee One', 'Hiragino Maru Gothic ProN', 'Yu Gothic', 'Noto Sans JP', sans-serif;

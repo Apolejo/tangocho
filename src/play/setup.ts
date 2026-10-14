@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { deckId, wordsInDecks, type NotebookDeck } from '../data/decks.ts';
 import type { Word } from '../data/schema.ts';
 import {
   DIRECTIONS,
@@ -11,6 +12,8 @@ import {
 } from '../games/types.ts';
 import type { Lang } from '../i18n/lang.ts';
 import { FORMS } from '../lib/conjugate.ts';
+import { getSettings } from '../progress/settings.ts';
+import { eligibleWords } from './plan.ts';
 import { ROUND_SIZES, type RoundSize } from './queue.ts';
 
 /** The setup screen's choice (SPEC §7.3), remembered per game in localStorage. */
@@ -20,13 +23,16 @@ export interface SetupChoice {
   options: RoundOptions;
 }
 
-/** The choice before anything is stored; the input mode depends on the device (SPEC §9.4). */
-export function defaultSetup(inputMode: InputMode = 'typing'): SetupChoice {
+/**
+ * The choice before anything is stored; the input mode depends on the device (SPEC §9.4), and
+ * furigana on the default in Settings (SPEC §5.4).
+ */
+export function defaultSetup(inputMode: InputMode = 'typing', furigana = true): SetupChoice {
   return {
     deckIds: ['all'],
     size: 10,
     options: {
-      furigana: true,
+      furigana,
       direction: 'forward',
       mode: 'reading',
       inputMode,
@@ -92,7 +98,7 @@ export function parseSetup(
 const storageKey = (game: GameId) => `tangocho:setup:${game}`;
 
 export function loadSetup(game: GameId, knownDeckIds: ReadonlySet<string>): SetupChoice {
-  const defaults = defaultSetup(deviceInputMode());
+  const defaults = defaultSetup(deviceInputMode(), getSettings().furigana);
   try {
     return parseSetup(localStorage.getItem(storageKey(game)), knownDeckIds, defaults);
   } catch {
@@ -108,6 +114,40 @@ export function saveSetup(game: GameId, choice: SetupChoice): void {
   }
 }
 
+/**
+ * A stored setup with its furigana option set; nothing (leave it alone) for a setup that isn't
+ * stored or can't be read, since the default already follows Settings.
+ */
+export function withFurigana(raw: string | null, furigana: boolean): string | null {
+  if (raw === null) return null;
+  let json: unknown;
+  try {
+    json = JSON.parse(raw);
+  } catch {
+    return null;
+  }
+  if (typeof json !== 'object' || json === null || Array.isArray(json)) return null;
+  const stored = json as Record<string, unknown>;
+  const options = stored['options'];
+  const patched =
+    typeof options === 'object' && options !== null && !Array.isArray(options)
+      ? { ...options, furigana }
+      : { furigana };
+  return JSON.stringify({ ...stored, options: patched });
+}
+
+/** The furigana default changed in Settings: every game's remembered setup follows (SPEC §5.4). */
+export function setFuriganaEverywhere(games: readonly GameId[], furigana: boolean): void {
+  for (const game of games) {
+    try {
+      const patched = withFurigana(localStorage.getItem(storageKey(game)), furigana);
+      if (patched !== null) localStorage.setItem(storageKey(game), patched);
+    } catch {
+      // storage disabled: nothing is remembered to change
+    }
+  }
+}
+
 /** Why a game can't run on the whole word list, or undefined when it can. */
 export function unavailableReason(
   game: Pick<Minigame, 'skills' | 'eligible' | 'minPool' | 'available' | 'unavailableKey'>,
@@ -117,5 +157,42 @@ export function unavailableReason(
   const eligible = allWords.filter((w) => game.skills.some((s) => game.eligible(w, s)));
   if (eligible.length < game.minPool) return { key: 'game_unavailable_pool', n: game.minPool };
   if (!game.available(allWords, lang)) return { key: game.unavailableKey };
+  return undefined;
+}
+
+/** The words a round with this setup can ask about: the eligible words of its decks. */
+export function setupPool(
+  game: Pick<Minigame, 'skillsFor' | 'eligible'>,
+  choice: SetupChoice,
+  decks: readonly NotebookDeck[],
+  allWords: readonly Word[],
+  now: Date,
+): Word[] {
+  const selected = decks.filter((d) => choice.deckIds.includes(deckId(d)));
+  return eligibleWords(game, choice.options, wordsInDecks(selected, allWords, now));
+}
+
+export type SetupBlocker =
+  | NonNullable<ReturnType<typeof unavailableReason>>
+  | { key: 'setup_decks_none' | 'setup_pool_empty' | 'setup_forms_none' };
+
+/** Why a round with this setup can't start, or undefined when it can. */
+export function setupBlocker(
+  game: Pick<
+    Minigame,
+    'skills' | 'eligible' | 'minPool' | 'available' | 'unavailableKey' | 'options'
+  >,
+  choice: SetupChoice,
+  pool: readonly Word[],
+  allWords: readonly Word[],
+  lang: Lang,
+): SetupBlocker | undefined {
+  const reason = unavailableReason(game, allWords, lang);
+  if (reason !== undefined) return reason;
+  if (choice.deckIds.length === 0) return { key: 'setup_decks_none' };
+  if (pool.length === 0) return { key: 'setup_pool_empty' };
+  if (game.options.includes('forms') && choice.options.forms.length === 0) {
+    return { key: 'setup_forms_none' };
+  }
   return undefined;
 }

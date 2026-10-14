@@ -1,0 +1,140 @@
+.today {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4) var(--space-6);
+}
+
+.title {
+  margin: var(--space-3) 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.titleJa {
+  margin-left: var(--space-2);
+  color: var(--ink-soft);
+  font-family: var(--font-ja);
+  font-weight: 600;
+}
+
+.note {
+  margin: 0 0 var(--space-3);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: var(--space-3);
+}
+
+/* two index cards: the streak and today's goal */
+.tile {
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.label {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.big {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.track {
+  height: 8px;
+  margin-top: var(--space-2);
+  border-radius: 999px;
+  background: var(--rule);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--shu);
+}
+
+.met {
+  margin: var(--space-2) 0 0;
+  color: var(--shu);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.continue {
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+.subtitle {
+  margin: var(--space-5) 0 var(--space-2);
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'name ja'
+    'due due';
+  gap: 0 var(--space-3);
+  min-height: var(--tap-min);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.game:hover {
+  border-color: var(--ai);
+}
+
+.name {
+  grid-area: name;
+  font-weight: 700;
+}
+
+.ja {
+  grid-area: ja;
+  color: var(--ink-soft);
+  font-family: var(--font-ja);
+  font-weight: 600;
+}
+
+.due,
+.none {
+  grid-area: due;
+  font-size: var(--text-sm);
+}
+
+.due {
+  color: var(--shu);
+  font-weight: 700;
+}
+
+.none {
+  color: var(--ink-soft);
+}

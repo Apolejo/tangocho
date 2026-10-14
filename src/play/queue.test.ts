@@ -3,6 +3,8 @@ import fixtures from '../../data/fixtures/words.json';
 import { WordsFileSchema, type Word } from '../data/schema.ts';
 import type { Minigame, RoundOptions, Skill } from '../games/types.ts';
 import { mulberry32 } from '../lib/random.ts';
+import { answerEvent, type AnswerEvent } from '../progress/events.ts';
+import { replay } from '../progress/srs.ts';
 import { buildQueue, practiceQueue } from './queue.ts';
 import { DEFAULT_SETUP } from './setup.ts';
 
@@ -186,5 +188,109 @@ describe('practiceQueue', () => {
       [...cards].sort((a, b) => a.wordId.localeCompare(b.wordId)),
     );
     expect(new Set(queue.map((q) => q.seed)).size).toBe(3);
+  });
+});
+
+describe('buildQueue with spaced repetition (SPEC §10.2)', () => {
+  const MINUTE = 60_000;
+  const T0 = new Date(2026, 9, 10, 12, 0);
+  const NOW = new Date(2026, 9, 11, 12, 0);
+  const at = (minutes: number) => new Date(T0.getTime() + minutes * MINUTE);
+  let n = 0;
+  const answer = (wordId: string, when: Date, skill: Skill = 'meaning'): AnswerEvent =>
+    answerEvent(
+      {
+        roundId: 'r',
+        game: 'quiz',
+        wordId,
+        skill,
+        correct: true,
+        hinted: false,
+        ms: 900,
+        device: 'd',
+      },
+      `e${n++}`,
+      when,
+    );
+  /** Answered once: in a 10-minute learning step, so due by NOW (earlier answers more overdue). */
+  const learning = (wordId: string, minutes: number) => [answer(wordId, at(minutes))];
+  /** Answered twice: scheduled days ahead, so seen but not due at NOW. */
+  const graduated = (wordId: string, minutes: number) => [
+    answer(wordId, at(minutes)),
+    answer(wordId, at(minutes + 11)),
+  ];
+  const ids = all.map((w) => w.id);
+  const queueOf = (
+    events: AnswerEvent[],
+    { size = 10, newLeft = 15, direction = 'forward' as RoundOptions['direction'], seed = 1 } = {},
+  ) =>
+    buildQueue({
+      pool: all,
+      game: quizLike,
+      options: opts(direction),
+      size,
+      rng: mulberry32(seed),
+      srs: { cards: replay(events), now: NOW, newLeft },
+    }).map((q) => q.card);
+
+  it('asks due cards first, the most overdue first', () => {
+    const events = [
+      ...learning(ids[0]!, 30),
+      ...learning(ids[1]!, 10),
+      ...learning(ids[2]!, 20),
+      ...learning(ids[3]!, 40),
+      ...graduated(ids[4]!, 0),
+    ];
+    expect(
+      queueOf(events, { size: 3 })
+        .map((c) => c.wordId)
+        .sort(),
+    ).toEqual([ids[0]!, ids[1]!, ids[2]!].sort());
+    expect(queueOf(events, { size: 4 }).map((c) => c.wordId)).not.toContain(ids[4]);
+  });
+
+  it('caps new cards at the daily limit before the seen ones, and fills the round past it', () => {
+    const seenIds = ids.slice(0, 5);
+    const events = seenIds.flatMap((id, i) => graduated(id, i * 20));
+    const isSeen = (c: { wordId: string }) => seenIds.includes(c.wordId);
+
+    const capped = queueOf(events, { size: 8, newLeft: 3 });
+    expect(capped).toHaveLength(8);
+    expect(capped.filter(isSeen)).toHaveLength(5);
+
+    const filled = queueOf(events, { size: 10, newLeft: 3 });
+    expect(filled).toHaveLength(10);
+    expect(filled.filter(isSeen)).toHaveLength(5);
+    expect(filled.filter((c) => !isSeen(c))).toHaveLength(5);
+
+    const noneLeft = queueOf(events, { size: 5, newLeft: 0 });
+    expect(noneLeft.every(isSeen)).toBe(true);
+  });
+
+  it('takes the least recently seen cards first as extra practice', () => {
+    const events = [...graduated(ids[0]!, 60), ...graduated(ids[1]!, 0), ...graduated(ids[2]!, 30)];
+    const picked = queueOf(events, { size: 2, newLeft: 0 }).map((c) => c.wordId);
+    expect(picked.sort()).toEqual([ids[1]!, ids[2]!].sort());
+  });
+
+  it('gives a word one card, the due one over a new one, in mixed mode', () => {
+    const events = [answer(ids[0]!, at(0), 'recall')];
+    for (let seed = 0; seed < 10; seed++) {
+      const queue = queueOf(events, { size: 44, direction: 'mixed', seed });
+      expect(new Set(queue.map((c) => c.wordId)).size).toBe(queue.length);
+      expect(queue.find((c) => c.wordId === ids[0])?.skill).toBe('recall');
+    }
+  });
+
+  it('ignores cards whose word is no longer in the pool', () => {
+    const events = [...learning('removed-word', 0), ...learning(ids[0]!, 5)];
+    const queue = queueOf(events, { size: 44 });
+    expect(queue.map((c) => c.wordId)).not.toContain('removed-word');
+    expect(queue).toHaveLength(all.length);
+  });
+
+  it('is the same queue for the same seed', () => {
+    const events = [...learning(ids[0]!, 0), ...graduated(ids[1]!, 5)];
+    expect(queueOf(events, { seed: 9 })).toEqual(queueOf(events, { seed: 9 }));
   });
 });

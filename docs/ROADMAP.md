@@ -109,11 +109,11 @@ Done when: §9.4 passes and a tapped verb shows its forms; a report made on the 
 
 ## M8 — Progress · SPEC §10, §7.1, §7.6, §7.7
 
-- [ ] FSRS from the event log; round queue with due and new cards.
-- [ ] Today screen; daily goal and streak with the 04:00 day boundary; stamp card.
-- [ ] Stats screen with mastery levels.
-- [ ] Settings screen, including reset progress (the theme option comes with dark mode in M9).
-- [ ] Export and import that merges; persistent storage; export reminder.
+- [x] FSRS from the event log; round queue with due and new cards.
+- [x] Today screen; daily goal and streak with the 04:00 day boundary; stamp card.
+- [x] Stats screen with mastery levels.
+- [x] Settings screen, including reset progress (the theme option comes with dark mode in M9).
+- [x] Export and import that merges; persistent storage; export reminder.
 
 Done when: unit tests cover the rating mapping, the 04:00 boundary, the mastery thresholds and importing the same file twice; progress exported from the phone merges into the computer.
 

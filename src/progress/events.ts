@@ -1,8 +1,8 @@
 import type { GameId, Skill } from '../games/types.ts';
 
 /**
- * The progress log (SPEC §10.1): append-only events in IndexedDB. Scores, personal bests and
- * (from M8) spaced-repetition state are derived from these, never stored on their own.
+ * The progress log (SPEC §10.1): append-only events in IndexedDB. Scores, personal bests,
+ * spaced-repetition state, streaks and mastery are derived from these, never stored on their own.
  */
 
 /** One answer to one card. */

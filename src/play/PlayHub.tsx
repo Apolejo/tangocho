@@ -5,7 +5,7 @@ import { useLang, useT } from '../i18n/hooks.ts';
 import styles from './PlayHub.module.css';
 import { unavailableReason } from './setup.ts';
 
-/** The game list (#/play). The Today screen takes over as home in M8. */
+/** The game list (#/play); Today (#/) is home and lists the games with their due cards. */
 export function PlayHub() {
   const t = useT();
   const { lang } = useLang();

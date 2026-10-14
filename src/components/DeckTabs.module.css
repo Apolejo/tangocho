@@ -32,6 +32,11 @@
   transition: background-color 120ms ease;
 }
 
+/* the strip scrolls and would clip a ring outside the tab */
+.tab:focus-visible {
+  outline-offset: -4px;
+}
+
 .tab:hover {
   background: var(--card);
 }

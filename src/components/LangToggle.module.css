@@ -8,7 +8,7 @@
 
 .button {
   min-width: var(--tap-min);
-  min-height: calc(var(--tap-min) - 4px);
+  min-height: var(--tap-min);
   padding: 0 var(--space-3);
   border: none;
   border-radius: 999px;

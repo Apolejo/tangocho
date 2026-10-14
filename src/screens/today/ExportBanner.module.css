@@ -10,15 +10,27 @@
   background: var(--washi);
 }
 
-.text {
+/* the message, then its link as a full-height target, wrapping under it on a phone */
+.body {
   flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-2);
   min-width: 0;
+}
+
+.text {
   margin: 0;
   padding: var(--space-2) 0;
   font-size: var(--text-sm);
 }
 
-.text a {
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  font-size: var(--text-sm);
   font-weight: 700;
 }
 

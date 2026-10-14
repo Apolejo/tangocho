@@ -48,6 +48,8 @@ export function Round({
   const shownAt = useRef(0);
   const answeredIndex = useRef(-1);
   const continueRef = useRef<HTMLButtonElement>(null);
+  const roundRef = useRef<HTMLElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
 
   const current = state.queue[state.index];
   const word = current === undefined ? undefined : wordsById.get(current.card.wordId);
@@ -57,6 +59,13 @@ export function Round({
 
   useEffect(() => {
     shownAt.current = performance.now();
+  }, [state.index]);
+
+  // A new question takes the focus at its card, so Tab goes on to the word and the options
+  // (SPEC §8.3). Not when the question already placed it, as a typed answer's field does.
+  useEffect(() => {
+    if (roundRef.current?.contains(document.activeElement) === true) return;
+    sheetRef.current?.focus({ preventScroll: true });
   }, [state.index]);
 
   const onAnswer = (result: AnswerResult) => {
@@ -153,7 +162,10 @@ export function Round({
   const n = Math.min(state.index + 1, total);
   const done = state.answers.length;
   return (
-    <section className={styles.round} aria-label={t(game.nameKey)}>
+    <section ref={roundRef} className={styles.round} aria-labelledby="round-title">
+      <h1 id="round-title" className="visually-hidden">
+        {t(game.nameKey)}
+      </h1>
       <header className={styles.bar}>
         <button type="button" className={styles.quit} onClick={onQuit}>
           {t('play_quit')}
@@ -184,7 +196,13 @@ export function Round({
         </dl>
       </header>
 
-      <div className={styles.sheet}>
+      <div
+        ref={sheetRef}
+        className={styles.sheet}
+        role="group"
+        aria-label={t('play_progress_label', { n, total })}
+        tabIndex={-1}
+      >
         {current !== undefined && word !== undefined && (
           <game.Question
             key={state.index}

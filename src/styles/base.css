@@ -51,6 +51,11 @@ button {
   outline-offset: 3px;
 }
 
+/* a heading or a question card focused from code, so Tab starts there: nothing to operate */
+[tabindex='-1']:focus {
+  outline: none;
+}
+
 ruby {
   ruby-position: over;
 }

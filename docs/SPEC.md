@@ -366,6 +366,13 @@ Starting tokens, adjusted in M1 from screenshots. Every text color passes AA (4.
 
 ## 15. Open questions
 
-- The final name (Tangochō is a working title).
-- Syncing progress between devices after v1. The event log turns it into syncing one append-only file (a private gist or a small backend).
+- The final name (Tangochō is a working title). Settle it before M10 shares the link.
 - A pronunciation button using the browser's speech synthesis (voice quality varies by device).
+
+For the milestones after v1 (ROADMAP M10–M12), each decided before that milestone's planning:
+- M10: the name of my Buy Me a Coffee page.
+- M11: the hostname for the Oracle server, a domain of my own (about $10 a year) or a free DuckDNS name.
+- M12, pairing a device: typing the sync key, about 26 characters in groups, with no new dependency (proposed first); or also scanning a QR code that opens the app with the key, which needs a small runtime QR library and leaves the key in the browser history.
+- M12, reset with sync on: today's reset deletes the local log, and synced devices would send it back. Proposed: a reset starts a new generation of the space, so every device drops the older events and the server deletes them. Or: a reset only stops syncing on that device.
+- M12, what syncs: the events only (proposed). The goal history, new cards per day, the theme and the language stay per device, as §10.4 already assumes for the goal.
+- M12, retention: delete a sync space nobody has used for 12 months?

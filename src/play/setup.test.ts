@@ -15,6 +15,7 @@ import {
   setupBlocker,
   setupPool,
   unavailableReason,
+  withFurigana,
 } from './setup.ts';
 
 const known = new Set(['all', 'new', 'verbs-g1', 'occupations']);
@@ -188,5 +189,32 @@ describe('setupBlocker', () => {
     expect(
       blocker(conjugation, { ...DEFAULT_SETUP, options: { ...DEFAULT_SETUP.options, forms: [] } }),
     ).toEqual({ key: 'setup_forms_none' });
+  });
+});
+
+describe('the furigana default (SPEC §5.4)', () => {
+  it('starts setups not made yet from it', () => {
+    expect(defaultSetup('typing', false).options.furigana).toBe(false);
+    expect(defaultSetup().options.furigana).toBe(true);
+  });
+
+  it('rewrites the furigana of a stored setup and keeps the rest', () => {
+    const stored = JSON.stringify({ ...DEFAULT_SETUP, deckIds: ['verbs-g1'], size: 20 });
+    const patched = withFurigana(stored, false);
+    expect(patched).not.toBeNull();
+    const known = new Set(['all', 'verbs-g1']);
+    expect(parseSetup(patched, known)).toEqual({
+      ...DEFAULT_SETUP,
+      deckIds: ['verbs-g1'],
+      size: 20,
+      options: { ...DEFAULT_SETUP.options, furigana: false },
+    });
+  });
+
+  it('leaves alone what is not stored or cannot be read', () => {
+    expect(withFurigana(null, false)).toBeNull();
+    expect(withFurigana('{', false)).toBeNull();
+    expect(withFurigana('[1]', false)).toBeNull();
+    expect(withFurigana('{"size":20}', false)).toBe('{"size":20,"options":{"furigana":false}}');
   });
 });

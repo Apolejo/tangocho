@@ -142,7 +142,10 @@ export function createProgressStore(db?: () => ProgressDb): ProgressStore {
       await load();
       const { added, existing } = await importEvents(events, database());
       const fresh = added.filter((e) => !ids.has(e.id));
-      if (fresh.length > 0) rebuild(snapshot.status, [...snapshot.events, ...fresh]);
+      if (fresh.length > 0) {
+        rebuild(snapshot.status, [...snapshot.events, ...fresh]);
+        void requestPersistence();
+      }
       return { added: added.length, existing };
     },
     async reset() {

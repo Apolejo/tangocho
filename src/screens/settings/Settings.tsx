@@ -1,3 +1,304 @@
+import { useEffect, useState } from 'react';
+import buttons from '../../components/Buttons.module.css';
+import pills from '../../components/Pills.module.css';
+import { GAMES } from '../../games/registry.ts';
+import type { MessageKey } from '../../i18n/en.ts';
+import { useLang, useT } from '../../i18n/hooks.ts';
+import { LANGS } from '../../i18n/lang.ts';
+import { setFuriganaEverywhere } from '../../play/setup.ts';
+import { dayKey } from '../../progress/day.ts';
+import { deviceId } from '../../progress/device.ts';
+import { exportReminder, goalOn, setGoal } from '../../progress/goal.ts';
+import { persistStatus, type PersistStatus } from '../../progress/persist.ts';
+import { GOAL_OPTIONS, NEW_PER_DAY_OPTIONS, updateSettings } from '../../progress/settings.ts';
+import { progress } from '../../progress/store.ts';
+import { importProgressFile } from '../../progress/transfer.ts';
+import { useNow } from '../../progress/useNow.ts';
+import { useProgress } from '../../progress/useProgress.ts';
+import { useSettings } from '../../progress/useSettings.ts';
+import styles from './Settings.module.css';
+import { exportProgress } from './share.ts';
+
+const STORAGE_KEYS: Record<PersistStatus, MessageKey> = {
+  persisted: 'storage_persisted',
+  'not-persisted': 'storage_not_persisted',
+  unsupported: 'storage_unsupported',
+};
+
+type Message = { key: MessageKey; vars?: Record<string, string | number> };
+type ResetStep = 'idle' | 'confirm' | 'final';
+
+/** One group of radio pills. */
+function Choice<T extends string | number | boolean>({
+  name,
+  legend,
+  note,
+  options,
+  value,
+  label,
+  onChange,
+}: {
+  name: string;
+  legend: string;
+  note?: string;
+  options: readonly T[];
+  value: T;
+  label(option: T): string;
+  onChange(option: T): void;
+}) {
+  return (
+    <fieldset className={styles.group}>
+      <legend className={styles.legend}>{legend}</legend>
+      <div className={pills.pills}>
+        {options.map((option) => (
+          <label key={String(option)} className={pills.pill}>
+            <input
+              type="radio"
+              className={pills.radio}
+              name={name}
+              checked={option === value}
+              onChange={() => onChange(option)}
+            />
+            {label(option)}
+          </label>
+        ))}
+      </div>
+      {note !== undefined && <p className={styles.note}>{note}</p>}
+    </fieldset>
+  );
+}
+
+/**
+ * Settings (SPEC §7.7): language, the furigana default, the daily goal, new cards per day,
+ * export and import of progress, storage, and reset progress after two confirmations.
+ */
 export function Settings() {
-  return null;
+  const t = useT();
+  const { lang, setLang } = useLang();
+  const now = useNow();
+  const settings = useSettings();
+  const { events } = useProgress();
+  const today = dayKey(now);
+  const [message, setMessage] = useState<Message>();
+  const [busy, setBusy] = useState(false);
+  const [reset, setReset] = useState<ResetStep>('idle');
+  const [storage, setStorage] = useState<PersistStatus>();
+
+  useEffect(() => {
+    let alive = true;
+    void persistStatus().then((status) => {
+      if (alive) setStorage(status);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [events.length]);
+
+  const onExport = async () => {
+    const at = new Date();
+    try {
+      const outcome = await exportProgress(events, deviceId(), at);
+      if (outcome === 'cancelled') return;
+      updateSettings((s) => ({ ...s, lastExportAt: at.toISOString() }));
+      setMessage({ key: 'settings_exported' });
+    } catch (error: unknown) {
+      console.warn('could not export', error);
+      setMessage({ key: 'settings_export_failed' });
+    }
+  };
+
+  const onImport = async (input: HTMLInputElement) => {
+    const file = input.files?.[0];
+    input.value = '';
+    if (file === undefined) return;
+    setBusy(true);
+    try {
+      const outcome = await importProgressFile(await file.text(), progress);
+      setMessage(
+        outcome.ok
+          ? {
+              key: 'import_result',
+              vars: { added: outcome.added, existing: outcome.existing, skipped: outcome.skipped },
+            }
+          : { key: outcome.reason === 'newer-version' ? 'import_newer' : 'import_not_tangocho' },
+      );
+    } catch (error: unknown) {
+      console.warn('could not import', error);
+      setMessage({ key: 'import_failed' });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const onReset = async () => {
+    setBusy(true);
+    try {
+      await progress.reset();
+      setMessage({ key: 'reset_done' });
+    } finally {
+      setBusy(false);
+      setReset('idle');
+    }
+  };
+
+  const dateTime = new Intl.DateTimeFormat(lang, { dateStyle: 'medium', timeStyle: 'short' });
+  const remind = exportReminder({
+    lastExportAt: settings.lastExportAt,
+    firstEventAt: events[0]?.at,
+    lastEventAt: events.at(-1)?.at,
+    now,
+  });
+
+  return (
+    <section className={styles.settings} aria-labelledby="settings-title">
+      <h1 id="settings-title" className={styles.title}>
+        {t('settings_title')}{' '}
+        <span lang="ja" className={styles.titleJa}>
+          設定
+        </span>
+      </h1>
+
+      <div className={styles.sheet}>
+        <Choice
+          name="language"
+          legend={t('language_label')}
+          options={LANGS}
+          value={lang}
+          label={(option) => t(option === 'en' ? 'lang_en' : 'lang_es')}
+          onChange={setLang}
+        />
+        <Choice
+          name="furigana"
+          legend={t('settings_furigana')}
+          note={t('settings_furigana_note')}
+          options={[true, false]}
+          value={settings.furigana}
+          label={(on) => t(on ? 'setup_on' : 'setup_off')}
+          onChange={(furigana) => {
+            updateSettings((s) => ({ ...s, furigana }));
+            setFuriganaEverywhere(
+              GAMES.map((g) => g.id),
+              furigana,
+            );
+          }}
+        />
+        <Choice
+          name="goal"
+          legend={t('settings_goal')}
+          note={t('settings_goal_note')}
+          options={GOAL_OPTIONS}
+          value={goalOn(settings.goals, today)}
+          label={(n) => t('settings_goal_option', { n })}
+          onChange={(goal) =>
+            updateSettings((s) => ({ ...s, goals: setGoal(s.goals, today, goal) }))
+          }
+        />
+        <Choice
+          name="new-per-day"
+          legend={t('settings_new')}
+          note={t('settings_new_note')}
+          options={NEW_PER_DAY_OPTIONS}
+          value={settings.newPerDay}
+          label={(n) => String(n)}
+          onChange={(newPerDay) => updateSettings((s) => ({ ...s, newPerDay }))}
+        />
+      </div>
+
+      <h2 className={styles.subtitle}>{t('settings_progress')}</h2>
+      <div className={styles.sheet}>
+        <div className={styles.group}>
+          <p className={styles.note}>{t('settings_transfer_note')}</p>
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={buttons.primary}
+              onClick={() => void onExport()}
+              disabled={busy}
+            >
+              {t('settings_export')}
+            </button>
+            <label className={`${buttons.secondary} ${styles.file}`}>
+              {t('settings_import')}
+              <input
+                type="file"
+                accept="application/json,.json"
+                className="visually-hidden"
+                disabled={busy}
+                onChange={(e) => void onImport(e.currentTarget)}
+                data-import
+              />
+            </label>
+          </div>
+          <p className={styles.status} role="status" data-transfer-status>
+            {message !== undefined && t(message.key, message.vars)}
+          </p>
+          <p className={styles.line} data-last-export>
+            {settings.lastExportAt === undefined
+              ? t('settings_never_exported')
+              : t('settings_last_export', {
+                  date: dateTime.format(new Date(settings.lastExportAt)),
+                })}
+          </p>
+          {remind && <p className={styles.remind}>{t('settings_export_due')}</p>}
+        </div>
+        {storage !== undefined && (
+          <div className={styles.group}>
+            <p className={styles.legend}>{t('settings_storage')}</p>
+            <p className={styles.note} data-storage={storage}>
+              {t(STORAGE_KEYS[storage])}
+            </p>
+          </div>
+        )}
+        <div className={styles.group}>
+          <p className={styles.legend}>{t('settings_reset')}</p>
+          <p className={styles.note}>{t('reset_note')}</p>
+          {reset === 'idle' ? (
+            <div className={styles.actions}>
+              <button
+                type="button"
+                className={buttons.danger}
+                onClick={() => setReset('confirm')}
+                disabled={busy}
+              >
+                {t('settings_reset')}
+              </button>
+            </div>
+          ) : (
+            <div className={styles.confirm} role="group" aria-label={t('settings_reset')}>
+              <p className={styles.warning}>
+                {t(reset === 'confirm' ? 'reset_confirm_1' : 'reset_confirm_2')}
+              </p>
+              <div className={styles.actions}>
+                {reset === 'confirm' ? (
+                  <button
+                    type="button"
+                    className={buttons.danger}
+                    onClick={() => setReset('final')}
+                  >
+                    {t('reset_yes')}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className={buttons.danger}
+                    onClick={() => void onReset()}
+                    disabled={busy}
+                  >
+                    {t('reset_final')}
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className={buttons.secondary}
+                  onClick={() => setReset('idle')}
+                >
+                  {t('reset_cancel')}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
 }

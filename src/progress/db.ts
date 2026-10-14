@@ -36,3 +36,37 @@ export async function answerEvents(game: GameId, db = progressDb()): Promise<Ans
   const rows = await db.events.where('[type+game]').equals(['answer', game]).toArray();
   return rows.filter((e): e is AnswerEvent => e.type === 'answer');
 }
+
+/** The whole log, in no particular order. */
+export async function allEvents(db = progressDb()): Promise<ProgressEvent[]> {
+  return db.events.toArray();
+}
+
+/** What an import did: events new here, and events this device already had. */
+export interface ImportCount {
+  added: ProgressEvent[];
+  existing: number;
+}
+
+/**
+ * Merges events into the log by id (SPEC §10.1): an event already here is kept as it is, never
+ * overwritten, so importing the same file twice changes nothing. One transaction; the events must
+ * be parsed beforehand (awaiting anything but Dexie inside would commit it early).
+ */
+export async function importEvents(
+  events: readonly ProgressEvent[],
+  db = progressDb(),
+): Promise<ImportCount> {
+  const unique = [...new Map(events.map((e) => [e.id, e])).values()];
+  return db.transaction('rw', db.events, async () => {
+    const found = await db.events.bulkGet(unique.map((e) => e.id));
+    const added = unique.filter((_, i) => found[i] === undefined);
+    await db.events.bulkAdd(added);
+    return { added, existing: unique.length - added.length };
+  });
+}
+
+/** Deletes the whole log (reset progress, SPEC §7.7). */
+export async function clearEvents(db = progressDb()): Promise<void> {
+  await db.events.clear();
+}

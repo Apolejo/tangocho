@@ -3,9 +3,9 @@ import type { Word } from '../data/schema.ts';
 import type { AnswerResult, Minigame } from '../games/types.ts';
 import { useT } from '../i18n/hooks.ts';
 import { newId } from '../lib/random.ts';
-import { appendEvent } from '../progress/db.ts';
 import { deviceId } from '../progress/device.ts';
-import { answerEvent, roundEvent, type ProgressEvent } from '../progress/events.ts';
+import { answerEvent, roundEvent } from '../progress/events.ts';
+import { progress } from '../progress/store.ts';
 import { ReportLink } from '../reports/ReportLink.tsx';
 import type { RoundPlan } from './plan.ts';
 import { isLastQuestion, roundReducer, startRound, type AnswerRecord } from './round.ts';
@@ -22,10 +22,8 @@ const RULE_ADVANCE_MS = 2500;
 const isTextField = (el: Element | null): boolean =>
   el instanceof HTMLInputElement && el.type === 'text';
 
-/** Logging never blocks play: a failed write is reported and the round goes on. */
-function log(event: ProgressEvent): void {
-  appendEvent(event).catch((error: unknown) => console.warn('could not save progress', error));
-}
+/** Logging never blocks play: the store counts the answer at once and saves it in the background. */
+const log = progress.record;
 
 /**
  * The play screen (SPEC §7.4): progress, score and combo, the game's question, ◯/✕ feedback.

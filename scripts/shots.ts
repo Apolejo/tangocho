@@ -1,7 +1,8 @@
 /**
  * `npm run shots`: screenshots of every screen at phone and desktop size, light and dark, into
- * shots/ (SPEC §14). Starts the dev server itself. `--only <screen>` limits to one screen,
- * `--full` captures the whole page instead of the viewport.
+ * shots/ (SPEC §14), with motion reduced so every mark is finished. Starts the dev server
+ * itself. `--only <screen>` limits to one screen, `--full` captures the whole page instead of the
+ * viewport.
  */
 import { mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -127,6 +128,43 @@ async function playQuizRound(page: Page): Promise<void> {
   await page.getByRole('heading', { name: 'Results' }).waitFor();
 }
 
+/** A round of 10 with every answer right: Results with the 新記録 and the 花丸. */
+async function playPerfectQuizRound(page: Page): Promise<void> {
+  await startQuiz(page);
+  for (let i = 0; i < 10; i++) {
+    await page
+      .locator('[data-progress]')
+      .getByText(`${i + 1} / 10`)
+      .waitFor();
+    await answerQuiz(page, true);
+  }
+  await page.getByRole('img', { name: 'Perfect round' }).waitFor();
+}
+
+/** The theme the system isn't in, chosen in Settings, then Today: the override at work. */
+async function otherTheme(page: Page): Promise<void> {
+  const dark = await page.evaluate<boolean>('matchMedia("(prefers-color-scheme: dark)").matches');
+  await page.getByRole('radio', { name: dark ? 'Light' : 'Dark' }).check();
+  await page.goto(page.url().replace(/#.*$/, '#/'));
+  await page.getByRole('heading', { name: /Today/ }).waitFor();
+}
+
+/** The installed app's icons (npm run icons), as a home screen would crop them. */
+async function icons(page: Page): Promise<void> {
+  const base = new URL('.', page.url()).href;
+  const tile = (src: string, size: number, radius: string, label: string) =>
+    `<figure><img src="${base}${src}" width="${size}" height="${size}" style="border-radius:${radius}"><figcaption>${label}</figcaption></figure>`;
+  await page.setContent(
+    `<!doctype html><body style="margin:0;padding:24px;display:flex;flex-wrap:wrap;gap:24px;align-items:end;background:#888;font:14px sans-serif;color:#fff">
+      ${tile('apple-touch-icon-180x180.png', 120, '22.5%', 'iPhone home screen')}
+      ${tile('pwa-192x192.png', 96, '0', '192')}
+      ${tile('pwa-512x512.png', 160, '0', '512')}
+      ${tile('maskable-512x512.png', 160, '50%', 'maskable, round mask')}
+    </body>`,
+  );
+  await page.waitForFunction('[...document.images].every((img) => img.complete)');
+}
+
 /** Sorter setup over group 1 only, so 1 is always right and 2 always wrong with any data. */
 async function sorterGroup1(page: Page): Promise<void> {
   await page.getByRole('checkbox', { name: /All words/ }).uncheck();
@@ -204,6 +242,8 @@ const SCREENS: {
   },
   { name: 'stats', hash: '#/stats', progress: 'demo' },
   { name: 'settings', hash: '#/settings', progress: 'demo' },
+  { name: 'today-theme-override', hash: '#/settings', progress: 'demo', steps: otherTheme },
+  { name: 'icons', hash: '#/', steps: icons },
   {
     name: 'settings-reset-confirm',
     hash: '#/settings',
@@ -246,6 +286,7 @@ const SCREENS: {
     },
   },
   { name: 'quiz-results', hash: '#/play/quiz', steps: playQuizRound },
+  { name: 'quiz-results-perfect', hash: '#/play/quiz', steps: playPerfectQuizRound },
   { name: 'sorter-setup', hash: '#/play/sorter', steps: sorterGroup1 },
   { name: 'sorter-question', hash: '#/play/sorter', steps: startSorter },
   {
@@ -398,6 +439,8 @@ async function main(): Promise<void> {
             viewport: { width: viewport.width, height: viewport.height },
             deviceScaleFactor: viewport.deviceScaleFactor,
             colorScheme,
+            // stamps and the 花丸 are captured finished, not halfway through their motion
+            reducedMotion: 'reduce',
             locale: 'en-US',
           });
           const page = await context.newPage();

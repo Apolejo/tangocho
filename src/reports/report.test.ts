@@ -1,7 +1,15 @@
 import { describe, expect, it } from 'vitest';
+import form from '../../.github/ISSUE_TEMPLATE/word-report.yml?raw';
 import fixtures from '../../data/fixtures/words.json';
 import { WordsFileSchema, type Word } from '../data/schema.ts';
-import { OPEN_REPORTS_PAGE, reportBody, reportTitle, reportUrl } from './report.ts';
+import {
+  OPEN_REPORTS_PAGE,
+  REPORT_FIELDS,
+  REPORT_LABEL,
+  reportFields,
+  reportTitle,
+  reportUrl,
+} from './report.ts';
 
 const all = WordsFileSchema.parse(fixtures);
 const byId = (id: string): Word => {
@@ -11,7 +19,7 @@ const byId = (id: string): Word => {
 };
 
 describe('reportUrl', () => {
-  it('opens a new issue on the repo, labelled word-report, title and body filled in', () => {
+  it('opens the word-report form on the repo, its fields and title filled in', () => {
     const report = {
       word: byId('kaku'),
       from: 'Conjugation drill',
@@ -20,9 +28,14 @@ describe('reportUrl', () => {
     };
     const url = new URL(reportUrl(report, 'en'));
     expect(url.origin + url.pathname).toBe('https://github.com/Apolejo/tangocho/issues/new');
-    expect(url.searchParams.get('labels')).toBe('word-report');
+    expect(url.searchParams.get('template')).toBe('word-report.yml');
     expect(url.searchParams.get('title')).toBe(reportTitle(report, 'en'));
-    expect(url.searchParams.get('body')).toBe(reportBody(report, 'en'));
+    for (const [id, value] of reportFields(report, 'en')) {
+      expect(url.searchParams.get(id)).toBe(value);
+    }
+    // the form labels the issue: labels= needs permission to label, and the form makes the body
+    expect(url.searchParams.has('labels')).toBe(false);
+    expect(url.searchParams.has('body')).toBe(false);
   });
 });
 
@@ -37,40 +50,55 @@ describe('reportTitle', () => {
   });
 });
 
-describe('reportBody', () => {
-  it('lists what the app showed, then a line for what looks wrong', () => {
-    const body = reportBody(
-      { word: byId('kaku'), from: 'Conjugation drill', form: 'て', answer: '書いて（かいて）' },
-      'en',
-    );
-    expect(body).toBe(
-      [
-        '- **Word id:** `kaku`',
-        '- **Shown as:** 書きます（かきます）',
-        '- **Meaning:** to write',
-        '- **Form:** て形',
-        '- **App’s answer:** 書いて（かいて）',
-        '- **From:** Conjugation drill',
-        '- **Notebook page:** sample',
-        '',
-        '**What looks wrong:**',
-        '',
-        '',
-      ].join('\n'),
-    );
+describe('reportFields', () => {
+  it('fills in what the app showed, in the form’s order', () => {
+    expect(
+      reportFields(
+        { word: byId('kaku'), from: 'Conjugation drill', form: 'て', answer: '書いて（かいて）' },
+        'en',
+      ),
+    ).toEqual([
+      ['word-id', 'kaku'],
+      ['shown', '書きます（かきます）'],
+      ['meaning', 'to write'],
+      ['form', 'て形'],
+      ['answer', '書いて（かいて）'],
+      ['from', 'Conjugation drill'],
+      ['source', 'sample'],
+    ]);
   });
 
-  it('leaves out what a report doesn’t have', () => {
+  it('leaves out what a report doesn’t have, the meaning in the UI language', () => {
     const word: Word = { ...byId('sensei') };
     delete word.source;
-    const body = reportBody({ word, from: 'Cuaderno' }, 'es');
-    expect(body).toContain('- **Id de la palabra:** `sensei`');
-    expect(body).toContain('- **Se muestra como:** 先生（せんせい）');
-    expect(body).toContain('- **Significado:** profesor, maestro');
-    expect(body).toContain('- **Desde:** Cuaderno');
-    expect(body).not.toContain('Página del cuaderno');
-    expect(body).not.toContain('Forma');
-    expect(body).toMatch(/\*\*Qué parece estar mal:\*\*\n\n$/);
+    expect(reportFields({ word, from: 'Cuaderno' }, 'es')).toEqual([
+      ['word-id', 'sensei'],
+      ['shown', '先生（せんせい）'],
+      ['meaning', 'profesor, maestro'],
+      ['from', 'Cuaderno'],
+    ]);
+  });
+});
+
+/** The issue form (.github/ISSUE_TEMPLATE/word-report.yml) read as text: no YAML parser needed. */
+describe('the word-report form', () => {
+  const ids = [...form.matchAll(/^\s+id:\s*(\S+)\s*$/gm)].map((m) => m[1]);
+
+  it('is read', () => {
+    expect(ids.length).toBeGreaterThan(REPORT_FIELDS.length);
+  });
+
+  it('has a field for every one the link fills in', () => {
+    for (const field of REPORT_FIELDS) expect(ids).toContain(field);
+  });
+
+  it('has unique ids GitHub accepts', () => {
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const id of ids) expect(id).toMatch(/^[A-Za-z0-9_-]+$/);
+  });
+
+  it('labels its issues word-report itself', () => {
+    expect(form).toMatch(new RegExp(`^labels: \\[${REPORT_LABEL}\\]$`, 'm'));
   });
 });
 

@@ -149,6 +149,25 @@ async function otherTheme(page: Page): Promise<void> {
   await page.getByRole('heading', { name: /Today/ }).waitFor();
 }
 
+/** The open word reports count turned on in Settings, then the notebook with its banner. */
+async function reportsBanner(page: Page): Promise<void> {
+  await page
+    .getByRole('group', { name: 'Count open word reports' })
+    .getByRole('radio', { name: 'On' })
+    .check();
+  await page.goto(page.url().replace(/#.*$/, '#/notebook'));
+  await page.getByRole('complementary', { name: 'Word reports' }).waitFor();
+  // the switch is far down Settings, and a hash change keeps the scroll
+  await page.evaluate('window.scrollTo(0, 0)');
+}
+
+/** Settings scrolled to About. */
+async function about(page: Page): Promise<void> {
+  await page
+    .getByRole('heading', { name: 'About' })
+    .evaluate((heading) => heading.scrollIntoView({ block: 'start' }));
+}
+
 /** The installed app's icons (npm run icons), as a home screen would crop them. */
 async function icons(page: Page): Promise<void> {
   const base = new URL('.', page.url()).href;
@@ -242,6 +261,7 @@ const SCREENS: {
   },
   { name: 'stats', hash: '#/stats', progress: 'demo' },
   { name: 'settings', hash: '#/settings', progress: 'demo' },
+  { name: 'settings-about', hash: '#/settings', progress: 'demo', steps: about },
   { name: 'today-theme-override', hash: '#/settings', progress: 'demo', steps: otherTheme },
   { name: 'icons', hash: '#/', steps: icons },
   {
@@ -255,7 +275,7 @@ const SCREENS: {
     },
   },
   { name: 'notebook', hash: '#/notebook' },
-  { name: 'notebook-reports', hash: '#/notebook', reports: 2 },
+  { name: 'notebook-reports', hash: '#/settings', reports: 2, steps: reportsBanner },
   { name: 'notebook-verbs-g2', hash: '#/notebook/verbs-g2' },
   {
     name: 'notebook-verb-forms',

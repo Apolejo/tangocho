@@ -1,27 +1,37 @@
+import { answerReports as answer, countOpenReports } from './reports.ts';
 import { expect, test, type Page } from './test.ts';
 
 /**
- * The open word reports banner (SPEC §5.7). GitHub's API is answered here, never reached: two
- * open issues and a pull request with the label (which doesn't count).
+ * The open word reports banner (SPEC §5.7), only where Settings turns it on. GitHub's API is
+ * answered here, never reached: two open issues and a pull request with the label (which doesn't
+ * count).
  */
 
-const API = 'https://api.github.com/repos/Apolejo/tangocho/issues?**';
-const CORS = { 'Access-Control-Allow-Origin': '*' };
-
-/** Answers the API with `issues`, counting the requests. */
-async function answer(page: Page, issues: unknown, status = 200): Promise<{ count: number }> {
-  const asked = { count: 0 };
-  await page.route(API, (route) => {
-    asked.count++;
-    return route.fulfill({ status, json: issues, headers: CORS });
-  });
-  return asked;
-}
-
 const banner = (page: Page) => page.getByRole('complementary', { name: 'Word reports' });
+const nav = (page: Page, name: string) =>
+  page.getByRole('navigation', { name: 'Sections' }).getByRole('link', { name }).click();
+
+test('asks GitHub nothing until Settings turns the count on', async ({ page }) => {
+  const asked = await answer(page, [{ number: 1 }, { number: 2 }]);
+  await page.goto('#/');
+  await expect(page.getByRole('heading', { name: 'Today' })).toBeVisible();
+  await nav(page, 'Notebook');
+  await expect(page.getByRole('heading', { name: 'Notebook' })).toBeVisible();
+  await nav(page, 'Play');
+  await expect(page.getByRole('heading', { name: 'Play' })).toBeVisible();
+  await page.waitForTimeout(300);
+  expect(asked.count).toBe(0);
+  await expect(banner(page)).toBeHidden();
+
+  await countOpenReports(page);
+  await nav(page, 'Today');
+  await expect(banner(page)).toContainText('2 open word reports');
+  expect(asked.count).toBe(1);
+});
 
 test('counts the open reports once per launch, and links to them', async ({ page }) => {
   const asked = await answer(page, [{ number: 1 }, { number: 2 }, { number: 3, pull_request: {} }]);
+  await countOpenReports(page);
   await page.goto('#/notebook');
   const link = banner(page).getByRole('link', { name: '2 open word reports' });
   await expect(link).toBeVisible();
@@ -31,10 +41,7 @@ test('counts the open reports once per launch, and links to them', async ({ page
   expect(url.searchParams.get('q')).toBe('is:issue is:open label:word-report');
 
   // the game list shows it too; a game's screens don't
-  await page
-    .getByRole('navigation', { name: 'Sections' })
-    .getByRole('link', { name: 'Play' })
-    .click();
+  await nav(page, 'Play');
   await expect(banner(page)).toBeVisible();
   await page.getByRole('link', { name: /Quick quiz/ }).click();
   await expect(page.getByRole('heading', { name: /Quick quiz/ })).toBeVisible();
@@ -44,14 +51,12 @@ test('counts the open reports once per launch, and links to them', async ({ page
   await page.goto('#/notebook');
   await banner(page).getByRole('button', { name: 'Hide' }).click();
   await expect(banner(page)).toBeHidden();
-  await page
-    .getByRole('navigation', { name: 'Sections' })
-    .getByRole('link', { name: 'Play' })
-    .click();
+  await nav(page, 'Play');
   await expect(page.getByRole('heading', { name: 'Play' })).toBeVisible();
   await expect(banner(page)).toBeHidden();
   expect(asked.count).toBe(1);
 
+  // the switch stays on: the next launch asks again
   await page.reload();
   await expect(banner(page)).toBeVisible();
   expect(asked.count).toBe(2);
@@ -59,6 +64,7 @@ test('counts the open reports once per launch, and links to them', async ({ page
 
 test('says "1 open word report" for one, in Spanish too', async ({ page }) => {
   await answer(page, [{ number: 7 }]);
+  await countOpenReports(page);
   await page.goto('#/notebook');
   await expect(banner(page).getByRole('link')).toHaveText('1 open word report');
   await page.getByRole('button', { name: 'Español' }).click();
@@ -69,6 +75,7 @@ test('says "1 open word report" for one, in Spanish too', async ({ page }) => {
 
 test('shows nothing when GitHub fails', async ({ page }) => {
   const asked = await answer(page, { message: 'API rate limit exceeded' }, 403);
+  await countOpenReports(page);
   await page.goto('#/notebook');
   await expect.poll(() => asked.count).toBe(1);
   await expect(page.getByRole('heading', { name: 'Notebook' })).toBeVisible();
@@ -80,6 +87,7 @@ test('asks nothing while offline', async ({ page }) => {
     Object.defineProperty(navigator, 'onLine', { get: () => false });
   });
   const asked = await answer(page, [{ number: 1 }]);
+  await countOpenReports(page);
   await page.goto('#/notebook');
   await expect(page.getByRole('heading', { name: 'Notebook' })).toBeVisible();
   await page.waitForTimeout(300);

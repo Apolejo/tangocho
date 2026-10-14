@@ -209,6 +209,14 @@ export const en = {
   import_newer: 'That file comes from a newer version of the app. Update this one first.',
   import_failed: "Couldn't import that file.",
   settings_storage: 'Storage',
+  settings_offline: 'Offline',
+  offline_ready: 'Ready to work offline: the app and its words are saved on this device.',
+  offline_pending:
+    'Not available offline yet. Open the app once with a connection, then wait a moment.',
+  update_label: 'New version',
+  update_ready: 'A new version is ready.',
+  update_reload: 'Reload',
+  update_hide: 'Hide',
   storage_persisted: 'The browser keeps your progress even when space runs low.',
   storage_not_persisted:
     "The browser may clear your progress if the app goes unused for a while. Install it on your phone's home screen, and export now and then.",

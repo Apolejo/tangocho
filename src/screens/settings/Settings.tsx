@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { THEMES, setTheme, type Theme } from '../../app/theme.ts';
+import { usePwa } from '../../app/pwa.ts';
 import { useTheme } from '../../app/useTheme.ts';
 import buttons from '../../components/Buttons.module.css';
 import pills from '../../components/Pills.module.css';
@@ -78,7 +79,7 @@ function Choice<T extends string | number | boolean>({
 
 /**
  * Settings (SPEC §7.7): language, theme, the furigana default, the daily goal, new cards per day,
- * export and import of progress, storage, and reset progress after two confirmations.
+ * export and import of progress, storage, offline use, and reset progress after two confirmations.
  */
 export function Settings() {
   const t = useT();
@@ -86,6 +87,7 @@ export function Settings() {
   const now = useNow();
   const settings = useSettings();
   const theme = useTheme();
+  const { offlineReady } = usePwa();
   const { events } = useProgress();
   const today = dayKey(now);
   const [message, setMessage] = useState<Message>();
@@ -285,6 +287,12 @@ export function Settings() {
             </p>
           </div>
         )}
+        <div className={styles.group}>
+          <p className={styles.legend}>{t('settings_offline')}</p>
+          <p className={styles.note} data-offline={offlineReady ? 'ready' : 'pending'}>
+            {t(offlineReady ? 'offline_ready' : 'offline_pending')}
+          </p>
+        </div>
         <div className={styles.group}>
           <p className={styles.legend}>{t('settings_reset')}</p>
           <p className={styles.note}>{t('reset_note')}</p>

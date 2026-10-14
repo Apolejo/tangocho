@@ -7,10 +7,13 @@ import '@fontsource/zen-kaku-gothic-new/700.css';
 import './styles/tokens.css';
 import './styles/base.css';
 import { App } from './app/App.tsx';
+import { startPwa } from './app/pwa.ts';
 import { progress } from './progress/store.ts';
 
 // read the log while the first screen renders
 void progress.load();
+// installable and offline (SPEC §4)
+startPwa();
 
 const root = document.getElementById('root');
 if (!root) throw new Error('index.html has no #root element');

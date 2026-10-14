@@ -13,6 +13,9 @@ export default defineConfig({
   use: {
     baseURL: BASE_URL,
     trace: 'on-first-retry',
+    // the build registers a service worker (SPEC §4); it would hide requests from page.route,
+    // so only the offline spec lets it run
+    serviceWorkers: 'block',
   },
   projects: [
     { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'] } },

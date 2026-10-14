@@ -97,7 +97,7 @@ function Shell() {
   return (
     <Layout
       section={sectionOf(route)}
-      reports={route.name === 'today' || route.name === 'notebook' || route.name === 'play'}
+      banners={route.name === 'today' || route.name === 'notebook' || route.name === 'play'}
     >
       <Screen route={route} />
     </Layout>

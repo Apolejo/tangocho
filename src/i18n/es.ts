@@ -213,6 +213,15 @@ export const es: Messages = {
   import_newer: 'Ese archivo viene de una versión más nueva de la app. Actualiza esta primero.',
   import_failed: 'No se pudo importar ese archivo.',
   settings_storage: 'Almacenamiento',
+  settings_offline: 'Sin conexión',
+  offline_ready:
+    'Lista para usarse sin conexión: la app y sus palabras están guardadas en este dispositivo.',
+  offline_pending:
+    'Aún no disponible sin conexión. Abre la app una vez con conexión y espera un momento.',
+  update_label: 'Versión nueva',
+  update_ready: 'Hay una versión nueva.',
+  update_reload: 'Recargar',
+  update_hide: 'Ocultar',
   storage_persisted: 'El navegador conserva tu progreso aunque falte espacio.',
   storage_not_persisted:
     'El navegador puede borrar tu progreso si no usas la app por un tiempo. Instálala en la pantalla de inicio del teléfono y exporta de vez en cuando.',

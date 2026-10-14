@@ -1,6 +1,6 @@
 import { test as base } from '@playwright/test';
 
-export { expect, type Page } from '@playwright/test';
+export { expect, type Locator, type Page } from '@playwright/test';
 
 /**
  * Every e2e test imports `test` from here: GitHub's API answers "no open word reports", so no

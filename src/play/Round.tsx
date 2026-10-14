@@ -199,7 +199,7 @@ export function Round({
         )}
         {feedback !== undefined && (
           <div className={styles.stamp}>
-            <Stamp kind={feedback.result.correct ? 'maru' : 'batsu'} />
+            <Stamp kind={feedback.result.correct ? 'maru' : 'batsu'} animate />
           </div>
         )}
       </div>

@@ -8,19 +8,19 @@
 
 .maru {
   color: var(--shu);
-  transform: rotate(-6deg);
+  rotate: -6deg;
 }
 
 .batsu {
   color: var(--ink);
-  transform: rotate(4deg);
+  rotate: 4deg;
 }
 
 .hanamaru {
   width: var(--stamp-size-lg);
   height: var(--stamp-size-lg);
   color: var(--shu);
-  transform: rotate(-8deg);
+  rotate: -8deg;
 }
 
 /* a square seal with a double border, like a red hanko */
@@ -36,13 +36,13 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   line-height: 1.2;
-  transform: rotate(-6deg);
+  rotate: -6deg;
 }
 
 /* a round seal stamped on a goal day of the stamp card */
 .hanko {
   color: var(--shu);
-  transform: rotate(-12deg);
+  rotate: -12deg;
 }
 
 .hanko text {
@@ -51,4 +51,55 @@
   font-family: var(--font-ja);
   font-size: 52px;
   font-weight: 600;
+}
+
+/*
+ * Motion (SPEC §13). The resting state is the finished mark; `backwards` holds the first frame
+ * through the delay. Under prefers-reduced-motion base.css turns every animation off.
+ */
+
+/* pressed onto the paper: it comes down a little large, the ink spreads, it settles */
+.press {
+  animation: press var(--motion-press) ease-out var(--stamp-delay, 0ms) backwards;
+}
+
+@keyframes press {
+  0% {
+    opacity: 0;
+    scale: 1.35;
+    filter: blur(1.5px);
+  }
+
+  60% {
+    opacity: 1;
+    scale: 0.96;
+    filter: blur(0.4px);
+  }
+
+  100% {
+    scale: 1;
+    filter: blur(0);
+  }
+}
+
+/* the 花丸 drawn with a brush: the spiral, then the petals around it (paths have pathLength 1) */
+.draw .spiral,
+.draw .petals {
+  stroke-dasharray: 1 2;
+  animation: draw var(--motion-draw) ease-in-out var(--stamp-delay, 0ms) backwards;
+}
+
+.draw .petals {
+  animation-duration: calc(var(--motion-draw) * 1.4);
+  animation-delay: calc(var(--stamp-delay, 0ms) + var(--motion-draw) * 0.8);
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1.05;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
 }

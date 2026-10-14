@@ -21,5 +21,7 @@ export default defineConfig(({ mode }) => ({
   },
   test: {
     include: ['src/**/*.test.ts'],
+    // tokens.css?raw is read by the theme and contrast tests; other CSS stays empty in tests
+    css: { include: [/tokens\.css/] },
   },
 }));

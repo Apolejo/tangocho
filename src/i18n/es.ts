@@ -183,6 +183,12 @@ export const es: Messages = {
   skill_group: 'grupo verbal',
   skill_conjugation: 'formas',
   settings_title: 'Ajustes',
+  settings_theme: 'Tema',
+  settings_theme_note:
+    'Sistema sigue a tu dispositivo: el cuaderno nocturno cuando está en modo oscuro.',
+  theme_system: 'Sistema',
+  theme_light: 'Claro',
+  theme_dark: 'Oscuro',
   settings_furigana: 'Furigana en los juegos',
   settings_furigana_note:
     'Lo aplica en todos los juegos; la configuración de cada juego aún puede cambiarlo para ese juego.',

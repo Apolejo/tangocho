@@ -1,4 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { THEMES, setTheme, type Theme } from '../../app/theme.ts';
+import { useTheme } from '../../app/useTheme.ts';
 import buttons from '../../components/Buttons.module.css';
 import pills from '../../components/Pills.module.css';
 import { GAMES } from '../../games/registry.ts';
@@ -18,6 +20,12 @@ import { useProgress } from '../../progress/useProgress.ts';
 import { useSettings } from '../../progress/useSettings.ts';
 import styles from './Settings.module.css';
 import { exportProgress } from './share.ts';
+
+const THEME_KEYS: Record<Theme, MessageKey> = {
+  system: 'theme_system',
+  light: 'theme_light',
+  dark: 'theme_dark',
+};
 
 const STORAGE_KEYS: Record<PersistStatus, MessageKey> = {
   persisted: 'storage_persisted',
@@ -69,7 +77,7 @@ function Choice<T extends string | number | boolean>({
 }
 
 /**
- * Settings (SPEC §7.7): language, the furigana default, the daily goal, new cards per day,
+ * Settings (SPEC §7.7): language, theme, the furigana default, the daily goal, new cards per day,
  * export and import of progress, storage, and reset progress after two confirmations.
  */
 export function Settings() {
@@ -77,6 +85,7 @@ export function Settings() {
   const { lang, setLang } = useLang();
   const now = useNow();
   const settings = useSettings();
+  const theme = useTheme();
   const { events } = useProgress();
   const today = dayKey(now);
   const [message, setMessage] = useState<Message>();
@@ -184,6 +193,15 @@ export function Settings() {
           value={lang}
           label={(option) => t(option === 'en' ? 'lang_en' : 'lang_es')}
           onChange={setLang}
+        />
+        <Choice
+          name="theme"
+          legend={t('settings_theme')}
+          note={t('settings_theme_note')}
+          options={THEMES}
+          value={theme}
+          label={(option) => t(THEME_KEYS[option])}
+          onChange={setTheme}
         />
         <Choice
           name="furigana"

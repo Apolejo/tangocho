@@ -180,6 +180,11 @@ export const en = {
   skill_group: 'verb group',
   skill_conjugation: 'forms',
   settings_title: 'Settings',
+  settings_theme: 'Theme',
+  settings_theme_note: 'System follows your device: the night notebook when it is in dark mode.',
+  theme_system: 'System',
+  theme_light: 'Light',
+  theme_dark: 'Dark',
   settings_furigana: 'Furigana in games',
   settings_furigana_note:
     "Sets it in every game; a game's setup can still change it for that game.",

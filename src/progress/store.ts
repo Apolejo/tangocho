@@ -28,8 +28,8 @@ export interface ImportResult {
 export interface ProgressStore {
   subscribe(onChange: () => void): () => void;
   getSnapshot(): ProgressSnapshot;
-  /** Loads the log once; later calls return the same promise. */
-  load(): Promise<ProgressSnapshot>;
+  /** Loads the log once; later calls return the same promise. Read the result with getSnapshot. */
+  load(): Promise<void>;
   /** Appends an event: in memory at once, then to IndexedDB. An id already here is ignored. */
   record(event: ProgressEvent): void;
   /** Merges events by id into the log and rebuilds. */
@@ -72,7 +72,7 @@ export function createProgressStore(db?: () => ProgressDb): ProgressStore {
   const database = () => db?.();
   let snapshot: ProgressSnapshot = snapshotOf('loading', []);
   let ids = new Set<string>();
-  let loading: Promise<ProgressSnapshot> | undefined;
+  let loading: Promise<void> | undefined;
   const listeners = new Set<() => void>();
 
   const publish = (next: ProgressSnapshot) => {
@@ -96,12 +96,10 @@ export function createProgressStore(db?: () => ProgressDb): ProgressStore {
           for (const e of snapshot.events) if (!byId.has(e.id)) byId.set(e.id, e);
           rebuild('ready', [...byId.values()]);
           if (snapshot.events.length > 0) void requestPersistence();
-          return snapshot;
         },
         (error: unknown) => {
           console.warn('could not read progress', error);
           publish({ ...snapshot, status: 'failed' });
-          return snapshot;
         },
       );
     return loading;

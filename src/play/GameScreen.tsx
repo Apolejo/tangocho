@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { deckId, notebookDecks, wordsInDecks } from '../data/decks.ts';
-import { decks, words } from '../data/load.ts';
-import type { Card, GameId, Minigame } from '../games/types.ts';
+import { deckId, wordsInDecks } from '../data/decks.ts';
+import { words } from '../data/load.ts';
+import type { Card, Minigame } from '../games/types.ts';
 import { mulberry32, newId, randomSeed } from '../lib/random.ts';
-import { answerEvents } from '../progress/db.ts';
-import { formStats, type FormStats } from '../progress/forms.ts';
+import { dayKey } from '../progress/day.ts';
+import { formStats } from '../progress/forms.ts';
+import { getSettings } from '../progress/settings.ts';
+import { introducedOn } from '../progress/srs.ts';
+import { progress } from '../progress/store.ts';
+import { DECKS, KNOWN_DECKS, OPENED_AT } from './catalog.ts';
 import { planRound, type RoundPlan } from './plan.ts';
 import { Results } from './Results.tsx';
 import { Round } from './Round.tsx';
@@ -12,21 +16,6 @@ import type { AnswerRecord } from './round.ts';
 import type { Tally } from './score.ts';
 import { Setup } from './Setup.tsx';
 import { loadSetup, saveSetup, type SetupChoice } from './setup.ts';
-
-const DECKS = notebookDecks(decks);
-const KNOWN_DECKS = new Set(DECKS.map(deckId));
-/** "New this week" is relative to when the app was opened, as in the notebook. */
-const OPENED_AT = new Date();
-
-/** Misses per form from the log; if it can't be read, every form weighs the same. */
-async function readFormStats(game: GameId): Promise<FormStats | undefined> {
-  try {
-    return formStats(await answerEvents(game));
-  } catch (error: unknown) {
-    console.warn('could not read past answers', error);
-    return undefined;
-  }
-}
 
 type Phase =
   | { name: 'setup' }
@@ -50,7 +39,8 @@ export function GameScreen({ game }: { game: Minigame }) {
     saveSetup(game.id, next);
   };
 
-  // a game whose cards have a form reads the past answers first, so missed forms weigh more
+  // the queue reads the log (SPEC §10.2): due cards, today's new cards, and the forms missed more
+  // often for a game whose cards have one; a log that couldn't be read leaves every card new
   const start = async (
     from: Pick<RoundPlan, 'deckIds' | 'options'> & { size: number },
     only?: readonly Card[],
@@ -58,8 +48,14 @@ export function GameScreen({ game }: { game: Minigame }) {
     if (startingRef.current) return;
     startingRef.current = true;
     setStarting(true);
+    await progress.load();
+    const { answers, cards } = progress.getSnapshot();
+    const now = new Date();
     const stats =
-      game.formsFor !== undefined && only === undefined ? await readFormStats(game.id) : undefined;
+      game.formsFor !== undefined
+        ? formStats(answers.filter((a) => a.game === game.id))
+        : undefined;
+    const newLeft = Math.max(0, getSettings().newPerDay - introducedOn(cards, dayKey(now)));
     const selected = DECKS.filter((d) => from.deckIds.includes(deckId(d)));
     const plan = planRound({
       id: newId(),
@@ -70,6 +66,7 @@ export function GameScreen({ game }: { game: Minigame }) {
       words: wordsInDecks(selected, words, OPENED_AT),
       only,
       formStats: stats,
+      srs: { cards, now, newLeft },
       rng: mulberry32(randomSeed()),
     });
     startingRef.current = false;

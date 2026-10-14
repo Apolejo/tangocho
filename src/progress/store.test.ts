@@ -62,7 +62,8 @@ describe('progress store', () => {
     const store = createProgressStore(() => db);
     expect(store.getSnapshot().status).toBe('loading');
 
-    const snapshot = await store.load();
+    await store.load();
+    const snapshot = store.getSnapshot();
     expect(snapshot.status).toBe('ready');
     expect(snapshot.events.map((e) => e.id)).toEqual(['a1', 'a2', 'r1']);
     expect(snapshot.answers).toHaveLength(2);
@@ -147,8 +148,8 @@ describe('progress store', () => {
     const db = freshDb();
     db.close();
     const store = createProgressStore(() => db);
-    const snapshot = await store.load();
-    expect(snapshot.status).toBe('failed');
+    await store.load();
+    expect(store.getSnapshot().status).toBe('failed');
     store.record(answer('a1', 1));
     expect(store.getSnapshot().cards.size).toBe(1);
   });

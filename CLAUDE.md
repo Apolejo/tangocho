@@ -37,3 +37,5 @@ Personal web app of minigames for drilling the Japanese words in my own notebook
 - TypeScript stays on 6.0.x until typescript-eslint supports 7 (its peer range is <6.1).
 - Relative imports carry their `.ts`/`.tsx` extension: Node runs `scripts/*.ts` natively, so `src/data/` and `src/lib/` must stay free of DOM and Vite APIs for the validator to import them.
 - WanaKana counts ヶ as kana; for furigana placement it belongs to the kanji run, like 々.
+- Colors are `light-dark()` tokens. The build (Lightning CSS) rewrites them into `--lightningcss-*` toggles; dev and `npm run shots` use them natively. e2e runs the build, so check theme changes there too.
+- e2e blocks service workers (`serviceWorkers: 'block'`) so `page.route` sees every request; only e2e/offline.spec.ts allows them. The dev server has none: try offline with `npm run build` + `npm run preview`.

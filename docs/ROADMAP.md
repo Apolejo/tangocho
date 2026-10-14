@@ -119,9 +119,9 @@ Done when: unit tests cover the rating mapping, the 04:00 boundary, the mastery 
 
 ## M9 — Stationery polish and offline · SPEC §13, §4
 
-- [ ] Stamp and 花丸 animations (off under reduced motion); dark mode, with the theme option in Settings.
-- [ ] PWA install and offline use; self-hosted fonts.
-- [ ] Accessibility pass: a keyboard-only round, contrast, tap targets.
+- [x] Stamp and 花丸 animations (off under reduced motion); dark mode, with the theme option in Settings.
+- [x] PWA install and offline use; self-hosted fonts.
+- [x] Accessibility pass: a keyboard-only round, contrast, tap targets.
 
 Done when: installed on your phone, it works in airplane mode; you've reviewed light and dark screenshots; a full round works by keyboard alone.
 

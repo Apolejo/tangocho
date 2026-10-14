@@ -31,7 +31,7 @@ A personal web app of minigames for practicing the Japanese words I study, enter
 |---|---|
 | App | Vite + React + TypeScript (strict). Static site. |
 | Hosting | GitHub Pages, deployed by GitHub Actions on every push to `main`. |
-| Offline and install | PWA via vite-plugin-pwa. Fonts self-hosted with Fontsource (no font CDN at runtime). |
+| Offline and install | PWA via vite-plugin-pwa: a Workbox service worker precaches the app with its words, and only the font slices that cover a character the app can show (Fontsource splits Japanese fonts by unicode-range; the rest is left out, and new kanji bring their slices with the next deploy). A new version waits for *Reload* on a banner shown on Today, the notebook and the game list, never during a round; ✕ hides it until the next launch. Fonts self-hosted with Fontsource (no font CDN at runtime). Icons rendered from `public/icon.svg` by `npm run icons`. |
 | Data | JSON in `data/`, bundled at build time with `import.meta.glob`. New words = commit → CI deploys. |
 | Schema | Zod (`src/data/schema.ts`) plus cross-field rules (`src/data/rules.ts`), shared by the app and `npm run validate`. |
 | Japanese input | WanaKana |
@@ -148,13 +148,13 @@ The words come from my handwritten notes, so some will be wrong. Reports go to G
 
 | § | Screen | Contents |
 |---|---|---|
-| 7.1 | Today (home) | Streak and this month's stamp card (§10.4), daily-goal progress, and each game with its due count, counted over the game's remembered setup (its decks and options), linking to its setup. *Continue* starts a round at once in the game with the most due cards, with its remembered setup; with nothing due, the last game played (or the first available one). A small banner reminds me to export once 7 days have passed since the last export, or since the first answer if I never exported, as long as there is progress the last export doesn't have (§10.1); it links to Settings, and ✕ hides it until the next launch. |
+| 7.1 | Today (home) | Streak and this month's stamp card (§10.4), daily-goal progress, and each game with its due count, counted over the game's remembered setup (its decks and options), linking to its setup. *Continue* starts a round at once in the game with the most due cards, with its remembered setup; with nothing due, the last game played (or the first available one). A small banner reminds me to export once 7 days have passed since the last export, or since the first answer if I never exported, as long as there is progress the last export doesn't have (§10.1); it links to Settings, and ✕ hides it until the next launch. The banner for a new version (§4) shows here too. Today presses its hanko onto the stamp card the first time it shows it once the goal is met (§13). |
 | 7.2 | Notebook | Decks as notebook tabs → word list with furigana, meanings, verb group and note. Verbs are shown in ます form, derived from the stored dictionary form (§5.1, §11); tapping a verb opens its eight forms with furigana, each with its ⚑ (§5.7): a bottom sheet on a phone, a dialog on the computer (✕, Esc or a tap outside closes it). Built first; it doubles as a data check. |
 | 7.3 | Game setup | Decks (remembers the last choice; the counts are of the words the game can use, so verbs only for the sorter), round size (10 or 20), options (furigana, direction, kana typing mode, input mode, forms). |
 | 7.4 | Play | Progress, score and combo, the question, the answer area, ◯/✕ feedback. |
 | 7.5 | Results | Score, accuracy, a 新記録 stamp for a personal best, 花丸 for a perfect round, missed words with *Practice these*. |
 | 7.6 | Stats | Mastery per deck (§10.5) as a New/Learning/Familiar/Mastered bar with a legend and the % mastered; accuracy per verb group (sorter and drill side by side) and per conjugation form; the weakest words per game, each list with *Practice these*; the stamp card as a streak calendar, month by month, with the current and longest streak. |
-| 7.7 | Settings | Language, furigana default (§5.4), daily goal (10, 20 or 50; §10.4), new cards per day (5, 10, 15, 20 or 30), export/import progress with the last export date (§10.1), whether storage is persistent, reset progress (two confirmations; it deletes the event log and keeps the settings). The theme option (system/light/dark) arrives with dark mode in M9. |
+| 7.7 | Settings | Language, theme (system, light or dark; §13), furigana default (§5.4), daily goal (10, 20 or 50; §10.4), new cards per day (5, 10, 15, 20 or 30), export/import progress with the last export date (§10.1), whether storage is persistent, whether the app is ready to work offline (§4), reset progress (two confirmations, each moving the focus to Cancel; it deletes the event log and keeps the settings and the theme). |
 
 ## 8. Game architecture
 
@@ -219,6 +219,7 @@ Answer checking and distractor generation are pure functions next to each game, 
 - A right answer typed into a field leaves the focus there, so a phone keeps its keyboard up between questions, and Enter in the field continues. After a wrong answer the focus moves to *Continue* (the keyboard goes down, so the answer can be read).
 - Tap targets at least 44×44 px; answer controls within thumb reach on a phone.
 - Feedback is announced to screen readers (`aria-live`).
+- The focus is never lost: a new screen, setup and Results take it at their heading; each new question at its card, from which Tab goes on to the word and the options (unless the question put it in its field); ✕ on a banner gives it back to the heading. Each screen has its own page title.
 - Tapping the question's word shows its meaning in a small bubble beside it (above it when there's no room beside, below when there's none above), in the games whose question isn't about the meaning: the sorter, kana typing's reading mode and the drill. The quiz and kana recall don't offer it, since there the meaning is the question or the prompt. Looking never counts as a hint, and a typed answer's field keeps its focus. A tap on the word again, anywhere else, or Esc closes it. By keyboard, the word is a button.
 - Verbs are shown in ます form, like the notebook (§7.2), except a drill question that asks for the ます form, which shows the dictionary form (§9.4); explanations that depend on the ending (§9.2, §9.4) quote the dictionary form.
 
@@ -282,7 +283,7 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 - Events are append-only, in IndexedDB. Spaced-repetition state, scores, streaks and mastery are derived from them: held in memory, rebuilt at launch, after an import and after a reset, never stored on their own.
 - Export saves the event log as a JSON file, `tangocho-progress-YYYY-MM-DD.json`: `{ app: "tangocho", version: 1, exportedAt, device, events }`. On a phone it opens the share sheet (save to Files, AirDrop, Mail) when the browser can share files; elsewhere it downloads.
 - Import merges by event id: an event already here is never overwritten, so importing the same file twice changes nothing. A file that isn't JSON, isn't a Tangochō file or comes from a newer version is refused; invalid events in it are skipped and counted. Then the state rebuilds and Settings says how many events were new, already here and skipped. This is how progress moves between phone and computer in v1.
-- Ask for persistent storage (`navigator.storage.persist()`) once there is progress, never on a blank first visit; Settings shows whether it was granted. Browsers may clear data for sites that haven't been used in a while, Safari on iPhone especially, so install the app on the phone. Settings shows the last export date; Today reminds me once 7 days have passed since the last export, or since the first answer if I never exported, unless nothing new happened since the last export (§7.1).
+- Ask for persistent storage (`navigator.storage.persist()`) once there is progress, never on a blank first visit; Settings shows whether it was granted. Browsers may clear data for sites that haven't been used in a while, Safari on iPhone especially, so install the app on the phone. On iPhone the installed app keeps its own storage, separate from Safari's: export from Safari once and import into the installed app. Settings shows the last export date; Today reminds me once 7 days have passed since the last export, or since the first answer if I never exported, unless nothing new happened since the last export (§7.1).
 
 ### 10.2 Spaced repetition
 
@@ -335,10 +336,10 @@ Done when: e2e answers in both input modes; the distractor generator is unit-tes
 
 - **Paper**: warm off-white with a subtle grain, ruled lines on cards, washi-tape headers, decks as notebook tabs.
 - **Ink**: near-black sumi for text, indigo for accents, vermilion (朱) for the ◯ stamp; on Japanese tests a red ◯ marks a correct answer. Color is never the only signal: the ◯ and ✕ shapes carry the meaning.
-- **Feedback**: a hanko-style stamp (slight rotation, ink spread); 花丸 for a perfect round. All motion is off under `prefers-reduced-motion`.
+- **Feedback**: a hanko-style stamp (slight rotation, ink spread): ◯/✕ and the 新記録 seal press onto the paper in about 0.3 s; the 花丸 for a perfect round draws itself, spiral then petals; today's hanko presses onto the stamp card once (§7.1). The finished mark is the resting state, so under `prefers-reduced-motion` all motion is off and the marks simply appear.
 - **Type**: Japanese prompts in a pen-written face close to textbook glyphs, so learners see real stroke shapes (Klee One). UI in a clean sans with Japanese coverage (Zen Kaku Gothic New). Chosen in M1 from screenshots, against Zen Kurenaido and Yomogi for prompts and BIZ UDPGothic and Zen Maru Gothic for the UI.
-- **Dark mode**: "night notebook", deep indigo paper and light ink. Follows the system, with an override in Settings.
-- Text contrast meets WCAG AA; focus rings are always visible.
+- **Dark mode**: "night notebook", deep indigo paper and light ink, with faint light specks of grain. Follows the system, with an override in Settings (system, light, dark). Every color token is `light-dark(light, dark)`; the override sets `<html data-theme>`, which sets `color-scheme`, before the first paint, and both `theme-color` metas follow it.
+- Text contrast meets WCAG AA; a text field's edge and the focus ring meet 3:1; focus rings are always visible. `src/styles/tokens.test.ts` checks every pair in both themes.
 - Components never hard-code colors or sizes; everything comes from `src/styles/tokens.css`.
 
 Starting tokens, adjusted in M1 from screenshots. Every text color passes AA (4.5:1) on both `--paper` and `--card`.
@@ -352,12 +353,14 @@ Starting tokens, adjusted in M1 from screenshots. Every text color passes AA (4.
 | `--ink-soft` | `#6B645A` | `#A9A293` |
 | `--ai` (indigo) | `#2F4B6E` | `#8FA8CC` |
 | `--shu` (vermilion) | `#B8392A` | `#E36A55` |
+| `--edge` (a field's border) | `#8C8272` | `#6B7590` |
+| `--grain` (paper specks) | ink brown at 7% | paper white at 3.5% |
 
 ## 14. Quality
 
 - `npm run check`: typecheck, lint, unit tests, data validation. Must pass before anything is called done.
-- `npm run e2e`: Playwright on desktop Chromium and mobile WebKit (iPhone viewport).
-- `npm run shots`: screenshots of every screen at 390×844 and 1280×800, light and dark, saved to `shots/` (git-ignored), for reviewing the look.
+- `npm run e2e`: Playwright on desktop Chromium and mobile WebKit (iPhone viewport). Besides the games: axe (WCAG A and AA, contrast included) on every screen in both themes, every tap target measured on the phone, a whole round by keyboard alone, and a reload with no network once the service worker has cached the app (Chromium only). Service workers are blocked in every other test, so route mocks see every request.
+- `npm run shots`: screenshots of every screen at 390×844 and 1280×800, light and dark, with motion reduced so every mark is finished, saved to `shots/` (git-ignored), for reviewing the look.
 - CI on every pull request: check, e2e, build. Deploy to Pages on `main`.
 - **Definition of done** for any milestone: its "Done when" items pass; evidence shown (command output, screenshots); I tried it myself, on the phone once it's deployed; ROADMAP boxes ticked and SPEC updated if behavior changed; merged to `main`.
 

@@ -259,6 +259,15 @@ const SCREENS: {
       await page.getByRole('heading', { name: /Hoy/ }).waitFor();
     },
   },
+  {
+    name: 'today-thanks',
+    hash: '#/',
+    progress: 'demo',
+    steps: async (page) => {
+      await page.getByRole('button', { name: 'Thanks' }).click();
+      await page.locator('dialog[open]').waitFor();
+    },
+  },
   { name: 'stats', hash: '#/stats', progress: 'demo' },
   { name: 'settings', hash: '#/settings', progress: 'demo' },
   { name: 'settings-about', hash: '#/settings', progress: 'demo', steps: about },

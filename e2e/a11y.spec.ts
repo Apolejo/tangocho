@@ -93,6 +93,14 @@ const SCREENS: { name: string; hash: string; steps?(page: Page): Promise<void> }
       await page.goto('#/');
     },
   },
+  {
+    name: 'the thanks sheet',
+    hash: '#/',
+    steps: async (page) => {
+      await page.getByRole('button', { name: 'Thanks' }).click();
+      await page.getByRole('dialog').waitFor();
+    },
+  },
   { name: 'Notebook', hash: '#/notebook' },
   {
     name: "a verb's forms",

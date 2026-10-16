@@ -1,22 +1,36 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
+# Every push to main: the same build to GitHub Pages and to the mirror on the Oracle VM
+# (docs/ORACLE.md). By hand (Actions → Deploy → Run workflow): the mirror alone, from any branch the
+# mirror environment allows, or the test of a deploy that stops halfway.
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      mirror_only:
+        description: Deploy the mirror only (Pages deploys from main alone)
+        type: boolean
+        default: false
+      stop_halfway:
+        description: 'Test: upload half of this build to the mirror; the release it serves must stay'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
+# one deploy at a time, never cut short: a cancelled mirror deploy could stop between its steps
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: deploy
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -32,10 +46,99 @@ jobs:
 
   deploy:
     needs: build
+    if: ${{ !inputs.mirror_only && !inputs.stop_halfway }}
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  mirror:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: mirror
+      url: https://apolejo.dev/tangocho/
+    env:
+      SITE: https://apolejo.dev/tangocho/
+      HOST: deploy@apolejo.dev
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+      # the artifact Pages deploys, so both sites serve the same bytes
+      - uses: actions/download-artifact@v8
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/pages
+      - name: Unpack the build
+        run: mkdir dist && tar -xf "$RUNNER_TEMP/pages/artifact.tar" -C dist
+      - name: Deploy key and the server's host key
+        env:
+          KEY: ${{ secrets.MIRROR_SSH_KEY }}
+          KNOWN_HOSTS: ${{ vars.MIRROR_KNOWN_HOSTS }}
+        run: |
+          install -m 600 /dev/null "$RUNNER_TEMP/deploy_key"
+          printf '%s\n' "$KEY" > "$RUNNER_TEMP/deploy_key"
+          printf '%s\n' "$KNOWN_HOSTS" > "$RUNNER_TEMP/known_hosts"
+          echo "RSYNC_RSH=ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/known_hosts -o ConnectTimeout=20 -o ServerAliveInterval=15" >> "$GITHUB_ENV"
+
+      # The server's forced command (ops/tangocho-deploy.sh) takes the upload into incoming/, and
+      # serves it only once activate finds every file the service worker precaches.
+      - name: Upload to incoming/
+        if: ${{ !inputs.stop_halfway }}
+        run: |
+          for try in 1 2 3; do
+            rsync -rcp --chmod=D755,F644 --delete --timeout=60 dist/ "$HOST:" && exit 0
+            echo "::warning::upload try $try failed"
+            sleep 10
+          done
+          exit 1
+      - name: Activate this release
+        if: ${{ !inputs.stop_halfway }}
+        run: |
+          for try in 1 2 3; do
+            $RSYNC_RSH "$HOST" activate "$GITHUB_SHA" && exit 0
+            status=$?
+            # 255 is ssh failing to connect; anything else is the server's answer
+            [ "$status" -eq 255 ] || exit "$status"
+            echo "::warning::ssh try $try failed"
+            sleep 10
+          done
+          exit 1
+      - name: Smoke check
+        if: ${{ !inputs.stop_halfway }}
+        run: node scripts/smoke.ts "$SITE" dist
+
+      - name: 'Test: save the page the mirror serves now'
+        if: ${{ inputs.stop_halfway }}
+        run: curl -fsS "${SITE}index.html" -o "$RUNNER_TEMP/before.html"
+      - name: 'Test: upload half of this build (the page and the worker, not the assets)'
+        if: ${{ inputs.stop_halfway }}
+        run: rsync -rcp --chmod=D755,F644 --timeout=60 dist/index.html dist/sw.js "$HOST:"
+      - name: 'Test: activate must refuse it'
+        if: ${{ inputs.stop_halfway }}
+        run: |
+          set +e
+          $RSYNC_RSH "$HOST" activate "$GITHUB_SHA"
+          status=$?
+          if [ "$status" -ne 1 ]; then
+            echo "::error::expected activate to refuse the release (exit 1), got $status"
+            exit 1
+          fi
+      - name: 'Test: the previous release still serves'
+        if: ${{ inputs.stop_halfway }}
+        run: |
+          curl -fsS "${SITE}index.html" -o "$RUNNER_TEMP/after.html"
+          cmp "$RUNNER_TEMP/before.html" "$RUNNER_TEMP/after.html"
+          if cmp -s "$RUNNER_TEMP/after.html" dist/index.html; then
+            echo "::error::this build is the one live, so the test proves nothing: run it on a commit that isn't"
+            exit 1
+          fi
+          echo "The mirror still serves the previous release; the next deploy replaces incoming/."

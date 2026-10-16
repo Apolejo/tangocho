@@ -2,7 +2,7 @@ import type { Word } from '../data/schema.ts';
 import type { Card, Minigame, RoundOptions, Skill } from '../games/types.ts';
 import { nextSeed, shuffle, weightedPick, type Rng } from '../lib/random.ts';
 import { formWeight, type FormStats } from '../progress/forms.ts';
-import { cardKey, isDue, type CardState, type CardStates } from '../progress/srs.ts';
+import { cardKey, isDue, weakness, type CardState, type CardStates } from '../progress/srs.ts';
 
 /** A card in the round plus the seed for its question's own randomness. */
 export interface QueuedCard {
@@ -17,23 +17,54 @@ export type RoundSize = (typeof ROUND_SIZES)[number];
 export interface QueueSrs {
   cards: CardStates;
   now: Date;
-  /** New cards still allowed today (the daily limit minus the cards first answered today). */
-  newLeft: number;
 }
+
+/** A card answered this recently waits unless it's due: a right answer minutes ago says little more. */
+export const REST_MS = 60 * 60_000;
+
+/** The share of a round kept for the draw while there is anything to draw: 3 of 10, 6 of 20. */
+export const DRAW_SHARE = 0.3;
+
+/** The queue's tiers (SPEC §10.2): due cards, then the draw, then the cards that wait. */
+type Tier = 0 | 1 | 2;
 
 interface Candidate {
   word: Word;
   skill: Skill;
   state: CardState | undefined;
+  tier: Tier;
+  weakness: number;
+}
+
+/** Without `srs` every card is new, and in the draw. */
+function tierOf(state: CardState | undefined, srs: QueueSrs | undefined): Tier {
+  if (state === undefined || srs === undefined) return 1;
+  if (isDue(state, srs.now)) return 0;
+  const rested = srs.now.getTime() - Date.parse(state.lastAt) >= REST_MS;
+  return state.fsrs.scheduled_days >= 1 && rested ? 1 : 2;
+}
+
+const FAR = Number.MAX_SAFE_INTEGER;
+
+/** The earlier tier first, then the weaker card, then the one due sooner; ties keep their order. */
+function byPriority(a: Candidate, b: Candidate): number {
+  return (
+    a.tier - b.tier ||
+    b.weakness - a.weakness ||
+    (a.state?.fsrs.due.getTime() ?? FAR) - (b.state?.fsrs.due.getTime() ?? FAR)
+  );
 }
 
 /**
  * The round queue (SPEC §10.2): each word at most once, with one of the skills the options ask
- * for. Due cards come first, the most overdue first; then new cards up to today's limit; then the
- * least recently seen cards; then, only if the round still isn't full, new cards past the limit.
- * The chosen cards are shuffled. A word with several cards (the quiz's mixed mode) gives the one
- * that comes first. A game whose cards have a form (the drill) gets one per card, drawn with the
- * forms missed more often weighing more (SPEC §9.4). Without `srs` every card is new.
+ * for. Due cards come first, the weakest first and then the most overdue, up to all but the
+ * draw's share of the round. Then a draw fills the round from the new cards and the cards
+ * scheduled in days that aren't due and have rested, each as likely as its weakness, so new words
+ * keep coming and the words missed lately come more often. Then, only if the round still isn't
+ * full, the due cards left over, then the cards that waited, the weakest first. The chosen
+ * cards are shuffled. A word with several cards (the quiz's mixed mode) gives the one that comes
+ * first. A game whose cards have a form (the drill) gets one per card, drawn with the forms missed
+ * more often weighing more (SPEC §9.4). Without `srs` every card is new.
  */
 export function buildQueue({
   pool,
@@ -55,50 +86,55 @@ export function buildQueue({
   srs?: QueueSrs;
 }): QueuedCard[] {
   const skills = game.skillsFor(options);
-  const due: (Candidate & { state: CardState })[] = [];
-  const fresh: Candidate[] = [];
-  const seen: (Candidate & { state: CardState })[] = [];
+  const tiers: [Candidate[], Candidate[], Candidate[]] = [[], [], []];
   for (const word of shuffle(pool, rng)) {
+    let best: Candidate | undefined;
     for (const skill of shuffle(
       skills.filter((s) => game.eligible(word, s)),
       rng,
     )) {
       const state = srs?.cards.get(cardKey(word.id, skill));
-      if (state === undefined) fresh.push({ word, skill, state });
-      else if (srs !== undefined && isDue(state, srs.now)) due.push({ word, skill, state });
-      else seen.push({ word, skill, state });
+      const candidate: Candidate = {
+        word,
+        skill,
+        state,
+        tier: tierOf(state, srs),
+        weakness: weakness(state),
+      };
+      if (best === undefined || byPriority(candidate, best) < 0) best = candidate;
     }
+    if (best !== undefined) tiers[best.tier].push(best);
   }
-  // stable sorts: ties keep the shuffled order
-  due.sort((a, b) => a.state.fsrs.due.getTime() - b.state.fsrs.due.getTime());
-  seen.sort((a, b) =>
-    a.state.lastAt < b.state.lastAt ? -1 : a.state.lastAt > b.state.lastAt ? 1 : 0,
-  );
+  const [due, draw, waiting] = tiers;
 
   const picked: Card[] = [];
-  const used = new Set<string>();
-  const take = ({ word, skill }: Candidate): boolean => {
-    if (picked.length >= size || used.has(word.id)) return false;
+  const full = (): boolean => picked.length >= size;
+  const take = ({ word, skill }: Candidate): void => {
     let form: string | undefined;
     if (game.formsFor !== undefined) {
       form = weightedPick(game.formsFor(word, options), (f) => formWeight(formStats?.get(f)), rng);
-      if (form === undefined) return false;
+      if (form === undefined) return;
     }
-    used.add(word.id);
     picked.push({ wordId: word.id, skill, ...(form !== undefined && { form }) });
-    return true;
   };
 
-  for (const c of due) take(c);
-  const newLeft = srs?.newLeft ?? Infinity;
-  let newTaken = 0;
-  const pastLimit: Candidate[] = [];
-  for (const c of fresh) {
-    if (newTaken >= newLeft) pastLimit.push(c);
-    else if (take(c)) newTaken++;
+  const dueFirst = size - Math.min(Math.floor(size * DRAW_SHARE), draw.length);
+  const dueLater: Candidate[] = [];
+  for (const c of due.sort(byPriority)) {
+    if (picked.length >= dueFirst) dueLater.push(c);
+    else take(c);
   }
-  for (const c of seen) take(c);
-  for (const c of pastLimit) take(c);
+  const left = [...draw];
+  while (!full() && left.length > 0) {
+    const c = weightedPick(left, (x) => x.weakness, rng);
+    if (c === undefined) break;
+    left.splice(left.indexOf(c), 1);
+    take(c);
+  }
+  for (const c of [...dueLater, ...waiting.sort(byPriority)]) {
+    if (full()) break;
+    take(c);
+  }
 
   return shuffle(picked, rng).map((card) => ({ card, seed: nextSeed(rng) }));
 }

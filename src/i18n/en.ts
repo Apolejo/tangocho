@@ -182,9 +182,6 @@ export const en = {
   settings_goal: 'Daily goal',
   settings_goal_option: '{n} answers',
   settings_goal_note: 'A change counts from today on; past days keep their goal.',
-  settings_new: 'New cards per day',
-  settings_new_note:
-    'Shared by all games. When nothing else is left to ask, a round still fills up with more.',
   settings_progress: 'Progress',
   settings_transfer_note:
     'Export on one device and import on the other: the answers merge, and nothing is lost or counted twice.',

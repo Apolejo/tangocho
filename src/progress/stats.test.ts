@@ -74,7 +74,7 @@ describe('accuracy', () => {
 });
 
 describe('weakestCards (SPEC §10.5)', () => {
-  it('orders cards by misses among the latest answers, then by lower stability', () => {
+  it('orders cards by weakness, then by lower stability', () => {
     const answers = [
       // two misses
       answer('sensei', 'meaning', false, { day: 0 }),
@@ -95,6 +95,22 @@ describe('weakestCards (SPEC §10.5)', () => {
       'isha|meaning',
     ]);
     expect(weak[0]).toMatchObject({ misses: 2, answers: 2, word: byId.get('sensei') });
+  });
+
+  it('weighs a late miss more than early ones', () => {
+    const answers = [
+      // two misses long ago, then four rights
+      answer('sensei', 'meaning', false, { day: 0 }),
+      answer('sensei', 'meaning', false, { day: 1 }),
+      ...[2, 3, 4, 5].map((day) => answer('sensei', 'meaning', true, { day })),
+      // three rights, then a miss
+      ...[0, 1, 2].map((day) => answer('isha', 'meaning', true, { day })),
+      answer('isha', 'meaning', false, { day: 3 }),
+    ];
+    const weak = weakestCards(replay(answers), quiz, byId);
+    expect(weak.map((w) => w.card.wordId)).toEqual(['isha', 'sensei']);
+    expect(weak[0]).toMatchObject({ misses: 1, answers: 4 });
+    expect(weak[1]).toMatchObject({ misses: 2, answers: 6 });
   });
 
   it('forgets misses older than the latest answers', () => {

@@ -16,7 +16,7 @@ import { dayKey } from '../../progress/day.ts';
 import { deviceId } from '../../progress/device.ts';
 import { exportReminder, goalOn, setGoal } from '../../progress/goal.ts';
 import { persistStatus, type PersistStatus } from '../../progress/persist.ts';
-import { GOAL_OPTIONS, NEW_PER_DAY_OPTIONS, updateSettings } from '../../progress/settings.ts';
+import { GOAL_OPTIONS, updateSettings } from '../../progress/settings.ts';
 import { progress } from '../../progress/store.ts';
 import { importProgressFile } from '../../progress/transfer.ts';
 import { useNow } from '../../progress/useNow.ts';
@@ -81,7 +81,7 @@ function Choice<T extends string | number | boolean>({
 }
 
 /**
- * Settings (SPEC §7.7): language, theme, the furigana default, the daily goal, new cards per day,
+ * Settings (SPEC §7.7): language, theme, the furigana default, the daily goal,
  * export and import of progress, storage, offline use, and reset progress after two confirmations;
  * then About: the version, the privacy note, the open word reports count, the thanks links and the
  * source.
@@ -235,15 +235,6 @@ export function Settings() {
           onChange={(goal) =>
             updateSettings((s) => ({ ...s, goals: setGoal(s.goals, today, goal) }))
           }
-        />
-        <Choice
-          name="new-per-day"
-          legend={t('settings_new')}
-          note={t('settings_new_note')}
-          options={NEW_PER_DAY_OPTIONS}
-          value={settings.newPerDay}
-          label={(n) => String(n)}
-          onChange={(newPerDay) => updateSettings((s) => ({ ...s, newPerDay }))}
         />
       </div>
 

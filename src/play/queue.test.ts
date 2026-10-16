@@ -194,87 +194,143 @@ describe('practiceQueue', () => {
 describe('buildQueue with spaced repetition (SPEC §10.2)', () => {
   const MINUTE = 60_000;
   const T0 = new Date(2026, 9, 10, 12, 0);
-  const NOW = new Date(2026, 9, 11, 12, 0);
+  const NOW = new Date(2026, 9, 10, 14, 0);
   const at = (minutes: number) => new Date(T0.getTime() + minutes * MINUTE);
   let n = 0;
-  const answer = (wordId: string, when: Date, skill: Skill = 'meaning'): AnswerEvent =>
+  const answer = (
+    wordId: string,
+    when: Date,
+    { skill = 'meaning' as Skill, correct = true } = {},
+  ): AnswerEvent =>
     answerEvent(
-      {
-        roundId: 'r',
-        game: 'quiz',
-        wordId,
-        skill,
-        correct: true,
-        hinted: false,
-        ms: 900,
-        device: 'd',
-      },
+      { roundId: 'r', game: 'quiz', wordId, skill, correct, hinted: false, ms: 900, device: 'd' },
       `e${n++}`,
       when,
     );
-  /** Answered once: in a 10-minute learning step, so due by NOW (earlier answers more overdue). */
+  /** Right once: in the 10-minute learning step, so due by NOW (earlier answers more overdue). */
   const learning = (wordId: string, minutes: number) => [answer(wordId, at(minutes))];
-  /** Answered twice: scheduled days ahead, so seen but not due at NOW. */
+  /** Wrong once: in the 1-minute learning step, so due by NOW, and weaker than a card right once. */
+  const missed = (wordId: string, minutes: number) => [
+    answer(wordId, at(minutes), { correct: false }),
+  ];
+  /** Right twice: scheduled days ahead, so seen but not due at NOW. */
   const graduated = (wordId: string, minutes: number) => [
     answer(wordId, at(minutes)),
     answer(wordId, at(minutes + 11)),
   ];
+  /** Wrong, then right twice: scheduled days ahead too, and weaker than a card right twice. */
+  const shaky = (wordId: string, minutes: number) => [
+    answer(wordId, at(minutes), { correct: false }),
+    answer(wordId, at(minutes + 2)),
+    answer(wordId, at(minutes + 13)),
+  ];
   const ids = all.map((w) => w.id);
+  const byId = (id: string): Word => {
+    const word = all.find((w) => w.id === id);
+    if (word === undefined) throw new Error(`no word ${id}`);
+    return word;
+  };
   const queueOf = (
     events: AnswerEvent[],
-    { size = 10, newLeft = 15, direction = 'forward' as RoundOptions['direction'], seed = 1 } = {},
+    {
+      size = 10,
+      pool = all as readonly Word[],
+      direction = 'forward' as RoundOptions['direction'],
+      seed = 1,
+      now = NOW,
+    } = {},
   ) =>
     buildQueue({
-      pool: all,
+      pool,
       game: quizLike,
       options: opts(direction),
       size,
       rng: mulberry32(seed),
-      srs: { cards: replay(events), now: NOW, newLeft },
+      srs: { cards: replay(events), now },
     }).map((q) => q.card);
+  const wordsOf = (cards: readonly { wordId: string }[]) => cards.map((c) => c.wordId);
 
-  it('asks due cards first, the most overdue first', () => {
+  it('asks due cards first, the weakest first, then the most overdue', () => {
     const events = [
-      ...learning(ids[0]!, 30),
-      ...learning(ids[1]!, 10),
-      ...learning(ids[2]!, 20),
-      ...learning(ids[3]!, 40),
-      ...graduated(ids[4]!, 0),
+      ...learning(ids[0]!, 40),
+      ...learning(ids[1]!, 10), // as weak as ids[0], and more overdue
+      ...missed(ids[2]!, 50), // the weakest of the due ones
+      ...graduated(ids[3]!, 0), // not due
     ];
-    expect(
-      queueOf(events, { size: 3 })
-        .map((c) => c.wordId)
-        .sort(),
-    ).toEqual([ids[0]!, ids[1]!, ids[2]!].sort());
-    expect(queueOf(events, { size: 4 }).map((c) => c.wordId)).not.toContain(ids[4]);
+    const pool = ids.slice(0, 4).map(byId);
+    expect(wordsOf(queueOf(events, { size: 1, pool }))).toEqual([ids[2]]);
+    expect(wordsOf(queueOf(events, { size: 2, pool })).sort()).toEqual([ids[1]!, ids[2]!].sort());
+    expect(wordsOf(queueOf(events, { size: 3, pool })).sort()).toEqual(ids.slice(0, 3).sort());
+    expect(queueOf(events, { size: 4, pool })).toHaveLength(4);
   });
 
-  it('caps new cards at the daily limit before the seen ones, and fills the round past it', () => {
-    const seenIds = ids.slice(0, 5);
-    const events = seenIds.flatMap((id, i) => graduated(id, i * 20));
-    const isSeen = (c: { wordId: string }) => seenIds.includes(c.wordId);
-
-    const capped = queueOf(events, { size: 8, newLeft: 3 });
-    expect(capped).toHaveLength(8);
-    expect(capped.filter(isSeen)).toHaveLength(5);
-
-    const filled = queueOf(events, { size: 10, newLeft: 3 });
-    expect(filled).toHaveLength(10);
-    expect(filled.filter(isSeen)).toHaveLength(5);
-    expect(filled.filter((c) => !isSeen(c))).toHaveLength(5);
-
-    const noneLeft = queueOf(events, { size: 5, newLeft: 0 });
-    expect(noneLeft.every(isSeen)).toBe(true);
+  it('fills the round by a draw where the weaker card is the likelier, new words included', () => {
+    // a new word (0.5), one wrong once then right twice (0.37), one right twice (0.26)
+    const events = [...shaky(ids[1]!, 0), ...graduated(ids[2]!, 0)];
+    const pool = ids.slice(0, 3).map(byId);
+    const counts = new Map<string, number>();
+    for (let seed = 0; seed < 600; seed++) {
+      const [card] = queueOf(events, { size: 1, pool, seed });
+      counts.set(card!.wordId, (counts.get(card!.wordId) ?? 0) + 1);
+    }
+    const [fresh, shakyOne, known] = ids.slice(0, 3).map((id) => counts.get(id) ?? 0);
+    // about 44%, 33% and 23%
+    expect(fresh).toBeGreaterThan(shakyOne!);
+    expect(shakyOne).toBeGreaterThan(known!);
+    expect(fresh! / known!).toBeGreaterThan(1.5);
+    expect(fresh! / known!).toBeLessThan(2.5);
   });
 
-  it('takes the least recently seen cards first as extra practice', () => {
-    const events = [...graduated(ids[0]!, 60), ...graduated(ids[1]!, 0), ...graduated(ids[2]!, 30)];
-    const picked = queueOf(events, { size: 2, newLeft: 0 }).map((c) => c.wordId);
-    expect(picked.sort()).toEqual([ids[1]!, ids[2]!].sort());
+  it('keeps 3 of 10 for the draw through a backlog of due cards', () => {
+    const backlog = ids.slice(0, 20);
+    const events = backlog.flatMap((id, i) => learning(id, i));
+    const isDueOne = (id: string) => backlog.includes(id);
+    const mixed = wordsOf(queueOf(events, { size: 10 }));
+    expect(mixed.filter(isDueOne)).toHaveLength(7);
+    expect(mixed.filter((id) => !isDueOne(id))).toHaveLength(3);
+    // the most overdue of the backlog came, the rest wait for the next round
+    expect(mixed.filter(isDueOne).sort()).toEqual(backlog.slice(0, 7).sort());
+    // with nothing to draw, due cards fill the round
+    const onlyDue = wordsOf(queueOf(events, { size: 10, pool: backlog.map(byId) }));
+    expect(onlyDue.every(isDueOne)).toBe(true);
+    expect(onlyDue).toHaveLength(10);
+  });
+
+  it('has no daily limit: new words keep coming', () => {
+    const seen = ids.slice(0, 5);
+    const events = seen.flatMap((id, i) => graduated(id, i * 20));
+    expect(queueOf(events, { size: 44 })).toHaveLength(all.length);
+    const fresh = wordsOf(queueOf(events, { size: 10 })).filter((id) => !seen.includes(id));
+    expect(fresh.length).toBeGreaterThanOrEqual(7);
+  });
+
+  it('lets a card answered in the last hour wait, unless it is due', () => {
+    const ago = (minutes: number) => new Date(NOW.getTime() - minutes * MINUTE);
+    // right twice, the last time 30 minutes ago: scheduled days ahead, not due, not rested
+    const recent = [answer(ids[1]!, ago(41)), answer(ids[1]!, ago(30))];
+    // right once 5 minutes ago: in the 10-minute step, due in 5 minutes
+    const stepping = [answer(ids[2]!, ago(5))];
+    const events = [...recent, ...stepping];
+    const pool = ids.slice(0, 3).map(byId);
+    const picks = (now: Date, pool: readonly Word[]) =>
+      new Set(
+        Array.from(
+          { length: 50 },
+          (_, seed) => wordsOf(queueOf(events, { size: 1, pool, seed, now }))[0],
+        ),
+      );
+    expect(picks(NOW, pool)).toEqual(new Set([ids[0]]));
+    // still, a round never stays short: the weakest waiting card fills it
+    expect(wordsOf(queueOf(events, { size: 2, pool })).sort()).toEqual([ids[0]!, ids[2]!].sort());
+    expect(queueOf(events, { size: 3, pool })).toHaveLength(3);
+    // half an hour on, the stepping card is due and the rested one is back in the draw
+    const later = new Date(NOW.getTime() + 31 * MINUTE);
+    expect(wordsOf(queueOf(events, { size: 1, pool, now: later }))).toEqual([ids[2]]);
+    expect(picks(later, ids.slice(0, 2).map(byId))).toEqual(new Set([ids[0], ids[1]]));
   });
 
   it('gives a word one card, the due one over a new one, in mixed mode', () => {
-    const events = [answer(ids[0]!, at(0), 'recall')];
+    const events = [answer(ids[0]!, at(0), { skill: 'recall' })];
     for (let seed = 0; seed < 10; seed++) {
       const queue = queueOf(events, { size: 44, direction: 'mixed', seed });
       expect(new Set(queue.map((c) => c.wordId)).size).toBe(queue.length);

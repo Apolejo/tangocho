@@ -7,7 +7,15 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-  globalIgnores(['dist', 'dist-e2e', 'node_modules', 'shots', 'playwright-report', 'test-results']),
+  globalIgnores([
+    'dist',
+    'dist-e2e',
+    'node_modules',
+    'shots',
+    'playwright-report',
+    'test-results',
+    '.claude/worktrees', // the app's worktrees for other sessions: each lints itself
+  ]),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -19,6 +27,8 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2023,
       globals: { ...globals.browser, ...globals.node },
+      // this checkout's tsconfig, not one of a worktree the app keeps under .claude/worktrees/
+      parserOptions: { tsconfigRootDir: import.meta.dirname },
     },
   },
   prettier,

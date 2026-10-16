@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_NEW_PER_DAY, DEFAULT_SETTINGS, parseSettings } from './settings.ts';
+import { DEFAULT_SETTINGS, parseSettings } from './settings.ts';
 
 describe('parseSettings', () => {
   it('gives the defaults for nothing stored, broken JSON or the wrong shape', () => {
@@ -14,7 +14,6 @@ describe('parseSettings', () => {
         { from: '2026-10-20', goal: 50 },
         { from: '2026-10-13', goal: 10 },
       ],
-      newPerDay: 5,
       furigana: false,
       reportsBanner: true,
       lastExportAt: '2026-10-13T08:00:00.000Z',
@@ -24,7 +23,6 @@ describe('parseSettings', () => {
         { from: '2026-10-13', goal: 10 },
         { from: '2026-10-20', goal: 50 },
       ],
-      newPerDay: 5,
       furigana: false,
       reportsBanner: true,
       lastExportAt: '2026-10-13T08:00:00.000Z',
@@ -39,20 +37,16 @@ describe('parseSettings', () => {
   it('falls back field by field', () => {
     const raw = JSON.stringify({
       goals: [{ from: 'yesterday', goal: 20 }],
-      newPerDay: 7,
       furigana: 'no',
       reportsBanner: 'yes',
       lastExportAt: 'last week',
     });
     expect(parseSettings(raw)).toEqual({
       goals: [],
-      newPerDay: DEFAULT_NEW_PER_DAY,
       furigana: true,
       reportsBanner: false,
     });
-    expect(parseSettings(JSON.stringify({ newPerDay: 30 }))).toEqual({
-      ...DEFAULT_SETTINGS,
-      newPerDay: 30,
-    });
+    // a setting that no longer exists (new cards per day, retired in M13) is dropped
+    expect(parseSettings(JSON.stringify({ newPerDay: 30 }))).toEqual(DEFAULT_SETTINGS);
   });
 });

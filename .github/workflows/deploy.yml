@@ -25,9 +25,11 @@ concurrency:
   group: deploy
   cancel-in-progress: false
 
+# Runners pinned to 24.04: ubuntu-latest moves to 26.04 from 2026-10-19 (actions/runner-images#14748).
+# Playwright supports 26.04 since 1.61: move CI and Deploy to ubuntu-26.04 together, in one PR.
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       pages: read
@@ -47,7 +49,7 @@ jobs:
   deploy:
     needs: build
     if: ${{ !inputs.mirror_only && !inputs.stop_halfway }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       pages: write
       id-token: write
@@ -60,7 +62,7 @@ jobs:
 
   mirror:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: mirror
       url: https://apolejo.dev/tangocho/

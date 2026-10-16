@@ -5,9 +5,11 @@ on:
   push:
     branches: [main]
 
+# Runners pinned to 24.04: ubuntu-latest moves to 26.04 from 2026-10-19 (actions/runner-images#14748).
+# Playwright supports 26.04 since 1.61: move CI and Deploy to ubuntu-26.04 together, in one PR.
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7

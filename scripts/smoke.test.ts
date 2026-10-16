@@ -37,8 +37,12 @@ function site(changes: Record<string, Served> = {}): { fetch: Fetch; urls: strin
   const fetch: Fetch = async (url) => {
     urls.push(url);
     const name = url.slice(BASE.length);
-    const file = { ...files[name], ...changes[name] };
-    if (files[name] === undefined) return new Response('not found', { status: 404 });
+    const missing: Served = {
+      status: 404,
+      body: 'not found',
+      headers: { 'cache-control': 'no-cache' },
+    };
+    const file = { ...(files[name] ?? missing), ...changes[name] };
     return new Response(file.body ?? '', {
       status: file.status ?? 200,
       headers: file.headers ?? {},
@@ -56,6 +60,25 @@ describe('checkSite', () => {
       `${BASE}sw.js`,
       `${BASE}manifest.webmanifest`,
       `${BASE}assets/index-AbC123.js`,
+      `${BASE}assets/smoke-check-missing.js`,
+    ]);
+  });
+
+  it('fails when a missing asset is kept for a year', async () => {
+    const { fetch } = site({
+      'assets/smoke-check-missing.js': {
+        headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+      },
+    });
+    expect(await checkSite(BASE, dist, fetch)).toEqual([
+      'assets/smoke-check-missing.js: a 404 with cache-control "public, max-age=31536000, immutable"',
+    ]);
+  });
+
+  it('fails when a missing asset answers 200, as a catch-all page would', async () => {
+    const { fetch } = site({ 'assets/smoke-check-missing.js': { status: 200 } });
+    expect(await checkSite(BASE, dist, fetch)).toEqual([
+      'assets/smoke-check-missing.js: status 200, expected 404',
     ]);
   });
 

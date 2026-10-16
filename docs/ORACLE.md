@@ -176,7 +176,7 @@ gh variable set MIRROR_KNOWN_HOSTS --env mirror --body "apolejo.dev ssh-ed25519 
   1. Unpacks the same Pages artifact.
   2. `rsync -rcp --delete` into `incoming/`. With `-c`, unchanged files aren't rewritten, so older releases keep their hard links.
   3. `activate $GITHUB_SHA`.
-  4. `node scripts/smoke.ts https://apolejo.dev/tangocho/ dist`. It fails unless `index.html` and `sw.js` are byte-for-byte this build's, with `no-cache`, and the manifest has its type. A hashed asset must be `immutable`, and HSTS must be on.
+  4. `node scripts/smoke.ts https://apolejo.dev/tangocho/ dist`. It fails unless `index.html` and `sw.js` are byte-for-byte this build's, with `no-cache`, and the manifest has its type. A hashed asset must be `immutable`, a missing asset must be a 404 that isn't, and HSTS must be on.
 
 SSH steps retry three times.
 
@@ -210,6 +210,7 @@ curl -sI https://apolejo.dev/tangocho/                 # 200, cache-control: no-
 curl -sI https://apolejo.dev/tangocho/sw.js            # 200, no-cache
 curl -sI https://apolejo.dev/tangocho/manifest.webmanifest   # 200, no-cache, application/manifest+json
 curl -sI https://apolejo.dev/tangocho/assets/<index-hash>.js # 200, public, max-age=31536000, immutable
+curl -sI https://apolejo.dev/tangocho/assets/nope.js   # 404, no-cache: a missing asset is never kept
 curl -sI https://apolejo.dev/anything-else             # 404
 ```
 

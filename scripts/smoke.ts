@@ -14,14 +14,17 @@ export type ReadDist = (name: string) => string;
 
 const NO_CACHE = /(^|,)\s*no-cache\s*(,|$)/;
 const IMMUTABLE = /(^|,)\s*immutable\s*(,|$)/;
+const MISSING = 'assets/smoke-check-missing.js';
 
 /** What's wrong with the site at `base` (ending in a slash), or nothing. */
 export async function checkSite(base: string, dist: ReadDist, fetchFn: Fetch): Promise<string[]> {
   const problems: string[] = [];
-  const get = async (name: string) => {
+  const get = async (name: string, status = 200) => {
     const response = await fetchFn(new URL(name, base).href);
     const body = await response.text();
-    if (response.status !== 200) problems.push(`${name}: status ${response.status}, expected 200`);
+    if (response.status !== status) {
+      problems.push(`${name}: status ${response.status}, expected ${status}`);
+    }
     return { headers: response.headers, body };
   };
   const cacheControl = (name: string, headers: Headers, rule: RegExp, expected: string) => {
@@ -57,6 +60,13 @@ export async function checkSite(base: string, dist: ReadDist, fetchFn: Fetch): P
   } else {
     const script = await get(asset);
     cacheControl(asset, script.headers, IMMUTABLE, 'immutable');
+  }
+
+  // a browser that asks for an asset before its release is live must not keep the 404
+  const missing = await get(MISSING, 404);
+  const missingCache = missing.headers.get('cache-control') ?? '';
+  if (IMMUTABLE.test(missingCache)) {
+    problems.push(`${MISSING}: a 404 with cache-control "${missingCache}"`);
   }
   return problems;
 }

@@ -25,12 +25,15 @@ apolejo.dev {
 		# a symlink to releases/<sha>/, switched by tangocho-deploy (ops/tangocho-deploy.sh)
 		root * /srv/tangocho/current
 
-		# named by their content hash: they never change
+		# index.html, sw.js, the manifest, the icons and any 404: always revalidated, so a deploy shows at once
+		header Cache-Control no-cache
+		# named by their content hash, so they never change; only when found, though: a 404 kept
+		# for a year would break the next release in that browser
 		@hashed path /assets/*
-		header @hashed Cache-Control "public, max-age=31536000, immutable"
-		# index.html, sw.js, the manifest and the icons: always revalidated, so a deploy shows at once
-		@named not path /assets/*
-		header @named Cache-Control no-cache
+		header @hashed {
+			Cache-Control "public, max-age=31536000, immutable"
+			match status 2xx 304
+		}
 		header /manifest.webmanifest Content-Type application/manifest+json
 
 		file_server

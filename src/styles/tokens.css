@@ -14,7 +14,8 @@
   --ink: light-dark(#24211d, #ece5d8);
   --ink-soft: light-dark(#6b645a, #a9a293);
   --ai: light-dark(#2f4b6e, #8fa8cc); /* indigo: accents */
-  --shu: light-dark(#b8392a, #e36a55); /* vermilion: the ◯ stamp */
+  --shu: light-dark(#b8392a, #e36a55); /* vermilion: warnings, deleting, the hanko seals */
+  --midori: light-dark(#2f7a3a, #6fbf7a); /* green: the ◯ stamp and a right answer's feedback */
   --grain: light-dark(rgba(77, 64, 51, 0.07), rgba(236, 229, 216, 0.035)); /* the paper's specks */
   --washi: color-mix(in srgb, var(--ai) 14%, transparent);
   --margin-line: color-mix(in srgb, var(--shu) 35%, transparent);

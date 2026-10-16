@@ -9,7 +9,8 @@
 }
 
 apolejo.dev {
-	encode zstd gzip
+	# gzip only, like GitHub Pages: Safari's zstd support is recent (26.3) and partial
+	encode gzip
 	header {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains"
 		X-Content-Type-Options nosniff
@@ -40,7 +41,36 @@ apolejo.dev {
 	}
 
 	handle {
-		respond 404
+		error 404
+	}
+
+	# Errors answer with a typed page. An empty 404 has no Content-Type, and with nosniff Safari
+	# offers to download it as a file named after the address (a typo, /tanocho, did).
+	handle_errors 404 {
+		header Cache-Control no-cache
+		header Content-Type "text/html; charset=utf-8"
+		respond <<HTML
+			<!doctype html>
+			<html lang="en">
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="color-scheme" content="light dark">
+			<title>Not found · Tangochō</title>
+			<body style="margin: 0; padding: 3rem 1.25rem; font: 1.125rem/1.6 system-ui, sans-serif; background: light-dark(#f6f1e7, #171c27); color: light-dark(#24211d, #ece5d8)">
+			<main style="max-width: 32rem; margin: 0 auto">
+			<p><span lang="ja">単語帳</span> Tangochō</p>
+			<h1 style="font-size: 1.5rem">Nothing at this address</h1>
+			<p>The app is at <a href="/tangocho/" style="color: inherit">apolejo.dev/tangocho/</a>.</p>
+			<p lang="es">No hay nada en esta dirección. La app está en <a href="/tangocho/" style="color: inherit">apolejo.dev/tangocho/</a>.</p>
+			</main>
+			</body>
+			</html>
+			HTML 404
+	}
+	handle_errors {
+		header Cache-Control no-cache
+		header Content-Type "text/plain; charset=utf-8"
+		respond "{err.status_code} {err.status_text}" {err.status_code}
 	}
 }
 

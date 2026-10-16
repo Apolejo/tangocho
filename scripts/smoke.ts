@@ -68,6 +68,11 @@ export async function checkSite(base: string, dist: ReadDist, fetchFn: Fetch): P
   if (IMMUTABLE.test(missingCache)) {
     problems.push(`${MISSING}: a 404 with cache-control "${missingCache}"`);
   }
+  // and a mistyped address must show a page: an untyped 404 under nosniff makes Safari offer a download
+  const missingType = missing.headers.get('content-type') ?? '';
+  if (!missingType.startsWith('text/html')) {
+    problems.push(`${MISSING}: a 404 with content-type "${missingType}", expected text/html`);
+  }
   return problems;
 }
 

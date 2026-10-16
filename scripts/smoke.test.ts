@@ -40,10 +40,11 @@ function site(changes: Record<string, Served> = {}): { fetch: Fetch; urls: strin
     const missing: Served = {
       status: 404,
       body: 'not found',
-      headers: { 'cache-control': 'no-cache' },
+      headers: { 'cache-control': 'no-cache', 'content-type': 'text/html; charset=utf-8' },
     };
     const file = { ...(files[name] ?? missing), ...changes[name] };
-    return new Response(file.body ?? '', {
+    // no body rather than '': a string body would bring a text/plain type of its own
+    return new Response(file.body || null, {
       status: file.status ?? 200,
       headers: file.headers ?? {},
     });
@@ -67,11 +68,23 @@ describe('checkSite', () => {
   it('fails when a missing asset is kept for a year', async () => {
     const { fetch } = site({
       'assets/smoke-check-missing.js': {
-        headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+        headers: {
+          'cache-control': 'public, max-age=31536000, immutable',
+          'content-type': 'text/html; charset=utf-8',
+        },
       },
     });
     expect(await checkSite(BASE, dist, fetch)).toEqual([
       'assets/smoke-check-missing.js: a 404 with cache-control "public, max-age=31536000, immutable"',
+    ]);
+  });
+
+  it('fails when a 404 has no content type, which Safari offers to download', async () => {
+    const { fetch } = site({
+      'assets/smoke-check-missing.js': { body: '', headers: { 'cache-control': 'no-cache' } },
+    });
+    expect(await checkSite(BASE, dist, fetch)).toEqual([
+      'assets/smoke-check-missing.js: a 404 with content-type "", expected text/html',
     ]);
   });
 

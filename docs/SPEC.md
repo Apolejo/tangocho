@@ -30,7 +30,7 @@ A web app of minigames for practicing the Japanese words I study, entered from m
 | Concern | Choice |
 |---|---|
 | App | Vite + React + TypeScript (strict). Static site. |
-| Hosting | GitHub Pages, deployed by GitHub Actions on every push to `main`. |
+| Hosting | `https://apolejo.dev/tangocho/`, served by Caddy on my Oracle VM ([ORACLE.md](ORACLE.md)), and the same build on GitHub Pages; GitHub Actions deploys both on every push to `main`. Two origins, so each keeps its own storage and installed app. |
 | Offline and install | PWA via vite-plugin-pwa: a Workbox service worker precaches the app with its words, and only the font slices that cover a character the app can show (Fontsource splits Japanese fonts by unicode-range; the rest is left out, and new kanji bring their slices with the next deploy). A new version waits for *Reload* on a banner shown on Today, the notebook and the game list, never during a round; ✕ hides it until the next launch. Fonts self-hosted with Fontsource (no font CDN at runtime). Icons rendered from `public/icon.svg` by `npm run icons`. |
 | Data | JSON in `data/`, bundled at build time with `import.meta.glob`. New words = commit → CI deploys. |
 | Schema | Zod (`src/data/schema.ts`) plus cross-field rules (`src/data/rules.ts`), shared by the app and `npm run validate`. |
@@ -361,15 +361,14 @@ Starting tokens, adjusted in M1 from screenshots. Every text color passes AA (4.
 - `npm run check`: typecheck, lint, unit tests, data validation. Must pass before anything is called done.
 - `npm run e2e`: Playwright on desktop Chromium and mobile WebKit (iPhone viewport). Besides the games: axe (WCAG A and AA, contrast included) on every screen in both themes, every tap target measured on the phone, a whole round by keyboard alone, and a reload with no network once the service worker has cached the app (Chromium only). Service workers are blocked in every other test, so route mocks see every request.
 - `npm run shots`: screenshots of every screen at 390×844 and 1280×800, light and dark, with motion reduced so every mark is finished, saved to `shots/` (git-ignored), for reviewing the look.
-- CI on every pull request: check, e2e, build. Deploy to Pages on `main`.
+- CI on every pull request: check, e2e, build. Deploy to Pages and the Oracle mirror on `main`; the mirror's deploy fails unless a smoke check finds this build live over HTTPS.
 - **Definition of done** for any milestone: its "Done when" items pass; evidence shown (command output, screenshots); I tried it myself, on the phone once it's deployed; ROADMAP boxes ticked and SPEC updated if behavior changed; merged to `main`.
 
 ## 15. Open questions
 
 - A pronunciation button using the browser's speech synthesis (voice quality varies by device).
 
-For the milestones after v1 (ROADMAP M11–M12), each decided before that milestone's planning (M10 settled the name, Tangochō, and the coffee page, `apolejo`):
-- M11: the hostname for the Oracle server, a domain of my own (about $10 a year) or a free DuckDNS name.
+For the milestones after v1 (ROADMAP M11–M12), each decided before that milestone's planning (M10 settled the name, Tangochō, and the coffee page, `apolejo`; M11 the hostname, `apolejo.dev` at Porkbun: the app at `https://apolejo.dev/tangocho/`, the bare domain a temporary redirect there, `www` a permanent redirect to the bare domain):
 - M12, pairing a device: typing the sync key, about 26 characters in groups, with no new dependency (proposed first); or also scanning a QR code that opens the app with the key, which needs a small runtime QR library and leaves the key in the browser history.
 - M12, reset with sync on: today's reset deletes the local log, and synced devices would send it back. Proposed: a reset starts a new generation of the space, so every device drops the older events and the server deletes them. Or: a reset only stops syncing on that device.
 - M12, what syncs: the events only (proposed). The goal history, new cards per day, the theme and the language stay per device, as §10.4 already assumes for the goal.

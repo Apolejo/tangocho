@@ -149,8 +149,8 @@ Goal: the same build, served over HTTPS from my Always Free VM and deployed by C
 
 Before the session (you, about an hour in the Oracle console and at a DNS provider):
 
-- [ ] A hostname with an A record to the VM: a domain of my own, or a free DuckDNS name. A service worker and installing need HTTPS, and HTTPS needs a name.
-- [ ] The VM: Ubuntu LTS, SSH by key only, ports 80 and 443 open in the subnet's security list. (Oracle's Ubuntu images block them in iptables too; the runbook covers it.)
+- [x] A hostname with an A record to the VM: a domain of my own, or a free DuckDNS name. A service worker and installing need HTTPS, and HTTPS needs a name. (`apolejo.dev` at Porkbun.)
+- [x] The VM: Ubuntu LTS, SSH by key only, ports 80 and 443 open in the subnet's security list. (Oracle's Ubuntu images block them in iptables too; the runbook covers it.) (My existing Always Free VM, which also runs Docker game servers.)
 
 The session:
 

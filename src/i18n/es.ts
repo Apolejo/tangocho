@@ -68,7 +68,6 @@ export const es: Messages = {
   reports_label: 'Reportes de palabras',
   forms_show: 'Ver las formas de {word}',
   forms_title: 'Formas',
-  forms_close: 'Cerrar',
   game_unavailable_pool: 'Este juego necesita al menos {n} palabras.',
   setup_back: 'Todos los juegos',
   setup_decks: 'Mazos',
@@ -234,7 +233,11 @@ export const es: Messages = {
   settings_reports: 'Contar reportes abiertos',
   settings_reports_note:
     'La bandera junto a una palabra abre un reporte en GitHub, que necesita una cuenta de GitHub. Con Sí, al abrirse la app pregunta a GitHub cuántos reportes hay abiertos y muestra el número en Hoy, el cuaderno y la lista de juegos.',
-  about_thanks: 'Si la app te ayuda, puedes darme las gracias.',
+  about_thanks: 'Si la app te ayuda, puedes dar las gracias.',
   about_source: 'Código en GitHub',
   about_coffee: 'Invítame a un café',
+  thanks: 'Gracias',
+  thanks_sensei: 'Mi sensei',
+  thanks_author: 'Hecho por {handle}',
+  sheet_close: 'Cerrar',
 };

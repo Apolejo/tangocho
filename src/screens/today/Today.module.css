@@ -4,10 +4,65 @@
   padding: var(--space-2) var(--space-4) var(--space-6);
 }
 
-.title {
+/* the title, and Thanks at the end of its line */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
   margin: var(--space-3) 0;
+}
+
+.title {
+  margin: 0;
   font-size: var(--text-lg);
   font-weight: 700;
+}
+
+/* the tap target is full size; it reaches into the margins, so the line keeps its height */
+.thanks {
+  flex: none;
+  display: grid;
+  place-items: center;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0;
+  padding: 0 var(--space-2);
+  border: none;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink-soft);
+  font: inherit;
+  cursor: pointer;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.thanks:hover {
+  color: var(--ink);
+}
+
+.thanks:hover .chip {
+  border-color: var(--edge);
+}
+
+.heart {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: var(--shu);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
 }
 
 .titleJa {

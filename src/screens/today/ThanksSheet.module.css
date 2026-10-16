@@ -1,0 +1,18 @@
+/* titled like a screen: the word, then its Japanese */
+.title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.titleJa {
+  margin-left: var(--space-2);
+  color: var(--ink-soft);
+  font-family: var(--font-ja);
+  font-weight: 600;
+}
+
+.note {
+  margin: 0 0 var(--space-2);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}

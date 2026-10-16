@@ -65,7 +65,6 @@ export const en = {
   reports_label: 'Word reports',
   forms_show: 'Show the forms of {word}',
   forms_title: 'Forms',
-  forms_close: 'Close',
   game_unavailable_pool: 'This game needs at least {n} words.',
   setup_back: 'All games',
   setup_decks: 'Decks',
@@ -231,6 +230,10 @@ export const en = {
   about_thanks: 'If the app helps you, you can say thanks.',
   about_source: 'Source on GitHub',
   about_coffee: 'Buy me a coffee',
+  thanks: 'Thanks',
+  thanks_sensei: 'My sensei',
+  thanks_author: 'Made by {handle}',
+  sheet_close: 'Close',
 } satisfies Record<string, string>;
 
 export type MessageKey = keyof typeof en;

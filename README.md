@@ -4,13 +4,13 @@ Minigames for drilling the Japanese vocabulary from my own notebook (a quick qui
 
 Anyone can play: open the link, no account needed. Each player's progress stays on their own device; nothing is sent anywhere.
 
-- Live: https://apolejo.github.io/tangocho/
+- Live: https://apolejo.dev/tangocho/ (the same build is also on GitHub Pages, https://apolejo.github.io/tangocho/; each address keeps its own progress)
 - ☕ [Buy me a coffee](https://buymeacoffee.com/apolejo) if it helps you
 - Product spec: [docs/SPEC.md](docs/SPEC.md)
 - Roadmap and status: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Instructions for Claude Code: [CLAUDE.md](CLAUDE.md)
 
-Status: v1 done (M1–M9), and M10 opens it to other players. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`; tapping a verb shows its eight forms. Four games are playable: the quick quiz, the verb group sorter, kana typing and the conjugation drill. Every answer goes into a progress log in IndexedDB; spaced repetition (FSRS), personal bests, the daily goal and streak, and mastery are derived from it. Today (home) shows the streak, the stamp card and each game's due cards, with *Continue*; Stats shows mastery per deck and the weakest words; Settings exports and imports progress, which is how it moves between phone and computer. A ⚑ on any word opens the word-report issue form on GitHub, filled in and labelled for anyone with a GitHub account; Settings can turn on a banner that counts the open reports (off by default, so the app asks GitHub nothing until then). Settings → About shows the version, the source and the coffee link. It installs on the phone's home screen and works in airplane mode; it has a night-notebook theme, stamps that press onto the paper, and a round plays by keyboard alone.
+Status: v1 done (M1–M9), M10 opens it to other players, and M11 serves it from my own domain as well as GitHub Pages. The notebook holds every word from my paper notebook (1,175), imported with `/add-vocab`; tapping a verb shows its eight forms. Four games are playable: the quick quiz, the verb group sorter, kana typing and the conjugation drill. Every answer goes into a progress log in IndexedDB; spaced repetition (FSRS), personal bests, the daily goal and streak, and mastery are derived from it. Today (home) shows the streak, the stamp card and each game's due cards, with *Continue*; Stats shows mastery per deck and the weakest words; Settings exports and imports progress, which is how it moves between phone and computer. A ⚑ on any word opens the word-report issue form on GitHub, filled in and labelled for anyone with a GitHub account; Settings can turn on a banner that counts the open reports (off by default, so the app asks GitHub nothing until then). Settings → About shows the version, the source and the coffee link. It installs on the phone's home screen and works in airplane mode; it has a night-notebook theme, stamps that press onto the paper, and a round plays by keyboard alone.
 
 ## Run it
 
@@ -50,9 +50,9 @@ Open http://localhost:5173/tangocho/ (the `/tangocho/` path matches the GitHub P
 
 ## Install it on the iPhone
 
-1. Open https://apolejo.github.io/tangocho/ in Safari, then Share → Add to Home Screen.
+1. Open https://apolejo.dev/tangocho/ in Safari, then Share → Add to Home Screen.
 2. Open the app from the home screen once while online. Settings → Offline says when everything is saved on the phone.
-3. The home-screen app keeps its own storage, separate from Safari's: if you played in Safari, export there (Settings → Export progress) and import the file in the app.
+3. The home-screen app keeps its own storage, separate from Safari's and from the GitHub Pages copy: if you played in Safari or installed the Pages address before, export there (Settings → Export progress) and import the file in the app.
 4. From then on it works in airplane mode. When a new version is deployed (new words included), a banner offers *Reload*; it never shows during a round.
 
 ## Add vocabulary
@@ -61,4 +61,4 @@ Pages of the notebook (photos or PDFs) go in `inbox/`, which git ignores. In Cla
 
 ## Deploy
 
-Every push to `main` builds and publishes to GitHub Pages (`.github/workflows/deploy.yml`). Pull requests run `check`, `e2e` and `build` (`.github/workflows/ci.yml`).
+Every push to `main` builds once and publishes the build twice (`.github/workflows/deploy.yml`): to GitHub Pages, and over SSH to my Oracle VM, where Caddy serves it at https://apolejo.dev/tangocho/. The VM's side switches to a new release only once every file has arrived, keeps five for rollback, and the job fails unless a smoke check finds the new build live. The server's setup, firewall and rollback are in [docs/ORACLE.md](docs/ORACLE.md), its config files in `ops/`. Pull requests run `check`, `e2e` and `build` (`.github/workflows/ci.yml`).

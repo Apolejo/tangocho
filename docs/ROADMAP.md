@@ -164,17 +164,19 @@ Done when: a push to `main` updates both sites; the mirror installs on the phone
 
 The mirror is another origin, with its own storage and its own installed app: progress doesn't follow between it and Pages until M12.
 
-## M12 — Progress sync · SPEC §3, §10.1
+## M12 — Progress sync · SPEC §3, §10.1, §10.6
 
 Goal: one progress log shared by a person's devices, automatically and with no account. Export and import stay as the fallback.
 
-Progress is append-only events with unique ids, so sync is a set union with nothing to conflict: push what the server lacks, pull what this device lacks, and merge with the import that already exists.
+Progress is append-only events with unique ids, so sync is a set union with nothing to conflict: push what the server lacks, pull what this device lacks, and merge with the import that already exists. A reset is the one thing that removes events: it starts a new generation of the space.
 
-- [ ] Session 1, test-first: the sync service on the VM, Node and SQLite under systemd behind Caddy. A space per sync key, of which the server keeps only the SHA-256. `PUT /api/v1/events` (idempotent by event id), `GET /api/v1/events?after=<cursor>` (in the server's insertion order, so events imported late still arrive), `DELETE /api/v1/space`. Events validated with the import's Zod schema; size and rate limits; CORS for the Pages and mirror origins only; a nightly copy of the database.
-- [ ] Session 2: the client. An outbox in IndexedDB that every recorded or imported event enters and a push empties; pulls merge through `importEvents`. Sync at launch, after each round, back on screen and back online, with backoff, never blocking play; the service worker never caches the API. Settings → Sync: turn it on, the key for another device, join with a key, when it last synced, stop syncing here, delete my synced progress.
-- [ ] Session 3: pairing and reset across devices as decided (SPEC §15), the privacy note, SPEC and README.
+Decided on 2026-10-16 (SPEC §10.6): pairing by typing or pasting the key, no QR code and no new dependency; a reset starts a new generation everywhere; only the events sync; a space nobody has used for 12 months is deleted, and a deleted key is refused for good.
 
-Done when: an answer on the phone shows up on the computer within a minute of both being online; airplane mode still plays and syncs once back online; two keys never see each other's events; importing the same file twice still changes nothing.
+- [ ] Session 1, test-first: the sync service on the VM, Node and SQLite under systemd behind Caddy. A space per sync key, of which the server keeps only the SHA-256. `POST /api/v1/space` (a new space), `PUT /api/v1/events` (idempotent by event id), `GET /api/v1/events?after=<cursor>` (in the server's insertion order, so events imported late still arrive), `POST /api/v1/space/reset` (the next generation; the older events deleted), `DELETE /api/v1/space`. Every response carries the space's generation, and a push from an older one is refused; an unknown key and a deleted one get different errors. Events validated with the import's Zod schema; size and rate limits; CORS for the Pages and mirror origins only; a nightly job that copies the database and deletes the spaces unused for 12 months, keeping only their key hashes.
+- [ ] Session 2: the client. An outbox in IndexedDB that every recorded or imported event enters and a push empties; pulls merge through `importEvents`. Sync at launch, after each round, back on screen and back online, with backoff, never blocking play; the service worker never caches the API. Settings → Sync: turn it on, the key for another device in groups of five, join by typing or pasting a key (an unknown one refused), when it last synced, stop syncing here, delete my synced progress.
+- [ ] Session 3: across devices. A reset with sync on: both confirmations say every synced device, and offline it asks to try again once online; a newer generation empties the other devices' logs and outboxes, offline answers included, with a one-time note on Today. A deleted or expired key stops syncing and says why. The export reminder only once the last sync is over 7 days old. The privacy note, SPEC and README.
+
+Done when: an answer on the phone shows up on the computer within a minute of both being online; airplane mode still plays and syncs once back online; two keys never see each other's events; importing the same file twice still changes nothing; a reset on the phone empties the computer too, which says so on Today; after *Delete my synced progress* the other device stops syncing and keeps its own log.
 
 ---
 
@@ -186,3 +188,4 @@ Done when: an answer on the phone shows up on the computer within a minute of bo
 - Adjective conjugation.
 - Mixed daily review across games.
 - Run `/add-vocab` from your phone with Claude Code in the cloud → pull request → automatic deploy.
+- Optional accounts with a login on my server; playing as a guest, with progress on the device and sync by key (SPEC §10.6), stays.

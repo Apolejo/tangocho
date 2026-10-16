@@ -1,0 +1,83 @@
+/* ruled lines, like a page of the notebook */
+.links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links li {
+  border-top: 1px solid var(--rule);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: calc(var(--tap-min) + var(--space-2));
+  padding: var(--space-2) 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.link:hover .name {
+  text-decoration: underline;
+  text-decoration-color: var(--shu);
+  text-underline-offset: 4px;
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.where {
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
+
+/* a small drawing in ink, like the ⚑ */
+.icon,
+.out {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* 先 in a square seal, pressed slightly askew */
+.seal {
+  color: var(--shu);
+  rotate: -6deg;
+}
+
+.seal text {
+  fill: currentColor;
+  stroke: none;
+  font-family: var(--font-ja);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pen {
+  color: var(--ai);
+}
+
+.out {
+  width: 1rem;
+  height: 1rem;
+  color: var(--ink-soft);
+}

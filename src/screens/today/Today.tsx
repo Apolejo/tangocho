@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { gameHref } from '../../app/routes.ts';
 import buttons from '../../components/Buttons.module.css';
 import { StampCard } from '../../components/StampCard.tsx';
@@ -16,11 +16,12 @@ import { useProgress } from '../../progress/useProgress.ts';
 import { useSettings } from '../../progress/useSettings.ts';
 import { ExportBanner } from './ExportBanner.tsx';
 import { useFreshStamp } from './freshStamp.ts';
+import { ThanksSheet } from './ThanksSheet.tsx';
 import styles from './Today.module.css';
 
 /**
  * Today, the home screen (SPEC §7.1): the streak and this month's stamp card, the daily goal,
- * each game with its due cards, and *Continue*.
+ * each game with its due cards, and *Continue*. Beside the title, Thanks opens the thanks links.
  */
 export function Today() {
   const t = useT();
@@ -60,15 +61,35 @@ export function Today() {
   });
   const { year, month } = monthOf(today);
   const fresh = useFreshStamp(today, status === 'ready', calendar.goalDays.has(today));
+  const [thanksOpen, setThanksOpen] = useState(false);
 
   return (
     <section className={styles.today} aria-labelledby="today-title">
-      <h1 id="today-title" className={styles.title}>
-        {t('today_title')}{' '}
-        <span lang="ja" className={styles.titleJa}>
-          今日
-        </span>
-      </h1>
+      <div className={styles.head}>
+        <h1 id="today-title" className={styles.title}>
+          {t('today_title')}{' '}
+          <span lang="ja" className={styles.titleJa}>
+            今日
+          </span>
+        </h1>
+        {/* a small chip in a full-size tap target (SPEC §8.3); nothing opens unless tapped */}
+        <button
+          type="button"
+          className={styles.thanks}
+          aria-haspopup="dialog"
+          onClick={() => setThanksOpen(true)}
+          data-thanks
+        >
+          <span className={styles.chip}>
+            {/* a heart drawn in ink, like the ⚑: the emoji would come in the system's colors */}
+            <svg viewBox="0 0 24 24" className={styles.heart} aria-hidden="true" focusable="false">
+              <path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z" />
+            </svg>
+            {t('thanks')}
+          </span>
+        </button>
+      </div>
+      {thanksOpen && <ThanksSheet onClose={() => setThanksOpen(false)} />}
 
       {status === 'failed' && <p className={styles.note}>{t('progress_failed')}</p>}
       {remind && <ExportBanner never={settings.lastExportAt === undefined} />}

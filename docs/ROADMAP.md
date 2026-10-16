@@ -135,13 +135,15 @@ Decided on 2026-10-14: other people may play my words, each with their own progr
 
 Goal: someone who isn't me can open the link, play my words, and say thanks.
 
-- [ ] Settings → About: the app's version, the source on GitHub, a one-line privacy note (progress stays on this device), and ☕ *Buy me a coffee*, a plain link to my page drawn with the app's tokens. Not the Buy Me a Coffee widget: its script and cookies would be another request to another site (§5.7), and it does nothing offline. Never during a round.
-- [ ] `.github/FUNDING.yml` (`buy_me_a_coffee: <name>`), so the repo shows a Sponsor button; the link in the README too.
-- [ ] The open word reports banner only where I turn it on: a Settings switch, off by default. The ⚑ button stays for everyone.
-- [ ] Word reports that work for everyone: a word-report issue form (`.github/ISSUE_TEMPLATE/word-report.yml`) that labels its issues itself, and the ⚑ link opening it with its fields filled in (the word with its reading and meaning, the form and the app's answer, where it was reported, the notebook page). Today the link sets the label with `labels=`, which GitHub honors only for people who can label issues in the repo, so another player's report would lose the label the banner and the fix workflow count on, or not open at all. Reporting still needs a GitHub account (SPEC §15).
-- [ ] Wording for more than one player in the UI, the README and SPEC §1 and §3; the final name (SPEC §15) before the link goes around.
+- [x] Settings → About: the app's version, the source on GitHub, a one-line privacy note (progress stays on this device), and ☕ *Buy me a coffee*, a plain link to my page drawn with the app's tokens. Not the Buy Me a Coffee widget: its script and cookies would be another request to another site (§5.7), and it does nothing offline. Never during a round.
+- [x] `.github/FUNDING.yml` (`buy_me_a_coffee: <name>`), so the repo shows a Sponsor button; the link in the README too.
+- [x] The open word reports banner only where I turn it on: a Settings switch, off by default. The ⚑ button stays for everyone.
+- [x] Word reports that work for everyone: a word-report issue form (`.github/ISSUE_TEMPLATE/word-report.yml`) that labels its issues itself, and the ⚑ link opening it with its fields filled in (the word with its reading and meaning, the form and the app's answer, where it was reported, the notebook page). Today the link sets the label with `labels=`, which GitHub honors only for people who can label issues in the repo, so another player's report would lose the label the banner and the fix workflow count on, or not open at all. Reporting still needs a GitHub account (SPEC §15).
+- [x] Wording for more than one player in the UI, the README and SPEC §1 and §3; the final name (SPEC §15) before the link goes around.
 
 Done when: the coffee link opens my page from Settings on the phone and from the repo on GitHub; the reports banner shows only where it's turned on; a report made from a GitHub account that isn't mine arrives labelled `word-report` and is counted; the a11y and tap-target specs cover the new controls.
+
+Closed on 2026-10-15, with one check deferred: no report has come from another GitHub account yet. The form works from `main` and labels its issues itself; the first report from another player is the check, and it stops mattering once reports move off GitHub (SPEC §15).
 
 ## M11 — Oracle server: an HTTPS mirror · SPEC §4
 

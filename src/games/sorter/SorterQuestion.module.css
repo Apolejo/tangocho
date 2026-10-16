@@ -69,8 +69,8 @@
 }
 
 .group[data-state='correct'] {
-  border-color: var(--shu);
-  box-shadow: inset 0 0 0 1px var(--shu);
+  border-color: var(--midori);
+  box-shadow: inset 0 0 0 1px var(--midori);
 }
 
 .group[data-state='wrong'] {
@@ -111,7 +111,7 @@
 }
 
 .mark[data-mark='correct'] {
-  color: var(--shu);
+  color: var(--midori);
 }
 
 .mark[data-mark='wrong'] {

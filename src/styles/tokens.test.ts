@@ -117,11 +117,14 @@ describe.each([
   const washi = over(token('--washi', scheme), paper); // the banners and washi-tape strips
   const grounds = { paper, card, washi } as const;
 
-  it.each(['--ink', '--ink-soft', '--ai', '--shu'])('%s text is AA on paper and card', (name) => {
-    for (const ground of [paper, card]) {
-      expect(contrast(token(name, scheme), ground)).toBeGreaterThanOrEqual(4.5);
-    }
-  });
+  it.each(['--ink', '--ink-soft', '--ai', '--shu', '--midori'])(
+    '%s text is AA on paper and card',
+    (name) => {
+      for (const ground of [paper, card]) {
+        expect(contrast(token(name, scheme), ground)).toBeGreaterThanOrEqual(4.5);
+      }
+    },
+  );
 
   it.each(['--ink', '--ai'])('%s text is AA on washi tape', (name) => {
     expect(contrast(token(name, scheme), grounds.washi)).toBeGreaterThanOrEqual(4.5);
@@ -135,7 +138,8 @@ describe.each([
     ['--edge', 'a text field, on the question card', ['paper', 'card']],
     ['--ai', 'the focus ring', ['paper', 'card', 'washi']],
     ['--ink-soft', 'an icon, like the banners’ ✕', ['paper', 'card', 'washi']],
-    ['--shu', 'the ◯ stamp', ['paper', 'card']],
+    ['--shu', 'the border of a Delete button', ['paper', 'card']],
+    ['--midori', 'the ◯ stamp', ['paper', 'card']],
   ] as const)('%s, %s, is 3:1 against what it sits on', (name, _, on) => {
     for (const ground of on) {
       expect(contrast(token(name, scheme), grounds[ground])).toBeGreaterThanOrEqual(3);

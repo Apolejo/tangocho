@@ -349,7 +349,7 @@ Optional, and off until turned on in Settings (§7.7): a person's devices share 
 ## 13. Look and feel — Japanese stationery
 
 - **Paper**: warm off-white with a subtle grain, ruled lines on cards, washi-tape headers, decks as notebook tabs.
-- **Ink**: near-black sumi for text, indigo for accents, vermilion (朱) for the ◯ stamp; on Japanese tests a red ◯ marks a correct answer. Color is never the only signal: the ◯ and ✕ shapes carry the meaning.
+- **Ink**: near-black sumi for text, indigo for accents, green (緑) for the ◯ and the 花丸, vermilion (朱) for warnings, deleting and the hanko seals (新記録, 済). On Japanese tests a red ◯ marks a correct answer; here a right answer is green and red stays for what needs attention. Color is never the only signal: the ◯ and ✕ shapes carry the meaning.
 - **Feedback**: a hanko-style stamp (slight rotation, ink spread): ◯/✕ and the 新記録 seal press onto the paper in about 0.3 s; the 花丸 for a perfect round draws itself, spiral then petals; today's hanko presses onto the stamp card once (§7.1). The finished mark is the resting state, so under `prefers-reduced-motion` all motion is off and the marks simply appear.
 - **Type**: Japanese prompts in a pen-written face close to textbook glyphs, so learners see real stroke shapes (Klee One). UI in a clean sans with Japanese coverage (Zen Kaku Gothic New). Chosen in M1 from screenshots, against Zen Kurenaido and Yomogi for prompts and BIZ UDPGothic and Zen Maru Gothic for the UI.
 - **Dark mode**: "night notebook", deep indigo paper and light ink, with faint light specks of grain. Follows the system, with an override in Settings (system, light, dark). Every color token is `light-dark(light, dark)`; the override sets `<html data-theme>`, which sets `color-scheme`, before the first paint, and both `theme-color` metas follow it.
@@ -367,6 +367,7 @@ Starting tokens, adjusted in M1 from screenshots. Every text color passes AA (4.
 | `--ink-soft` | `#6B645A` | `#A9A293` |
 | `--ai` (indigo) | `#2F4B6E` | `#8FA8CC` |
 | `--shu` (vermilion) | `#B8392A` | `#E36A55` |
+| `--midori` (green) | `#2F7A3A` | `#6FBF7A` |
 | `--edge` (a field's border) | `#8C8272` | `#6B7590` |
 | `--grain` (paper specks) | ink brown at 7% | paper white at 3.5% |
 

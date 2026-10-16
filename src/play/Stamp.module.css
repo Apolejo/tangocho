@@ -7,7 +7,7 @@
 }
 
 .maru {
-  color: var(--shu);
+  color: var(--midori);
   rotate: -6deg;
 }
 
@@ -19,7 +19,7 @@
 .hanamaru {
   width: var(--stamp-size-lg);
   height: var(--stamp-size-lg);
-  color: var(--shu);
+  color: var(--midori);
   rotate: -8deg;
 }
 

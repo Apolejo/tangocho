@@ -1,7 +1,7 @@
 import type { Word } from '../data/schema.ts';
 import type { Card, Minigame } from '../games/types.ts';
 import type { AnswerEvent } from './events.ts';
-import { recentMisses, type CardStates } from './srs.ts';
+import { recentMisses, weakness, type CardStates } from './srs.ts';
 
 /**
  * The Stats screen's numbers (SPEC §7.6, §10.5), from the log. Words no longer in the data are
@@ -77,8 +77,8 @@ export interface WeakCard {
 export const WEAKEST_COUNT = 10;
 
 /**
- * A game's weakest cards: the most misses among each card's latest answers, ties to the lower
- * stability. A card with no recent miss isn't weak, so a word drops off once it's right again.
+ * A game's weakest cards: the highest weakness (SPEC §10.2), ties to the lower stability. A card
+ * with no miss among its latest answers isn't weak, so a word drops off once they're all right.
  */
 export function weakestCards(
   cards: CardStates,
@@ -86,7 +86,7 @@ export function weakestCards(
   wordsById: ReadonlyMap<string, Word>,
   limit = WEAKEST_COUNT,
 ): WeakCard[] {
-  const weak: (WeakCard & { stability: number })[] = [];
+  const weak: (WeakCard & { weakness: number; stability: number })[] = [];
   for (const state of cards.values()) {
     if (!game.skills.includes(state.skill)) continue;
     const word = wordsById.get(state.wordId);
@@ -98,12 +98,13 @@ export function weakestCards(
       word,
       misses,
       answers: state.recent.length,
+      weakness: weakness(state),
       stability: state.fsrs.stability,
     });
   }
   weak.sort(
     (a, b) =>
-      b.misses - a.misses ||
+      b.weakness - a.weakness ||
       a.stability - b.stability ||
       (a.card.wordId < b.card.wordId ? -1 : a.card.wordId > b.card.wordId ? 1 : 0) ||
       (a.card.skill < b.card.skill ? -1 : a.card.skill > b.card.skill ? 1 : 0),

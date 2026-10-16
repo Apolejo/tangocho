@@ -5,12 +5,12 @@ import { answerEvent, type AnswerEvent } from './events.ts';
 import { RECENT_ANSWERS } from './forms.ts';
 import {
   cardKey,
-  introducedOn,
   isDue,
   rating,
   recentMisses,
   replay,
   review,
+  weakness,
   type CardState,
 } from './srs.ts';
 
@@ -163,17 +163,34 @@ describe('isDue', () => {
   });
 });
 
-describe('introducedOn', () => {
-  it("counts the cards first answered on a day, by the app's day", () => {
-    const cards = replay([
-      answer(new Date(2026, 9, 12, 20, 0), true, { wordId: 'a' }),
-      answer(new Date(2026, 9, 13, 20, 0), true, { wordId: 'a' }), // seen before: not new today
-      answer(new Date(2026, 9, 13, 9, 0), true, { wordId: 'b' }),
-      answer(new Date(2026, 9, 14, 2, 0), true, { wordId: 'c' }), // 2 a.m.: still the 13th
-      answer(new Date(2026, 9, 14, 4, 0), true, { wordId: 'd' }),
-    ]);
-    expect(introducedOn(cards, '2026-10-12')).toBe(1);
-    expect(introducedOn(cards, '2026-10-13')).toBe(2);
-    expect(introducedOn(cards, '2026-10-14')).toBe(1);
+describe('weakness (SPEC §10.2)', () => {
+  /** The card's weakness after these answers, 20 minutes apart, oldest first. */
+  const after = (...results: boolean[]): number =>
+    weakness(
+      only(replay(results.map((correct, i) => answer(new Date(2026, 9, 12, 12, i * 20), correct)))),
+    );
+  const rights = (n: number): boolean[] => Array.from({ length: n }, () => true);
+
+  it('is 0.5 for a card never seen, and never takes one right answer for granted', () => {
+    expect(weakness(undefined)).toBe(0.5);
+    expect(after(true)).toBeCloseTo(1 / 3);
+    expect(after(true, true)).toBeCloseTo(1 / 3.8);
+  });
+
+  it('falls with every right answer, the latest counting most', () => {
+    expect(after(...rights(3))).toBeCloseTo(0.225, 2);
+    expect(after(...rights(10))).toBeCloseTo(0.155, 2);
+    expect(after(...rights(20))).toBeCloseTo(0.144, 2);
+  });
+
+  it('rises with a miss, a late one more than an early one', () => {
+    expect(after(false)).toBeCloseTo(2 / 3);
+    expect(after(true, false)).toBeGreaterThan(after(false, true));
+    expect(after(...rights(5), false)).toBeCloseTo(0.35, 1);
+    expect(after(...rights(5), false)).toBeGreaterThan(after(...rights(5)));
+  });
+
+  it('looks at the last 20 answers only', () => {
+    expect(after(false, ...rights(RECENT_ANSWERS))).toBe(after(...rights(RECENT_ANSWERS)));
   });
 });

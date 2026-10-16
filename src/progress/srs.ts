@@ -7,7 +7,7 @@ import {
   type Grade,
 } from 'ts-fsrs';
 import type { Skill } from '../games/types.ts';
-import { addDays, dayKey, type DayKey } from './day.ts';
+import { addDays, dayKey } from './day.ts';
 import type { AnswerEvent } from './events.ts';
 import { RECENT_ANSWERS } from './forms.ts';
 
@@ -93,11 +93,26 @@ export function isDue(state: CardState, now: Date): boolean {
   return due.getTime() <= now.getTime();
 }
 
-/** How many cards were answered for the first time on a day (the new cards it introduced). */
-export function introducedOn(cards: CardStates, day: DayKey): number {
-  let n = 0;
-  for (const state of cards.values()) if (dayKey(new Date(state.firstAt)) === day) n++;
-  return n;
+/** Each answer weighs this much of the one after it in a card's weakness. */
+export const ANSWER_DECAY = 0.8;
+
+/**
+ * How likely a card is to be missed (SPEC §10.2), from its latest answers with the latest counting
+ * most: each weighs ANSWER_DECAY times the one after it, and one virtual miss and one virtual hit
+ * stand for what isn't known yet. A card never seen is 0.5; right once, 1/3, so one right answer
+ * is never taken for granted; right ten times in a row, about 0.15; wrong once, 2/3. The queue
+ * draws by it, and Stats ranks the weakest words by it (§10.5).
+ */
+export function weakness(state: Pick<CardState, 'recent'> | undefined): number {
+  let answers = 0;
+  let misses = 0;
+  let weight = 1;
+  const recent = state?.recent ?? [];
+  for (let i = recent.length - 1; i >= 0; i--, weight *= ANSWER_DECAY) {
+    answers += weight;
+    if (!recent[i]) misses += weight;
+  }
+  return (1 + misses) / (2 + answers);
 }
 
 /** Misses among the card's latest answers. */

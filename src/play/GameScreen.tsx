@@ -6,10 +6,7 @@ import { words } from '../data/load.ts';
 import type { Card, Minigame } from '../games/types.ts';
 import { useLang, useT } from '../i18n/hooks.ts';
 import { mulberry32, newId, randomSeed } from '../lib/random.ts';
-import { dayKey } from '../progress/day.ts';
 import { formStats } from '../progress/forms.ts';
-import { getSettings } from '../progress/settings.ts';
-import { introducedOn } from '../progress/srs.ts';
 import { weakestCards } from '../progress/stats.ts';
 import { progress } from '../progress/store.ts';
 import { DECKS, KNOWN_DECKS, OPENED_AT } from './catalog.ts';
@@ -61,7 +58,7 @@ export function GameScreen({ game, intent }: { game: Minigame; intent?: GameInte
     saveSetup(game.id, next);
   };
 
-  // the queue reads the log (SPEC §10.2): due cards, today's new cards, and the forms missed more
+  // the queue reads the log (SPEC §10.2): due cards, each card's weakness, and the forms missed more
   // often for a game whose cards have one; a log that couldn't be read leaves every card new
   const start = async (
     from: Pick<RoundPlan, 'deckIds' | 'options'> & { size: number },
@@ -77,7 +74,6 @@ export function GameScreen({ game, intent }: { game: Minigame; intent?: GameInte
       game.formsFor !== undefined
         ? formStats(answers.filter((a) => a.game === game.id))
         : undefined;
-    const newLeft = Math.max(0, getSettings().newPerDay - introducedOn(cards, dayKey(now)));
     const selected = DECKS.filter((d) => from.deckIds.includes(deckId(d)));
     const plan = planRound({
       id: newId(),
@@ -88,7 +84,7 @@ export function GameScreen({ game, intent }: { game: Minigame; intent?: GameInte
       words: wordsInDecks(selected, words, OPENED_AT),
       only,
       formStats: stats,
-      srs: { cards, now, newLeft },
+      srs: { cards, now },
       rng: mulberry32(randomSeed()),
     });
     startingRef.current = false;

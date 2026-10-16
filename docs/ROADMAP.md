@@ -178,6 +178,17 @@ Decided on 2026-10-16 (SPEC §10.6): pairing by typing or pasting the key, no QR
 
 Done when: an answer on the phone shows up on the computer within a minute of both being online; airplane mode still plays and syncs once back online; two keys never see each other's events; importing the same file twice still changes nothing; a reset on the phone empties the computer too, which says so on Today; after *Delete my synced progress* the other device stops syncing and keeps its own log.
 
+## M13 — Weak words first · SPEC §10.2, §10.5, §7.7
+
+Goal: rounds that keep teaching. New words flow with no daily limit, the words I miss come back more often, and one right answer never retires a word.
+
+Built on 2026-10-16, before M12: play-testing showed that once the day's 15 new cards were out, every round drew from the same 15 words until the next morning.
+
+- [x] A card's weakness from its latest answers, the latest counting most (SPEC §10.2); Stats ranks the weakest words by it (§10.5).
+- [x] The round queue: due cards first, the weakest first, up to 7 of 10; then a draw among the new words and the words not due, each as likely as its weakness, with cards answered in the last hour waiting. The daily limit on new cards and its setting are gone.
+
+Done when: unit tests cover the weakness scale and the queue's tiers; a simulated session on a fresh profile shows new words in every round and missed words coming back more often than known ones.
+
 ---
 
 ## Ideas, not promises

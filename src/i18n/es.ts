@@ -186,9 +186,6 @@ export const es: Messages = {
   settings_goal: 'Meta diaria',
   settings_goal_option: '{n} respuestas',
   settings_goal_note: 'Un cambio cuenta desde hoy; los días anteriores conservan su meta.',
-  settings_new: 'Tarjetas nuevas por día',
-  settings_new_note:
-    'Compartidas entre todos los juegos. Si no queda nada más que preguntar, la ronda se completa con más.',
   settings_progress: 'Progreso',
   settings_transfer_note:
     'Exporta en un dispositivo e importa en el otro: las respuestas se combinan, y nada se pierde ni se cuenta dos veces.',

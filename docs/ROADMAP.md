@@ -154,9 +154,9 @@ Before the session (you, about an hour in the Oracle console and at a DNS provid
 
 The session:
 
-- [ ] `docs/ORACLE.md`, a runbook: the firewall at both layers, Caddy (automatic HTTPS), a `deploy` user that can only write the web root, unattended security upgrades, SSH hardening.
-- [ ] The Caddyfile: the site at `https://<host>/tangocho/`, the same path as Pages, so the build is identical; `index.html`, `sw.js` and the manifest with `no-cache`, hashed assets immutable; HSTS; `/api/` kept for M12.
-- [ ] A deploy job after the Pages build, with the same `dist/`: rsync over SSH to `releases/<sha>/`, then switch a `current` symlink, so a half-uploaded site is never served (the service worker precaches whatever `index.html` names); five releases kept for rollback. A smoke check fails the job unless the page, `sw.js` and the manifest answer 200 over HTTPS.
+- [x] `docs/ORACLE.md`, a runbook: the firewall at both layers, Caddy (automatic HTTPS), a `deploy` user that can only write the web root, unattended security upgrades, SSH hardening.
+- [x] The Caddyfile: the site at `https://<host>/tangocho/`, the same path as Pages, so the build is identical; `index.html`, `sw.js` and the manifest with `no-cache`, hashed assets immutable; HSTS; `/api/` kept for M12.
+- [x] A deploy job after the Pages build, with the same `dist/`: rsync over SSH into `incoming/`, then `activate` hard-links it into `releases/<sha>/`, refuses it unless every file the service worker precaches is there, and switches a `current` symlink, so a half-uploaded site is never served (the service worker precaches whatever `index.html` names); five releases kept for rollback. A smoke check fails the job unless this build's page and `sw.js`, and the manifest, answer over HTTPS with the right headers.
 
 Done when: a push to `main` updates both sites; the mirror installs on the phone and works in airplane mode; a deploy that fails halfway leaves the previous release serving.
 

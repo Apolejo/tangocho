@@ -15,7 +15,6 @@ describe('parseSettings', () => {
         { from: '2026-10-13', goal: 10 },
       ],
       furigana: false,
-      reportsBanner: true,
       lastExportAt: '2026-10-13T08:00:00.000Z',
     });
     expect(parseSettings(raw)).toEqual({
@@ -24,29 +23,21 @@ describe('parseSettings', () => {
         { from: '2026-10-20', goal: 50 },
       ],
       furigana: false,
-      reportsBanner: true,
       lastExportAt: '2026-10-13T08:00:00.000Z',
     });
-  });
-
-  it('counts the open word reports only once turned on', () => {
-    expect(DEFAULT_SETTINGS.reportsBanner).toBe(false);
-    expect(parseSettings(JSON.stringify({ furigana: false })).reportsBanner).toBe(false);
   });
 
   it('falls back field by field', () => {
     const raw = JSON.stringify({
       goals: [{ from: 'yesterday', goal: 20 }],
       furigana: 'no',
-      reportsBanner: 'yes',
       lastExportAt: 'last week',
     });
-    expect(parseSettings(raw)).toEqual({
-      goals: [],
-      furigana: true,
-      reportsBanner: false,
-    });
-    // a setting that no longer exists (new cards per day, retired in M13) is dropped
-    expect(parseSettings(JSON.stringify({ newPerDay: 30 }))).toEqual(DEFAULT_SETTINGS);
+    expect(parseSettings(raw)).toEqual({ goals: [], furigana: true });
+    // settings that no longer exist (new cards per day, retired in M13; the open word reports
+    // count, retired with the GitHub issues) are dropped
+    expect(parseSettings(JSON.stringify({ newPerDay: 30, reportsBanner: true }))).toEqual(
+      DEFAULT_SETTINGS,
+    );
   });
 });

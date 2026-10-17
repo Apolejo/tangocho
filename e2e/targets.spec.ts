@@ -1,4 +1,3 @@
-import { showReportsBanner } from './reports.ts';
 import { daysAgo, importProgress, seedFile, seedRound } from './seed.ts';
 import { expect, test, type Page } from './test.ts';
 
@@ -135,7 +134,6 @@ const SCREENS: { name: string; hash: string; steps?(page: Page): Promise<void> }
     },
   },
   { name: 'Settings', hash: '#/settings' },
-  { name: 'the open word reports banner', hash: '#/settings', steps: showReportsBanner },
   { name: 'a page that does not exist', hash: '#/nowhere' },
 ];
 

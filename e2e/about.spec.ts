@@ -2,9 +2,8 @@ import { readFileSync } from 'node:fs';
 import { expect, test } from './test.ts';
 
 /**
- * Settings → About (SPEC §7.7): the version, the privacy note, the open word reports count (off
- * at first), and plain links out in new tabs: the thanks links (the same as Today's Thanks) and the
- * source.
+ * Settings → About (SPEC §7.7): the version, the privacy note, and plain links out in new tabs:
+ * the thanks links (the same as Today's Thanks).
  */
 
 const { version } = JSON.parse(readFileSync('package.json', 'utf8')) as { version: string };
@@ -12,8 +11,7 @@ const { version } = JSON.parse(readFileSync('package.json', 'utf8')) as { versio
 const LINKS = {
   'My sensei': 'https://www.instagram.com/heros.to.nihongo/',
   'Made by @apolejoo': 'https://www.instagram.com/apolejoo/',
-  'Buy me a coffee': 'https://buymeacoffee.com/apolejo',
-  'Source on GitHub': 'https://github.com/Apolejo/tangocho',
+  'Buy me a coffee': 'https://paypal.me/apolejo',
 };
 
 test('About shows the version, the privacy note and the links, in both languages', async ({
@@ -25,11 +23,6 @@ test('About shows the version, the privacy note and the links, in both languages
     new RegExp(`^Version ${version} · \\S+$`),
   );
   await expect(page.getByText('Your progress stays on this device')).toBeVisible();
-  await expect(
-    page
-      .getByRole('group', { name: 'Count open word reports' })
-      .getByRole('radio', { name: 'Off' }),
-  ).toBeChecked();
 
   for (const [name, href] of Object.entries(LINKS)) {
     const link = page.getByRole('link', { name });
@@ -53,9 +46,5 @@ test('About shows the version, the privacy note and the links, in both languages
   await expect(page.getByRole('link', { name: 'Invítame a un café' })).toHaveAttribute(
     'href',
     LINKS['Buy me a coffee'],
-  );
-  await expect(page.getByRole('link', { name: 'Código en GitHub' })).toHaveAttribute(
-    'href',
-    LINKS['Source on GitHub'],
   );
 });

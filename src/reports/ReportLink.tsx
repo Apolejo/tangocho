@@ -1,11 +1,12 @@
 import { useLang, useT } from '../i18n/hooks.ts';
 import { displayForm } from '../lib/verbs.ts';
-import { reportUrl, type Report } from './report.ts';
+import { reportMailto, type Report } from './report.ts';
 import styles from './ReportLink.module.css';
 
 /**
- * The ⚑ on a word (SPEC §5.7): opens a prefilled new issue on GitHub in a new tab. Nothing is
- * sent until the issue is submitted there.
+ * The ⚑ on a word (SPEC §5.7): opens a prefilled email to the report address in the reporter's
+ * mail app. Nothing is sent until they send it there. No `target`: a mailto: in a new tab leaves
+ * a blank one behind in some desktop browsers.
  */
 export function ReportLink({ report, className }: { report: Report; className?: string }) {
   const { lang } = useLang();
@@ -13,9 +14,7 @@ export function ReportLink({ report, className }: { report: Report; className?: 
   const shown = displayForm(report.word);
   return (
     <a
-      href={reportUrl(report, lang)}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={reportMailto(report, lang)}
       className={`${styles.flag} ${className ?? ''}`}
       aria-label={t('report_label', { word: shown.kanji ?? shown.kana })}
       data-report={report.word.id}

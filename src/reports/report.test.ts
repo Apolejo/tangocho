@@ -1,15 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import form from '../../.github/ISSUE_TEMPLATE/word-report.yml?raw';
 import fixtures from '../../data/fixtures/words.json';
 import { WordsFileSchema, type Word } from '../data/schema.ts';
-import {
-  OPEN_REPORTS_PAGE,
-  REPORT_FIELDS,
-  REPORT_LABEL,
-  reportFields,
-  reportTitle,
-  reportUrl,
-} from './report.ts';
+import { REPORT_EMAIL, reportBody, reportFields, reportMailto, reportTitle } from './report.ts';
 
 const all = WordsFileSchema.parse(fixtures);
 const byId = (id: string): Word => {
@@ -18,24 +10,68 @@ const byId = (id: string): Word => {
   return word;
 };
 
-describe('reportUrl', () => {
-  it('opens the word-report form on the repo, its fields and title filled in', () => {
+describe('reportMailto', () => {
+  const report = {
+    word: byId('kaku'),
+    from: 'Conjugation drill',
+    form: 'て',
+    answer: '書いて（かいて）',
+  };
+
+  it('writes to the report address, the title as the subject and the fields in the body', () => {
+    const link = reportMailto(report, 'en');
+    const url = new URL(link);
+    expect(url.protocol).toBe('mailto:');
+    expect(url.pathname).toBe(REPORT_EMAIL);
+    expect(url.searchParams.get('subject')).toBe(reportTitle(report, 'en'));
+    expect(url.searchParams.get('body')).toBe(reportBody(report, 'en'));
+  });
+
+  it('encodes spaces as %20, never "+", which a mail app would show as a plus sign', () => {
+    const link = reportMailto(report, 'en');
+    expect(link).toContain('subject=Word%20report');
+    expect(link).not.toContain('+');
+  });
+});
+
+describe('reportBody', () => {
+  it('leaves room to write, then lists what the app showed, one field per line', () => {
     const report = {
       word: byId('kaku'),
       from: 'Conjugation drill',
       form: 'て',
       answer: '書いて（かいて）',
     };
-    const url = new URL(reportUrl(report, 'en'));
-    expect(url.origin + url.pathname).toBe('https://github.com/Apolejo/tangocho/issues/new');
-    expect(url.searchParams.get('template')).toBe('word-report.yml');
-    expect(url.searchParams.get('title')).toBe(reportTitle(report, 'en'));
-    for (const [id, value] of reportFields(report, 'en')) {
-      expect(url.searchParams.get(id)).toBe(value);
-    }
-    // the form labels the issue: labels= needs permission to label, and the form makes the body
-    expect(url.searchParams.has('labels')).toBe(false);
-    expect(url.searchParams.has('body')).toBe(false);
+    expect(reportBody(report, 'en').split('\r\n')).toEqual([
+      'What looks wrong? Write it here:',
+      '',
+      '',
+      '---',
+      'What the app showed (please leave as it is):',
+      'Word id: kaku',
+      'Shown as: 書きます（かきます）',
+      'Meaning: to write',
+      'Form: て形',
+      'App’s answer: 書いて（かいて）',
+      'Reported from: Conjugation drill',
+      'Notebook page: sample',
+    ]);
+  });
+
+  it('is in the UI language, and leaves out what a report doesn’t have', () => {
+    const word: Word = { ...byId('sensei') };
+    delete word.source;
+    expect(reportBody({ word, from: 'Cuaderno' }, 'es').split('\r\n')).toEqual([
+      '¿Qué parece estar mal? Escríbelo aquí:',
+      '',
+      '',
+      '---',
+      'Lo que mostraba la app (déjalo como está):',
+      'Id de la palabra: sensei',
+      'Se muestra como: 先生（せんせい）',
+      'Significado: profesor, maestro',
+      'Reportado desde: Cuaderno',
+    ]);
   });
 });
 
@@ -77,35 +113,5 @@ describe('reportFields', () => {
       ['meaning', 'profesor, maestro'],
       ['from', 'Cuaderno'],
     ]);
-  });
-});
-
-/** The issue form (.github/ISSUE_TEMPLATE/word-report.yml) read as text: no YAML parser needed. */
-describe('the word-report form', () => {
-  const ids = [...form.matchAll(/^\s+id:\s*(\S+)\s*$/gm)].map((m) => m[1]);
-
-  it('is read', () => {
-    expect(ids.length).toBeGreaterThan(REPORT_FIELDS.length);
-  });
-
-  it('has a field for every one the link fills in', () => {
-    for (const field of REPORT_FIELDS) expect(ids).toContain(field);
-  });
-
-  it('has unique ids GitHub accepts', () => {
-    expect(new Set(ids).size).toBe(ids.length);
-    for (const id of ids) expect(id).toMatch(/^[A-Za-z0-9_-]+$/);
-  });
-
-  it('labels its issues word-report itself', () => {
-    expect(form).toMatch(new RegExp(`^labels: \\[${REPORT_LABEL}\\]$`, 'm'));
-  });
-});
-
-describe('OPEN_REPORTS_PAGE', () => {
-  it('lists the open word-report issues', () => {
-    const url = new URL(OPEN_REPORTS_PAGE);
-    expect(url.origin + url.pathname).toBe('https://github.com/Apolejo/tangocho/issues');
-    expect(url.searchParams.get('q')).toBe('is:issue is:open label:word-report');
   });
 });

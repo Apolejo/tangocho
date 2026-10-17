@@ -1,22 +1,21 @@
 import type { Word } from '../data/schema.ts';
 import { FORM_LABELS } from '../i18n/forms.ts';
+import type { MessageKey } from '../i18n/en.ts';
 import { translate, type Lang } from '../i18n/lang.ts';
 import { meaningText } from '../i18n/localized.ts';
 import { isForm } from '../lib/conjugate.ts';
 import { displayForm } from '../lib/verbs.ts';
 
 /**
- * Word reports (SPEC §5.7): a ⚑ opens the repo's word-report issue form, its fields filled in,
- * next to the data it fixes. The form labels the issue itself, so a report from anyone counts.
- * Nothing is sent until the issue is submitted on GitHub. Pure.
+ * Word reports (SPEC §5.7): a ⚑ opens an email to the report address, its subject and body filled
+ * in with what the app showed. Nothing is sent until the reporter sends it from their own mail
+ * app. Pure.
  */
 
-export const REPO = 'Apolejo/tangocho';
-export const REPORT_LABEL = 'word-report';
-/** The issue form, in .github/ISSUE_TEMPLATE/. */
-export const REPORT_FORM = 'word-report.yml';
+/** An email forward at my domain (Porkbun). It sits in the public build, so it can be retired. */
+export const REPORT_EMAIL = 'no-reply@apolejo.dev';
 
-/** The form's fields the app fills in, by id, in the form's order. */
+/** What a report says about the word, by id, in the order the email lists them. */
 export const REPORT_FIELDS = [
   'word-id',
   'shown',
@@ -27,6 +26,17 @@ export const REPORT_FIELDS = [
   'source',
 ] as const;
 export type ReportField = (typeof REPORT_FIELDS)[number];
+
+/** How the email names each field. */
+const FIELD_LABELS: Record<ReportField, MessageKey> = {
+  'word-id': 'report_field_word_id',
+  shown: 'report_field_shown',
+  meaning: 'report_field_meaning',
+  form: 'report_field_form',
+  answer: 'report_field_answer',
+  from: 'report_field_from',
+  source: 'report_field_source',
+};
 
 export interface Report {
   word: Word;
@@ -54,7 +64,7 @@ export function reportTitle({ word, form }: Report, lang: Lang): string {
     : translate(lang, 'report_title_form', { word: text, form: formLabel(form), id: word.id });
 }
 
-/** What the app showed, as the form's fields; what a report doesn't have is left out. */
+/** What the app showed, as fields; what a report doesn't have is left out. */
 export function reportFields(
   { word, from, form, answer }: Report,
   lang: Lang,
@@ -72,17 +82,27 @@ export function reportFields(
   return fields.filter((field): field is [ReportField, string] => field[1] !== undefined);
 }
 
-/** The new-issue page with the word-report form, filled in. */
-export function reportUrl(report: Report, lang: Lang): string {
-  const params = new URLSearchParams([
-    ['template', REPORT_FORM],
-    ['title', reportTitle(report, lang)],
-    ...reportFields(report, lang),
-  ]);
-  return `https://github.com/${REPO}/issues/new?${params.toString()}`;
+/** A blank for the reporter to write in, then what the app showed, one field per line. */
+export function reportBody(report: Report, lang: Lang): string {
+  const details = reportFields(report, lang).map(
+    ([field, value]) => `${translate(lang, FIELD_LABELS[field])}: ${value}`,
+  );
+  return [
+    translate(lang, 'report_mail_prompt'),
+    '',
+    '',
+    '---',
+    translate(lang, 'report_mail_details'),
+    ...details,
+  ].join('\r\n');
 }
 
-/** The open reports, on GitHub. */
-export const OPEN_REPORTS_PAGE = `https://github.com/${REPO}/issues?${new URLSearchParams({
-  q: `is:issue is:open label:${REPORT_LABEL}`,
-}).toString()}`;
+/**
+ * The email, as a mailto: link. Encoded by hand: URLSearchParams writes a space as "+", which a
+ * mail app shows as a plus sign (RFC 6068 wants %20).
+ */
+export function reportMailto(report: Report, lang: Lang): string {
+  const subject = encodeURIComponent(reportTitle(report, lang));
+  const body = encodeURIComponent(reportBody(report, lang));
+  return `mailto:${REPORT_EMAIL}?subject=${subject}&body=${body}`;
+}

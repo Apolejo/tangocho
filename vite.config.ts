@@ -121,7 +121,7 @@ export default defineConfig(({ mode }) => {
                     options: { cacheName: 'font-slices', expiration: { maxEntries: 600 } },
                   },
                 ],
-                // nothing else at runtime: the word-report count (api.github.com) is never cached
+                // nothing else at runtime: the app asks no other site anything
               },
             }),
           ]),

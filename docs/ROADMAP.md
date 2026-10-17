@@ -145,6 +145,8 @@ Done when: the coffee link opens my page from Settings on the phone and from the
 
 Closed on 2026-10-15, with one check deferred: no report has come from another GitHub account yet. The form works from `main` and labels its issues itself; the first report from another player is the check, and it stops mattering once reports move off GitHub (SPEC §15).
 
+Changed on 2026-10-16: the coffee link goes to `paypal.me/apolejo`, not Buy Me a Coffee, which doesn't support my country. The label and the cup stay; `.github/FUNDING.yml` uses `custom:` instead of `buy_me_a_coffee:`.
+
 ## M11 — Oracle server: an HTTPS mirror · SPEC §4
 
 Goal: the same build, served over HTTPS from my Always Free VM and deployed by CI on every push to `main`, on a server ready to host the sync service.

@@ -3,9 +3,8 @@ import type { DayKey } from './day.ts';
 
 /**
  * Settings (SPEC §7.7) kept on this device in localStorage: the daily goal and its history, the
- * furigana default, whether to count the open word reports, and the last export. The language has
- * its own key (src/i18n/lang.ts). Parsing is pure; a bad or missing field falls back to its
- * default alone.
+ * furigana default and the last export. The language has its own key (src/i18n/lang.ts). Parsing
+ * is pure; a bad or missing field falls back to its default alone.
  */
 
 export const GOAL_OPTIONS = [10, 20, 50] as const;
@@ -21,8 +20,6 @@ export interface Settings {
   /** Oldest first; before the first entry the goal is DEFAULT_GOAL. */
   goals: GoalEntry[];
   furigana: boolean;
-  /** Ask GitHub at launch how many word reports are open, and show the banner (SPEC §5.7). */
-  reportsBanner: boolean;
   /** ISO timestamp of the last export from this device. */
   lastExportAt?: string;
 }
@@ -30,7 +27,6 @@ export interface Settings {
 export const DEFAULT_SETTINGS: Settings = {
   goals: [],
   furigana: true,
-  reportsBanner: false,
 };
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -40,7 +36,6 @@ const stored = z.object({
     .array(z.object({ from: z.string().regex(DAY), goal: z.literal(GOAL_OPTIONS) }))
     .catch([]),
   furigana: z.boolean().catch(true),
-  reportsBanner: z.boolean().catch(false),
   lastExportAt: z.iso.datetime().optional().catch(undefined),
 });
 

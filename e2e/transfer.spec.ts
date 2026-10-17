@@ -70,9 +70,6 @@ test('progress exported from the phone merges into the computer', async ({
 
   // the computer has progress of its own
   const computer = await browser.newContext({ baseURL: testInfo.project.use.baseURL });
-  await computer.route('https://api.github.com/**', (route) =>
-    route.fulfill({ json: [], headers: { 'Access-Control-Allow-Origin': '*' } }),
-  );
   const desk = await computer.newPage();
   const mine = seedRound({
     game: 'quiz',

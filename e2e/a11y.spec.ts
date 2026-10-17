@@ -1,5 +1,4 @@
 import { AxeBuilder } from '@axe-core/playwright';
-import { showReportsBanner } from './reports.ts';
 import { daysAgo, importProgress, seedFile, seedRound, type SeedAnswer } from './seed.ts';
 import { expect, test, type Page } from './test.ts';
 
@@ -196,7 +195,6 @@ const SCREENS: { name: string; hash: string; steps?(page: Page): Promise<void> }
       await page.getByRole('button', { name: 'Yes, delete it' }).click();
     },
   },
-  { name: 'the open word reports banner', hash: '#/settings', steps: showReportsBanner },
   { name: 'a page that does not exist', hash: '#/nowhere' },
 ];
 

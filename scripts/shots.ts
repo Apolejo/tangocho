@@ -149,18 +149,6 @@ async function otherTheme(page: Page): Promise<void> {
   await page.getByRole('heading', { name: /Today/ }).waitFor();
 }
 
-/** The open word reports count turned on in Settings, then the notebook with its banner. */
-async function reportsBanner(page: Page): Promise<void> {
-  await page
-    .getByRole('group', { name: 'Count open word reports' })
-    .getByRole('radio', { name: 'On' })
-    .check();
-  await page.goto(page.url().replace(/#.*$/, '#/notebook'));
-  await page.getByRole('complementary', { name: 'Word reports' }).waitFor();
-  // the switch is far down Settings, and a hash change keeps the scroll
-  await page.evaluate('window.scrollTo(0, 0)');
-}
-
 /** Settings scrolled to About. */
 async function about(page: Page): Promise<void> {
   await page
@@ -243,8 +231,6 @@ const SCREENS: {
   name: string;
   hash: string;
   steps?: (page: Page) => Promise<void>;
-  /** Open word reports GitHub answers with (none unless given), so screens don't depend on it. */
-  reports?: number;
   /** The progress screens: the clock fixed at NOW, and no progress or the demo progress. */
   progress?: 'empty' | 'demo';
 }[] = [
@@ -284,7 +270,6 @@ const SCREENS: {
     },
   },
   { name: 'notebook', hash: '#/notebook' },
-  { name: 'notebook-reports', hash: '#/settings', reports: 2, steps: reportsBanner },
   { name: 'notebook-verbs-g2', hash: '#/notebook/verbs-g2' },
   {
     name: 'notebook-verb-forms',
@@ -473,12 +458,6 @@ async function main(): Promise<void> {
             locale: 'en-US',
           });
           const page = await context.newPage();
-          await page.route('https://api.github.com/**', (route) =>
-            route.fulfill({
-              json: Array.from({ length: screen.reports ?? 0 }, (_, i) => ({ number: i + 1 })),
-              headers: { 'Access-Control-Allow-Origin': '*' },
-            }),
-          );
           if (screen.progress !== undefined) await page.clock.setFixedTime(NOW);
           if (screen.progress === 'demo') {
             await importProgress(page, demo, `${url}#/settings`);

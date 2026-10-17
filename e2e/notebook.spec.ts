@@ -1,3 +1,4 @@
+import { readReport } from './reports.ts';
 import { expect, test } from './test.ts';
 
 test('notebook: deck tabs, furigana, and the language toggle', async ({ page }) => {
@@ -60,16 +61,17 @@ test('a tapped verb shows its eight forms, each with its ⚑', async ({ page, is
     await expect(cell).toHaveText(written.replace('書', '書(か)'));
   }
 
-  // each form's ⚑ opens the word-report form with the form and the app's answer filled in
+  // each form's ⚑ opens an email with the form and the app's answer filled in
   const flag = sheet.locator('tr[data-form="て"] [data-report]');
-  await expect(flag).toHaveAttribute('target', '_blank');
-  const url = new URL((await flag.getAttribute('href')) ?? '');
-  expect(url.searchParams.get('template')).toBe('word-report.yml');
-  expect(url.searchParams.has('labels')).toBe(false);
-  expect(url.searchParams.get('title')).toBe('Word report: 書きます · て形 (kaku)');
-  expect(url.searchParams.get('form')).toBe('て形');
-  expect(url.searchParams.get('answer')).toBe('書いて（かいて）');
-  expect(url.searchParams.get('from')).toBe('Notebook');
+  await expect(flag).not.toHaveAttribute('target', /.*/);
+  const report = readReport(await flag.getAttribute('href'));
+  expect(report.to).toBe('no-reply@apolejo.dev');
+  expect(report.subject).toBe('Word report: 書きます · て形 (kaku)');
+  expect(report.fields).toMatchObject({
+    Form: 'て形',
+    'App’s answer': '書いて（かいて）',
+    'Reported from': 'Notebook',
+  });
 
   // closes with ✕ (or Esc), and with a tap outside it
   if (isMobile) {
@@ -93,9 +95,8 @@ test('every word has its ⚑; only verbs open forms', async ({ page }) => {
   const sensei = page.locator('[data-word-id="sensei"]');
   await expect(sensei.getByRole('button')).toHaveCount(0);
   const flag = sensei.getByRole('link', { name: 'Report a mistake in 先生' });
-  const url = new URL((await flag.getAttribute('href')) ?? '');
-  expect(url.origin + url.pathname).toBe('https://github.com/Apolejo/tangocho/issues/new');
-  expect(url.searchParams.get('title')).toBe('Word report: 先生 (sensei)');
-  expect(url.searchParams.get('word-id')).toBe('sensei');
-  expect(url.searchParams.get('shown')).toBe('先生（せんせい）');
+  const report = readReport(await flag.getAttribute('href'));
+  expect(report.to).toBe('no-reply@apolejo.dev');
+  expect(report.subject).toBe('Word report: 先生 (sensei)');
+  expect(report.fields).toMatchObject({ 'Word id': 'sensei', 'Shown as': '先生（せんせい）' });
 });

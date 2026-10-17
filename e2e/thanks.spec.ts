@@ -8,7 +8,7 @@ import { expect, test } from './test.ts';
 const LINKS = {
   'My sensei': 'https://www.instagram.com/heros.to.nihongo/',
   'Made by @apolejoo': 'https://www.instagram.com/apolejoo/',
-  'Buy me a coffee': 'https://buymeacoffee.com/apolejo',
+  'Buy me a coffee': 'https://paypal.me/apolejo',
 };
 
 test('Thanks on Today opens the three links in a sheet', async ({ page, isMobile }) => {

@@ -5,7 +5,7 @@ Minigames for drilling the Japanese vocabulary from my own notebook (a quick qui
 Anyone can play: open the link, no account needed. Each player's progress stays on their own device; nothing is sent anywhere.
 
 - Live: https://apolejo.dev/tangocho/ (the same build is also on GitHub Pages, https://apolejo.github.io/tangocho/; each address keeps its own progress)
-- ☕ [Buy me a coffee](https://buymeacoffee.com/apolejo) if it helps you
+- ☕ [Buy me a coffee](https://paypal.me/apolejo) if it helps you
 - Product spec: [docs/SPEC.md](docs/SPEC.md)
 - Roadmap and status: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Instructions for Claude Code: [CLAUDE.md](CLAUDE.md)

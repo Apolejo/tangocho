@@ -11,7 +11,7 @@ const { version } = JSON.parse(readFileSync('package.json', 'utf8')) as { versio
 const LINKS = {
   'My sensei': 'https://www.instagram.com/heros.to.nihongo/',
   'Made by @apolejoo': 'https://www.instagram.com/apolejoo/',
-  'Buy me a coffee': 'https://buymeacoffee.com/apolejo',
+  'Buy me a coffee': 'https://paypal.me/apolejo',
 };
 
 test('About shows the version, the privacy note and the links, in both languages', async ({

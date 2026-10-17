@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import styles from './Stamp.module.css';
 
 /**
- * Hanko-style marks (SPEC §13): ◯ in green for correct, ✕ in ink for wrong, the 新記録 seal
+ * Hanko-style marks (SPEC §13): ◯ in green for correct, ✕ in vermilion for wrong, the 新記録 seal
  * for a personal best, the 花丸 for a perfect round, and the round 済 seal for a day whose goal was
  * met on the stamp card (SPEC §10.4).
  * With `animate`, a seal presses onto the paper and the 花丸 draws itself, spiral then petals,

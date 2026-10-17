@@ -81,7 +81,7 @@
 }
 
 .input[data-state='wrong'] {
-  border-color: var(--ink-soft);
+  border-color: var(--shu);
   border-style: dashed;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .choice[data-state='wrong'] {
-  border-color: var(--ink-soft);
+  border-color: var(--shu);
   border-style: dashed;
 }
 
@@ -208,5 +208,5 @@
 }
 
 .mark[data-mark='wrong'] {
-  color: var(--ink);
+  color: var(--shu);
 }

@@ -115,6 +115,7 @@
 }
 
 .wrong {
+  color: var(--shu);
   font-weight: 700;
 }
 

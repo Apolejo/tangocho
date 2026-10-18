@@ -164,6 +164,8 @@ The session:
 
 Done when: a push to `main` updates both sites; the mirror installs on the phone and works in airplane mode; a deploy that fails halfway leaves the previous release serving.
 
+Closed on 2026-10-16. The merge of the thanks links (#22) put the same build on Pages and on `apolejo.dev` in one deploy. On my iPhone, the mirror installs and works in airplane mode. `scripts/deploy-server.test.ts` covers a half-finished deploy in CI: `activate` refuses an incomplete upload and the previous release keeps serving.
+
 The mirror is another origin, with its own storage and its own installed app: progress doesn't follow between it and Pages until M12.
 
 ## M12 — Progress sync · SPEC §3, §10.1, §10.6

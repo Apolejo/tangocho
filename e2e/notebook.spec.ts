@@ -100,3 +100,58 @@ test('every word has its ⚑; only verbs open forms', async ({ page }) => {
   expect(report.subject).toBe('Word report: 先生 (sensei)');
   expect(report.fields).toMatchObject({ 'Word id': 'sensei', 'Shown as': '先生（せんせい）' });
 });
+
+test('on a computer, ‹ › scroll the deck tabs and the arrow keys switch decks', async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, 'a phone swipes the tabs; the keys are for a keyboard');
+  await page.goto('#/');
+  await page
+    .getByRole('navigation', { name: 'Sections' })
+    .getByRole('link', { name: 'Notebook' })
+    .click();
+  const decks = page.getByRole('navigation', { name: 'Decks' });
+  const all = decks.getByRole('link', { name: 'All words' });
+  const katakana = decks.getByRole('link', { name: 'Katakana words' });
+  const start = decks.locator('[data-scroll="start"]');
+  const end = decks.locator('[data-scroll="end"]');
+
+  // the tabs don't fit: › brings the hidden ones in, ‹ goes back
+  await expect(katakana).not.toBeInViewport({ ratio: 1 });
+  await expect(start).toHaveCount(0);
+  await end.click();
+  await expect(katakana).toBeInViewport({ ratio: 1 });
+  await expect(end).toHaveCount(0);
+  await start.click();
+  await expect(all).toBeInViewport({ ratio: 1 });
+  await expect(start).toHaveCount(0);
+  await expect(page).toHaveURL(/#\/notebook$/);
+
+  // the row is one Tab stop, the selected tab; arrows, Home and End open the others
+  await all.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page).toHaveURL(/#\/notebook\/new$/);
+  const newWords = decks.getByRole('link', { name: 'New this week' });
+  await expect(newWords).toBeFocused();
+  await expect(newWords).toHaveAttribute('aria-current', 'page');
+  await page.keyboard.press('End');
+  await expect(page).toHaveURL(/#\/notebook\/katakana$/);
+  await expect(katakana).toBeFocused();
+  await expect(katakana).toBeInViewport({ ratio: 1 });
+  await expect(page.locator('[data-word-id="koohii"]')).toBeVisible();
+  await page.keyboard.press('ArrowRight');
+  await expect(all).toBeFocused();
+  await page.keyboard.press('ArrowLeft');
+  await expect(katakana).toBeFocused();
+
+  // Tab goes straight into the word list, and Shift+Tab straight back to the selected deck
+  await page.keyboard.press('Tab');
+  await expect(page.locator('ol [data-word-id]').first().getByRole('link')).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(katakana).toBeFocused();
+
+  // the arrows replace the history entry: Back goes to Today instead of walking the decks
+  await page.goBack();
+  await expect(page.getByRole('heading', { name: /Today/ })).toBeVisible();
+});

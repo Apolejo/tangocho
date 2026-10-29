@@ -1,8 +1,12 @@
 .tabs {
+  --fade: calc(var(--tap-min) + var(--space-4)); /* room for ‹ or › over the tabs it hides */
+  position: relative;
   padding: 0 var(--space-4);
 }
 
 .list {
+  --fade-start: 0px;
+  --fade-end: 0px;
   display: flex;
   gap: var(--space-1);
   margin: 0;
@@ -14,6 +18,64 @@
 
 .list::-webkit-scrollbar {
   display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .list {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ‹ and ›: a computer's mouse wheel can't scroll the strip sideways, a phone swipes it */
+.tabs .scroll {
+  display: none;
+  position: absolute;
+  top: var(--space-2);
+  bottom: 0;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  margin: auto 0;
+  padding: 0;
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+.scroll[data-scroll='start'] {
+  left: var(--space-4);
+}
+
+.scroll[data-scroll='end'] {
+  right: var(--space-4);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tabs .scroll {
+    display: inline-grid;
+  }
+
+  .scroll:hover {
+    border-color: var(--edge);
+  }
+
+  /* the tabs under ‹ › fade out, and a tab the focus reaches stops clear of them */
+  .list {
+    scroll-padding-inline: var(--fade);
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--fade-start),
+      #000 calc(100% - var(--fade-end)),
+      transparent 100%
+    );
+  }
+
+  .list[data-hidden-start] {
+    --fade-start: var(--fade);
+  }
+
+  .list[data-hidden-end] {
+    --fade-end: var(--fade);
+  }
 }
 
 .tab {

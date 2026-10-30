@@ -1,4 +1,4 @@
-/** Hash routes (SPEC §4: GitHub Pages has no fallback for client-side routes). Pure; see useHashRoute.ts. */
+/** Hash routes (SPEC §4: the static host needs no fallback rule for client-side routes). Pure; see useHashRoute.ts. */
 export type Route =
   | { name: 'today' }
   | { name: 'notebook'; deckId: string }

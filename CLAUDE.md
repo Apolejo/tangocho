@@ -32,7 +32,7 @@ Personal web app of minigames for drilling the Japanese words in my own notebook
 
 ## Gotchas
 - I develop on Windows and CI runs Linux: keep npm scripts cross-platform (Node scripts, no `rm -rf`, no inline env vars), and match file-name case exactly in imports.
-- GitHub Pages serves the site from /<repo-name>/: Vite `base` must match, and routing is hash-based.
+- The site is served from /tangocho/ (apolejo.dev/tangocho/): Vite `base` is set to it, and routing is hash-based.
 - WanaKana: on submit, convert the input once more in the expected answer's script (toKatakana for katakana answers), or a trailing "n" becomes ん inside a katakana word.
 - TypeScript stays on 6.0.x until typescript-eslint supports 7 (its peer range is <6.1).
 - Relative imports carry their `.ts`/`.tsx` extension: Node runs `scripts/*.ts` natively, so `src/data/` and `src/lib/` must stay free of DOM and Vite APIs for the validator to import them.

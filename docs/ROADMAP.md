@@ -168,6 +168,8 @@ Closed on 2026-10-16. The merge of the thanks links (#22) put the same build on 
 
 The mirror is another origin, with its own storage and its own installed app: progress doesn't follow between it and Pages until M12.
 
+Changed on 2026-10-20: GitHub Pages is gone, so the repo can be private (on GitHub Free a private repo has no Pages and no environments). Deploy builds once and deploys the mirror alone, with the SSH key and host key as repository secrets and variables. The Pages address stops updating, and its installed copy and progress stay on that origin: export there, import at apolejo.dev.
+
 ## M12 — Progress sync · SPEC §3, §10.1, §10.6
 
 Goal: one progress log shared by a person's devices, automatically and with no account. Export and import stay as the fallback.

@@ -1,17 +1,14 @@
 name: Deploy
 
-# Every push to main: the same build to GitHub Pages and to the mirror on the Oracle VM
-# (docs/ORACLE.md). By hand (Actions → Deploy → Run workflow): the mirror alone, from any branch the
-# mirror environment allows, or the test of a deploy that stops halfway.
+# Every push to main: the build to the Oracle VM, https://apolejo.dev/tangocho/ (docs/ORACLE.md).
+# By hand (Actions → Deploy → Run workflow): the same from any branch, or the test of a deploy that
+# stops halfway. The SSH key and the host key are repository secrets and variables, not an
+# environment: a private repo on GitHub Free has no environments, and no Pages either.
 on:
   push:
     branches: [main]
   workflow_dispatch:
     inputs:
-      mirror_only:
-        description: Deploy the mirror only (Pages deploys from main alone)
-        type: boolean
-        default: false
       stop_halfway:
         description: 'Test: upload half of this build to the mirror; the release it serves must stay'
         type: boolean
@@ -32,7 +29,6 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
-      pages: read
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -41,31 +37,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v5
+      # handed to the mirror job; one day is plenty, and private repos have little artifact storage
+      - uses: actions/upload-artifact@v7
         with:
+          name: dist
           path: dist
-
-  deploy:
-    needs: build
-    if: ${{ !inputs.mirror_only && !inputs.stop_halfway }}
-    runs-on: ubuntu-24.04
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+          if-no-files-found: error
+          retention-days: 1
 
   mirror:
     needs: build
     runs-on: ubuntu-24.04
-    environment:
-      name: mirror
-      url: https://apolejo.dev/tangocho/
     env:
       SITE: https://apolejo.dev/tangocho/
       HOST: deploy@apolejo.dev
@@ -74,13 +56,10 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-      # the artifact Pages deploys, so both sites serve the same bytes
       - uses: actions/download-artifact@v8
         with:
-          name: github-pages
-          path: ${{ runner.temp }}/pages
-      - name: Unpack the build
-        run: mkdir dist && tar -xf "$RUNNER_TEMP/pages/artifact.tar" -C dist
+          name: dist
+          path: dist
       - name: Deploy key and the server's host key
         env:
           KEY: ${{ secrets.MIRROR_SSH_KEY }}

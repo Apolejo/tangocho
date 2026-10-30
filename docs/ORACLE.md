@@ -1,6 +1,6 @@
 # Oracle server runbook
 
-The mirror of the app at **https://apolejo.dev/tangocho/**: the same build as GitHub Pages, at the same path, served by Caddy from my Oracle Always Free VM and deployed by GitHub Actions on every push to `main` (ROADMAP M11). M12's sync service will run here too.
+The app at **https://apolejo.dev/tangocho/**, served by Caddy from my Oracle Always Free VM and deployed by GitHub Actions on every push to `main` (ROADMAP M11). It is the only copy: the GitHub Pages one is gone, so the repo can be private. M12's sync service will run here too.
 
 Every command below was run on the VM when M11 set it up (2026-10-15). The files it installs live in [`ops/`](../ops/); the repo copy is the source of truth.
 
@@ -157,38 +157,34 @@ Check: `ssh deploy@apolejo.dev ls` must answer `allowed: rsync into incoming/, o
 
 ## 7. GitHub
 
-Environment **`mirror`** (Settings → Environments), with deployment branches `main` and, while a milestone tests deploys from its branch, that branch.
+Repository secrets and variables (Settings → Secrets and variables → Actions). They are not an environment's: a private repo on GitHub Free has no environments, and a repository secret works on every plan.
 
 - Secret `MIRROR_SSH_KEY`: the private deploy key.
 - Variable `MIRROR_KNOWN_HOSTS`: `apolejo.dev ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBeL1jNLanx2QgpmvRxxCHI6wt3JSpP6RlB3YnjahqUh`. That line is `/etc/ssh/ssh_host_ed25519_key.pub` read over my own SSH session, and it matched `ssh-keyscan -t ed25519 apolejo.dev`. If the VM is ever rebuilt, set it again; until then, deploys fail rather than trust a different host.
 
 ```bash
-gh secret set MIRROR_SSH_KEY --env mirror < deploy_key
-gh variable set MIRROR_KNOWN_HOSTS --env mirror --body "apolejo.dev ssh-ed25519 …"
+gh secret set MIRROR_SSH_KEY < deploy_key
+gh variable set MIRROR_KNOWN_HOSTS --body "apolejo.dev ssh-ed25519 …"
 ```
 
 ## Deploying
 
-[`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml), on every push to `main`. The `build` job feeds two jobs:
+[`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml), on every push to `main`. The `build` job builds once and hands `dist/` over as an artifact (kept one day) to the `mirror` job, in four steps:
 
-- `deploy`: GitHub Pages.
-- `mirror`, in four steps:
-  1. Unpacks the same Pages artifact.
-  2. `rsync -rcp --delete` into `incoming/`. With `-c`, unchanged files aren't rewritten, so older releases keep their hard links.
-  3. `activate $GITHUB_SHA`.
-  4. `node scripts/smoke.ts https://apolejo.dev/tangocho/ dist`. It fails unless `index.html` and `sw.js` are byte-for-byte this build's, with `no-cache`, and the manifest has its type. A hashed asset must be `immutable`, a missing asset must be a 404 that isn't, with an HTML page, and HSTS must be on.
+1. Downloads that build.
+2. `rsync -rcp --delete` into `incoming/`. With `-c`, unchanged files aren't rewritten, so older releases keep their hard links.
+3. `activate $GITHUB_SHA`.
+4. `node scripts/smoke.ts https://apolejo.dev/tangocho/ dist`. It fails unless `index.html` and `sw.js` are byte-for-byte this build's, with `no-cache`, and the manifest has its type. A hashed asset must be `immutable`, a missing asset must be a 404 that isn't, with an HTML page, and HSTS must be on.
 
 SSH steps retry three times.
 
-By hand (Actions → Deploy → Run workflow, or `gh workflow run deploy.yml --ref <branch> -f mirror_only=true`):
+By hand (Actions → Deploy → Run workflow, or `gh workflow run deploy.yml --ref <branch>`): the same deploy from any branch. Nothing but the branch's own code stops it, because there is no environment to restrict it to `main`; the repo is private and I'm its only writer. With `-f stop_halfway=true`, the test of a deploy that stops halfway:
 
-- **`mirror_only`**: deploys the mirror alone, from any branch the environment allows. Pages deploys from `main` only.
-- **`stop_halfway`**: the test of a deploy that stops halfway.
-  1. It uploads only the new `index.html` and `sw.js`, without their assets.
-  2. `activate` must refuse that release.
-  3. The page the mirror serves must be the one it served before.
+1. It uploads only the new `index.html` and `sw.js`, without their assets.
+2. `activate` must refuse that release.
+3. The page the mirror serves must be the one it served before.
 
-  Run it on a commit that isn't live. The next normal deploy repairs `incoming/`.
+Run it on a commit that isn't live. The next normal deploy repairs `incoming/`.
 
 **Roll back** to any kept release, as `ubuntu` on the VM:
 

@@ -30,7 +30,7 @@ A web app of minigames for practicing the Japanese words I study, entered from m
 | Concern | Choice |
 |---|---|
 | App | Vite + React + TypeScript (strict). Static site. |
-| Hosting | `https://apolejo.dev/tangocho/`, served by Caddy on my Oracle VM ([ORACLE.md](ORACLE.md)), and the same build on GitHub Pages; GitHub Actions deploys both on every push to `main`. Two origins, so each keeps its own storage and installed app. |
+| Hosting | `https://apolejo.dev/tangocho/`, served by Caddy on my Oracle VM ([ORACLE.md](ORACLE.md)); GitHub Actions deploys it on every push to `main`. There is no GitHub Pages copy (a private repo on GitHub Free has none), so there is one origin, and one storage and installed app per device. |
 | Offline and install | PWA via vite-plugin-pwa: a Workbox service worker precaches the app with its words, and only the font slices that cover a character the app can show (Fontsource splits Japanese fonts by unicode-range; the rest is left out, and new kanji bring their slices with the next deploy). A new version waits for *Reload* on a banner shown on Today, the notebook and the game list, never during a round; ✕ hides it until the next launch. Fonts self-hosted with Fontsource (no font CDN at runtime). Icons rendered from `public/icon.svg` by `npm run icons`. |
 | Data | JSON in `data/`, bundled at build time with `import.meta.glob`. New words = commit → CI deploys. |
 | Schema | Zod (`src/data/schema.ts`) plus cross-field rules (`src/data/rules.ts`), shared by the app and `npm run validate`. |
@@ -38,7 +38,7 @@ A web app of minigames for practicing the Japanese words I study, entered from m
 | Spaced repetition | ts-fsrs (FSRS, the algorithm in recent versions of Anki) |
 | Storage | IndexedDB via Dexie |
 | Styling | CSS Modules + design tokens as CSS custom properties (`src/styles/tokens.css`). No UI kit. |
-| Routing | Hash-based (GitHub Pages has no fallback for client-side routes). |
+| Routing | Hash-based (the static host needs no fallback rule for client-side routes). |
 | Tests | Vitest (unit), Playwright (e2e: desktop Chromium + mobile WebKit at iPhone size). |
 | Machines | Development on Windows; CI on Linux (`ubuntu-latest`). |
 

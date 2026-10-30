@@ -29,11 +29,11 @@ When a session goes sideways, correct it once. If the same problem survives two 
 
 ## M0 — Setup (you, about an hour)
 
-- [ ] Install Git for Windows, Node.js LTS and the GitHub CLI; run `gh auth login`.
-- [ ] Choose the repo's visibility. GitHub Pages is free for public repos; private repos need GitHub Pro. The published site is public either way. For a public repo, commit with your GitHub no-reply email.
-- [ ] Create the repo, clone it, copy in the starter files (including `.claude/`, `.gitignore` and `.gitattributes`), commit and push.
-- [ ] Read SPEC.md and this roadmap end to end. Fix anything that's wrong or that you don't want; it's your spec now.
-- [ ] Open the repo folder in the Code tab and ask: "Which files may you never edit to make a test pass?"
+- [x] Install Git for Windows, Node.js LTS and the GitHub CLI; run `gh auth login`.
+- [x] Choose the repo's visibility. GitHub Pages is free for public repos; private repos need GitHub Pro. The published site is public either way. For a public repo, commit with your GitHub no-reply email.
+- [x] Create the repo, clone it, copy in the starter files (including `.claude/`, `.gitignore` and `.gitattributes`), commit and push.
+- [x] Read SPEC.md and this roadmap end to end. Fix anything that's wrong or that you don't want; it's your spec now.
+- [x] Open the repo folder in the Code tab and ask: "Which files may you never edit to make a test pass?"
 
 Done when: the repo is on GitHub with the starter files, and Claude answers that question from CLAUDE.md without opening any file.
 
